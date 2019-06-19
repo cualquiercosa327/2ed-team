@@ -1,0 +1,1491 @@
+\chapter[Estimación por intervalo de confianza]{\Huge {\textcolor{purpura}{\tit {Estimación por intervalo de confianza}}}}
+\section{Introducción}
+CARRETA
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad de probabilidad $f(x_i,\theta)$, un intervalo de nivel de confianza de $(1-\alpha)\times100\%$ para una función del parámetro $g(\theta)$ es un intervalo aleatorio $(T_1,T_2)$ con $P(T_1<g(\theta)<T_2)=1-\alpha$.
+
+$1-\alpha$ se denomina el nivel de confianza o la probabilidad de cobertura.
+\end{Defi}
+
+En algunas situaciones, no estamos interesados en hallar ambos límites inferior y superior, sino solamente el límite superior. Por ejemplo, en un estudio de emisión de gas dióxido de carbono en un cierto modelo de auto, estamos interesados en saber a lo más cuánto dióxido de carbono produce el auto puesto en funcionamiento en un determinado periodo del tiempo, y no es de interés saber cuál es el límite inferior, pues dado las consideraciones ecológicas, entre menos dióxido de carbono produzca, mejor. Otro ejemplo se encuentra en la industria donde en las líneas de producción de una fábrica, se necesita que la variación de alguna característica de los productos fabricados no se sobrepase de cierto límite superior, pues si la variación fuera grande, es un indicio que la línea de producción no es estable. En estos casos, el intervalo de interés no es bilateral como en la Definición 3.1.1 sino unilateral y tenemos la siguiente definición.
+
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad de probabilidad $f(x_i,\theta)$, un intervalo de nivel de confianza unilateral superior de $(1-\alpha)\times100\%$ para una función del parámetro $g(\theta)$ está conformado por una estadística $T$ que satisface $P(g(\theta)<T)=1-\alpha$.
+\end{Defi}
+
+Ahora, considere el estudio de la vida útil de algún tipo de motor, entre más larga sea la vida útil, mejor es el motor. Por lo tanto, en un estudio de inferencia, estaríamos interesados en conocer cuál es la vida útil mínima del motor, más no la vida útil máxima, y estaríamos interesados en hallar el límite inferior. En situaciones como esta, nos es útil el intervalo de confianza unilateral inferior definida a continuación.
+
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad de probabilidad $f(x_i,\theta)$, un intervalo de nivel de confianza unilateral inferior de $(1-\alpha)\times100\%$ para una función del parámetro $g(\theta)$ está conformado por una estadística $T$ que satisface $P(T<g(\theta))=1-\alpha$.
+\end{Defi}
+
+En la siguiente sección se introducirá métodos para encontrar intervalos de confianza. Como se observa en las tres anteriores definiciones, encontrar un intervalo es equivalente a encontrar estadísticas que nos sirven como límites inferiores o superiores\footnote{Se verá que estas estadísticas se pueden obtener modificando estimadores del parámetro de interés.}, y debido a la aleatoriedad de las estadísticas, los intervalos de confianza son realmente intervalos aleatorios en el sentido de que cuando la muestra observada cambia los intervalos también toman diferentes valores. En la literatura estadística no se hace una distinción entre un intervalo confianza que está conformado por estadísticas y un intervalo confianza calcula que está conformado por valores numéricos, pero el lector debe estar consciente en cada ocación de cuál intervalo se hace referencia.
+
+Como se verá en el siguiente capítulo, para un parámetro puede haber varias intervalos de confianza (similar al caso de estimación puntual, donde para un parámetro puede haber más de un estimador), en estos casos, es necesario conocer cuáles son los criterios que se debe tener en cuenta para escoger el mejor intervalo. En general, los aspectos más importantes que determinan la calidad de un intervalo de confianza es el nivel de confianza y  la longitud del intervalo. Se espera en primer lugar, que la probabilidad de cobertura sea alta, los valores comunes en la práctica estadística oscilan entre los 90 y 99\%; en segundo lugar, esperamos que la longitud del intervalo no sea muy grande, pues de lo contrario, el intervalo puede no aportar ningún conocimiento nuevo acerca del parámetro. Por ejemplo, si un laboratorio médico está interesado en conocer la tasa de curación de un nuevo medicamento en cierta enfermedad, encontrar un intervalo como $(0.01,0.99)$ para esta tasa de curación puede no ser muy útil, pues el rango es demasiado grande, y realmente el intervalo aporta casi nula información acerca de qué valores pueden estar tomando la verdadera tasa de curación. En cambio un intervalo como $(0.2,0.35)$ da una información mucho más preciso acerca de dónde se ubica la tasa de curación del medicamento. De lo anterior, observamos que se buscan intervalos con una alta precisión, esto es, intervalos de longitud pequeña.
+
+Ahora, es claro que en intervalos unilaterales no se puede definir la longitud del intervalo puesto que en un intervalo unilateral superior (inferior) el límite inferior (superior) es infinito. En un intervalo bilateral, la longitud se define, naturalemente, como el límite superior menos el límite inferior, esto es
+\begin{equation*}
+l=T_2-T_1.
+\end{equation*}
+
+Como se verá a lo largo de este capítulo, en general, cuando la longitud del intervalo es pequeño, el nivel de confianza es baja; y cuando el nivel de confianza es alta, la longitud es grande. Por lo tanto, no se puede maximizar el nivel de confianza y minimizar la longitud al mismo tiempo, y entonces el procedimiento usado es fijar el nivel de confianza, y una vez fijado el nivel de confianza, se busca el intervalo con menor longitud. Para eso, observe que tanto $T_2$ como $T_1$ son estadísticas y son aleatorios, por lo tanto, la longitud del intervalo $l$ también es aleatorio, entonces cuando se compara dos intervalos, la comparación se debe llevar a cabo usando la longitud esperada, esto es, $E(l)$, y escogeremos el intervalo que, en promedio, tiene la longitud más corta. Otra característica que esperamos es que la varianza de $l$ sea pequeña, puesto que un intervalo de confianza con varianza indica que puede tener longitudes muy grandes en algunas muestras y muy pequeñas en otras. Y como en la práctica, en muchas veces solo disponemos de una muestra, es más probable que el interval tenga longitud grande si $Var(l)$ es grande.
+
+En general, el problema de encontrar un intervalo de confianza es más fácil cuando la muestra aleatoria proviene de una distribución normal y la teoría también está más unificada; mientras que para las otra distribuciones hay diferentes enfoques y en algunos casos aún en la literatura estadística hace falta más investigación. Por esta razón, introducimos primero los intervalos de confianza bajo la distribución normal. Y posteriormente cuando la muestra aleatoria no proviene de otra distribución.
+
+\section{Bajo normalidad}
+
+En esta parte, estudiamos la estimación por intervalo de confianza para los parámetros de una distribución normal. Cuando se trata de una población de estudio, generalmente disponemos de una muestra aleatoria y estamos interesados en encontrar intervalo de confianza para la media y la varianza poblacional; cuando se trata de comparar dos poblaciones independientes, estamos interesados en utilizar los intervalos de confianza para comparar las medias poblacionales y las varianza poblacionales. El método presentado es el método de la variable pivote que también es apta para algunas otras distribuciones diferentes que la distribución normal.
+
+\subsection{Problemas de una muestra}
+
+En esta parte, estudiamos intervalos de confianza para $\mu$ y $\sigma^2$ de una distribución normal $N(\mu,\sigma^2)$ basado en una muestra aleatoria.
+
+\subsubsection{Intervalos de confianza para la media $\mu$}
+
+\textbf{Método de la variable pivote}
+
+Existen muchas formas de encontrar un intervalo de confianza para un parámetro, el más sencillo y popular se llama el método de la variable pivote. Para estudiar este método, primero se introduce el concepto de las variables pivotes.
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ una muestra aleatoria cuya distribución de $f(x_i,\theta)$ y sea $S$ una función de variables aleatorias de la muestra, entonces $S$ es una variable pivote para $\theta$ si
+\begin{enumerate}
+\item $S$ es una función no constante de $\theta$ y
+\item la distribución de $S$ no depende de $\theta$.
+\end{enumerate}
+\end{Defi}
+Para encontrar una variable pivote para un parámetro, se puede comenzar, generalmente, con un estimador de este parámetro, pues en muchos casos, se puede obtener una variable pivote modificando el estimador. Considere el siguiente ejemplo.
+\begin{Eje}
+\textbf{Intervalo bilateral para $\mu$ cuando $\sigma^2$ es conocida}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de $N(\mu,\sigma^2)$ con $\sigma^2=\sigma_0^2$ conocido, y se quiere encontrar una variable pivote para $\mu$. En primer lugar, el estimador más conocido para $\mu$ es el promedio muestral $\bar{X}$. Se ha visto en el capítulo anterior que $\bar{X}\sim N(\mu,\sigma_0^2/n)$, de donde estandarizando $\bar{X}$, se tiene que
+\begin{equation*}
+\dfrac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}\sim N(0,1).
+\end{equation*}
+
+Es claro que la variable $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}$ depende del parámetro $\mu$, y su distribución no depende de $\mu$, y por consiguiente este es una variable pivote para $\mu$. Nótese que para $\mu$, pueden existir más de una variable pivote. Un ejemplo simple es cualquier de $(X_i-\mu)/\sigma_0$ con $i=1,\cdots,n$ es una variable pivote pues también se distribuye como normal estándar, la cual no depende de $\mu$.
+\end{Eje}
+
+Hay que hacer la aclaración de que una variable pivote no es una estadística, puesto que una variable pivote depende del parámetro. Ahora, en el ejemplo anterior, la varianza es conocida, entonces el único parámetro desconocido es $\mu$. Sin embargo, cuando la varianza también es desconocida, tenemos dos parámetros desconocidos y  la definición de la variable pivote para cualquier de los dos parámetro es diferente, como explica más adelante.
+
+Suponga que la varianza $\sigma^2=\sigma^2_0$ es conocida, una vez encontrada una variable pivote para $\mu$, se puede aplicar los siguientes pasos del método de la variable pivote para encontrar un intervalo bilateral para cualquier parámetro desconocido $\theta$ (siempre y cuando $\theta$ sea el único parámetro desconocido):
+\begin{enumerate}
+\item Encontrar una variable pivotes $S$ para el parámetro $\theta$,
+\item Encontrar percentiles de la distribución de $S$, $a$ y $b$ tales que $P(a<S<b)=1-\alpha$,
+\item Despejar $\theta$ en la igualdad del anterior paso.
+\end{enumerate}
+Como se ha visto anteriormente, cuando $\sigma^2=\sigma^2_0$ es conocida, una variable pivote para $\mu$  es $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}$, la cual tiene distribución $N(0,1)$. Procedemos con el segundo paso del método de la variable pivote descrito anteriormente, para eso necesita encontrar percentiles de la distribución $N(0,1)$: $a$ y $b$ tales que
+\begin{equation}\label{Int_pivo}
+P(a<\dfrac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}<b)=1-\alpha.
+\end{equation}
+
+Con el fin de ilustrar el proceso de encontrar $a$ y $b$, adicionalmente se define $P(\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}<a)=A_1$ y $P(b<\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0})=A_2$, y si encontramos los valores de $A_1$ y $A_2$, podemos encontrar los valores de $a$ y $b$.
+
+Ahora, recordando que para una distribución de probabilidad continua como lo es la distribución normal, la probabilidad en (\ref{Int_pivo}) puede ser representada gráficamente como el área bajo la curva de la función de densidad de la distribución normal estándar entre los números $a$ y $b$ como lo ilustra la Figura 3.1.
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1409 1045, scale=0.2]{Normal.jpg}
+\caption{Ilustración de los percentiles de una distribución normal estándar.}
+\end{figure}
+
+Ahora, dado que todo el área bajo curva de cualquier función de densidad es 1, podemos establecer la siguiente relación
+\begin{equation*}
+A_1+A_2=\alpha,
+\end{equation*}
+
+la anterior ecuación contiene dos incógnitas $A_1$ + $A_2$, y por consiguiente, hay infinitas soluciones para $A_1$ y $A_2$, y por consiguiente infinitas soluciones para $a$ y $b$, y esto nos conduce a infinitos intervalos de confianza para $\mu$. Una forma de resolver este problema es considerando que el intervalo resultante debe tener la longitud lo más pequeña posible. Entonces primero se busca como es el intervalo para $\mu$ en función de las incógnitas $a$ y $b$, y luego encontrar los valores de $a$ y $b$ que minimizan la longitud del intervalo si ésta es constante, o la longitud esperada si ésta es aleatoria. Para eso despejamos $\mu$ de (\ref{Int_pivo}), y tenemos que:
+\begin{equation}\label{int_mua}
+P(\bar{X}-b\frac{\sigma_0}{\sqrt{n}}<\mu<\bar{X}-a\frac{\sigma_0}{\sqrt{n}})=1-\alpha,
+\end{equation}
+
+cuya longitud está dada por $(b-a)\sigma_0/\sqrt{n}$ la cual es una constante. Entonces se buscan los valores de $a$ y $b$ (determinan los áreas $A_1$ y $A_2$ de forma única) de tal manera que minimicen esta longitud o equivalentemente los que minimicen $b-a$. Esta minimización se debe llevarse a cabo teniendo en cuenta que el intervalo resultante debe tener probabilidad de cobertura $1-\alpha$, o equivalentemente $A_1+A_2=\alpha$. Nótese que $A_1=\Phi(a)$ y $A_2=1-\Phi(b)$, donde $\Phi(\cdot)$ denota la función de distribución de la distribución normal estándar. Entonces la minimización se lleva a cabo teniendo en cuenta que $\Phi(a)+1-\Phi(b)=\alpha$.
+
+Recurriendo a la técnica del multiplicador de Lagrange, se construye la siguiente función
+\begin{equation*}
+g=b-a-\lambda(\Phi(a)+1-\Phi(b)-\alpha),
+\end{equation*}
+
+Al derivar $g$ con respecto a $a$ y $b$, e igualar a cero, se tiene que
+\begin{equation*}
+-1-\lambda f(a)=0
+\end{equation*}
+
+y
+\begin{equation*}
+1+\lambda(f(b))=0,
+\end{equation*}
+
+donde $f$ denota la función de densidad e la distribución normal estándar. De las dos anteriores ecuaciones se tiene que $f(b)=f(a)$, la única pareja de valores de $a$ y $b$ diferentes\footnote{Pues si $a=b$, en el intervalo (\ref{int_mua}), el límite inferior coincide con el superior, y el intervalo se reduce a $\bar{X}$ que es el estimador puntual de $\mu$.} que cumple esta igualdad es cuando $a=-b$, en este caso, $A_1=A_2$ por la simetría de la función de densidad de la distribución normal estándar. Y como $A_1+A_2=\alpha$, se tiene que $A_1=A_2=\alpha/2$. Recordando la definición de $A_1$ y $A_2$, tenemos que
+\begin{equation*}
+P(\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}<a)=\alpha/2
+\end{equation*}
+y
+\begin{equation*}
+P(b<\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0})=\alpha/2,
+\end{equation*}
+de donde se concluye que $b=z_{1-\alpha/2}$ y $a=z_{alpha/2}=-z_{1-\alpha/2}$. Reemplazando estos valores en (\ref{int_mua}), se tiene que
+\begin{equation}
+P(\bar{X}-z_{1-\alpha/2}\frac{\sigma_0}{\sqrt{n}}<\mu<\bar{X}+z_{1-\alpha/2}\frac{\sigma_0}{\sqrt{n}})=1-\alpha.
+\end{equation}
+
+En conclusión, el intervalo de confianza bilateral de $(1-\alpha)\times100\%$ usando como variable pivote $\dfrac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}$ de más alta precisión para la media $\mu$, cuando la varianza poblacional es conocida, está dada por
+\begin{equation}\label{int_nor}
+IC(\mu)=\left(\bar{X}-z_{1-\frac{\alpha}{2}}\frac{\sigma_0}{\sqrt{n}},\bar{X}+z_{1-\frac{\alpha}{2}}\frac{\sigma_0}{\sqrt{n}}\right).
+\end{equation}
+
+En referencia a la notación, haremos distinción entre las letras mayúsculas y las minúsculas. El intervalo conformado por estadística será denotada con letras mayúsculas como en (\ref{int_nor}), cuando la muestra aleatoria $X_1$, $\ldots$, $X_n$ toma valores numéricos $x_1$, $\ldots$, $x_n$, el intervalo aleatorio también toma valores numéricos y los límites del intervalo se tornan números, y denotaremos el intervalo como $\left(\bar{x}-z_{1-\frac{\alpha}{2}}\frac{\sigma_0}{\sqrt{n}},\bar{x}+z_{1-\frac{\alpha}{2}}\frac{\sigma_0}{\sqrt{n}}\right)$.
+
+Otra forma para encontrar el intervalo con menor longitud se encuentra en \citeasnoun{Casella}. Consideremos el intervalo (\ref{int_mua}), la longitud de este intervalo está dada por $\sigma_0(b-a)/\sqrt{n}$ que depende de $b-a$. Por lo tanto se debe buscar valores de $a$ y $b$ que minimizan $b-a$ y que cumple la condición (\ref{Int_pivo}). El teorema 9.3.2 de \citeasnoun{Casella} establece condiciones para encontrar un intervalo de menor longitud para una variable pivote con distribución unimodal. En primer lugar, recordamos que una función de densidad $f(x)$ es unimodal si existe un valor $x^*$ tal que $f(x)$ es no decreciente para $x\leq x^*$ y no creciente para $x\geq x^*$. Las distribuciones normal, $t$, $\chi^2$ para algunos grados de libertad están dentro de las distribuciones unimodales. Para estas distribuciones unimodales, el teorema 9.3.2 de \citeasnoun{Casella} afirma lo siguiente.
+\begin{Res}
+Sea $X$ una variable aleatoria con distribución unimodal $f(x)$, si el intervalo $[a,b]$ satisface
+\begin{enumerate}
+    \item $P(a<X<b)=1-\alpha$
+    \item $f(a)=f(b)>0$
+    \item $a\leq x^*\leq b$ donde $x^*$ es una moda de $f(x)$
+\end{enumerate}
+entonces, $[a,b]$ es el intervalo de longitud más corta que satisface 1.
+\end{Res}
+\begin{proof}
+Se toma cualquier intervalo $[a',b']$ con longitud menor a $[a,b]$, esto es, $b'-a'<b-a$, veamos que $P(a'<X<b')<1-\alpha$. El intervalo $[a',b']$ puede ser de diferentes formas con respecto al $[a,b]$,
+\begin{enumerate}[i]
+\item Si $a'\leq a$ y $b'\leq a$, entonces se tiene que
+    \begin{align*}
+    P(a'<X<b')&=\int_{a'}^{b'}f(x)dx\\
+              &\leq f(b')(b'-a')\ \ \ \text{($f(b')\geq x$, $\forall x\leq b'$)}\\
+              &\leq f(a)(b'-a')\ \ \ \text{($f(b')\leq f(a)$, por ser $f$ no decreciente)}\\
+              &\leq f(a)(b-a)\ \ \ \ \ (b'-a'<b-a)\\
+              &\leq \int_{a}^{b}f(x)dx\\
+              &=1-\alpha
+    \end{align*}
+\item  Si $a'\leq a$ y $b'>a$, entonces $a'<a<b'<b$. Tenemos que
+\begin{align*}
+P(a'<X<b')&=\int_{a'}^{b'}f(x)dx\\
+          &=\int_{a}^{b}f(x)dx+\int_{a'}^{a}f(x)dx-\int_{b'}^{b}f(x)dx\\
+          &=(1-\alpha)+\int_{a'}^{a}f(x)dx-\int_{b'}^{b}f(x)dx.
+\end{align*}
+
+Veamos $\int_{a'}^{a}f(x)dx-\int_{b'}^{b}f(x)dx<0$, tenemos que
+\begin{equation*}
+\int_{a'}^{a}f(x)dx\leq f(a)(a-a'),
+\end{equation*}
+
+por ser $f$ no decreciente en $[a',a]$; y por otro lado, tenemos que
+\begin{equation*}
+\int_{b'}^{b}f(x)dx\geq f(b)(b-b'),
+\end{equation*}
+
+por ser $f$ no creciente en $[b',b]$. Usando estas dos desigualdades se tiene que
+\begin{align*}
+\int_{a'}^{a}f(x)dx-\int_{b'}^{b}f(x)dx&\leq f(a)(a-a')-f(b)(b-b')\\
+                &=f(a)[(a-a')-(b-b')]\ \ \ \ \ \ \ (f(a)=f(b))\\
+                &=f(a)[(b'-a')-(b-a)]\\
+                &\leq 0\ \ \ \ (b'-a'<b-a)
+\end{align*}
+
+en conclusión $\int_{a'}^{b'}f(x)dx<1-\alpha$.
+\item Si $a\leq a'\leq b'\leq b$, en este caso, el intervalo $[a',b']$ está contenido dentro del intervalo $[a,b]$, entonces por ser $f(x)$ no negativa, se tiene que
+    \begin{equation*}
+    \int_{a'}^{b'}f(x)dx\leq\int_{a}^bf(x)dx=1-\alpha,
+    \end{equation*}
+
+    en conclusión $\int_{a'}^{b'}f(x)dx<1-\alpha$.
+\item Si $a\leq a'\leq b\leq b'$, este caso es análogo al caso II, y se tiene que
+\begin{equation*}
+P(a'<X<b')=(1-\alpha)+\int_{b}^{b'}f(x)dx-\int_{a}^{a'}f(x)dx.
+\end{equation*}
+
+Tenemos que
+\begin{equation*}
+\int_{b}^{b'}f(x)dx\leq f(b)(b'-b)
+\end{equation*}
+
+por ser $f$ no creciente en $[b,b']$, y
+\begin{equation*}
+\int_{a}^{a'}f(x)dx\geq f(a)(a'-a)
+\end{equation*}
+
+por ser $f$ no decreciente en $[a,a']$. Usando lo anterior se tiene que
+\begin{align*}
+\int_{b}^{b'}f(x)dx-\int_{a}^{a'}f(x)dx&\leq f(b)(b'-b)-f(a)(a'-a)\\
+&=f(a)(b'-b)-f(a)(a'-a)\\
+&=f(a)[(b'-a')-(b-a)]\\
+&\leq 0
+\end{align*}
+
+en conclusión $\int_{a'}^{b'}f(x)dx<1-\alpha$.
+\end{enumerate}
+Lo anterior muestra que cualquier intervalo que cumpla la condición 1 tiene longitud mayor que $[a,b]$, entonces $[a,b]$ es el intervalo más corto que cumple la condición 1.
+\end{proof}
+
+Usando el anterior resultado, se encuentra que el intervalo de la forma $(a,b)$ más corto para la variable pivote $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}$ es $(-z_{1-\alpha/2},z_{1-\alpha/2})$, despejando para $\mu$, se tiene el intervalo (\ref{int_nor}), y éste es el de menor longitud.
+
+Como se vio anteriormente el Resultado 3.2.1 en situaciones puede resultar muy fácil para encontrar el intervalo más preciso. Sin embargo, hay que tener en cuenta que este resultado permite encontrar el intervalo de menor longitud para la variable pivote, mas no directamente para el parámetro de interés. Entonces al utilizar este resultado se debe garantizar que al despejar el parámetro del intervalo de menor longitud para la variable pivote, el intervalo resultante para el parámetro sigue siendo de menor longitud. Más adelante se verá una situación donde esto no ocurre, y por consiguiente, no se puede hacer uso de este resultado.
+
+Ahora, analicemos la forma del intervalo (\ref{int_nor}).
+\begin{enumerate}
+    \item En primer lugar, nótese que el límite superior es simplemente el estimador puntual $\bar{X}$ desplazado por la cantidad $z_{1-\alpha/2}\sigma_0/\sqrt{n}$ a la derecha, y el límite inferior es el estimador $\bar{X}$ desplazado por la misma cantidad a la izquierda, esta cantidad $z_{1-\alpha/2}\sigma_0/\sqrt{n}$ puede ser interpretada como una medición de la incertidumbre. De lo anterior, podemos ver que el estimador puntual se ubica en el punto centro del intervalo, intervalos que cumplen esta propiedad serán llamados intervalos simétricos. En la práctica, estos intervalos tienen la ventaja de que una vez conozcamos el intervalo calculado, podemos conocer el valor de la estimación del parámetro. Adicionalmente, es muy lógico que el intervalo (\ref{int_nor}) resulta ser simétrico, puesto que el estimador $\bar{X}$ es insesgado.
+    \item En segundo lugar, la cantidad que $\bar{X}$ es desplazado a la derecha e izquierda para construir el intervalo depende de la desviación estándar conocida $\sigma_0$, de manera que entre más grande sea ésta, más ancho es el intervalo. Esto también es muy lógico, puesto que entre más grande sea la desviación estándar, menos información acerca de $\mu$ contiene la muestra aleatoria (ver Ejemplo 2.3.6) de manera que hay más incertidumbre, y por consiguiente, el intervalo resultante será más ancho y menos preciso. De la mima manera, entre más pequeña sea la desviación estándar poblacional, más preciso será el intervalo.
+\end{enumerate}
+
+Los intervalos para $\mu$ no sólo nos da un rango de posibles valores para $\mu$, también puede ser una herramienta útil para chequear si una cierta afirmación acerca de $\mu$ es apoyada por la muestra observada. Por ejemplo, suponga que se cree que $\mu=\mu_0$ (el tópico de juzgamiento de hipótesis se tratará en el siguiente capítulo con más detalles), y un intervalo bilateral para $\mu$ calculado sobre una muestra observada, es $(t_1,t_2)$, entonces se puede afirmar que los datos no muestran evidencia para rechazar que $\mu=\mu_0$ si efectivamente $\mu_0\in(t_1,t_2)$; de lo contrario, los datos sugieren que $\mu$ posiblemente no toma el valor $\mu_0$.
+
+\begin{Eje}
+Retomando los datos del Ejemplo 2.2.6 donde se tiene la medición de grosor en 12 láminas de vidrio producidos por cierta línea de producción y se vio que la distribución normal es apropiada. Suponga que los valores nominales de la línea de producción, es decir, los valores estándares que describe los productos de la línea, corresponden a un grosor promedio de 3 cm y una desviación estándar del 0.8 cm.
+
+Suponga que se desea verificar que el valor nominal del grosor promedio es, realmente, 3 cm, se utiliza el cálculo de un intervalo de confianza. En este caso $\bar{x}=3.18$, si se calcular, en primer lugar, un intervalo del 95\%, tenemos el percentil $z_{1-\alpha/2}=z_{0.975}=1.96$, y el intervalo calculado para $\mu$ basado en estas 12 láminas es $(2.73,3.63)$. Podemos ver que el intervalo contiene el valor nominal de 3 cm, indicando que los datos están a favor de que la línea de producción sí produce láminas de un grosor de 3 cm.
+\end{Eje}
+
+Como se menciona al principio del capítulo, un buen intervalo debe tener una longitud pequeña o equivalentemente tener una precisión alta. Se ha visto que el intervalo (\ref{int_nor}) es el de menor longitud usando la variable pivote encontrada usando el mejor estimador $\bar{X}$, y la longitud del intervalo $l$ está dada por
+\begin{equation}\label{length}
+l=\frac{2z_{1-\alpha/2}\sigma_0}{\sqrt{n}},
+\end{equation}
+
+la cual es una constante, y podemos observar directamente a $l$ para ver cuándo ésta se hace pequeña. Dada la forma de $l$ y teniendo en cuenta que $\sigma_0$ es la desviación estándar de la población, la cual está fija y conocida, entonces para que $l$ sea pequeña hay las siguientes dos alternativas:
+\begin{itemize}
+  \item Disminuir el nivel de confianza $1-\alpha$, esto es, aumentar el valor de $\alpha$, de esta manera $1-\alpha/2$ se hace pequeño y el percentil $z_{1-\alpha/2}$ también disminuye. De lo anterior, podemos ver que entre más pequeña sea el nivel de confianza, más preciso será el intervalo. En la práctica, hay que tener cuidado con lo anterior, puesto que si un intervalo tiene nivel de confianza o probabilidad de cobertura muy baja, no será muy útil por más preciso que sea. Por otro lado, también podemos ver que al aumentar el nivel de confianza, la longitud del intervalo se hace cada vez más grande, y cada vez menos preciso.
+  \item Aumentar el tamaño muestral $n$, este aumento puede implicar más esfuerzo en la recolección de datos y en algunos casos costos económicos más altos para el investigador. Para hacer una idea sobre el efecto que tiene sobre $l$ cuando se incrementa $n$, en la Figura 3.2, se muestra la gráfica de la función $1/\sqrt{n}$. Se observa que para valores de $n$ aproximadamente desde 20, la disminución en la longitud por cada incremento de unidad en $n$ empieza a ser pequeño. Esta puede ser la razón que muchos textos estadísticos afirma que un tamaño muestral superior a 30 es suficientemente grande, pero esta recomendación es simplemente heurística, y no debe ser usada sin considerar el contexto de los problemas prácticos en la mano.
+\end{itemize}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{length_n.eps}
+\caption{Función $1/\sqrt{n}$.}
+\end{figure}
+
+\textbf{Intervalo de confianza para una función del parámetro}
+
+En el Ejemplo 2.2.6, se vio que no solo se puede encontrar la estimación de máxima verosimilitud de $\mu$ y $\sigma$, sino que además es posible estimar probabilidades en función de estos dos parámetros, por ejemplo, se estimó el porcentaje de vidrios que serán desechados, puestos a la venta y usados como materia prima. La pregunta ahora es si podemos construir intervalos de confianza para estas probabilidades. Esta pregunta, en el contexto general, es equivalente a cómo construir un intervalo de confianza para una función del parámetro $g(\theta)$ usando un intervalo para $\theta$. La respuesta está dada en el siguiente resultado, y solo podemos encontrar intervalo de confianza para $g(\theta)$ para algunas funciones $g$.
+
+\begin{Res}
+Dada una muestra aleatoria con parámetro desconocido $\theta$, entonces
+\begin{itemize}
+    \item si $(T_1,T_2)$ es un intervalo de confianza de $100\times(1-\alpha)\%$ para $\theta$, entonces un intervalo de confianza de $100\times(1-\alpha)\%$ para $g(\theta)$ es $(g(T_1),g(T_2))$ si la función $g$ es estrictamente creciente para $\theta$ y $(g(T_2),g(T_1))$ si la función $g$ es estrictamente decreciente
+    \item si $(-\infty,T)$ es un intervalo de confianza unilateral superior de $100\times(1-\alpha)\%$ para $\theta$, entonces un intervalo de confianza unilateral superior de $100\times(1-\alpha)\%$ para $g(\theta)$ es $(-\infty,g(T))$ si la función $g$ es estrictamente creciente para $\theta$. Si la función $g$ es estrictamente decreciente, entonces un intervalo unilateral inferior para $g(\theta)$ será $(g(T),\infty)$.
+    \item si $(T,\infty)$ es un intervalo de confianza unilateral inferior de $100\times(1-\alpha)\%$ para $\theta$, entonces un intervalo de confianza unilateral inferior de $100\times(1-\alpha)\%$ para $g(\theta)$ es $(g(T),\infty)$ si la función $g$ es estrictamente creciente para $\theta$. Si la función $g$ es estrictamente decreciente, entonces un intervalo unilateral superior para $g(\theta)$ será $(\infty,g(T))$.
+\end{itemize}
+\end{Res}
+
+\begin{proof}
+Se probará para el intervalo bilateral $(T_1,T_2)$ y se deja como ejercicio los otros dos casos. Tenemos que si $(T_1,T_2)$ es un intervalo de confianza de $100\times(1-\alpha)\%$ para $\theta$ entonces
+\begin{equation*}
+1-\alpha=P(T_1<\theta<T_2)=P(g(T_1)<g(\theta)<g(T_2))
+\end{equation*}
+si $g$ es estrictamente creciente. Para ver la última igualdad con más rigurosidad matemática, recordemos que detrás de las variables aleatorias, existe un espacio de probabilidad $(\Omega,\mathfrak{F},P)$, donde para cualquier variable aleatoria $X$, la probabilidad de que $X$ tome valor en cierto conjunto $A$ se define $P(X\in A)=P(\{\omega:\ X(\omega)\in A\})$. De esta forma, tenemos que
+\begin{equation*}
+P(T_1<\theta<T_2)=P(\{\omega:\ T_1(\omega)<\theta<T_2(\omega)\})
+\end{equation*}
+y
+\begin{equation*}
+P(g(T_1)<g(\theta)<g(T_2))=P(\{\omega:\ g(T_1(\omega))<\theta<g(T_2(\omega))\}).
+\end{equation*}
+Entonces para demostrar que $P(T_1<\theta<T_2)=P(g(T_1)<g(\theta)<g(T_2))$, basta ver que $\{\omega:\ T_1(\omega)<\theta<T_2(\omega)\}=\{\omega:\ g(T_1(\omega))<\theta<g(T_2(\omega))\}$. Para eso, tomamos un $\omega\in\{\omega:\ T_1(\omega)<\theta<T_2(\omega)\}$, entonces $T_1(\omega)<\theta$, y como $g$ es estrictamente creciente, $g(T_1(\omega))<g(\theta)$, análogamente, se tiene que $g(\theta)<g(T_2(\omega))$, esto es $g(T_1(\omega))<g(\theta)<g(T_2(\omega))$ y concluimos que $\omega\in\{\omega:\ g(T_1(\omega))<\theta<g(T_2(\omega))\}$, de donde
+\begin{equation*}
+\{\omega:\ T_1(\omega)<\theta<T_2(\omega)\}\subseteq\{\omega:\ g(T_1(\omega))<\theta<g(T_2(\omega))\}.
+\end{equation*}
+Para ver la otra contenencia, se utiliza un razonamiento similar, teniendo en cuenta que $g$ tiene inversa por ser estrictamente creciente.
+\end{proof}
+
+Utilizando el anterior resultado, volvemos al contexto del Ejemplo 2.2.6 donde se desea encontrar intervalo de confianza para el porcentaje de vidrios que serán desechados, puestos a la venta y usados como materia prima. Estos porcentajes dependen de $\mu$ y $\sigma$, por ahora, supongamos que $\sigma=0.8\ cm$ es conocida, entonces tenemos que el porcentaje de vidrios desechados se puede escribir como $\Phi(\frac{2.8-\mu}{0.8})$ la cual es una función estrictamente decreciente de $\mu$. Ahora, en el Ejemplo 3.2.2 se encontró el intervalo $(2.73,3.63)$ para $\mu$, entonces aplicando el anterior resultado, un intervalo de confianza para el porcentaje de vidrios desechados será $(\Phi(\frac{2.8-3.63}{0.8}),\Phi(\frac{2.8-2.73}{0.8}))=(0.15,0.53)$. De manera análoga, para el porcentaje de vidrios que serán usados como materia prima se tiene el intervalo de confianza $(1-\Phi(\frac{3.2-2.73}{0.8}),1-\Phi(\frac{3.2-3.63}{0.8}))=(0.28, 0.70)$. Con respecto al porcentaje de vidrios que serán vendidos, ésta se puede escribir como $\Phi(\frac{3.2-\mu}{0.8})-\Phi(\frac{2.8-\mu}{0.8})$, una simple gráfica de esta función revela que ésta función es creciente para valores de $\mu$ menores de 3 y decreciente para $\mu$ mayor de 3, y por consiguiente no posible hallar el intervalo para este porcentaje usando el anterior resultado.
+
+
+\textbf{Intervalo unilateral para $\mu$ cuando $\sigma^2$ es conocida}
+
+En algunas situaciones prácticas, no es necesario encontrar tanto el límite inferior como el límite superior para el parámetro de interés, sino solo uno de ellos. Por esta razón, ahora construimos intervalos unilaterales para la media poblacional $\mu$ cuando la varianza es conocida.
+
+Para encontrar un intervalo unilateral superior para $\mu$, el método de pivote enunciado anteriormente para encontrar un intervalo bilateral se modifica en el segundo paso, y se convierte en
+\begin{enumerate}
+\item Encontrar una variable pivote $S$ para el parámetro de interés $\theta$,
+\item Si la relación que guarda entre la variable pivote $S$ y el parámetro $\theta$ es proporcional, entonces se encuentra el percentil de la distribución de $S$ denotado por $b$, tal que $P(S<b)=1-\alpha$; si la relación es inversamente proporcional, entonces se encuentra el percentil de la distribución de $S$ denotada por $a$, tal que $P(a<S)=1-\alpha$.
+\item Despejar $\mu$ en la igualdad del anterior paso para encontrar un intervalo unilateral superior para $\mu$.
+\end{enumerate}
+
+El primer paso del anterior procedimiento ya está completado, pues se vio que una variable pivote para $\mu$ es $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}$ cuando $\sigma^2=\sigma^2_0$ es conocida. Esta variable guarda una relación inversamente proporcional con $\mu$, puesto para valores muy grandes de $\mu$, el valor de estadística es muy pequeño. Entonces se debe encontrar un número $a$ tal que
+\begin{equation*}
+P(a<\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0})=1-\alpha,
+\end{equation*}
+
+de donde
+\begin{equation*}
+P(\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}<a)=\alpha,
+\end{equation*}
+
+recordando la definición de percentil y que la distribución de $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}\sim N(0,1)$, se tiene que $a$ es el percentil $\alpha$ de la distribución $N(0,1)$, esto es, $a=z_{\alpha}$. Entonces se tiene que
+\begin{equation*}
+P(z_{\alpha}<\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0})=1-\alpha.
+\end{equation*}
+
+Ahora siguiendo al tercer paso del método de pivote, se despeja el parámetro $\mu$, de donde se tiene que:
+\begin{equation*}
+P(\bar{X}-z_\alpha\frac{\sigma_0}{\sqrt{n}}>\mu)=1-\alpha.
+\end{equation*}
+
+En conclusión, un intervalo unilateral superior para $\mu$ es $(-\infty,\bar{X}-z_\alpha\frac{\sigma_0}{\sqrt{n}})$. Ahora, $z_{\alpha}=-z_{1-\alpha}$ por la simetría de la distribución normal, entonces, se tiene el siguiente intervalo unilateral superior para $\mu$:
+\begin{equation}\label{sup_nor}
+IC(\mu)=\left(-\infty,\bar{X}+z_{1-\alpha}\frac{\sigma_0}{\sqrt{n}}\right).
+\end{equation}
+
+Análogamente, para encontrar un intervalo de confianza unilateral inferior para un parámetro de interés $\theta$, el método de la variable pivote es
+\begin{enumerate}
+\item Encontrar una variable pivote $S$ para el parámetro de interés $\theta$,
+\item Si la relación que guarda entre la variable pivote $S$ y el parámetro $\theta$ son proporcionales, entonces se encuentra el percentil de la distribución de $S$: $a$, tal que $P(a<S)=1-\alpha$; si la relación es inversamente proporcional, entonces se encuentra el percentil de la distribución de $S$: $b$, tal que $P(S<b)=1-\alpha$.
+\item Despejar $\mu$ en la igualdad del anterior paso.
+\end{enumerate}
+Aplicando el anterior procedimiento, se puede ver que un intervalo unilateral inferior para $\mu$ es
+\begin{equation}\label{inf_nor}
+IC(\mu)=\left(\bar{X}-z_{1-\alpha}\frac{\sigma_0}{\sqrt{n}},\infty\right).
+\end{equation}
+
+Es claro que cuando se trata de los intervalos unilaterales, no se puede considerar a la longitud del intervalo como un criterio, pues éste es infinito.
+
+En algunas situaciones, se tiene afirmaciones como $\mu\geq\mu_0$, por ejemplo, se cree que la vida útil de un tipo de bombillo debe ser no inferior a 7000 horas. El uso del intervalo unilateral (\ref{sup_nor}) puede resultar útil en este caso, si el intervalo calculado en una muestra observada es $(-\infty,t)$, y ocurre que $t<\mu_0$, esto implica que ni siquiera el límite superior de $\mu$ no supera a $\mu_0$, entonces se concluye que los datos sugieren que la afirmación $\mu\geq\mu_0$ debe ser falsa. Por otro lado, si la afirmación de interés es del tipo $\mu\leq\mu_0$, entonces el intervalo usado debe ser (\ref{inf_nor}). De tal forma que si el valor observado del límite inferior es mayor que $\mu_0$, se puede concluir que los datos muestran evidencia de rechazo hacia la afirmación $\mu\leq\mu_0$.
+
+\begin{Eje}
+Para el ejemplo de láminas de vidrios del Ejemplo 2.2.6, suponga que se afirma que a lo más 15\% de las láminas producidas son desechados, y se desea usar la información suministrada por las 12 láminas para verificar esta afirmación. Para eso se debe calcular el intervalo de confianza unilateral inferior para esta porcentaje, la cual al suponer $\sigma=0.8\ cm$, está dada por $\Phi(\frac{2.8-\mu}{0.8})$ y es una función decreciente de $\mu$. Entonces por el Resultado 3.2.2, se debe encontrar un intervalo unilateral superior para $\mu$, éste está dado en (\ref{sup_nor}) y para los datos observados da como resultado $(-\infty,3.56)$ con un nivel de confianza del 95\%. De esta forma, un intervalo inferior para $\Phi(\frac{2.8-\mu}{0.8})$ está dada por $(\Phi(\frac{2.8-3.56}{0.8}))=(0.17,\infty)$. Y por consiguiente podemos afirmar que los datos observados no apoyan la afirmación de que el porcentaje de láminas desechadas es inferior a 15\%.
+\end{Eje}
+
+Finalmente, hacemos la aclaración de que los anteriores intervalos para $\mu$ no son únicos. Por ejemplo, los intervalos (\ref{int_nor}), (\ref{sup_nor}) y (\ref{inf_nor}) fueron hallados usando como variable pivote $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}$, pero ésta no es la única variable pivote para el caso cuando $\sigma^2=\sigma^2_0$ es conocida. Considere la variable $S'=\frac{X_2+\cdots+X_n}{n-1}$, es decir, el promedio muestral sin incluir la primera variable. Se tiene que $S'\sim N(\mu,\frac{\sigma^2_0}{n-1})$, de donde $\frac{\sqrt{n-1}(S'-\mu)}{\sigma_0}\sim N(0,1)$. Entonces ésta también es una variable pivote, y usando esta variable pivote, se puede construir el intervalo bilateral de  $(1-\alpha)\times100\%$ para $\mu$ como $(S'-z_{1-\alpha/2}\frac{\sigma_0}{\sqrt{n-1}},S'+z_{1-\alpha/2}\frac{\sigma_0}{\sqrt{n-1}})$. Sin embargo, la longitud de este intervalo es $\frac{2z_{1-\alpha/2}\sigma_0}{\sqrt{n-1}}$ que siempre es mayor a la longitud del intervalo obtenido usando la variable pivote $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma_0}$. Lo anterior es lógico, puesto que en el capítulo anterior se ha visto que $\bar{X}$ es el mejor estimador insesgado para $\mu$, y es natural pensar que el intervalo de confianza construido usando este estimador también debe ser el mejor en término de precisión.
+
+\textbf{Intervalo bilateral para $\mu$ cuando $\sigma^2$ es desconocida}
+
+Ahora consideramos el caso general cuando la varianza poblacional $\sigma^2$ no es conocida, en este caso, la distribución $N(\mu,\sigma)^2$ de donde proviene la muestra aleatoria tiene dos parámetros y ambos son desconocidos, y para este tipo de distribuciones, la definición de una variable pivote es diferente, como enuncia la siguiente definición.
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de la distribución $f(x_i,\theta_1,\theta_2)$ donde $\theta_1$ y $\theta_2$ son parámetros desconocidos y sea $S$ una función de variables aleatorias de la muestra, entonces $S$ es una variable pivote para $\theta_1$ si
+\begin{enumerate}
+\item $S$ depende de $\theta_1$
+\item $S$ no depende de $\theta_2$
+\item la distribución de $S$ no depende de $\theta_1$ y $\theta_2$.
+\end{enumerate}
+\end{Defi}
+Ahora, aplicamos el anterior procedimiento para encontrar intervalos de confianza para $\mu$ en una muestra aleatoria proveniente de $N(\mu,\sigma^2)$ con $\sigma^2$ desconocida. Como siempre, la variable pivote puede ser encontrado modificando un estimador del parámetro de interés. Por esta razón, primero consideramos el estimador de $\mu$: $\bar{X}$ cuya distribución es $N(\mu,\sigma^2/n)$. De donde $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}\sim N(0,1)$, aunque esta variable depende del parámetro $\mu$ y su distribución no depende de $\mu$ y $\sigma^2$, no es una variable pivote para $\mu$, puesto que depende de $\sigma^2$ que es un parámetro desconocido, entonces no cumple con la segunda condición de la definición anterior. Una solución natural es reemplazar $\sigma$ por su estimador $S_{n-1}$, es decir, la variable que podría ser pivote es $\frac{\sqrt{n}(\bar{X}-\mu)}{S_{n-1}}$. Nótese que esta variable depende de $\mu$ y no de $\sigma^2$, entonces falta ver que su distribución no depende de $\mu$ y $\sigma^2$. Para encontrar la distribución de esta variable, se tiene en cuenta los siguientes propiedades:
+\begin{itemize}
+\item $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}\sim N(0,1)$,
+\item $\frac{1}{\sigma^2}(n-1)S^2_{n-1}=\frac{1}{\sigma^2}\sum_{i=1}^n(X_i-\bar{X})^2\sim\chi^2_{n-1}$
+\item $\bar{X}$ y $\sum_{i=1}^n(X_i-\bar{X})^2$ son variables independientes. (Ver el Resultado 2.3.3)
+\end{itemize}
+Recordando la definición de una distribucion $t$-student dada en la Definición 1.1.14, se tiene que
+\begin{equation*}
+\dfrac{\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}}{\sqrt{\frac{S^2_{n-1}}{\sigma2}}}\sim t_{n-1},
+\end{equation*}
+
+esto es,
+\begin{equation}\label{pivote_t}
+\frac{\sqrt{n}(\bar{X}-\mu)}{S_{n-1}}\sim t_{n-1},
+\end{equation}
+
+de donde se observa que la distribución de $\frac{\sqrt{n}(\bar{X}-\mu)}{S_{n-1}}$ no depende de $\mu$ y $\sigma^2$, y por consiguiente hemos encontrado una variable pivote para $\mu$. Entonces siguiendo los lineamientos del método de la variable pivote se procede a buscar valores $a$ y $b$ con
+\begin{equation}\label{mu_t}
+P(a<\frac{\sqrt{n}(\bar{X}-\mu)}{S_{n-1}}<b)=1-\alpha.
+\end{equation}
+
+Análogo al caso cuando $\sigma^2$ es conocido, puede haber un número infinito de soluciones para $a$ y $b$ que satisface (\ref{mu_t}), y debe buscar la solución que arroja el intervalo más preciso para $\mu$, esto es, el intervalo con menor longitud. Para eso, notemos en primer lugar que el intervalo resultante de (\ref{mu_t}) para $\mu$ será $(\bar{X}-bS_{n-1}/\sqrt{n},\bar{X}-aS_{n-1}/\sqrt{n})$, y la longitud de este intervalo está dada por
+\begin{equation*}
+l=S_{n-1}(b-a)/\sqrt{n}.
+\end{equation*}
+
+Es claro que esta longitud depende de $S_{n-1}$, por consiguiente es una variable aleatoria, y su magnitud no puede ser medida directamente, sino mediante su esperanza, $E(l)=E(S_{n-1})(b-a)/\sqrt{n}$ que depende de $b-a$. Por consiguiente se busca valores de $a$ y $b$ que minimizan $b-a$ y que satisfacen $P(a<\frac{\sqrt{n}(\bar{X}-\mu)}{S_{n-1}}<b)=1-\alpha$. Dada las características de la función de densidad de la distribución $t$, se puede aplicar el Resultado 3.1.1, y se tiene que $a=-t_{n-1,1-\alpha/2}$ y $b=t_{n-1,1-\alpha/2}$. En conclusión, el intervalo de menor longitud para $\mu$ cuando $\sigma^2$ es desconocida está dado por
+\begin{equation}\label{int_t}
+IC(\mu)=\left(\bar{X}-t_{n-1,1-\frac{\alpha}{2}}\frac{S_{n-1}}{\sqrt{n}},\bar{X}+t_{n-1,1-\frac{\alpha}{2}}\frac{S_{n-1}}{\sqrt{n}}\right).
+\end{equation}
+
+Nótese que, análogo al caso cuando $\sigma^2=\sigma^2_0$ es conocida, el anterior intervalo se construye desplazando el estimador de máxima verosimilitud $\bar{X}$ una cantidad hacia la izquierda y la misma cantidad hacia la derecha, y por consiguiente, también es un intervalo simétrico.
+
+Y la longitud del intervalo está dada por
+\begin{equation}\label{length_t}
+l=\frac{2t_{n-1,1-\alpha/2}S_{n-1}}{\sqrt{n}},
+\end{equation}
+
+la cual es una variable aleatoria, y para cada muestra observada, toma un valor diferente, por lo tanto, para medir la precisión del intervalo, tomamos en cuenta $E(l)$, más aún, calculamos estimaciones de $E(l)$ para diferentes tamaños de muestra. Se simuló 1000 muestras de tamaño $n=3,\cdots,100$ de una distribución normal estándar, y en cada muestra simulada se calcula el intervalo (\ref{int_t})y el valor que toma $l$. Y para cada valor de $n$, se se calcula el promedio de los 1000 valores de $l$, ésta puede ser vista como una estimación de $E(l)$.  En la Figura 3.3 se observan estas estimaciones. Se observa un comportamiento similar a la Figura 3.2 relacionada con la longitud del intervalo para $\mu$ cuando $\sigma^2$ es conocida, y podemos ver que la longitud se disminuye a medida que el tamaño de muestra $n$ crece, y para $n$ mayores a valores entre 30 y 40, la disminución en la longitud de intervalo es relativamente pequeño.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{length_t_n.eps}
+\caption{Estimación de la longitud esperada $E(l)$ del intervalo (\ref{int_t}) para diferentes tamaños de muestra $n$.}
+\end{figure}
+
+En \verb"R", el cálculo del intervalo (\ref{int_t}) se lleva a cabo usando la función \verb"t.test" \footnote{Esta función realiza los procedimientos de la prueba de hipótesis e intervalo de confianza, aquí solo presentamos la parte de salida correspondiente al intervalo de confianza.}. Para los datos del Ejemplo 2.2.6, el comando y salida se muestran a continuación.
+\begin{verbatim}
+>vidrio<-c(3.56, 3.36, 2.99, 2.71, 3.31,3.68, 2.78, 2.95, 2.82,
+ 3.45, 3.42, 3.15)
+> t.test(vidrio)
+95 percent confidence interval:
+ 2.974047 3.389287
+sample estimates:
+mean of x
+ 3.181667
+\end{verbatim}
+
+Con la función \verb"t.test", se calcula automáticamente el intervalo de 95\% del nivel de confianza, en el caso de que se desea cambiar el nivel, se debe usar la opción \verb"conf.level" dentro del comando. Para los mismos datos \verb"vidrio", si se desea calcular un intervalo del 90\%, el comando y la salida son
+\begin{verbatim}
+> t.test(vidrio,conf.level=0.9)
+90 percent confidence interval:
+ 3.012260 3.351073
+sample estimates:
+mean of x
+ 3.181667
+\end{verbatim}
+
+Y podemos ver que el intervalo del 90\% tiene longitud más corta comparado con el del 95\%, es decir, es más preciso. Esto coincide con la observación de que en un intervalo de confianza al aumentar el nivel de confianza se disminuye el grado de precisión medido a través de la longitud.
+
+\textbf{Intervalo unilateral para $\mu$ cuando $\sigma^2$ es desconocida}
+
+Usando la variable pivote dada en (\ref{pivote_t}) y el procedimientos del método de la variable pivote para el intervalo unilateral, se puede encontrar los dos intervalos unilaterales dados a continuación.
+\begin{equation*}
+IC(\mu)=\left(-\infty,\bar{X}+t_{n-1,1-\alpha}\frac{S_{n-1}}{\sqrt{n}}\right),
+\end{equation*}
+
+y
+\begin{equation*}
+IC(\mu)=\left(\bar{X}-t_{n-1,1-\alpha}\frac{S_{n-1}}{\sqrt{n}},\infty\right).
+\end{equation*}
+
+Ilustramos el cómputo de estos intervalos en \verb"R" en el siguiente ejemplo.
+
+\begin{Eje}
+El cómputos de los dos anteriores intervalos unilaterales en \verb"R" hace uso nuevamente de la instrucción \verb"t.test" especificando \verb"greater" para la opción \verb"alternative" si se necesita calcular el intervalo inferior, y \verb"less" para la opción \verb"alternative" si se necesita calcular el intervalo superior\footnote{Estas opciones se refieren al uso de esta función para los procedimientos de pruebas de hipótesis que se discutirá en el siguiente capítulo.}. Para los datos del Ejemplo 2.2.6, calculamos los dos intervalos unilaterales. Los comandos y salidas en \verb"R" se muestran a continuación.
+\begin{verbatim}
+> t.test(vidrio,alternative="greater")
+95 percent confidence interval:
+ 3.01226     Inf
+sample estimates:
+mean of x
+ 3.181667
+\end{verbatim}
+
+Observamos que el intervalo inferior para el grosor promedio de las láminas producidas está dado por $(3.01,\infty)$. Aunque no hay un límite superior para $\mu$, hay que evitar conclusiones como <<$\mu$ puede tomar CUALQUIER valor mayor que 3.01>>, puesto que dado el contexto del problema y los datos observados, es claro que $\mu$ difícilmente puede ser mayor de los 4 cm. La utilidad del intervalo $(3.01,\infty)$ es el límite inferior y poder afirmar que los datos indican que el grosor promedio está por encima de los 3.01 cm. Para calcular el intervalo superior, tenemos el siguiente comando y salida en \verb"R".
+
+\begin{verbatim}
+> t.test(vidrio,alternative="less")
+95 percent confidence interval:
+     -Inf 3.351073
+sample estimates:
+mean of x
+ 3.181667
+\end{verbatim}
+
+Observamos que el intervalo inferior para el grosor promedio de las láminas producidas está dado por $(-\infty,3.35)$. De la misma manera, aclaramos que se debe evitar conclusiones como <<$\mu$ puede tomar CUALQUIER valor menor que 3.35>> pues es claro que $\mu$ debe ser, por lo menos, positivo, y por consiguiente no puede tomar valores negativos. Y lo que se debe enfatizar al interpretar este intervalo es que el grosor promedio está por debajo de los 3.35 cm.
+\end{Eje}
+
+De lo visto anteriormente, podemos observar que si se desea calcular un intervalo de confianza para el promedio poblacional $\mu$ en una distribución normal, se debe tener en cuenta si la varianza poblacional $\sigma^2$ es conocida o no. En el caso afirmativo el intervalo se construye en base de una distribución normal estándar; mientras que en el caso negativo, la distribución que se usa es la $t$ student. Entonces podemos pensar qué pasa cuando cuando la varianza es conocida, pero por alguna razón ignora este hecho, y en vez de usar el intervalo (\ref{int_nor}) usa el intervalo (\ref{int_t}). En la Figura 3.4 se muestra la longitud del intervalo con distribución normal (\ref{int_nor}) y las estimaciones de la longitud del intervalo con distribución $t$ (\ref{int_t}) cuando la varianza verdadera es 1. Se observa que el intervalo normal siempre tiene menor longitud que el intervalo $t$, especialmente  para tamaños de muestras pequeños, pero a medida que $n$ crece, la diferencia es cada vez más pequeña, es decir, el hecho de ignorar el valor verdadero de la varianza no causa pérdida de precisión cuando la muestra es grande.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{error.eps}
+\caption{Longitud Estimación de la longitud esperada $E(l)$ del intervalo (\ref{int_t}) para diferentes tamaños de muestra $n$.}
+\end{figure}
+
+Bajo el mismo contexto, también podemos comparar el intervalo normal con el intervalo $t$ en términos de la probabilidad de cobertura por medio de estudios de simulación. Se simula 1000 veces $n=2,\cdots,100$ datos provenientes de una distribución normal estándar, y para cada conjunto de datos se calcula los intervalos normal y $t$, y se examina si estos intervalos contienen la media poblacional 0. La probabilidad de cobertura real del intervalo normal se calcula como el número de veces que el intervalo contiene a 0 dividido por el número total de iteraciones, 1000. Los resultados de simulación se muestran en la Figura 3.5 donde se observa que la probabilidad de cobertura real de ambos intervalos son muy similares y ambos cercanos a la probabilidad de cobertura nomial 0.95, aun cuando el tamaño muestral $n$ sea pequeño,
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{cobertura_real_mu.eps}
+\caption{Probabilidad de cobertura real de los intervalos normal y $t$ para diferentes tamaños de muestra $n$.}
+\end{figure}
+
+\subsubsection{Intervalos de confianza para la varianza $\sigma^2$}
+
+En esta parte consideramos el problema de estimación por intervalos de confianza de la varianza poblacional $\sigma^2$ en una distribución normal. Este parámetro es muy importante, en particular, en procesos de producción donde se espera que la varianza sea pequeña para que los productos fabricados sean homogéneos en término de alguna característica de interés.
+
+Suponga que se tiene $X_1$, $\cdots$, $X_n$, una muestra aleatoria proveniente de la distribución $N(\mu,\sigma^2)$. Dado que la distribución normal tiene dos parámetros, la variable pivote para $\sigma^2$ depende de si $\mu$ es conocido o desconocido, por lo tanto, se considera los dos casos separadamente.
+
+\textbf{Intervalos para $\sigma^2$ y $\sigma$ cuando $\mu=\mu_0$ es conocida}
+
+    Se ha visto que en este caso, el estimador de máxima verosimilitud de $\sigma^2$ es $\sum_{i=1}^n(X_i-\mu_0)^2/n$ y como se ha mencionado anteriormente, se puede encontrar una variable pivote modificando el estimador. Para esto, recordemos que
+    \begin{equation*}
+    \dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\sigma^2}\sim\chi^2_n,
+    \end{equation*}
+
+    de donde se observa que la anterior variable depende de $\sigma^2$ y su distribución no lo hace, de donde concluimos que ésta es una variable pivote para $\sigma^2$. Una vez encontrada la variable pivote, se procede a encontrar percentiles de la distribución de la variable $a$ y $b$ tales que
+    \begin{equation}\label{chi}
+    P(a<\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\sigma^2}<b)=1-\alpha
+    \end{equation}
+    Recordando que se debe buscar el intervalo para $\sigma^2$ que tenga, en lo posible, la menor longitud, entonces despejamos  $\sigma^2$, se tiene que $P(\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{b}<\sigma^2<\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{a})=1-\alpha$, cuya longitud dada por
+    \begin{equation*}
+    l=\sum_{i=1}^n(X_i-\mu_0)^2\left(\frac{1}{a}-\frac{1}{b}\right).
+    \end{equation*}
+
+    De nuevo, $l$ es una variable aleatoria, por lo que se examina su esperanza que está dada por
+    \begin{align}\label{longitudesperada}
+    E(l)&=\sigma^2\left(\frac{1}{a}-\frac{1}{b}\right)E\left(\frac{\sum_{i=1}^n(X_i-\mu_0)^2}{\sigma^2}\right)\notag\\
+    &=n\sigma^2\left(\frac{1}{a}-\frac{1}{b}\right).
+    \end{align}
+
+    Nótese que esta cantidad no depende directamente de $b-a$ como en los intervalos de confianza para $\mu$ considerados anteriormente, sino de $1/a-1/b$, y ésta puede ser grande aun cuando $b-a$ es pequeño, es decir, un intervalo de longitud pequeña para la variable pivote puede conducir a un intervalo de longitud grande para el parámetro $\sigma^2$ tal como se ilustra a continuación.
+
+    Dado que la distribución $\chi^2_n$ es unimodal para $n>2$, se puede aplicar el Resultado 3.2.1 para encontrar $a$ y $b$ que satisfacen (\ref{chi}) y que minimizan $b-a$. Estos deben satisfacer que $f(a)=f(b)$ y $a\leq x^*\leq b$ donde $f(\cdot)$ denota la función de densidad de la distribución $\chi^2_n$ y $x^*$ es una moda de $f(\cdot)$. El siguiente código de \verb"R" permite encontrar estos valores $a$ y $b$.
+    \begin{verbatim}
+    > alpha<-0.05
+    > n<-10
+    > x<-seq(0,100,0.01)
+    > x<-x[-1]
+    > f<-dchisq(x,n)
+    > maxi<-which(f==max(f))
+    > ind<-matrix(NA,maxi,2)
+    > integrales<-rep(NA,maxi)
+    >
+    > chisq<-function(x){
+    + return(dchisq(x,n))
+    + }
+    >
+    > for(i in 1:maxi){
+    + ind[i,1]<-i
+    + y<-which(abs(f[i]-f[maxi:length(f)])==
+    min(abs(f[i]-f[maxi:length(f)])))+maxi-1
+    + ind[i,2]<-y
+    + integrales[i]<-integrate(chisq,x[i],x[y])$value
+    + }
+    >
+    > val<-which(abs(integrales-(1-0.05))==min(abs(integrales-(1-0.05))))
+    > x[ind[val,1]]
+    [1] 2.41
+    > x[ind[val,2]]
+    [1] 18.88
+    \end{verbatim}
+    En el anterior ejemplo, $a=2.41$ y $b=18.88$ que corresponden a los percentiles 0.008 y 0.9582 respectivamente, y la longitud del intervalo está dado por 16.47, y $P(2.41<\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\sigma^2}<18.88)=0.95$. Otra pareja de valores $a'$ y $b'$ pueden ser $a'=\chi^2_{n,\alpha/2}$ y $b'=\chi^2_{n,1-\alpha/2}$, para $n=10$, $a'=3.25$ y $b'=20.48$, dando como resultado $b'-a'=17.23$ que es mayor que $b-a$. Sin embargo, $1/a'-1/b'=0.26$, mientras que $1/a-1/b=0.36$. Lo anterior ilustra que el intervalo para $\sigma^2$ resultante del intervalo más corto para la variable pivote no es necesariamente el de menor longitud.
+
+    La solución al problema de encontrar $a$ y $b$ que satisfacen (\ref{chi}) y que minimizan $1/a-1/b$ se puede resolver usando técnicas de minimización. La relación (\ref{chi}) es equivalente a
+    \begin{equation}\label{integral}
+    \int_a^bf(x)dx=1-\alpha,
+    \end{equation}
+
+    donde $f(\cdot)$ denota la función de densidad de la distribución $\chi^2_n$. Es claro que cuando el valor $a$ cambia, para que la anterior igualdad sigue siendo válida $b$ también cambia, por lo tanto, se puede considerara a $b$ como una función de $a$ y lo escribimos como $b=b(a)$. Derivando la cantidad que se desea minimizar $1/a-1/b$ con respecto a $a$ e igualando a 0, se tiene que $\dfrac{\partial b}{\partial a}=\dfrac{b^2}{a^2}$. Ahora derivando ambos lados de (\ref{integral}) con respecto a $a$, se tiene que
+    \begin{equation*}
+    f(b)\frac{\partial b}{\partial a}-f(a)=0,
+    \end{equation*}
+
+    de donde se tiene que, $a^2f(a)=b^2f(b)$. Los valores de $a$ y $b$ que cumplen esta condición será los que determinan el intervalo de menor longitud para $\sigma^2$.
+    El siguiente código de \verb"R" permite encontrar esos valores $a$ y $b$ para $n=10$ y $\alpha=0.05$
+    \begin{verbatim}
+    > n<-10
+    > alpha<-0.05
+    > x<-seq(0,3*n,0.01)
+    > x<-x[-1]
+    > f<-dchisq(x,n)
+    > maxi<-which(f==max(f))
+    > ind<-matrix(NA,maxi,2)
+    > integrales<-rep(NA,maxi)
+    >
+    > chisq<-function(x){
+    + return(dchisq(x,n))
+    + }
+    >
+    > for(i in 1:maxi){
+    + ind[i,1]<-i
+    + aux<-x[-(1:maxi)]^2*f[(maxi+1):length(f)]
+    + y<-which(abs(x[i]^2*f[i]-aux)
+    ==min(abs(x[i]^2*f[i]-aux)))+maxi-1
+    + ind[i,2]<-y
+    + integrales[i]<-integrate(chisq,x[i],x[y])$value
+    + }
+    >
+    > val<-which(abs(integrales-(1-alpha))==min(abs(integrales-(1-alpha))))
+    > x[ind[val,1]]
+    [1] 3.89
+    > x[ind[val,2]]
+    [1] 27.24
+    \end{verbatim}
+    De donde se tiene que $a=3.89$ y $b=27.24$, se puede verificar que $3.89^2f(3.89)=0.65$ y $27.24^2f(27.24)=0.65$. Además $1/3.89-1/27.24=0.22$, lo cual es menor que las longitudes obtenidas anteriormente. En conclusión el intervalo con menor longitud usando la variable pivote $\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\sigma^2}$ es
+    \begin{equation}\label{Int_sig_mascorta}
+    IC(\sigma^2)=\left(\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{b},\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{a}\right),
+    \end{equation}
+
+    donde $a$ y $b$ son tales que $a^2f(a)=b^2f(b)$ con $f$ denotando la función de densidad de la distribución $\chi^2_n$. Es claro que encontrar los valores de $a$ y $b$ a veces pueden ser complicado, por esta razón, muchs veces se utilizan una alternativa más práctica es solamente tener en cuenta que $P(a<\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\sigma^2}<b)=1-\alpha$ e ignorar la longitud. De nuevo existen infitos valores de $a$ y $b$ que satisfacen la anterior igualdad, y por comodidad, se escoge $a=\chi^2_{n,\alpha/2}$ y $b=\chi^2_{n,1-\alpha/2}$. De esta forma, se tiene el siguiente intervalo que es de uso común en la práctica, y que se presenta en la mayoría de los textos de la enseñanza estadística,
+    \begin{equation}\label{Int_sign}
+    IC^*(\sigma^2)=\left(\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,1-\frac{\alpha}{2}}},\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,\frac{\alpha}{2}}}\right)
+    \end{equation}
+
+    Teóricamente el intervalo $IC(\sigma^2)$ tiene longitud más corta que el intervalo $IC^*(\sigma^2)$, también se puede calcular la longitud de los dos intervalos y compararlos directamente. Para el intervalo $IC(\sigma^2)$, la longitud esperada está dada por (\ref{longitudesperada}) mientras que la longitud esperada de $IC^*(\sigma^2)$ está dada por
+    \begin{equation*}
+    E(l^*)=n\sigma^2\left(\frac{1}{\chi^2_{n,\alpha/2}}-\frac{1}{\chi^2_{n,1-\alpha/2}}\right).
+    \end{equation*}
+
+    En la Figura 3.6, se puede observar los valores de estas dos longitudes esperanzas para diferentes valores de $n$ cuando $\sigma^2=1$. Nótese que aunque el cómputo de estos dos intervalos depende de la media poblacional $\mu_0$, la longitud esperada de ambos intervalos no dependen de $\mu_0$. Se puede observar que efectivamente la longitud esperada de $IC$ es más pequeña que la de $IC^*$, sin embargo, para valores de $n$ grandes, la diferencia es muy pequeña, esto se corrobora notando que en ambos intervalos, el tamaño muestral $n$ aparece multiplicando dentro de las longitudes, y por lo tanto, se puede usar el intervalo (\ref{Int_sign}) sin una pérdida grande de precisión cuando la muestra es grande.
+    \begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.5]{Longitud_esperada.eps}
+    \caption{Longitud esperada de los intervalos (3.2.15) y (3.2.16) para $\sigma^2$ para diferentes tamaños de muestra.}
+    \end{figure}
+
+    Ahora, consideramos los intervalos unilaterales para $\sigma^2$ en el mismo escenario cuando $\mu=\mu_0$ es conocido. En primer lugar para encontrar un intervalo inferior para $\sigma^2$, se debe notar que la variable pivote guarda una relación inversamente proporcioanl con $\sigma^2$, entonces se debe buscar un intervalo de la forma $(-\infty, b)$ para la varible pivote, esto es, $P(\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\sigma^2}<b)=1-\alpha$, de donde se concluye que $b=\chi^2_{n,1-\alpha}$ usando la definición del percentil. Despejando $\sigma^2$, se tiene el siguiente intervalo
+    \begin{equation*}
+    IC(\sigma^2)=\left(\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,1-\alpha}},\infty\right).
+    \end{equation*}
+
+    Análogamente, se puede obtener el intervalo unilateral superior $IC(\sigma^2)=\left(-\infty,\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,\alpha}}\right)$. Teniendo en cuenta que el parámetro $\sigma^2$ es siempre positiva, entonces un límite inferior natural es el valor 0, de donde se tiene el siguiente intervalo superior
+    \begin{equation*}
+    IC(\sigma^2)=\left(0,\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,\alpha}}\right)
+    \end{equation*}
+
+Ahora, para medir la variación de una población de estudio, la varianza puede no ser un poco complicada al momento de la interpretación, puesto que la unidad de la varianza es el cuadrado de la unidad de los datos observados. Por ejemplo, para la variable ingreso, si la unidad de medición es pesos, entonces la unidad de la varianza será pesos$^2$, y esto no solo es complicado para la comprensión de alguien que carece de conocimientos estadísticos, sino para los mismos estadísticos. La solución es utilizar la desviación estándar $\sigma$, la cual tiene la mima unidad que los datos observados, y facilita la interpretación. Por ejemplo, si la desviación estándar de la variable ingreso es de 100 mil pesos, entonces podemos afirmar que en promedio, los ingresos se difieren entre ellos por un monto de 100 mil pesos, el cual es una interpretación directa y de fácil comprensión.
+
+Dado lo anterior, estamos interesados en encontrar intervalos de confianza para $\sigma$, y estos se encuentran directamente usando los intervalos para $\sigma^2$ y el Resultado 3.2.2 donde la función $g$ es la función raíz cuadrada la cual es uno a uno y estrictamente creciente. Como se había visto anteriormente, tenemos dos intervalos bilaterales para $\sigma^2$, por lo tanto, podemos encontrar dos intervalos unilaterales para $\sigma$, dados por
+    \begin{equation}\label{Int_sig1_mascorta}
+    IC(\sigma)=\left(\sqrt{\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{b}},\sqrt{\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{a}}\right),
+    \end{equation}
+
+donde $a$ y $b$ son tales que $a^2f(a)=b^2f(b)$ con $f$ la función de densidad de la distribución $\chi^2_n$, estos valores se pueden encontrar con el código en \verb"R" presentado anteriormente. Otro intervalo bilateral para $\sigma$ se puede obtener de (\ref{Int_sign}) y está dado por
+    \begin{equation}\label{Int_sig1n}
+    IC^*(\sigma)=\left(\sqrt{\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,1-\frac{\alpha}{2}}}},\sqrt{\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,\frac{\alpha}{2}}}}\right)
+    \end{equation}
+
+Tal como se había visto anteriormente, el intervalo $IC(\sigma^2)$ es más preciso que $IC^*(\sigma^2)$ pero esto no garantiza que $IC(\sigma)$ también sea más preciso que $IC^*(\sigma)$. La comparación teórica de los dos intervalos en términos de la longitud esperada no es trivial y por consiguiente recurrimos a las simulaciones. En la Figura 3.7 se observa las estimaciones de las dos longitudes esperadas basadas en 1000 muestras simuladas de una distribución normal estándar, podemos observar que el intervalo más corto para $\sigma^2$ también indujo un intervalo preciso para $\sigma$, aunque, una vez más, en muestras grandes, podemos usa el intervalo (\ref{Int_sig1n}), el cual se puede computar de manera fácil.
+
+ \begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.5]{longitud_sigma.eps}
+    \caption{Longitud esperada estimada de los intervalos (3.2.19) y (3.2.20) para $\sigma$ para diferentes tamaños de muestra.}
+    \end{figure}
+
+Aplicando de nuevo el Resultado 3.2.2, tenemos los siguiente intervalos unilaterales para $\sigma$.
+
+    \begin{equation*}
+    IC(\sigma)=\left(\sqrt{\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,1-\alpha}}},\infty\right).
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\sigma)=\left(0,\sqrt{\dfrac{\sum_{i=1}^n(X_i-\mu_0)^2}{\chi^2_{n,\alpha}}}\right)
+    \end{equation*}
+
+\textbf{Intervalos para $\sigma^2$ y $\sigma$ cuando $\mu$ es desconocida}
+
+Cuando el promedio poblacional $\mu$ es desconocido, el estimador de máxima verosimilitud de $\sigma^2$ es $S^2_n=\sum_{i=1}^n(X_i-\bar{X})^2/n$ y usando la propiedad
+    \begin{equation*}
+    \dfrac{nS^2_n}{\sigma^2}=\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2}\sim\chi^2_{n-1},
+    \end{equation*}
+
+    se tiene que esta variable depende de $\sigma^2$ y no de $\mu$, además su distribución no depende de $\sigma^2$ y $\mu$, de donde concluimos que ésta es una variable pivote para $\sigma^2$. Una vez más, debemos encontrar valores $a$ y $b$ tales que $P(a<\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2}<b)=1-\alpha$ para luego encontrar un intervalo bilateral para $\sigma^2$. Similar al caso donde $\mu$ es conocido, los valores $a$ y $b$ que minimizan la longitud del intervalo son aquellos con $a^2f(a)=b^2f(b)$ donde $f(\cdot)$ denota la función de densidad de la distribución $\chi^2_{n-1}$. Con el código de \verb"R" presentado anteriormente modificando adecuadamente el grado de libertad de la distribución, se puede encontrar estos valores. De esta forma, se tiene el siguiente intervalo para $\sigma^2$
+     \begin{align}\label{Int_sign1}
+    IC(\sigma^2)&=\left(\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{b},\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{a}\right)\notag\\
+    &=\left(\dfrac{(n-1)S^2_{n-1}}{b},\dfrac{(n-1)S^2_{n-1}}{a}\right)
+    \end{align}
+
+   Otra alternativa más práctica es escoger $a$ y $b$ como los percentiles $\alpha/2$ y $1-\alpha/2$ de la distribución de la variable pivote, esto es, $a=\chi^2_{n-1,\alpha/2}$ y $b=\chi^2_{n-1,1-\alpha/2}$, y obtenemos el siguiente intervalo para $\sigma^2$
+
+    \begin{align}\label{Int_sig_n1}
+    IC^*(\sigma^2)&=\left(\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\chi^2_{n-1,1-\frac{\alpha}{2}}},\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\chi^2_{n-1,\frac{\alpha}{2}}}\right)\notag\\
+    &=\left(\dfrac{(n-1)S^2_{n-1}}{\chi^2_{n-1,1-\frac{\alpha}{2}}},\dfrac{(n-1)S^2_{n-1}}{\chi^2_{n-1,\frac{\alpha}{2}}}\right)
+    \end{align}
+
+    Análogo al caso cuando $\mu=\mu_0$ es conocida, se puede ver que la longitud esperada de (\ref{Int_sig_n1}) es siempre mayor que la de (\ref{Int_sign1}), pero esta diferencia se hace cada vez más pequeña cuando el tamaño muestral es grande, y por consiguiente, podemos utilizar indistintamente los dos intervalos.
+
+    Nótese adicionalmente que el intervalo (\ref{Int_sig_n1}) se basa en el estimador $S^2_{n_-1}$ ampliando a la izquierda y derecha multiplicando por $(n-1)/\chi^2_{n-1,1-\frac{\alpha}{2}}$ y $(n-1)/\chi^2_{n-1,\frac{\alpha}{2}}$ respectivamente, y por consiguiente no es un intervalo simétrico con respecto al estimador.
+
+    Se deja como ejercicio el procedimiento para encontrar los siguientes intervalos unilaterales para $\sigma^2$,
+    \begin{equation*}
+    IC(\sigma^2)=\left(\dfrac{(n-1)S^2_{n-1}}{\chi^2_{n-1,1-\alpha}},\infty\right),
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\sigma^2)=\left(0,\dfrac{(n-1)S^2_{n-1}}{\chi^2_{n-1,\alpha}}\right).
+    \end{equation*}
+
+Utilizando los anteriores intervalos para $\sigma^2$, podemos obtener fácilmente los siguientes intervalos para la desviación estándar $\sigma$.
+ \begin{equation*}
+    IC(\sigma)=\left(\sqrt{\dfrac{(n-1)S^2_{n-1}}{b}},\sqrt{\dfrac{(n-1)S^2_{n-1}}{a}}\right)
+    \end{equation*}
+
+    donde $a$ y $b$ son tales que $a^2f(a)=b^2f(b)$ con $f(\cdot)$ denotando la función de densidad de la distribución $\chi^2_{n-1}$. Otro intervalo para $\sigma$ está dado por
+ \begin{equation}\label{int_sigma}
+    IC^*(\sigma)=\left(\sqrt{\dfrac{(n-1)S^2_{n-1}}{\chi^2_{n-1,1-\frac{\alpha}{2}}}},\sqrt{\dfrac{(n-1)S^2_{n-1}}{\chi^2_{n-1,\frac{\alpha}{2}}}}\right),
+    \end{equation}
+En muestras pequeñas el intervalo $IC(\sigma)$ será mas preciso que $IC^*(\sigma)$, mientras que en muestras grandes, no hay una gran diferencia entre estos dos intervalos en términos de la precisión. Por otro lado, los intervalos unilaterales para $\sigma$ están dados por
+\begin{equation*}
+    IC(\sigma)=\left(\sqrt{\dfrac{(n-1)S^2_{n-1}}{\chi^2_{n-1,1-\alpha}}},\infty\right),
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\sigma)=\left(0,\sqrt{\dfrac{(n-1)S^2_{n-1}}{\chi^2_{n-1,\alpha}}}\right).
+    \end{equation*}
+
+Ilustramos el uso de estos intervalos en el siguiente ejemplo.
+
+\begin{Eje}
+Retomamos el Ejemplo 2.2.6 donde se consideran una línea de producción de láminas de vidrio templado de grosor de 3 cm, se disponen del grosor de 12 láminas producidas por esta línea. La varianza muestral está dada por $s^2_{n-1}= 0.1068\ cm^2$. Y los valores de $a$ y $b$ que satisfacen $a^2f(a)=b^2f(b)$ con $f$ la función de densidad de $\chi^2_{n-1}$ corresponden a $a=4.51$ y $b=28.45$, y el intervalo (\ref{Int_sign1}) resultante es $(0.04,0.26)$, cuya longitud es de 0.22. Por el otro lado, el intervalo (\ref{Int_sig_n1}) es $(0.05, 0.31)$ que tiene como longitud 0.26, y por consiguiente menos preciso que el intervalo (\ref{Int_sign1}).
+
+Suponga que una línea de producción de vidrio templado de grosor de 3 cm es aceptable si la diferencia promedio de grosor de las láminas producidas no supera a 0.2 cm, esto es $\sigma$ no debe ser mayor que 0.2 cm. Para saber si la línea en cuestión tiene desviación superior a los 0.2 cm, calculamos el intervalo inferior para $\sigma$, este está dado por $(0.24,\infty)$ de donde se observar que incluso el límite inferior de $\sigma$ es mayor que 0.2 cm, y se concluye que la línea de producción tiene una desviación estándar mayor que lo establecido, y por consiguiente, la calidad no es aceptable.
+\end{Eje}
+
+\subsubsection{Intervalos de confianza para el coeficiente de variación}
+Cuando se desea comparar dos poblaciones en términos de la dispersión, si los dos promedios poblacionales son muy diferentes, no es apropiado usar la varianza o la desviación como medida de dispersión, puesto que éstas depende de la magnitud de los promedios poblacionales; otra desventaja de la varianza o la dispersión es que depende de la unidad con que fue medida la variable de estudio, de esta forma, si la variable de estudio tiene unidades diferentes en dos poblaciones, por ejemplo, la variable ingreso mensual por familia en Colombia se medirá en pesos colombianos mientras que en Perú se medirá en nuevos soles, de esta forma, las dos desviaciones estarán en unidades de pesos colombianos y soles, respectivamente, y por consiguiente no podrán ser comparados directamente. Una alternativa es el uso del coeficiente de variación definida como $cv=\sigma/\mu$ el cual está libre de unidad de medición y puede ser interpretado como porcentaje. En el capítulo anterior, se vio que en bajo normalidad, el estimador de máxima verosimilitud de $cv$ es $S_n/\bar{X}$, y estamos interesados en hallar un intervalo de confianza para $cv$.
+
+Es claro que si la media poblacional o la desviación poblacional es conocida, se pueden obtener intervalos para el coeficiente de variación simplemente aplicando el Resultado 3.2.2, por ejemplo, si la desviación poblacional es conocida, entonces se tienen el siguiente intervalos bilateral para $cv$.
+\begin{equation*}
+IC(cv)=\left(\frac{\sigma_0}{\bar{X}+z_{1-\frac{\alpha}{2}}\frac{\sigma_0}{\sqrt{n}}},\frac{\sigma_0}{\bar{X}-z_{1-\frac{\alpha}{2}}\frac{\sigma_0}{\sqrt{n}}}\right).
+\end{equation*}
+
+También, si se usa un intervalo $t$ para $\mu$, tenemos el siguiente intervalo para $cv$
+\begin{equation*}
+IC(cv)=\left(\frac{\sigma_0}{\bar{X}+t_{n-1,1-\frac{\alpha}{2}}\frac{S_{n-1}}{\sqrt{n}}},\frac{\sigma_0}{\bar{X}-t_{n-1,1-\frac{\alpha}{2}}\frac{S_{n-1}}{\sqrt{n}}}\right).
+\end{equation*}
+
+Para muestras grandes, no debe haber una diferencia grande entre los dos intervalos en términos de la longitud. Se deja como ejercicio escribir los intervalos unilaterales cuando $\sigma$ es conocida y los bilaterales y unilaterales cuando $\mu$ es conocido.
+
+Cuando ambos parámetros poblacionales son desconocidos, es muy difícil utilizar el método de la variable pivote para encontrar un intervalo de confianza para $cv$, ya que es difícil construir una variable en base de $S_n/\bar{X}$ que dependiera de $cv$ y que a la vez tenga distribución no dependiente de los parámetros. Por esta razón, se proponen tres intervalos intuitivas para $cv$
+
+\emph{\textbf{Propuesta 1}}
+
+La primera propuesta es utilizar un intervalo para la desviación estándar $\sigma$ incorporando el estimador de $\mu$. El intervalo propuesto es como sigue
+\begin{equation*}
+IC_1(cv)=\left(\dfrac{\sqrt{(n-1)S^2_{n-1}/\chi^2_{n-1,1-\alpha/2}}}{\bar{X}},\dfrac{\sqrt{(n-1)S^2_{n-1}/\chi^2_{n-1,\alpha/2}}}{\bar{X}}\right).
+\end{equation*}
+
+\emph{\textbf{Propuesta 2}}
+
+La segunda propuesta se basa en el intervalo $t$ student para $\mu$ y además se considera el estimador de $\sigma$. El intervalo propuesto es como sigue
+
+\begin{equation*}
+IC_2(cv)=\left(\dfrac{S_{n-1}}{\bar{X}+t_{n-1,1-\alpha/2}S_{n-1}/\sqrt{n}},\dfrac{S_{n-1}}{\bar{X}-t_{n-1,1-\alpha/2}S_{n-1}/\sqrt{n}}\right).
+\end{equation*}
+
+Este intervalo tiene una desventaja en comparación con el intervalo $IC_1(cv)$, puesto que cuando el límite inferior del intervalo $t$ para $\mu$ es negativo, pero el límite superior es positivo, el límite superior del intervalo resultante para $cv$ será menor que el límite inferior, y por consiguiente el intervalo carece de utilidad práctica. además de que la longitud del intervalo será negativo.
+
+\emph{\textbf{Propuesta 3}}
+
+La tercera propuesta es utilizar simultáneamente los intervalos bilaterales $IC(\mu)$ y $IC(\sigma)$ para crear un intervalo para el coeficiente de variación, y tenemos el siguiente intervalo
+\begin{equation*}
+IC_3(cv)=\left(\dfrac{\sqrt{(n-1)S^2_{n-1}/\chi^2_{n-1,1-\alpha/2}}}{\bar{X}+t_{n-1,1-\alpha/2}S_{n-1}/\sqrt{n}},\dfrac{\sqrt{(n-1)S^2_{n-1}/\chi^2_{n-1,\alpha/2}}}{\bar{X}-t_{n-1,1-\alpha/2}S_{n-1}/\sqrt{n}}\right).
+\end{equation*}
+
+Este intervalo, por su construcción, debe tener una probabilidad de cobertura mayor que los dos anteriores intervalos. Pero al mismo tiempo, se espera que tenga también una longitud mayor. Adicionalmente, este intervalo también puede tener el mismo problema que el intervalo $IC_2$ en el sentido de que el límite superior puede ser menor que el límite inferior.
+
+Los anteriores tres intervalos fueron construidos usando simplemente la intuición y no mediante algún procedimiento que garantizara que el nivel de confianza sea $100\times(1-\alpha)\%$. Por esta razón, se realiza un estudio de simulación para verificar que la probabilidad de cobertura real sea cercano al $1-\alpha$. Se simuló 1000 muestras provenientes de una distribución normal para valores del coeficiente de variación iguales a 0.2, 0.4, 0.6 y 0.8 \footnote{La desviación poblacional se fijó en 1, y la media poblacional varía según el coeficiente de variación.} Y para cada uno de los tres intervalos propuestos se calculó la probabilidad de cobertura real como el número de veces que el intervalo contuvo al coeficiente de variación dividido por 1000, y se calculó la longitud estimada como el promedio de longitud de los intervalos calculados. La probabilidad de cobertura real de los tres intervalos se muestra en la Figura 3. donde se observa que el intervalo $IC_2$ tiene una probabilidad de cobertura muy por debajo del nivel de confianza nominal, mientras que el intervalo $IC_1$ tiene un desempeño mejor en términos de la probabilidad de cobertura. Finalmente, el intervalo con mayor probabilidad de cobertura es el intervalo $IC_3$ tal como se sospechaba anteriormente.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.65]{Int_cv_PC.eps}
+\caption{Probabilidades de cobertura para las tres propuestas de intervalo de confianza para el coeficiente de variación.}
+\end{figure}
+
+Para investigar si la superioridad de los intervalos $IC_1$ y $IC_3$ es debido a la gran longitud, se examina en términos de la longitud, estas longitudes se muestran en la Figura 3. donde se observa que el intervalo con mayor longitud es $IC_3$, de donde podemos afirmar que éste tiene la mayor probabilidad de cobertura es debido a que es un intervalo muy ancho, y por consiguiente, menos preciso. Por otro lado, el intervalo $IC_1$ tiene un comportamiento muy estable en términos de la longitud, pues en primer lugar, la longitud es siempre positiva por la forma como se definió el intervalo, en segundo lugar, tiene una longitud aceptable entre los tres intervalos propuestos. Como conclusión, se recomienda el intervalo $IC_1$ para el coeficiente de variación $cv$ en una muestra proveniente de una distribución normal.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.65]{Int_cv_long.eps}
+\caption{Longitudes estimadas para las tres propuestas de intervalo de confianza para el coeficiente de variación.}
+\end{figure}
+
+\begin{Eje}
+Volviendo al problema donde se estudia una variable que se mide en dos unidades diferentes en diferentes poblaciones, suponga que para la variable de estudio ingreso por persona medida en Colombia y Perú, para Colombia, en una muestra de 100 personas, el promedio y la desviación estándar muestral fueron 635000 pesos y 150000 pesos, respectivamente; mientras que en Perú, en una muestra de 70 personas, el promedio y la desviación muestral fueron   la motivación  Suponga que se disponen de dos muestras 935 nuevos soles y 285 nuevos soles, respectivamente. Si se desea analizar estos datos para comparar el ingreso de los colombianos y los peruanos, calculamos el intervalo $IC_1$ para los dos coeficientes de variación de ambos países. Podemos calcular los dos intervalos usando el siguiente comando en \verb"R", y para los datos de Colombia, el intervalo para $cv$ es $(0.21,0.27)$, mientras que para los datos de Perú, el intervalo para $cv$ es $(0.27,0.35)$. De donde se puede sospechar que en los peruanos son más dispersos en términos del ingreso.
+
+\begin{verbatim}
+    > mc<-635000
+    > sc<-150000
+    > mp<-935
+    > sp<-285
+    > inf_c<-sqrt((100-1)*(sc^2)/qchisq(0.975,99))/mc
+    > sup_c<-sqrt((100-1)*(sc^2)/qchisq(0.025,99))/mc
+    > inf_c
+    [1] 0.2074032
+    > sup_c
+    [1] 0.2744115
+    > inf_p<-sqrt((100-1)*(sp^2)/qchisq(0.975,99))/mp
+    > sup_p<-sqrt((100-1)*(sp^2)/qchisq(0.025,99))/mp
+    > inf_p
+    [1] 0.2676278
+    > sup_p
+    [1] 0.3540935
+\end{verbatim}
+
+
+\end{Eje}
+
+\subsection{Problemas de dos muestras}
+En este parte del libro, se considera situaciones donde se encuentran dos poblaciones de estudio independientes que pueden ser descritos adecuadamente por distribuciones normales. Por ejemplo, los dos institutos enunciados en el Ejemplo 2.2.12, podemos compararlos en términos del rendimiento obtenido por los respectivos alumnos, esto es, compararlos en términos de las medias poblacionales; también podemos compararlos en términos de la homogeneidad de los rendimientos, esto es, compararlos en términos de las varianzas poblacionales.
+
+Los supuestos bajo cuales se desarrollan las teorías en esta parte son: se tienen dos muestras aleatorias de tamaño $n_X$ y $n_Y$ denotados por $X_1$, $\ldots$, $X_{n_X}$ y $Y_1$, $\ldots$, $Y_{n_Y}$ provenientes de $N(\mu_X,\sigma^2_X)$ y $N(\mu_Y,\sigma^2_Y)$, respectivamente. Además se supone que las dos muestras son independientes, esto es, cualquier conjunto de variables $X$ es independiente de cualquier conjunto de variables $Y$. Por consiguiente, cualquier estadística construida en la primera muestra será independiente de cualquier estadística construida en la segunda muestra. A continuación desarrollaremos intervalos de confianza para $(\mu_X-\mu_Y)$ y $\sigma^2_X/\sigma^2_Y$.
+
+\subsubsection{Intervalos de confianza para diferencia de medias}
+
+Para encontrar un intervalo de confianza para la diferencia de ellos $\mu_X-\mu_Y$, el método de la variable pivote seguirá siendo útil aquí, y para encontrar una variable pivote, se tendrá en cuenta que un estimador natural para $\mu_X-\mu_Y$ es $\bar{X}-\bar{Y}$ y su distribución es
+\begin{equation}\label{barx-bary}
+\bar{X}-\bar{Y}\sim N(\mu_X-\mu_Y,\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}).
+\end{equation}
+
+En problemas de una muestra, cuando se estudió los intervalos de confianza para $\mu$, se vio que estos dependen de si la varianza poblacional es conocida o no, en caso afirmativo, el intervalo se basa en una distribución normal estándar; y en caso negativo, una distribución $t$ student. En el contexto de dos muestras, el intervalo para $\mu_X-\mu_Y$ también depende de las varianzas poblacional, $\sigma^2_X$ y $\sigma^2_Y$, y tenemos los siguientes casos:
+
+\textbf{$\sigma^2_X$ y $\sigma^2_Y$ son conocidas.}
+
+    Teniendo en cuenta (\ref{barx-bary}), se tiene que
+    \begin{equation*}
+    \frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}}\sim N(0,1),
+    \end{equation*}
+
+    la anterior variable depende del parámetro de interés $\mu_X-\mu_Y$, y su distribución no, de donde se tiene que ésta es una variable pivote para $\mu_X-\mu_Y$. Entonces siguiendo los alineamientos del método de la variable pivote se procede a buscar valores $a$ y $b$ con
+    \begin{equation}\label{dif_mu_nor_Z}    P(a<\frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}}<b)=1-\alpha.
+    \end{equation}
+ Como la función de densidad de la distribución normal es unimodal, entonces por el Resultado 3.1.1, se tiene que los valores de $a$ y $b$ que cumplen (\ref{dif_mu_nor_Z}) y que minimizan $b-a$ están dados por $a=-z_{1-\alpha/2}$ y $b=z_{1-\alpha/2}$. Para conocer si estos valores también minimizan la longitud del intervalo resultante para $\mu$, despejamos $\mu$ en (\ref{dif_mu_nor_Z}), y tenemos que
+    \begin{equation}\label{dif_mu_nor}
+    P(\bar{X}-\bar{Y}-b\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}<\mu_X-\mu_Y<\bar{X}-\bar{Y}-a\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}})=1-\alpha,
+    \end{equation}
+    cuya longitud está dada por $l=(b-a)\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}$, y por consiguiente valores de $a$ y $b$ que minimizan $(b-a)$ también minimizan $l$, y tenemos que el siguiente intervalo bilateral de menor longitud de $100\times(1-\alpha)\%$ dado por
+    \begin{align}\label{int_mux-muy_caso1}
+    &IC(\mu_X-\mu_Y)\\
+    &=\left(\bar{X}-\bar{Y}-z_{1-\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}},\bar{X}-\bar{Y}+z_{1-\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}\right).
+    \end{align}
+
+    Acerca del anterior intervalo, podemos observar, en primer lugar, que éste es un intervalo simétrico, entonces en la práctica, una vez conocida el intervalo, se puede conocer la estimación $\bar{x}-\bar{y}$ como el promedio del límite inferior y superior. Por otro lado, la longitud de este intervalo es una constante y está dada por
+    \begin{equation*}
+    l=2z_{1-\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}},
+    \end{equation*}
+
+    de tal forma que cuando los tamaños de las dos muestras son grandes, se incrementa la precisión del intervalo resultante. Adicionalmente, observe que cuando las dos varianzas poblacionales son pequeños, el intervalo resultante también tendrá una longitud pequeña. Por otro lado, los intervalos unilaterales para $\mu_X-\mu_Y$ están dados por
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=(-\infty,\bar{X}-\bar{Y}+z_{1-\alpha}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}})
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=(\bar{X}-\bar{Y}-z_{1-\alpha}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}},\infty)
+    \end{equation*}
+
+    Una consecuencia inmediata al aplicar el Resultado 3.2.2 conduce a los siguientes intervalos de confianza para $\mu_Y-\mu_X$
+    \begin{equation}\label{int_mux-muy_caso1}
+    IC(\mu_Y-\mu_X)=\left(\bar{Y}-\bar{X}-z_{1-\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}},\bar{Y}-\bar{X}+z_{1-\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}\right),
+    \end{equation}
+    \begin{equation*}
+    IC(\mu_Y-\mu_X)=(-\infty,\bar{Y}-\bar{X}+z_{1-\alpha}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}})
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\mu_Y-\mu_X)=(\bar{Y}-\bar{X}-z_{1-\alpha}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}},\infty)
+    \end{equation*}
+
+    Los anteriores intervalos no son muy usados en la práctica, puesto que en la mayoría de los casos de estudio, no se conocen los valores de las varianzas poblacionales, y el anterior intervalo ya no será aplicable. A continuación estudiamos el caso cuando las varianzas poblacionales son desconocidas, pero se pueden asumir iguales.
+
+\textbf{$\sigma^2_X$ y $\sigma^2_Y$ son desconocidas, pero iguales.}
+
+    Cuando las varianzas poblacionales son desconocidas, la variable $\frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}}$ ya no puede es una variable pivote para $\mu_X-\mu_Y$, puesto que ésta depende de $\sigma^2_X$ y $\sigma^2_Y$, y estas varianzas son desconocidas. Sin embargo, podemos modificarla para construir una variable pivote, en primer lugar, al suponer que las dos varianzas poblacionales son iguales, tenemos que $\sigma^2_X=\sigma^2_Y=\sigma^2$ y
+    \begin{equation}\label{barx-bary_estandar}
+    \frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{\sqrt{\frac{\sigma^2}{n_X}+\frac{\sigma^2}{n_Y}}}\sim N(0,1).
+    \end{equation}
+
+    Por otro lado, los estimadores insesgados para las varianzas poblacionales son $S^2_{n_X-1,X}$ y $S^2_{n_Y-1,Y}$. Y se tiene las siguientes distribuciones
+    \begin{equation*}
+    \frac{(n_X-1)S^2_{n_X-1,X}}{\sigma^2_X}=\frac{\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{\sigma^2}\sim\chi^2_{n_X-1}
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    \frac{(n_Y-1)S^2_{n_Y-1,Y}}{\sigma^2_Y}=\frac{\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}{\sigma^2}\sim\chi^2_{n_Y-1}.
+    \end{equation*}
+
+    Usando el hecho de que las dos muestras son independientes y el Resultado 1.1.22 se tiene que
+    \begin{equation*}
+    \frac{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}{\sigma^2}\sim\chi^2_{n_x+n_Y-2},
+    \end{equation*}
+
+    esto es
+    \begin{equation}\label{S2XS2Y}
+    \frac{(n_X-1)S^2_{n_X-1,X}+(n_Y-1)S^2_{n_Y-1,Y}}{\sigma^2}\sim\chi^2_{n_x+n_Y-2}.
+    \end{equation}
+
+    Usando las propiedades (\ref{barx-bary_estandar}), (\ref{S2XS2Y}) y teniendo en cuenta que $\bar{X}-\bar{Y}$ es independiente de $(n_X-1)S^2_{n_X-1,X}+(n_Y-1)S^2_{n_Y-1,Y}$, se tiene que
+    \begin{equation}\label{t}
+    \frac{\frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{\sigma\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}}}{ \sqrt{\frac{(n_X-1)S^2_{n_X-1,X}+(n_Y-1)S^2_{n_Y-1,Y}}{(n_X+n_Y-2)\sigma^2}}}\sim t_{n_X+n_Y-2}.
+    \end{equation}
+
+    Considerando que las dos muestras provienen de distribuciones con la misma varianza poblacional $\sigma^2$, se puede usar las variables de ambas muestras para estimar la varianza común $\sigma^2$, en este caso, tenemos que $\frac{(n_X-1)S^2_{n_X-1,X}+(n_Y-1)S^2_{n_Y-1,Y}}{n_X+n_Y-2}$ es un estimador insesgado para $\sigma^2$(Ejercicio 10.), a la cual se denomina la varianza combinada, en inglés \emph{pooled variance}, denotada por $S^2_p$. De esta forma (\ref{t}) se convierte en
+    \begin{equation}\label{tfinal}
+    \frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{S_p\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}}\sim t_{n_X+n_Y-2}.
+    \end{equation}
+
+    Se puede verificar fácilmente que la anterior estadística es una variable pivote para el parámetro de interés $\mu_X-\mu_Y$. Siguiendo los mismos pasos en la construcción de $IC(\mu)$ cuando $\sigma^2$ es desconocida, se tiene el siguiente intervalo de confianza más preciso de $100\times(1-\alpha)\%$ dado por
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=\bar{X}-\bar{Y}\pm t_{n_X+n_Y-2,1-\alpha/2}S_p\sqrt{\frac{1}n_X+\frac{1}{n_Y}}.
+    \end{equation*}
+
+    Este intervalo es de nuevo simétrico, y la longitud es aleatoria, dada por $l=2t_{n_X+n_Y-2,1-\alpha/2}S_p\sqrt{\frac{1}n_X+\frac{1}{n_Y}}$. Usando la misma variable pivote, se puede encontrar los siguientes intervalos unilaterales para $\mu_X-\mu_Y$
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=(-\infty,\bar{X}-\bar{Y}+t_{n_X+n_Y-2,1-\alpha}S_p\sqrt{\frac{1}n_X+\frac{1}{n_Y}})
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=(\bar{X}-\bar{Y}-t_{n_X+n_Y-2,1-\alpha}S_p\sqrt{\frac{1}n_X+\frac{1}{n_Y}},\infty)
+    \end{equation*}
+
+    Para el parámetro $\mu_Y-\mu_X$, aplicando el Resultado 3.2.2, tenemos los siguientes intervalos
+    \begin{equation*}
+    IC(\mu_Y-\mu_X)=\bar{Y}-\bar{X}\pm t_{n_X+n_Y-2,1-\alpha/2}S_p\sqrt{\frac{1}n_X+\frac{1}{n_Y}},
+    \end{equation*}
+     \begin{equation*}
+    IC(\mu_Y-\mu_X)=(-\infty,\bar{Y}-\bar{X}+t_{n_X+n_Y-2,1-\alpha}S_p\sqrt{\frac{1}n_X+\frac{1}{n_Y}})
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\mu_Y-\mu_X)=(\bar{Y}-\bar{X}-t_{n_X+n_Y-2,1-\alpha}S_p\sqrt{\frac{1}n_X+\frac{1}{n_Y}},\infty)
+    \end{equation*}
+\begin{Eje}
+Para los datos del Ejemplo 2.2.12, estamos interesados en comparar los dos institutos en términos del desempeño promedio de los alumnos de los dos institutos. Para poder utilizar los intervalos dados anteriormente, se debe garantizar que las dos varianzas poblacionales son iguales, más adelante se estudiará procedimientos para validar este supuesto, por ahora suponemos que el supuesto es válido, puesto que las varianzas muestrales son muy parecidos, $S_{n_X-1,X}=8.28$ y $S_{n_Y1,Y}=8.56$. Para calcular el intervalo bilateral para la diferencia de los promedios, podemos utilizar los siguientes comandos en \verb"R".
+\begin{verbatim}
+    > A<-c(75, 87, 83, 73, 74, 88, 88, 74, 64, 92, 73, 87, 91, 83,84)
+    > B<-c(64, 85, 72, 64, 74, 93, 70, 79, 79, 75, 66, 83 ,74)
+    > alpha<-0.05
+    > nx<-length(A)
+    > ny<-length(B)
+    > Sp<-sqrt((nx*var(A)+ny*var(B))/(nx+ny-2))
+    > lim.sup<-mean(A)-mean(B)+qt(1-alpha/2,nx+ny-2)*Sp*sqrt(1/nx+1/ny)
+    > lim.inf<-mean(A)-mean(B)-qt(1-alpha/2,nx+ny-2)*Sp*sqrt(1/nx+1/ny)
+    > lim.inf
+    [1] -0.9594833
+    > lim.sup
+    [1] 12.63128
+\end{verbatim}
+Observe que el intervalo de confianza del 95\% está dado por $(-0.96,12.63)$, el cual contiene tanto valores positivos como negativos, entonces si el rendimiento promedio de los alumnos del instituto $A$ y $B$ se denotan por $\mu_X$ y $\mu_Y$, respectivamente, podemos ver que $\mu_A-\mu_B$ puede ser positivo o negativo, indicando que no hay una diferencia significativa entre los alumnos de los dos institutos en términos del rendimiento. Sin embargo, observando más detalladamente el intervalo $(-0.96,12.63)$, podemos ver que la gran mayoría del intervalo se ubica en el eje positivo, de donde surge la inquietud de que si el instituto A tiene un desempeño superior al del instituto B. Para verificar si los datos apoyan la afirmación de que $\mu_A>\mu_B$ equivalente a $\mu_A-\mu_B>0$, calculamos el intervalo superior en \verb"R" de la siguiente forma
+\begin{verbatim}
+    > lim.sup<-mean(A)-mean(B)+qt(1-alpha,nx+ny-2)*Sp*sqrt(1/nx+1/ny)
+    > lim.sup
+    [1] 11.47450
+\end{verbatim}
+de donde se tiene que el intervalo superior del 95\% es $(-\infty,11.47)$, de donde se tiene que los datos muestran evidencias que apoyan la superioridad del instituto A comparado en el instituto B en términos del rendimiento de los alumnos.
+
+Finalmente, hacemos la anotación de que el cambio del nivel de confianza puede afectar sobre la decisión que se toma con respecto a los parámetros poblacionales. Si calculamos un intervalo más preciso, por ejemplo, el intervalo de 90\%, tenemos
+\begin{verbatim}
+    > alpha<-0.1
+    > lim.sup<-mean(A)-mean(B)+qt(1-alpha/2,nx+ny-2)*Sp*sqrt(1/nx+1/ny)
+    > lim.inf<-mean(A)-mean(B)-qt(1-alpha/2,nx+ny-2)*Sp*sqrt(1/nx+1/ny)
+    > lim.inf
+    [1] 0.1972902
+    > lim.sup
+    [1] 11.47450
+\end{verbatim}
+Observe que el intervalo del 90\% es $(0.20,11.47)$, el cual solo contiene valores positivos, indicando que el desempeño del instituto A sí es superioridad comparado con el instituto B. De lo anterior podemos ver que en algunas situaciones, el valor de $\alpha$ puede afectar sobre la conclusión acerca de los parámetros poblacionales. Discutiremos más sobre estas situaciones en el siguiente capítulo.
+\end{Eje}
+
+Para los datos del ejemplo anterior, se asumió válido el supuesto de que las dos varianzas poblacionales son iguales. Se debe analizar los datos para verificar que los datos efectivamente apoyan a esta afirmación, más adelante se estudiará la construcción de intervalos de confianza para la cociente de varianzas, y esto nos permite
+
+\textbf{$\sigma^2_X$ y $\sigma^2_y$ son desconocidas y diferentes.}
+
+    En este caso, consideramos de nuevo la distribución de la estadística $\bar{X}-\bar{Y}$ dada en (\ref{barx-bary}), cuya varianza está dada por $\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}$, que puede ser estimada insesgadamente mediante la estadística $S^2_D=\frac{S^2_{n_X-1,X}}{n_X}+\frac{S^2_{n_Y-1,Y}}{n_Y}$. De esta forma, se tiene un candidato como variable pivote para $\mu_X-\mu_Y$ la siguiente estadística
+    \begin{equation}\label{estadistica_D}
+    D=\frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{\sqrt{\frac{S^2_{n_X-1,X}}{n_X}+\frac{S^2_{n_Y-1,Y}}{n_Y}}}.
+    \end{equation}
+
+    Es claro que la anterior estadística depende del parámetro de interés $\mu_X-\mu_Y$, y no de los demás parámetros desconocidos $\sigma^2_X$ y $\sigma^2_Y$. Sin embargo, la distribución de esta estadística depende de la cociente $\sigma^2_X/\sigma^2_Y$. Cuando los tamaños muestrales $n_X$ y $n_Y$ son grandes, $D$ tiene distribución normal estándar aproximadamente \cite{Bickel}. Utilizando este hecho, se puede construir los siguientes intervalos aproximados para $\mu_X-\mu_Y$.
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=\bar{X}-\bar{Y}\pm z_{1-\alpha/2}\sqrt{\frac{S^2_{n_X-1,X}}{n_X}+\frac{S^2_{n_Y-1,Y}}{n_Y}}
+    \end{equation*}
+
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=(-\infty,\bar{X}-\bar{Y}+z_{1-\alpha}\sqrt{\frac{S^2_{n_X-1,X}}{n_X}+\frac{S^2_{n_Y-1,Y}}{n_Y}})
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=(\bar{X}-\bar{Y}-z_{1-\alpha}\sqrt{\frac{S^2_{n_X-1,X}}{n_X}+\frac{S^2_{n_Y-1,Y}}{n_Y}},\infty)
+    \end{equation*}
+
+    Por otro lado, para tamaños muestrales pequeñas o moderados, se debe hacer uso de la aproximación de \citeasnoun{Welch} definida como sigue: sea $c=(s^2_{n_X-1,X}/n_X)/s^2_D$, entonces se tiene que una distribución aproximada para $D$ es la distribución $t_k$ con $k$ el entero más cercano a
+    \begin{equation}\label{valor_k}
+    \left[\frac{c^2}{n_X-1}+\frac{(1-c)^2}{n_Y-1}\right]^{-1}.
+    \end{equation}
+    De esta forma, tenemos los siguientes intervalos para $\mu_X-\mu_Y$ para muestras pequeñas
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=\bar{X}-\bar{Y}\pm t_{k,1-\alpha/2}\sqrt{\frac{S^2_{n_X-1,X}}{n_X}+\frac{S^2_{n_Y-1,Y}}{n_Y}}
+    \end{equation*}
+
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=(-\infty,\bar{X}-\bar{Y}+t_{k,1-\alpha}\sqrt{\frac{S^2_{n_X-1,X}}{n_X}+\frac{S^2_{n_Y-1,Y}}{n_Y}})
+    \end{equation*}
+
+    y
+    \begin{equation*}
+    IC(\mu_X-\mu_Y)=(\bar{X}-\bar{Y}-t_{k,1-\alpha}\sqrt{\frac{S^2_{n_X-1,X}}{n_X}+\frac{S^2_{n_Y-1,Y}}{n_Y}},\infty)
+    \end{equation*}
+
+    El cálculo del intervalo de Welch puede llevarse a cabo usando la instrucción \verb"t.test" en \verb"R". Ilustramos el uso de este comando en el siguiente ejemplo
+    \begin{Eje}
+Suponga que se quiere estudiar el efecto de dos dietas diferentes sobre para reducir el nivel de glucosa para pacientes con nivel de glucosa entre 100$\sim$ 130 mg/dl, los pacientes se sometieron a las dos dietas de forma aleatoria, y después de 2 meses del tratamiento, el nivel de glucosa de estos dos grupos de pacientes fueron: con dieta 1: 105.0, 96.7, 103.9, 110.6,  95.1, 111.2, 93.1, 109.9, 105.8, 95.3, 92.7; con dieta 2:  90.3, 92.1, 96.5, 84.8, 94.0, 86.9, 91.5, 86.1, 94.4, 86.8, 94.4, 91.6. Para calcular un intervalo de confianza para la diferencia del nivel de glucosa con las dos dietas $\mu_1-\mu_2$, se debe hacer el supuesto acerca de la igualdad de varianza de las dos poblaciones, aún no disponemos de herramientas que logren tal fin, sin embargo, de los datos muestrales, se puede ver que $S_{n_1-1}=7.31$ y $S_{n_2-1}=3.83$ de donde sospechamos que las dos varianzas poblacionales pueden ser diferentes. Y considerando que las dos muestras son relativamente pequeñas, se utiliza el intervalo de Welch por medio de los siguientes comandos en \verb"R".
+
+    \begin{verbatim}
+    > A<-c(105.0, 96.7, 103.9, 110.6,  95.1, 111.2,  93.1, 109.9,
+    105.8, 95.3, 92.7)
+    > B<-c(90.3, 92.1, 96.5, 84.8, 94.0, 86.9, 91.5, 86.1, 94.4,
+    86.8, 94.4, 91.6)
+    > t.test(A,B)
+    95 percent confidence interval:
+      5.713331 16.229093
+     sample estimates:
+    mean of x mean of y
+     101.75455  90.78333
+     \end{verbatim}
+
+     Podemos ver que el intervalo bilateral del 95\% para $\mu_1-\mu_2$ está dado por $(5.71,16.22)$, y éste contiene solo valores positivos, indicando que el nivel de glucosa promedio de pacientes sometidos a la dieta 1 será mayor que el de los pacientes sometidos a la dieta 2, y se puede concluir que la dieta 2 es más efectiva que la dieta 1.    \end{Eje}
+
+\subsubsection{Intervalos de confianza para cociente de varianzas}
+En esta parte estudiamos procedimientos para hallar intervalos de confianza para la cociente de dos varianzas poblacionales $\sigma^2_X/\sigma^2_Y$ basándonos en dos muestras provenientes de distribuciones normal bajo las especificaciones dadas al principio del capítulo. Estos intervalos nos servirán para verificar si dos varianzas poblacionales son iguales o no. Esto es importantes por que
+
+\begin{itemize}
+    \item Para hallar intervalos para la diferencia de dos promedios poblacionales, se necesita tener supuestos acerca de las varianzas poblacionales, y dependiendo si éstas son iguales o no, se emplean diferentes intervalos para la diferencia de medias.
+    \item En algunas prácticas estadísticas, se necesita comparar dos varianzas, y determinar cuál tiene mayor magnitud. Por ejemplo, las líneas de producción industrial debe tener una pequeña variabilidad, para garantizar que los productos sean lo más homogénea posible en término de alguna característica.
+\end{itemize}
+
+Nótese que para el propósito de evaluar si las dos varianzas poblacionales son iguales, cualquier de los intervalos $IC(\sigma_X^2/\sigma^2_Y)$ y $IC(\sigma_Y^2/\sigma^2_X)$. Ahora, hemos visto, en el caso de una muestra, que el intervalo de confianza para la varianza depende de si la media poblacional es conocida o no. En el caso de dos muestras, también se debe hacer esta distinción y por consiguiente, tenemos los siguientes casos:
+
+\textbf{$\mu_X$ y $\mu_Y$ son conocidas}
+
+En este caso, los estimadores de máxima verosimilitud de $\sigma^2_X$ y $\sigma^2_Y$ son $\frac{\sum_{i=1}^{n_X}(X_i-\mu_X)^2}{n_X}$ y $\frac{\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}{n_Y}$, respectivamente. Y por consiguiente el estimador de máxima verosimilitud de $\sigma^2_X/\sigma^2_Y$ está dado por
+\begin{equation*}
+\dfrac{\sum_{i=1}^{n_X}(X_i-\mu_X)^2/n_X}{\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2/n_Y}.
+\end{equation*}
+
+Aunque que la anterior variable claramente no es una variable pivote para $\sigma^2_X/\sigma^2_Y$, podemos modificarla recordando que
+\begin{equation*}
+\frac{\sum_{i=1}^{n_X}(X_i-\mu_X)^2}{\sigma^2_X}\sim\chi^2_{n_X}
+\end{equation*}
+
+y
+\begin{equation*}
+\frac{\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}{\sigma^2_Y}\sim\chi^2_{n_Y}.
+\end{equation*}
+
+Usando la independencia de las dos muestras y la Definición 1.1.16, se tiene que
+\begin{equation}\label{pivote_razon_varianza}
+\dfrac{\sum_{i=1}^{n_X}(X_i-\mu_X)^2/(n_X\sigma^2_X)}{\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2/(n_Y\sigma^2_Y)}=\dfrac{\sigma^2_Y}{\sigma^2_X}\dfrac{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2}{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}\sim F^{n_X}_{n_Y},
+\end{equation}
+Podemos ver que la anterior variable es una variable pivote para la cociente de varianzas, y por consiguiente debemos buscar valores $a$ y $b$ tales que
+\begin{equation}
+P(a<\dfrac{\sigma^2_Y}{\sigma^2_X}\dfrac{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2}{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}<b)=1-\alpha.
+\end{equation}
+
+Los valores óptimos de $a$ y $b$ son los que minimizan la longitud o la longitud esperada del intervalo resultante para la cociente de varianzas dado por
+\begin{equation*}
+IC(\sigma^2_Y/\sigma^2_X)=\left(a\dfrac{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2},b\dfrac{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2}\right),
+\end{equation*}
+
+cuya longitud, como se puede observar claramente, es una variable aleatoria, y por consiguiente calculamos la longitud esperada. Esta está dada por
+\begin{equation*}
+E(l)=(b-a)E\left(\dfrac{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2}\right)=(b-a)\dfrac{n_X}{n_X-2}\dfrac{\sigma^2_Y}{\sigma^2_X}
+\end{equation*}
+
+para $n_X>2$. De donde concluimos que los valores de $a$ y $b$ que minimizan $b-a$ también minimizan $E(l)$, y por consiguiente el Resultado 3.2.1 nos indica que los valores óptimos de $a$ y $b$ deben cumplir $f(a)=f(b)$ donde $f$ denota la función de densidad de una distribución $F^{n_Y}_{n_X}$\footnote{Esto es cierto siempre y cuanto $f$ es unimodal, y esto se cumple cuando ambos grados de libertad son mayores que 3.}. Anteriormente se presentó un código \verb"R" que permiten encontrar valores de $a$ y $b$ que satisfacen $f(a)=f(b)$ con $f$ la función de densidad de una distribución $\chi^2$, una pequeña modificación de este código nos permite encontrar los valores $a$ y $b$ óptimos. En general para evitar cálculos tediosos, se puede adoptar la solución $a=f^{n_X}_{n_Y,\alpha/2}$ y $b=f^{n_X}_{n_Y,1-\alpha/2}$, que en muestras grandes conducen a intervalos de longitud pequeña.
+
+Adicionalmente, podemos tener el siguiente intervalo para $\sigma^2_X/\sigma^2_Y$ aplicando el Resultado 3.2.2
+
+\begin{align*}
+IC(\sigma^2_X/\sigma^2_Y)&=\left(\dfrac{1}{f^{n_X}_{n_Y,1-\alpha/2}}\dfrac{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2}{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2},\dfrac{1}{f^{n_X}_{n_Y,\alpha/2}}\dfrac{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2}{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}\right)\\
+&=\left(f^{n_Y}_{n_X,\alpha/2}\dfrac{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2}{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2},f^{n_Y}_{n_X,1-\alpha/2}\dfrac{n_Y\sum_{i=1}^{n_X}(X_i-\mu_X)^2}{n_X\sum_{j=1}^{n_Y}(Y_j-\mu_Y)^2}\right).
+\end{align*}
+
+En muchos de los estudios estadísticos, no se disponen de información auxiliar, o ésta no es del todo confiable, y no se conocen los valores de las medias poblacionales. En estos casos, los anteriores intervalos ya no son aplicables, por esta razón, estudiamos los intervalos de confianza para la cociente de varianzas cuando las medias poblacionales son desconocidas.
+
+\textbf{$\mu_X$ y $\mu_Y$ son desconocidas}
+
+En este caso, la variable encontrada en (\ref{pivote_razon_varianza}) ya no es una variable pivote para la cociente de varianzas, puesto que ésta depende de las medias poblacionales desconocidas $\mu_X$ y $\mu_Y$. Una propuesta natural es reemplazar $\mu_X$ y $\mu_Y$ por sus estimadores $\bar{X}$ y $\bar{Y}$, respectivamente. Adicionalmente, recordemos que \begin{equation*}
+\frac{\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{\sigma^2_X}\sim\chi^2_{n_X-1}
+\end{equation*}
+
+y
+\begin{equation*}
+\frac{\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}{\sigma^2_Y}\sim\chi^2_{n_Y-1}.
+\end{equation*}
+
+De esta forma tenemos que
+\begin{equation}\label{pivote_razon_varianza_descono}
+\dfrac{\sum_{i=1}^{n_X}(X_i-\bar{X})^2/((n_X-1)\sigma^2_X)}{\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2/((n_Y-1)\sigma^2_Y)}=\dfrac{\sigma^2_Y}{\sigma^2_X}\dfrac{S^2_{n_X-1}}{S^2_{n_Y-1}}\sim F^{n_X-1}_{n_Y-1},
+\end{equation}
+
+Y podemos obtener el siguiente intervalo para $\sigma^2_X/\sigma^2_Y$
+
+\begin{equation}\label{itri}
+IC(\sigma^2_X/\sigma^2_Y)=\left(f^{n_Y-1}_{n_X-1,\alpha/2}\dfrac{S^2_{n_X-1}}{S^2_{n_Y-1}},f^{n_Y-1}_{n_X,1-\alpha/2}\dfrac{S^2_{n_X-1}}{S^2_{n_Y-1}}\right).
+\end{equation}
+
+Podemos ver que el anterior intervalo se basa en el estimador $S^2_{n_X-1}/S^2_{n_Y-1}$ para la cociente de varianzas ampliando a la izquierda y derecha multiplicando por los percentiles $f^{n_Y-1}_{n_X-1,\alpha/2}$ y $f^{n_Y-1}_{n_X-1,1-\alpha/2}$ respectivamente, y por consiguiente no es un intervalo simétrico con respecto al estimador.
+
+El cálculo de este intervalo se lleva a cabo en \verb"R" usando el comando \verb"var.test(stats)", lo ilustramos en el siguiente ejemplo.
+\begin{Eje}
+En el Ejemplo 3.2.7, se calculó un intervalo de confianza para la diferencian entre rendimientos promedios obtenidos pos estudiantes de dos institutos donde se supuso que los dos institutos tienen la misma variación. A continuación se calcula el intervalo (\ref{itri}) de 95\% para corroborar este afirmación, tenemos
+\begin{verbatim}
+> A<-c(75, 87, 83, 73, 74, 88, 88, 74, 64, 92, 73, 87, 91, 83,84)
+> B<-c(64, 85, 72, 64, 74, 93, 70, 79, 79, 75, 66, 83 ,74)
+> var.test(A,B)
+data:  A and B
+95 percent confidence interval:
+ 0.2918789 2.8544131
+sample estimates:
+ratio of variances
+         0.9358256
+\end{verbatim}
+Observamos que el intervalo del 95\% está dado por $(0.29,2.85)$, como este intervalo contiene el valor 1, podemos afirmar que la cociente de varianza $\sigma^2_X/\sigma^2_Y$ sí puede tomar el valor 1, es decir, las dos varianzas poblacionales sí pueden ser iguales. Y por consiguiente, el intervalo $t$ student calculado en el Ejemplo 3.2.7 es válido.
+
+Ahora, retomamos el Ejemplo 3.2.8, donde se interesaba comparar el nivel de colesterol de dos grupos de pacientes luego de someter a dos dietas diferentes. Para estos datos, las dos varianzas muestrales fueron $7.31^2$ y $3.83^2$. Basado en estas estimaciones puntuales, se consideró adecuado el supuesto de que las varianzas poblacionales son diferentes, y por consiguiente se empleó el intervalo de Welch para la diferencia de medias. Aquí calculamos el intervalo de confianza para la cociente de varianzas para verificar que las varianzas poblacionales son diferentes, tenemos
+\begin{verbatim}
+> A<-c(105.0, 96.7, 103.9, 110.6, 95.1, 111.2, 93.1, 109.9,
++ 105.8, 95.3, 92.7)
+> B<-c(90.3, 92.1, 96.5, 84.8, 94.0, 86.9, 91.5, 86.1, 94.4,
++ 86.8, 94.4, 91.6)
+> var.test(A,B)
+data:  A and B
+95 percent confidence interval:
+  1.034110 13.362031
+sample estimates:
+ratio of variances
+          3.645933
+\end{verbatim}
+Podemos ver que el intervalo obtenido $(1.03,13.36)$ no contiene el valor 1, indicando que el supuesto de que las dos varianzas poblacionales son diferentes es adecuado.
+\end{Eje}
+
+
+
+\section{Bajo distribuciones diferentes a la normal}
+En las secciones anteriores, hemos visto que para encontrar un intervalo de confianza para algún parámetro, el método de la variable pivote consiste en encontrar una variable pivote $Q$, construir un intervalo para $Q$ y finalmente despejar el parámetro de interés. En muestras provenientes de una distribución normal, el procedimiento se puede llevar a cabo sin mayores complicaciones. Sin embargo cuando la muestra aleatoria proviene de distribuciones diferentes de la distribución normal, el método de la variable pivote no siempre resulta útil porque no siempre se puede encontrar una variable pivote para el parámetro de interés, más aún, hay casos donde a pesar de disponer de una variable pivote, no se puede despejar el parámetro de interés. Cuando no se puede encontrar la variable pivote, una herramienta que puede resultar útil es el teorema del límite central que nos permite aproximar la distribución del promedio muestral mediante una distribución normal.
+
+Primero presentamos una forma de encontrar variables pivotes para ciertos tipos de parámetros, estos parámetro se denominan parámetro de escala, y se definen a continuación.
+\begin{Defi}
+Sea $X$ una variable aleatoria con función de densidad de probabilidad $f_X(x)$, la cual depende de un parámetro $\theta$, se dice que $\theta$ es un parámetro de escala si la distribución de la variable $X/\theta$ o $\theta X$ no depende de $\theta$.
+\end{Defi}
+
+De la anterior definición, vemos que para probar que un parámetro es de escala, se debe encontrar la distribución de $X/\theta$ o $\theta X$, conociendo la distribución de $X$, hay tres formas básicas para encontrar esta distribución.
+\begin{itemize}
+    \item Usar el teorema de transformación que encuentra la función de densidad para una función $g(X)$ mediante el uso de jacobiano. (ver \citeasnoun[pg.256]{Liliana})
+    \item
+    \item
+\end{itemize}
+
+\begin{Eje}
+Sea $X$ una variable aleatoria con distribución $Exp(\theta)$ con $E(X)=\theta$. Se tiene que $X/\theta\sim Exp(1)$, y por consiguiente, $\theta$ es un parámetro de escala. Para ver la distribución de $X/\theta$, se puede hacer uso de la función generadora de momentos, tenemos que
+\begin{align*}
+M_{X/\theta}(t)&=E(e^{tX/\theta})\\
+&=M_X(t/\theta)\\
+&=\dfrac{1}{1-\theta\frac{t}{\theta}}\ \ \ \ \text{(ver resultado 1.1.14)}\\
+&=\dfrac{1}{1-\theta},
+\end{align*}
+
+la cual corresponde a la función generadora de momentos de una distribución $Exp(1)$. También se puede encontrar la distribución de $X/\theta$ usando directamente la función de distribución.
+\end{Eje}
+
+A continuación, se define otra clase de parámetros para la cual es fácil de encontrar una variable de pivote.
+\begin{Defi}
+Sea $X$ una variable aleatoria con función de densidad de probabilidad $f_X(x)$, la cual depende de un parámetro $\theta$, se dice que $\theta$ es un parámetro de localización si la distribución de la variable $X+\theta$ o $X-\theta$ no depende de $\theta$.
+\end{Defi}
+
+\textbf{Nota:} Si la función de densidad de una variable depende de más de un parámetro, para chequear que un parámetro específico sea de localización o de escala, los demás parámetros se consideran constantes, como lo ilustra el siguiente ejemplo.
+
+\begin{Eje}
+Sea $X$ una variable aleatoria con distribución $N(\mu,\sigma^2)$. Se tiene que $X-\mu\sim N(0,\sigma^2)$, y por consiguiente, $\mu$ es un parámetro de localización.
+\end{Eje}
+
+Para un parámetro de localización o de escala, el siguiente resultado nos permite encontrar una variable pivote.
+\begin{Res}
+Sea $X_1$, $\ldots$, $X_n$ una muestra aleatoria proveniente de una distribución con función de densidad $f(x,\theta)$, y sea $T$ el estimador de máxima verosimilitud de $\theta$, entonces
+\begin{itemize}
+    \item si $\theta$ es parámetro de localización, entonces $T+\theta$ o $T-\theta$ es una variable pivote para $\theta$
+    \item si $\theta$ es parámetro de escala, entonces $T/\theta$ o $\theta T$ es una variable pivote para $\theta$
+\end{itemize}
+\end{Res}
+
+Veamos cómo nos puede ayudar el anterior resultado a continuación. Sea $X_1$, $\ldots$, $X_n$ una muestra aleatoria con distribución $Exp(\theta)$. Se ha visto que $\theta$ es un parámetro de escala, por otro lado, el estimador de máxima verosimilitud para $\theta$ es $\bar{X}$, por lo tanto, $\bar{X}/\theta$ es una variable pivote para $\theta$. Y nuevamente, se busca valores $a$ y $b$ con
+\begin{equation}\label{gamma1}
+P(a<\frac{\bar{X}}{\theta}<b)=1-\alpha.
+\end{equation}
+
+Claramente, $a$ y $b$ son percentiles de la distribución de la variable $\bar{X}/\theta$, sin embargo, esta distribución no es ninguna distribución conocida.
+
+Sin embargo, usando el resultado 1.1.12, se tiene que la variable $\sum_{i=1}^nX_i\sim Gamma(n,\theta)$. Ahora usando la función generadora de momentos, se puede ver que $\sum_{i=1}^nX_i/\theta\sim Gamma(n,1)$. Por lo tanto, (\ref{gamma1}) se convierte en
+\begin{equation}\label{gamma2}
+P(an<\frac{\sum_{i=1}^nX_i}{\theta}<bn)=1-\alpha.
+\end{equation}
+
+De donde se concluye que $an$ y $bn$ son percentiles de la distribución $Gamma(n,1)$. El lector puede usar argumentos explicados anteriormente para encontrar los valores de $a$ y $b$ que minimizan la longitud del intervalo resultante para $\theta$. Por simplicidad, tomamos $an=Gamma(n,1)_{\alpha/2}$ y $bn=Gamma(n,1)_{1-\alpha/2}$. Finalmente, despejando $\theta$ de (\ref{gamma2}), se tiene el siguiente intervalo para $\theta$,
+\begin{equation}\label{int_expo_gamma}
+IC(\theta)=\left(\dfrac{\sum_{i=1}^nX_i}{Gamma(n,1)_{1-\alpha/2}},\dfrac{\sum_{i=1}^nX_i}{Gamma(n,1)_{\alpha/2}}\right).
+\end{equation}
+
+La longitud de este intervalo está dada por
+\begin{equation*}
+l=\sum_{i=1}^nX_i\left(\frac{1}{Gamma(n,1)_{\alpha/2}}-\frac{1}{Gamma(n,1)_{1-\alpha/2}}\right)
+\end{equation*}
+
+y su valor esperado está dado por
+\begin{equation}\label{long_expo_gamma}
+E(l)=n\theta\left(\frac{1}{Gamma(n,1)_{\alpha/2}}-\frac{1}{Gamma(n,1)_{1-\alpha/2}}\right)
+\end{equation}
+
+Ahora, para encontrar los límites unilaterales, se debe notar que la variable pivote $\sum_{i=1}^nX_i/\theta$ guarda una relación inversamente proporcional con el parámetro $\theta$, de esta forma, si se busca un interval superior para $\theta$, se debe comenzar encontrando un intervalo inferior para la variable pivote; mientras que un intervalo superior para la variable pivote conduce a un intervalo inferior para $\theta$. De esta forma se obtienen los siguientes intervalos unilaterales para $\theta$.
+\begin{equation*}
+IC(\theta)=\left(\frac{\sum_{i=1}^nX_i}{Gamma(n,1)_{1-\alpha}},\infty\right)
+\end{equation*}
+
+y
+\begin{equation*}
+IC(\theta)=\left(0, \frac{\sum_{i=1}^nX_i}{Gamma(n,1)_{\alpha}}\right)
+\end{equation*}
+donde el valor 0 en el anterior intervalo es un límite inferior natural para $\theta$ pues éste solo puede tomar valores positivos.
+
+\begin{Eje}
+Para los datos del Ejemplo 2.2.4 donde se disponen de un conjunto de datos correspondientes a tiempo de espera antes de que una llamada sea atendida por el operador, en este ejemplo se ha visto que los datos muestran evidencias de que provienen de una distribución exponencial, y se encontró que una estimación para de 0.8 minuto para el tiempo promedio de espera. Si estamos interesados en hallar un intervalo de confianza para este promedio, podemos usar el siguiente comando en R
+
+\begin{verbatim}
+    > tiempo<-c(0.13, 0.06, 0.50, 0.41, 1.44, 0.60, 0.22, 1.08,
+    0.78,0.92, 2.73, 0.83, 0.19, 0.21, 1.75, 0.79, 0.02, 0.05,
+    2.30,1.03)
+    > alpha<-0.05
+    >n<-length(tiempo)
+    > L.sup<-sum(tiempo)/qgamma(alpha/2,shape=n,scale=1)
+    > L.inf<-sum(tiempo)/qgamma(1-alpha/2,shape=n,scale=1)
+    > L.sup
+    [1] 1.312976
+    > L.inf
+    [1] 0.5405979
+\end{verbatim}
+
+y un intervalo del 95\% para el tiempo promedio de espera es $(0.54,1.31)$. Si aumentamos el nivel de confianza al $98\%$, el intervalo resultante será $(0.50,1.45)$, la cual tiene una longitud mayor que el de $95\%$ confirmando una vez más que al aumentar el nivel de confianza, el intervalo pierde precisión.
+
+Suponga que ahora se desea saber cuál es el tiempo mínimo que debe esperar los clientes antes de ser atendidos. Para eso se debe encontrar un intervalo de confianza inferior para el tiempo promedio de espera, y el límite inferior se puede calcular con el comando
+\begin{verbatim}
+    >L.inf<-sum(tiempo)/qgamma(1-alpha,shape=n,scale=1)
+    > L.inf
+    [1] 0.5753385
+\end{verbatim}
+de donde se concluye que los clientes que llaman debe esperar por lo menos más de medio minuto antes de ser atendido por uno de los operadores de la aerolínea.
+\end{Eje}
+
+En algunas prácticas estadísticas, el usuario no tiene en cuenta la distribución de los datos, y para encontrar un intervalo de confianza para la media poblacional, simplemente aplica el intervalo $t$ dado en (\ref{int_t}). Para estudiar qué tan bueno son los intervalos obtenidos de esta manera, se realiza el siguiente estudio de simulación. Se simula 1000 veces muestras de tamaño 5, 10, 20, 50, 100, 500, 1000 provenientes de una distribución exponencial con parámetro de valor conocido, digamos igual a 5, y en cada iteración se calcula el intervalo (\ref{int_expo_gamma}) y el intervalo (\ref{int_t}), y se observa si estos intervalos contienen o no al parámetro verdadero, la probabilidad de cobertura real de un intervalo se calcula como el número de iteraciones donde el intervalo contiene el parámetro verdadero dividido por el número total de iteraciones. En la Figura 3.7, se muestra las probabilidades de cobertura para los dos intervalo.
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{cobertura_gamma.eps}
+\caption{Probabilidades de cobertura para el intervalo gamma y el intervalo t para diferentes tamaños de muestra.}
+\end{figure}
+
+Se observa que el intervalo gamma siempre tiene la probabilidad de cobertura real muy cercano al nivel nominal del 95\% aun para muestras de tamaño pequeño; por otro lado, el intervalo t tiene probabilidad relativa muy por debajo del 95\% para muestras pequeños, pero a medida que la muestra crece, la diferencia de los dos intervalos ya son muy pequeños. Por lo anterior, podemos observar que ignorar la distribución de los datos y aplicar el intervalo t puede conducir a intervalos no muy confiables cuando la muestra es pequeño.
+
+
+El procedimiento descrito anteriormente resulta ser muy limitado, puesto que en distribuciones como Poisson, Binomial, el parámetro de interés, $\lambda$ y $p$ no son de localización y tampoco de escala, y por consiguiente no se aplica el procedimiento. Por esta razón, se presenta el teorema del límite central que puede resultar útil en algunos casos.
+\begin{Res}
+Sea $X_1$, $X_2$, $\ldots$ variable aleatorias independiente e idénticamente distribuidas con esperanza $\mu$ y varianza $\sigma^2$ finita, entonces si $\bar{X}_n=\sum_{i=1}^nX_i/n$, se tiene que
+\begin{equation*}
+\dfrac{\bar{X}_n-\mu}{\sigma/\sqrt{n}}\rightarrow_{D}Z\sim N(0,1).
+\end{equation*}
+\end{Res}
+
+Consideramos el problema de encontrar un intervalo de confianza para una proporción dada $n$ observaciones de variables independientes e idénticamente distribuidas provenientes de una distribución $Ber(p)$. Si la muestra se denota por $X_1$, $\ldots$, $X_n$, entonces el estimador de máxima verosimilitud es el promedio muestral $\bar{X}$, que se denotará por $\hat{p}$. Por otro lado, la esperanza de $Ber(p)$ es $p$ y la varianza $p(1-p)$, de donde se tiene que
+\begin{equation*}
+\dfrac{\bar{X}-p}{\sqrt{p(1-p)/n}}\rightarrow_{D}Z\sim N(0,1).
+\end{equation*}
+
+Aunque la anterior variable es una variable pivote para $p$ cuando la muestra es grande, y se puede encontrar $a$ y $b$ con $P(a<\dfrac{\hat{p}-p}{\sqrt{p(1-p)/n}}<b)=1-\alpha$, no se puede despejar el parámetro de interés $p$. Una solución a este problema es reemplazar $p$ por su estimador $\hat{p}$ en el denominador de la variable pivote, y así construir la variable $\dfrac{\hat{p}-p}{\sqrt{\hat{p}(1-\hat{p})/n}}$. El intervalo para $p$ presentado en mayoría de los textos estadísticos, el intervalo de Wald, se basa en esta variable, asumiendo que la distribución asintótica sigue siendo la distribución $N(0,1)$. De esta forma, se tiene que
+\begin{equation*}
+P(-z_{1-\alpha/2}<\dfrac{\hat{p}-p}{\sqrt{\hat{p}(1-\hat{p})/n}}<z_{1-\alpha/2})=1-\alpha,
+\end{equation*}
+
+despejando el parámetro $p$, se tiene el siguiente intervalo de confianza para $p$
+\begin{equation*}
+IC(p)=\left(\hat{p}-z_{1-\alpha/2}\sqrt{\hat{p}(1-\hat{p})/n},\hat{p}+z_{1-\alpha/2}\sqrt{\hat{p}(1-\hat{p})/n}\right).
+\end{equation*}
+
+A pesar de la simplicidad del cómputo del anterior intervalo, éste tiene varias fallas. En primer lugar, en algunas situaciones el intervalo obtenido puede contener valores fuera del espacio paramétrico de $p$, $[0,1]$. Por ejemplo, cuando $n=30$ y $\hat{p}=0.05$, se tiene que el límite inferior es -0.028; cuando $n=30$, $\hat{p}=0.95$, el límite superior es 1.028. En segundo lugar, cuando la proporción muestral toma valor $0$ o $1$, el límite inferior es igual al límite superior, y la estimación por intervalo de confianza se reduce a la estimación puntual. Adicionalmente, estudios de simulación han mostrado que el intervalo de Wald tiene un mal desempeño, ver por ejemplo \citeasnoun{Agre_Coull} y \citeasnoun{Cepeda}.
+
+En la literatura estadística reciente, se han desarrollado otros intervalos para $p$ con desempeño muy superior que el de Wald, entre ellos, se encuentra el intervalo de Agresti y Caffo, \cite{Agresti} que también es muy sencillo de implementar en la práctica. El intervalo de Agresti y Caffo está dado por
+\begin{equation*}
+IC_{AC}(p)=\left(\tilde{p}-z_{1-\alpha/2}\sqrt{\tilde{p}(1-\tilde{p})/\tilde{n}},\tilde{p}+z_{1-\alpha/2}\sqrt{\tilde{p}(1-\tilde{p})/\tilde{n}}\right),
+\end{equation*}
+
+donde $\tilde{n}=n+4$, $\tilde{p}=\tilde{x}/\tilde{n}$ con $\tilde{x}=\bar{x}+2$. Nótese que el intervalo de Agresti y Caffo consiste simplemente en añadir dos éxitos y dos fracasos a la muestra observada, pero tiene mucho mejores propiedades que el intervalo clásico de Wald, su probabilidad de cobertura real es más alto, y su longitud más corta. Para detalles sobre otros intervalos para $p$ y la comparación entre ellos, consulte \citeasnoun{Cepeda}.
+
+Otro problema importante en la práctica es cuando se observa dos muestras independientes $X_1$, $\ldots$, $X_{n_1}$ y $Y_1$, $\ldots$, $Y_{n_2}$ provenientes de distribuciones $Ber(p_1)$ y $Ber(p_2)$. Por ejemplo, tasa de curación de dos medicamentos, en este caso, estamos interesados en hallar intervalos de confianza para la diferencia de las dos proporciones $p_1-p_2$. Análogo al caso del intervalo para una proporción, el teorema del límite central conduce al intervalo de Wald para dos muestras. En este caso, se tiene en cuenta que
+\begin{equation*}
+\hat{p}_i\sim_{aprox.}N(p_i,\frac{p_i(1-p_i)}{n_i}),
+\end{equation*}
+
+para $i=1,2$. Usando el hecho de que las dos muestras son independientes, se tiene que $\hat{p}_1$ y $\hat{p_2}$ también son independientes, y por consiguiente
+\begin{equation*}
+\hat{p}_1-\hat{p}_2\sim_{aprox.}N(p_1-p_2,\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}).
+\end{equation*}
+
+Estandarizando $\hat{p}_1-\hat{p}_2$ conduce al intervalo de Wald para $p_1-p_2$, dado por:
+\begin{equation*}
+IC(p_1-p_2)=\hat{p}_1-\hat{p}_2\pm z_{1-\alpha/2}\sqrt{\dfrac{\hat{p}_1(1-\hat{p}_1)}{n_1}+\dfrac{\hat{p}_2(1-\hat{p}_2)}{n_2}}.
+\end{equation*}
+
+Desafortunadamente, este intervalo también tiene propiedades no deseables además de malos desempeños, al igual que el intervalo de Wald para una proporción tal como se muestra en estudios de simulación en \citeasnoun{Zhang}. Aquí se presenta el intervalo de Agresti y Caffo para dos dos muestras, dado por
+\begin{equation*}
+IC_{AC}(p)=\tilde{p}_1-\tilde{p_2}\pm z_{1-\alpha/2}\sqrt{V(\tilde{p}_1,\tilde{n}_1)+V(\tilde{p}_2,\tilde{n}_2)},
+\end{equation*}
+
+con
+\begin{equation*}
+V(\tilde{p}_i,\tilde{n}_i)=\frac{1}{\tilde{n_i}}\left[\tilde{p}_i-\tilde{p}_i\frac{n_i}{\tilde{n}_i}+\frac{1}{2\tilde{n}_i}\right],
+\end{equation*}
+
+$\tilde{n}_i=n_i+2$ for $i=1,2$, $\tilde{p}_1=(\bar{X}+1)/\tilde{n}_1$ and $\tilde{p}_2=\bar{Y}+1/\tilde{n}_2$, esto es, $\tilde{p}_i$ se calcula añadiendo un éxito y un fracaso en la $i$-ésima muestra, con $i=1,2$.
+
+Otro intervalo para $p_1-p_2$ fácil de calcular es el intervalo de Newcombe, \cite{Newcombe}. El cómputo de este intervalo consiste en, primero, resolver para $p_i$ la ecuación $|\hat{p_i}-p_i|=z_{1-\alpha/2}$, denote las dos soluciones como $l_i$ and $u_i$ with $l_i<u_i$, con $i=1,2$. El intervalo de Newcombe está dada por
+\begin{equation*}
+IC_{New}(p_1-p_2)=\hat{p_1}-\hat{p_2}\pm z_{1-\alpha/2}\sqrt{\dfrac{l_1(1-l_1)}{n_1}+\dfrac{u_2(1-u_2)}{n_2}}.
+\end{equation*}
+
+En \citeasnoun{Zhang} se observa que el comportamiento de los intervalos Agresti y Caffo y el intervalo de Newcombe son muy similares, ambos muy superiores comparando con el de Wald. El intervalo de Newcombe puede tener un comportamiento levemente mejor que el de Agresti y Caffo.
+
+\textbf{Intervalo de confianza en una distribución exponencial usando TLC}
+
+Para una muestra $X_1$, $\cdots$, $X_n$ proveniente de una distribución $Exp(\theta)$, antes se había encontrado un intervalo exacto basada en la distribución Gamma, también podemos usar el teorema del límite central para encontrar un intervalo de confianza aproximado. Para eso recordemos que la media y la varianza poblacional están dadas por $\theta$ y $\theta^2$, respectivamente, entonces tenemos que la variable $\frac{\sqrt{n}(\bar{X}-\theta)}{\theta}$ se distribuye aproximadamente como normal estándar, la cual desempeña la función de la variable pivote. Por consiguiente, tenemos que
+\begin{equation*}
+1-\alpha=P(a<\frac{\sqrt{n}(\bar{X}-\theta)}{\theta}<b)
+\end{equation*}
+
+y para encontrar, en lo posible, el intervalo con menor longitud para $\theta$, despejamos $\theta$ en la anterior igualdad. Tenemos que
+\begin{equation}\label{int_expo}
+1-\alpha=P(\frac{\sqrt{n}\bar{X}}{b+\sqrt{n}}<\theta<\frac{\sqrt{n}\bar{X}}{a+\sqrt{n}}),
+\end{equation}
+
+cuya longitud está dada por $l=\sqrt{n}\bar{X}(\frac{1}{a+\sqrt{n}}-\frac{1}{b+\sqrt{n}})$, con longitud esperada dada por
+\begin{equation}\label{long_expo_nor}
+E(l)=\sqrt{n}\theta\left(\frac{1}{a+\sqrt{n}}-\frac{1}{b+\sqrt{n}}\right)
+\end{equation}
+
+la cual no depende directamente de la longitud $b-a$ y por consiguiente el uso del Resultado 3.2.1 no arrojará un intervalo de menor longitud para $\theta$. Se puede elaborar un programa computacional similar al del caso de intervalos para $\sigma^2$ en una distribución normal. Por ahora, escogemos $a=-z_{1-\alpha/2}$ y $b=z_{1-\alpha/2}$. Y reemplazándolos en (\ref{int_expo}) obtenemos el siguiente intervalo aproximado para $\theta$
+\begin{equation}\label{int_expo_nor}
+IC(\theta)=(\frac{\sqrt{n}\bar{X}}{z_{1-\alpha/2}+\sqrt{n}},\frac{\sqrt{n}\bar{X}}{-z_{1-\alpha/2}+\sqrt{n}}).
+\end{equation}
+
+\begin{Eje}
+Siguiendo con el Ejemplo 3.3.3 donde se calculó intervalos exactos basados en una distribución Gamma para los datos del Ejemplo 2.2.4. Para calcula los intervalos aproximados basados en la distribución normal estándar, podemos usar el siguiente comando en \verb"R"
+\begin{verbatim}
+    > L.sup<-sqrt(n)*mean(tiempo)/(-qnorm(1-alpha/2)+sqrt(n))
+    > L.inf<-sqrt(n)*mean(tiempo)/(qnorm(1-alpha/2)+sqrt(n))
+    > L.sup
+    [1] 1.42771
+    > L.inf
+    [1] 0.5576177
+\end{verbatim}
+y tenemos el intervalo aproximado $(0.56,1.43)$ para el tiempo promedio de espera, y podemos ver que éste es mas ancho que el intervalo
+\end{Eje}
+
+Para averiguar, entre el intervalo exacto encontrado anteriormente y el intervalo exacto dado en (\ref{int_expo_gamma}), cuál es la mejor opción, realizamos estudios de simulación, para compararlos en términos de la probabilidad de cobertura real y la longitud esperada. Para compararlos en términos de la probabilidad de cobertura real, se simulan 1000 muestras para $n = 5,\cdots,200$ provenientes de una distribución $Exp(2)$, y para cada muestra se calculan el intervalo aproximado basado en la distribución normal estándar y el intervalo exacto basado en la distribución Gamma, y se examina si estos intervalos contienen el parámetro poblacional $\theta=2$. La probabilidad de cobertura real de los dos intervalos se calculan como el número de veces que el intervalo contiene a $\theta$ dividido por el número total de muestras simuladas para cada valor de $n$. Los resultados de simulación se muestran en la Figura 3.8, donde se observa que, en general, la probabilidad de cobertura real del intervalo aproximado es siempre mayor que el intervalo exacto y la diferencia es especialmente prominente en muestras de tamaño pequeño. Además nótese que aún para muestras grandes, el intervalo exacto tiene, casi siempre, la probabilidad de cobertura real inferior a la nominal del $95\%$; mientras que la probabilidad de cobertura del intervalo aproximado tiene un comportamiento más estable, oscilando alrededor del valor nominal para muestras grandes. Cabe resaltar que en muestras pequeñas, ambos intervals tienen una probabilidad de cobertura real muy por debajo de la nominal, situación que no ocurre en casos como intervalos para $\mu$ en una distribución normal\footnote{Ver Figura 3.5}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{exponencial_cobertura.eps}
+\caption{Probabilidades de cobertura para el intervalo aproximado normal y el intervalo exacto gamma para diferentes tamaños de muestra en una distribución $Exp(2)$.}
+\end{figure}
+
+Ahora, para comparar los dos intervalos en términos de la longitud esperada. Podemos calcular estas longitudes, en el caso del intervalo normal, la longitud esperada está dada en (\ref{long_expo_nor}); para el intervalo Gamma, la longitud esperada está dada en (\ref{long_expo_gamma}). Podemos graficar estas dos longitudes esperadas para diferentes tamaños muestras, esta gráfica se muestra en la Figura 3.9 donde el modelo poblacional es $Exp(1)$. Se observa que en muestras muy pequeñas pequeñas (de tamaño menor 10, aproximadamente) el intervalo aproximado puede tener una longitud muy grande con respecto al intervalo exacto, pero esta diferencia se disminuye y desaparece muy rápidamente. Por lo anterior, podemos recomendar el intervalo normal, especialmente cuando el tamaño muestral es grande.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Longitud_esperada_teorica.eps}
+\caption{Longitud esperada teórica del intervalo aproximado normal y el intervalo exacto gamma para diferentes tamaños de muestra en una distribución $Exp(1)$.}
+\end{figure}
+
+En el caso de la distribución exponencial, fue posible calcular las longitudes esperadas teóricas, cuando esto no es posible, se puede hacer uso de las simulaciones. Podemos calcular la longitud de los dos intervalos en cada una de las 1000 muestras simuladas anteriormente para cada valor fijo de $n$, y se toma el promedio de estos 1000 valores como una estimación de la longitud esperada. Los resultados se muestran en la Figura 3.10, donde se observa que el comportamiento es muy parecido a los valores teóricos, indicando que el intervalo aproximado puede no ser tan preciso como el intervalo exacto, sin embargo, para muestras moderamente grandes, no hay diferencias importantes entre los dos intervalos en término de la precisión, y se recomienda el intervalo aproximado basado en la distribución normal estándar.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{exponencial_longitud.eps}
+\caption{Longitud esperada simulada del intervalo aproximado normal y el intervalo exacto gamma para diferentes tamaños de muestra en una distribución $Exp(2)$.}
+\end{figure}
+
+\section{Ejercicios}
+1. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una población $N(\mu,\sigma_0^2)$ donde $\sigma^2_0$ es conocida, encuentra un intervalo de confianza de $(1-\alpha)\times100\%$ de la forma $(-\infty,T)$ para $\mu$.
+
+2. El ejercicio práctico de cantidad promedio de desechos dejado en clase, debe hacer los cálculos en R.
+
+3. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una población $N(\mu,\sigma^2)$ donde ambos $\mu$ y $\sigma^2$ son desconocidos, encuentra un intervalo de confianza de $(1-\alpha)\times100\%$ de la forma $(T,\infty)$ y $(0,T)$ para $\sigma^2$.
+
+4. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una población $N(\mu_0,\sigma^2)$ donde $\mu_0$ es conocido, encuentra un intervalo de confianza de $(1-\alpha)\times100\%$ de la forma $(0,T)$ para $\sigma^2$.
+
+5. Utilizar el paquete estadístico R para determinar los percentiles 3\% y 98\% de las siguientes distribuciones (debe adjuntar la instrucción usada en R)
+\begin{itemize}
+\item chi cuadrado con 12 grados de libertad,
+\item chi cuadrado con 35 grados de libertad,
+\item t-student con 15 grados de libertad,
+\item t-student con 40 grados de libertad.
+\end{itemize}
+
+6. Una máquina de llenado de botellas debe estar programado para efectuar un llenado de 350ml, y se quiere conocer el funcionamiento real de la máquina, para eso se extrajo 20 botellas llenadas por la máquina y se midió el contenido de la botella, los resultados fueron:
+355, 350, 340, 345, 354, 358, 350, 343, 349, 346, 351, 358, 342, 350, 356, 345, 349, 356, 354, 346.
+\begin{enumerate}[(a)]
+\item Basado en la muestra aleatoria elabora un intervalo de confianza bilateral de 95\% para el llenado promedio de la máquina,
+\item ¿Basado en el anterior intervalo, se puede afirmar que la máquina en promedio efectúa un llenado de 350ml?
+\end{enumerate}
+
+7. En el ejercicio anterior, suponga que se tiene la misma muestra, y que efectivamente el llenado promedio de la máquina es de 350ml. Ahora para que la calidad del proceso de llenado sea buena, la desviación estándar debe estar por debajo de los 4ml.
+\begin{enumerate}[(a)]
+\item Basado en la muestra aleatoria elabora un intervalo de confianza unilateral de 95\% para la desviación estándar del llenado de la máquina,
+\item ¿Basado en el anterior intervalo, se puede afirmar que la calidad del proceso de llenado sea buena?
+\end{enumerate}
+
+8. Utilizar el paquete estadístico R para determinar los percentiles 5\% y 97\% de las siguientes distribuciones (debe adjuntar la instrucción usada en R)
+\begin{itemize}
+\item F con 12 grados de libertad en el numerador y 15 en el denominador,
+\item F con 38 grados de libertad en el numerador y 22 en el denominador.
+\end{itemize}
+
+9. Un ganadero desea aumentar la producción lechera diaria de sus vacas, y decide probar un nuevo concentrado. Para verificar la efectividad del nuevo concentrado, el ganadero separa 35 vacas, de los cuales 15 son alimentados con el concentrado actual y los restantes con el concentrado nuevo. Después de tres semanas de alimentación, él toma nota de la producción lechera, para las vacas alimentadas con el concentrado actual, los resultados fueron (en litros): 16.4, 18.9, 15.7, 20.2, 16.8, 19.4, 14.7, 17.8, 19.5, 16.8, 18.4, 14.6, 20.7, 21.1, 17.3, y para las vacas alimentadas con el concentrado nuevo, los resultados fueron: 19.4, 18.1, 21.0, 20.4, 20.5, 17.4, 19.6, 18.4, 21.4, 19.2, 15.7, 22.8, 21.6, 17.2, 18.4, 19.4, 20.5, 23.6, 18.4, 18.3. ¿Debe el ganadero aceptar el concentrado nuevo o seguir con el concentrado actual? Construye un intervalo de confianza apropiado para contestar esta pregunta.
+
+10. Dada dos muestras aleatorias independientes $X_1$, $\cdots$, $X_{n_X}$ y $Y_1$, $\cdots$, $Y_{n_Y}$ provenientes de $N(\mu_X,\sigma^2)$ y $N(\mu_Y,\sigma^2)$ respectivamente, demuestre que $\frac{(n_X-1)S^2_{n_X-1,X}+(n_Y-1)S^2_{n_Y-1,Y}}{n_X+n_Y-2}$ es un estimador insesgado para la varianza común $\sigma^2$.
+
+11. Dada dos muestras aleatorias independientes $X_1$, $\cdots$, $X_{n_X}$ y $Y_1$, $\cdots$, $Y_{n_Y}$ provenientes de $N(\mu_X,\sigma^2_X)$ y $N(\mu_Y,\sigma^2_Y)$ respectivamente, con $\sigma^2_X\neq\sigma^2_Y$ y desconocidas, escriba la forma de los intervalos unilaterales y bilaterales para $\mu_X-\mu_Y$ cuando (i) las muestras son grandes y (ii) las muestras son moderadas o pequeñas.
+
+
+12. Dada dos muestras aleatorias independientes $X_1$, $\cdots$, $X_{n_X}$ y $Y_1$, $\cdots$, $Y_{n_Y}$ provenientes de $N(\mu_X,\sigma^2_X)$ y $N(\mu_Y,\sigma^2_Y)$ respectivamente, construye un intervalo de confianza unilateral de forma $(-\infty,T)$ para $\mu_X-\mu_Y$ cuando
+\begin{enumerate}[(a)]
+\item $\sigma^2_X$ y $\sigma^2_Y$ son conocidas;
+\item $\sigma^2_X$ y $\sigma^2_Y$ son desconocidas, pero iguales.
+\end{enumerate}
+
+13. Dada dos muestras aleatorias independientes $X_1$, $\cdots$, $X_{n_X}$ y $Y_1$, $\cdots$, $Y_{n_Y}$ provenientes de $N(\mu_X,\sigma^2_X)$ y $N(\mu_Y,\sigma^2_Y)$ respectivamente, construye un intervalo de confianza unilateral de forma $(T,\infty)$ para $\sigma^2_X/\sigma^2_Y$ cuando
+\begin{enumerate}[(a)]
+\item $\mu_X$ y $\mu_Y$ son desconocidos;
+\item $\mu_X$ es conocido y $\mu_Y$ no es conocido.
+\end{enumerate}
+
+14. Una fábrica de láminas de aluminio tiene dos tipos de máquinas, denotados por A y B. Para comparar el funcionamiento de ambos tipos de máquinas en término del grosor de lámina, se tomó, para cada máquina, una muestra de láminas producidas, y se midió el grosor (en milímetro). La muestra tomada de máquina tipo A fue de 15, 13, 15, 14, 17, 19, 17, 14, 15, 16; y la muestra tomada de máquina tipo B fue de 16, 13, 17, 19, 14, 17, 13, 16, 15, 18, 18, 16. ¿Cuál tipo de máquina produce láminas de grosor más estable?
+
+15. Demuestre que en la distribución $Ber(p)$, el parámetro $p$ no es un parámetro de escala.
+
+16. Demuestre que en la distribución $P(\theta)$, el parámetro $\theta$ no es un parámetro de localización.
+
+17.	En una muestra aleatoria proveniente de $Exp(\theta)$, encuentra un intervalo superior y uno inferior para el parámetro $\theta$ usando una variable pivote para el parámetro de escala $\theta$.
+
+18.	En una muestra aleatoria proveniente de $Exp(\theta)$, encuentra un intervalo de confianza bilateral usando el teorema del límite central, y compara el intervalo con el encontrado en el punto anterior en término de la longitud.
+
+19.	Considera los datos 2.77, 4.32, 4.24, 1.10, 1.12, 6.14, 9.58, 1.27, 11.70, 0.63
+    \begin{enumerate}[(a)]
+        \item Elabora un QQ plot para verificar si los datos tienen distribución exponencial.
+        \item Encuentra un intervalo del 95\% para la media poblacional suponiendo distribución exponencial. ¿cómo se interpreta este intervalo?
+        \item Si estos datos son vida útil medido en años de cierto electrodoméstico, encuentra un intervalo de confianza del 95\% para la probabilidad de que un electrodoméstico funcione
+            \begin{enumerate}[(i)]
+                \item Más de tres años
+                \item Menos de dos años
+                \item ¿Puedes encontrar un intervalo del 95\% para que un electrodoméstico funcione entre 1 y 3 años? Explica tu respuesta.
+            \end{enumerate}
+        \item Si el dueño de la compañía fabricante de este tipo de electrodomésticos está interesado en saber a lo más cuántos años puede durar estos electrodomésticos, ¿cómo puedes usar las técnicas de los intervalos de confianza para ayudarlo?
+    \end{enumerate}
+
+
+20.	Demuestre en la distribución Poisson, el parámetro $\lambda$ no es un parámetro de escala y tampoco de localización.
+
+21.	En dos muestras aleatorias independientes, $X_1$, $\cdots$, $X_n$ y $Y_1$, $\cdots$, $Y_m$ provenientes de $N(\mu_X, \sigma^2_X)$ y $N(\mu_Y, \sigma^2_Y)$, respectivamente, suponga que $\mu_X$ y $\mu_Y$ son conocidos, encuentra
+\begin{enumerate}[(a)]
+    \item Una variable pivote para $\sigma^2_X/\sigma^2_Y$.
+    \item Usando esta variable pivote para encontrar intervalos bilateral y unilaterales para $\sigma^2_X/\sigma^2_Y$.
+\end{enumerate}
+
+22.	Suponga que los datos de la Tabla 2.1 son temperaturas al medio día de 15 y 18 ciudades de países A y B respectivamente. Suponiendo la distribución normal para los datos, utiliza un intervalo de confianza para ver si hay diferencias significativas entre los dos países en términos de la temperatura.
+
+\begin{table}
+\begin{tabular}{|l|l|}\hline
+País A & País B\\\hline
+14.47, 11.87, 12.02, 14.81, 15.73, 16.57 & 19.27, 16.55, 16.97, 17.31, 18.28, 18.34\\
+10.22, 18.40, 14.41, 11.68, 17.94, 10.37 & 20.01, 14.78, 17.24, 18.23, 20.27, 18.71\\
+10.20, 18.22, 17.13 & 13.28, 17.15, 18.70, 16.53, 14.68, 18.85\\\hline
+\end{tabular}\caption{Datos del ejercicio 22}
+\end{table}
+
+23.	El vendedor de seguros que hace visitas a posibles clientes para ofrece plan médico para mascotas obtuvo 4 ventas exitosas en 15 visitas, usando el intervalo de Wald.
+\begin{enumerate}[(a)]
+    \item Encuentra un intervalo de confianza para la probabilidad de tener éxito en una visita.
+    \item Encuentra un intervalo de confianza para la probabilidad de tener dos éxitos en dos visitas.
+    \item Encuentra un límite superior para la probabilidad de tener éxito en una visita.
+    \item Repite la parte (a) y (b) usando el intervalo score definido en \cite{Cepeda}.
+\end{enumerate}
+
+
+24. En una muestra aleatoria proveniente de $N(\mu,\sigma^2)$
+\begin{enumerate}[(a)]
+    \item cuando $\mu=\mu_0$ escriba los posibles intervalos bilaterales y unilaterales para el coeficiente de variación $cv$.
+    \item cuando $\sigma=\sigma_0$ escriba los posibles intervalos unilaterales para el coeficiente de variación $cv$.
+\end{enumerate} 

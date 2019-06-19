@@ -1,0 +1,1454 @@
+\part[Inferencia estadística univariada]{Inferencia estadística univariada}
+
+\chapter[Conceptos preliminares]{Conceptos preliminares}
+
+Los modelos no son la realidad. Los datos no se ajustan a un modelo; por el contrario, los modelos se ajustan a la realidad de las observaciones. Por ejemplo, los modelos de mercadeo y, en general, de cualquier campo, son acepciones de la realidad que buscan describirla, mas no explicarla a cabalidad. Es así como el modelo astronómico de Tolomeo describía con gran precisión la posición de los planetas en la bóveda celeste, aunque como bien lo sabemos no era un modelo que explicara la realidad porque simplemente la tierra no es el centro del universo. Sin embargo, ¿era un mal modelo? Seguramente no, el modelo lograba su función y desde un punto de vista pragmático, era lo que se tenía en esa época y funcionaba bien.
+
+Comparemos la noción general de un modelo cualquiera con un modelo estadístico y empecemos por considerar tres ejemplos concretos:
+
+\begin{itemize}
+  \item Modelos arquitectónicos: planos o maquetas hechos a escala que son fundamentales en la etapa de diseño y el proceso de construcción de cualquier obra.
+  \item Modelos de ingeniería: túneles de viento o simulación de corrientes fluviales.
+  \item Modelos atómicos: teorías, visualizaciones acerca de movimientos, estructuras de un átomo y sus componentes.
+\end{itemize}
+
+Un modelo debe ser visto como un mapa. Incluso el mapa más barato de una ciudad puede responder a todas las preguntas razonables que uno pueda imaginar acerca del posicionamiento de la ciudad: ¿dónde queda el aeropuerto?, ¿qué tan lejos estoy de la alcaldía?, etc. Un buen mapa turístico es capaz de ubicar sitios históricos que ni siquiera, hoy en día, existen. Sin embargo, la construcción de un modelo estadístico requiere otro tipo de abs\-tracciones. Los estadísticos usamos la palabra modelo de una forma bien diferente a los anteriores ejemplos, ya lo diría G.E.P. Box al afirmar que ''Todos los modelos son errados, pero algunos son útiles".
+
+Es común considerar la bondad del ajuste del modelo. Típicamente, un modelo estadístico se considera adecuado si, después de haber sido calibrado con los datos reales, cumple significativamente con los supuestos considerados en el diseño del estudio.
+
+Podríamos objetar esta definición. En particular, parece muy ingenuo ignorar que el comportamiento de las unidades seleccionadas en la muestra, en algunas ocasiones diverge radicalmente del comportamiento de las unidades que no están en la muestra, o que fueron seleccionadas en la muestra pero para las cuales existe ausencia de respuesta. Ahora, si el modelo falla en la incorporación de toda la información relevante, ¿debería ser considerado como un modelo no adecuado?
+
+No se puede dejar de lado que el usuario de los modelos estadísticos (o de sus primos: los modelos estocásticos o econométricos) tiene unos objetivos claros y definidos al iniciar la investigación. El estadístico debe formular el modelo que mejor ajuste consiga de manera selectiva con los objetivos de la investigación, teniendo en cuenta los fundamentos teóricos y supuestos del modelo (tarea nada fácil). Ya lo diría Tukey cuando afirmaba: ''mantén tu mirada en la ciencia y conserva tus herramientas estadísticas muy simples".
+
+Con lo anterior, queremos enfatizar que también existen modelos para el ajuste de cierto tipo de datos, conocidos como distribuciones de probabilidad que son el soporte de la inferencia estadística. Lo importante es que el lector caiga en cuenta de que en la vida real y en la práctica profesional jamás va a encontrar datos que provengan de estas distribuciones; por el contrario, existen situaciones diversas enmarcadas en contextos especificos que permiten aseverar que los datos observados se ajustan a cierta distribución de probabilidad.
+
+En esta parte del libro, se hace un breve repaso de las principales distribuciones de variables aleatorias. Para cada una de ellas, presentamos las principales ca\-rac\-te\-rís\-ti\-cas, tales como los diferentes momentos y relaciones entre distribuciones. Queremos hacer énfasis sobre las diferentes aplicaciones que pueden tener estas distribuciones, además de caracterizar los datos que provienen de las mismas. Para mayores detalles acerca de la teoría básica de probabilidad, consulte \citeasnoun{Liliana}.
+
+\section{Variables aleatorias y distribuciones de probabilidad}
+
+La teoría estadística estudia fenómenos cuyos comportamientos no pueden ser predeterminados. La vida práctica está llena de estos fenómenos, algunos de gran impacto socio-económico tales como la tasa de desempleo, precio del dólar, la inflación, etc.; otros asociados más a la vida cotidiana tales como el resultado de un juego de azar, de un partido de fútbol o el clima de mañana. Con las herramientas estadísticas apro\-pia\-das, se pueden conocer más a fondo estos fenómenos y así poder describirlos y/o predecirlos.
+
+Estos fenómenos pueden ser descritos como un experimento aleatorio, esto es, un experimento cuyo resultado no se conoce de antemano. El conjunto que contiene todos los posibles resultados de un experimento aleatorio se denomina el espacio muestral, y en este libro será denotado por $\Omega$. Así que para el experimento de observar la tasa de desempleo para el siguiente mes, el espacio muestral será $\Omega=[0,1]$; mientras que mientras que para el resultado de un partido de fútbol, el espacio muestral puede ser $\Omega=\{\text{gana el equipo A}, \text{ pierde el equipo A}, text{ empatan los dos equipos}\}$, si en el experimento solo se observa si el equipo A gana o pierde, mas no la diferencia de goles.
+
+Dado un experimento aleatorio con el espacio muestral $\Omega$, una variable aleatoria $X$ es una función definida sobre $\Omega$ que asigna a cada elemento de $\Omega$ un número real. Por ejemplo, en el ejemplo del partido de fútbol, podemos definir la variable $X$ que vale $1$ si el equipo A no pierde el partido y $-1$ si lo hace. De esta forma, $X$ es una función que asigna el valor 1 a los resultados \emph{gana el equipo A} y \emph{empatan los dos equipos}, y asigna el valor -1 al resultado \emph{pierde el equipo A}. En algunas situaciones, una variable aleatoria puede ser, simplemente, la función idéntica, como en el caso de observar la tasa de desempleo en el siguiente mes. La variable \emph{tasa de desempleo en el siguiente mes} tomará valor en $[0,1]$ y corresponde simplemente al resultado del experimento, esto es, una función idéntica.
+
+Una forma de clasificar a las variables aleatorias es según los valores que toman y se tienen dos tipos de variables aleatorias: las variables discretas son aquellas que toman valores en un conjunto finito o enumerable\footnote{Un conjunto $A$ es enumerable cuando existe una función inyectiva que tiene como dominio $A$ y recorrido el conjunto de los números naturales.}, aunque en la teoría estadística, la mayoría de las variables discretas toman valores finitos o en el conjunto de los números naturales, mas no en conjuntos enumerables más extraños como los racionales. Por otro lado, tenemos las variables continuas que son aquellas que toman valores en un intervalo, entendiendo que el conjunto de los números reales $\mathbb{R}$ es un intervalo de la forma $(-\infty,\infty)$. En los ejemplos dados anteriormente, las variables \emph{tasa de desempleo} y \emph{precio de dólar} son continuas, mientras que el \emph{resultado del partido de fútbol}, \emph{clima de mañana}, se consideran discretas.
+
+Dada una variable aleatoria $X$, estamos interesados en calcular probabilidades acer\-ca de los valores que toma, por ejemplo, la probabilidad de que la tasa de empleo del siguiente mes sea inferior al 10\% o la probabilidad de que el equipo A no pierde un partido. Y estas probabilidades se resumen en la la función de distribución $F(x)$ o equivalentemente en la función de densidad, $f(x)$. Y para algunas funciones de densidad de alguna forma especial, se les dan algunos nombres específicos a la distribución de $X$. En los siguientes capítulos se repasan algunas de las distribuciones discretas y continuas. Como se mencionó antes, los distintos nombres de las distribuciones se dan cuando la función de densidad toma una forma especial. De esta forma, las definiciones de los siguientes capítulos se basan en la forma funcional de las funciones de densidad.
+
+Adicionalmente, presentamos algunas instrucciones en el paquete R para ge\-ne\-rar números aleatorios de las distribuciones que presentaremos. Esto es importante, puesto que nos da una idea general sobre cómo es el comportamiento de un conjunto de valores provenientes de una distribución específica, lo cual nos ayuda a identificar distribuciones en contextos específicos. Por otro lado, la generación de números aleatorios también será útil cuando abordamos el tema de la inferencia estadística.
+
+Antes de repasar las distribuciones de probabilidad, se definen los conceptos de parámetro de distribución y espacio paramétrico. Un parámetro\index{Parámetro} de distribución es aquel valor fijo que define la forma funcional de una distribución de probabilidad, es decir, cuando el parámetro cambia de valor, la función de distribución y la función de densidad cambian\footnote{En este enfoque clásico, los parámetros se consideran cantidades fijas. Existe otro enfoque en el cual se considera a los parámetros como variables aleatorias, dicho enfoque se denomina bayesiano.}. Las distribuciones de probabilidad pueden tener más de un parámetro. Cuando una distribución tiene solo un parámetro, éste se denota usualmente por $\theta$; cuando se presenta más de un parámetro, la notación se cambia a $\btheta$, representando el vector de parámetros. El espacio paramétrico\index{Espacio paramétrico}, $\bTheta$, es el conjunto que contiene todos los posibles valores del parámetro o el vector de parámetros. Para distribuciones con un solo parámetro, $\bTheta$ será un subconjunto de $\mathbb{R}$, mientras que para distribuciones con $k$ parámetros, $\bTheta$ será un subconjunto de $\mathbb{R}^k$.
+
+\subsection{Distribuciones discretas}
+En esta parte, presentamos algunas de las distribuciones discretas más conocidas. En primer lugar, se tiene la distribución uniforme discreta que puede ser útil para describir algunos resultados en los juegos de azar.
+
+\subsubsection{Distribución uniforme discreta \index{Distribución!uniforme discreta}}
+
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución uniforme discreta sobre el conjunto $\{1,2,\cdots,N\}$ si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=Pr(X=x)=\frac{1}{N}I_{\{1,2,\cdots,N\}}(x)
+\end{equation}
+\end{Defi}
+
+En la Figura 1.1, podemos visualizar la función de densidad de una distribución uniforme discreta sobre $\{1,\cdots,5\}$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.45]{Uniforme.eps}
+\caption[\textsl{Densidad de una distribución uniforme discreta sobre $\{1,\cdots,5\}$}]{\textsl{Función de densidad de una distribución uniforme discreta sobre $\{1,\cdots,5\}$.}}
+\end{figure}
+
+Esta distribución describe situaciones donde el experimento aleatorio puede tener un finito de resultados, y la probabilidad de ocurrencia la misma para cada posible resultado. Entre los ejemplos de la distribución uniforme discreta en la vida práctica están el resultado (cara o sello) del lanzamiento de una moneda corriente, el resultado del lanzamiento de un dado corriente, resultado al extraer una bola al azar de una urna que contiene bolas enumeradas de 1 a $N$. También en las rifas, donde en una bolsa que contiene, digamos, 145 nombres de los empleados de una empresas, al seleccionar un nombre de la bolsa para ser ganador de un computador portátil, la probabilidad de que Juan Gómez sea el ganador es $1/145$, y es claro que entre menos empleados hayan en la empresa, más probable es que Juan Gómez sea el ganador. Ahora, suponga que de las 145 empleados, hay 60 mujeres y 85 hombres (donde las 60 mujeres se denotan por M1, M2, $\cdots$, M60), entonces la probabilidad de que el ganador sea mujer puede ser pensada como la probabilidad de que el ganador sea M1, o sea M2, o $\cdots$, o M60. Recurriendo a propiedades de la probabilidad, se tiene que la probabilidad requerida será $1/145+1/145+\cdots+1/145$, 60 veces, esto es, $60/145$. Más adelante, se verá que la anterior situación también puede ser descrita por una variable con distribución hipergeométrica.
+
+En la vida práctica, para identificar variables con distribución uniforme discreta, en muchos casos basta con conocer el contexto del problema, es decir, con conocer condiciones que garantizan que los valores ocurren con la misma probabilidad, como por ejemplo, en el lanzamiento de una moneda, saber que la moneda no está cargada garantiza que los resultados siguen esta distribución. Sin embargo, puede suceder que se desconoce si esta condición se tiene o no, y lo disponible es simplemente un conjunto de valores. Suponga que se tienen los valores, 3, 1, 3, 4, 2, 4, 2, 2, 1, 3 que denotan resultados de 10 selecciones de una bolsa con bolas enumeradas de 1 hasta 5. Dada la característica de la distribución uniforme discreta, afirmar que el resultado de selección tiene distribución uniforme discreta es equivalente a afirmar que el proceso de selección es completamente al azar, sin ninguna preferencia de números. Ahora, si los datos provinieran de una distribución uniforme sobre $\{1,\cdots,N\}$, entonces la probabilidad de ocurrencia de cualquier $n=1,\cdots,N$ debe ser igual a $1/N$. Haciendo la analogía entre la probabilidad de ocurrencia con la frecuencia relativa que se puede ver en la Figura 1.2, podemos intuir que sí se presenta una variable uniforme discreta si las frecuencias relativas para 1, $\cdots$, 5 son todos cercanos a $1/5=0.2$. Por lo tanto, del histograma de los datos, se observa que la frecuencia relativa del valor 5 está muy alejada del valor 0.2, de donde se sospecha la afirmación de que la selección fue realizada completamente al azar, sin ninguna preferencia de números.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1104 1047, scale=0.19]{Uniforme_Hist.jpg}
+\caption{\textsl{Histograma de los datos 3, 1, 3, 4, 2, 4, 2, 2, 1, 3.}}
+\end{figure}
+
+Para generar valores de una distribución uniforme discreta, se puede usar el comando \verb"sample" con la opción \verb"replace=TRUE", el siguiente código simula dos conjuntos de valores a partir de una distribución uniforme discreta sobre $\{1,2,3\}$, con tamaño 500 y 1000, respectivamente, y grafica los dos histogramas. Estos dos histogramas se muestran en la Figura 1.3, donde podemos observar que las frecuencias de los valores parecen ser constantes. Especialmente cuando el tamaño es grande, no hay algún valor con una frecuencia muy grande o muy pequeña con respecto a otros valores.
+\newpage
+\begin{verbatim}
+> set.seed(123)
+> n<-c(500,1000)
+> theta<-3
+> par(mfrow=c(1,2))
+> for(i in 1:length(n)){
++ a<-n[i]
++ hist(sample(theta,n[i],replace=TRUE),main="",xlab=a,
++    ylab="Frecuencia")
++ }
+\end{verbatim}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{random_unif.eps}
+\caption[\textsl{Histograma de valores simulados de una distribución uniforme}]{\textsl{Histograma de valores simulados de una distribución uniforme discreta sobre $\{1,2,3\}$ con tamaño de muestra 500 y 1000.}}
+\end{figure}
+
+Algunas propiedades básicas de una distribución uniforme se muestran a con\-ti\-nua\-ción.
+
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución uniforme discreta sobre el conjunto $\{1,2,\cdots,N\}$, entonces
+    \begin{enumerate}
+        \item $E(X)=\frac{N+1}{2}$.
+        \item $Var(X)=\frac{N^2-1}{12}$.
+        \item $m_X(t)=\sum_{i=1}^N\frac{e^{ti}}{N}$.
+    \end{enumerate}
+\end{Res}
+
+\subsubsection{Distribución Bernoulli\index{Distribución!Bernoulli}}
+La distribución Bernoulli debe su nombre al matemático suizo Jacob Bernoulli (1654-1705). Esta distribución es asociada con experimentos aleatorios que tienen solo dos posibles resultados, los cuales se etiquetan como \emph{éxito} y \emph{fracaso}, donde la probabilidad de obtener \emph{éxito} es $p$, con $0<p<1$. De esta forma una variable aleatoria que toma valor 1 cuando se observa el \emph{éxito} y 0 en el caso de \emph{fracaso} tiene distribución Bernoulli con parámetro $p$. En la vida práctica, se presentan muchos ensayos del tipo Bernoulli; por ejemplo, el éxito o fracaso de un correo electrónico ofreciendo algún servicio o producto. En la teoría del muestreo, la pertenencia de un elemento de la población en la muestra también tiene distribución Bernoulli.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 300 455, scale=0.25]{Bernoulli.jpg}
+\caption{\textsl{Jacob Bernoulli (1654-1705)}}
+\end{figure}
+
+En términos de la función de densidad tenemos la siguiente definición de la distribución Bernoulli .
+
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución Bernoulli con parámetro $p\in (0,1)$ si su función de densidad está dada por:
+\begin{equation}\label{densidad_Bernoulli}
+f_X(x)=p^x(1-p)^{1-x}I_{\{0,1\}}(x),
+\end{equation}
+y se nota como $X\sim Ber(p)$.
+\end{Defi}
+
+Nótese que si $X\sim Ber(p)$, entonces $Pr(X=1)=p$, y $Pr(X=0)=1-p$. Y tenemos las siguientes propiedades para la distribución Bernoulli.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución Bernoulli con parámetro $p$, entonces
+    \begin{enumerate}
+        \item $E(X)=p$.
+        \item $Var(X)=p(1-p)$.
+        \item $m_X(t)=pe^t+1-p$.
+    \end{enumerate}
+\end{Res}
+
+\begin{proof}
+Las anteriores tres expresiones se pueden obtener fácilmente usando la definición de la esperanza para una variable discreta. En particular, $m_X(t)=E(e^{tX})=e^{t}Pr(X=1)+e^{0}Pr(X=0)=pe^t+1-p$.
+\end{proof}
+
+En muchos casos, no se observa un solo ensayo del tipo Bernoulli, sino una series de ensayos. Por ejemplo, una empresa que hace ventas virtuales, no manda el correo de promocionamiento a una sola persona, sino a muchos, y la empresa está interesada en cantidades como si se manda el mismo correo a 30 personas distintas, cuántas ventas exitosas obtendrá; es decir, estamos interesados en la variable definida como \emph{el número de éxitos en $n$ ensayos del tipo Bernoulli}. Este tipo de variables se describen con la distribución binomial que se estudiará a continuación.
+
+\subsubsection{Distribución binomial\index{Distribución!binomial}}
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución binomial con los pa\-rá\-me\-tros $n\in \mathbb{N}$ y $p\in (0,1)$ si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=Pr(X=x)=\binom{n}{x}p^x(1-p)^{n-x}I_{\{0,1,\cdots,n\}}(x),
+\end{equation}
+y se nota como $X\sim Bin(n,p)$.
+\end{Defi}
+
+De acuerdo a lo discutido al final de la sección anterior, una aplicación de la distribución binomial es cuando tenemos un número $n$ de repeticiones independientes de un mismo experimento del tipo Bernoulli, donde la probabilidad del éxito en cada ensayo se denota por $p$, entonces la variable \emph{número de éxitos obtenidos en las $n$ repeticiones} tiene distribución $Bin(n,p)$. Dada la anterior interpretación, podemos ver fácilmente que los valores que toma $X$ son enteros entre 0 y $n$, denotando el valor de 0 la situación donde en todos los ensayos se obtuvo como resultado \emph{fracaso}, y el valor de $n$ cuando todos los ensayos tuvieron como resultado \emph{éxito}. En la Figura 1.5, se muestra la función de densidad de una distribución $Bin(10,0.35)$, donde se observa que a diferencia de la distribución uniforme discreta, la distribución binomial tiene un valor que tiene mayor probabilidad que otros, digamos $x_0$, y a medida que se aleja de $x_0$, la probabilidad disminuye, aunque no de la forma simétrica.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{densidad_binomial.eps}
+\caption{\textsl{Función de densidad de una distribución $Bin(10,0.35)$.}}
+\end{figure}
+
+Esta distribución tiene dos parámetros: $n$ y $p$. Sin embargo, en muchas aplicaciones en la vida práctica el número de repeticiones $n$ es conocido, y la distribución dependerá sólo del valor $p$ que sería el parámetro de la distribución con espacio paramétrico $\bTheta=(0,1)$.
+
+Algunas propiedades de la distribución binomial se enuncian a continuación.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución binomial con pa\-rá\-me\-tros $n$ y $p$, entonces
+    \begin{enumerate}
+        \item $E(X)=np$.
+        \item $Var(X)=np(1-p)$.
+        \item $m_X(t)=(pe^t+1-p)^n$.
+    \end{enumerate}
+\end{Res}
+\begin{proof}
+Se deja como ejercicio (Ejercicio 1.4).
+\end{proof}
+
+\textbf{Observación:} el lector puede verificar fácilmente que la distribución Bernoulli es un caso particular de la distribución binomial cuando $n=1$. Y el Resultado 1.1.2 también se puede obtener del anterior resultado con $n=1$. También podemos ver que en una distribución binomial, el valor más probable está cercano de la esperanza de la distribución; por ejemplo, en la distribución $Bin(10,0.35)$, la esperanza está dada por 3.5, mientras que en la Figura 1.5 se observa que el valor más probable es 3. De allí podemos sacar conclusiones muy sencillas sin mayores cálculos: por ejemplo, la empresa de ventas virtuales sabe por experiencia que la probabilidad de obtener una venta exitosa con un correo enviado es del 0.04, entonces si envía 200 correos, lo más probable es que obtenga aproximadamente $0.04*200=8$ ventas.
+
+La generación de observaciones provenientes de una distribución binomial puede realizarse mediante el comando \verb"rbinom"; de esta manera, si queremos simular 100 va\-lores provenientes de una distribución $Bin(10,0.35)$, podemos usar el siguiente código \verb"rbinom(1000,10,0.35)". El histograma de un conjunto de datos simulados con esta instrucción está dado en la Figura 1.6, donde se observa un comportamiento muy similar a la función de densidad teórica dada en la Figura 1.5.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{hist_binomial.eps}
+\caption{\textsl{Histograma de un conjunto de datos provenientes de $Bin(10,0.35)$.}}
+\end{figure}
+
+
+Usando la función generadora de momentos del Resultado 1.1.3, podemos establecer el siguiente resultado que ilustra la relación entre las distribuciones Bernoulli y binomial.
+
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_n$ variables aleatorias independientes e idénticamente distribuidas con distribución Bernoulli con parámetro $p$,
+entonces la variable $\sum_{i=1}^nX_i$ tiene distribución $Bin(n,p)$.
+\end{Res}
+\newpage
+\begin{proof}
+La demostración radica en el hecho de que la función generadora de momentos caracteriza la distribución probabilística, entonces basta demostrar que la función generadora de momentos de $\sum_{i=1}^nX_i$ es la de una distribución $Bin(n,p)$. Tenemos lo siguiente:
+\begin{align*}
+m_{\sum X_i}(t)=E(e^{\sum tX_i})&=E\left(\prod_{i=1}^ne^{tX_i}\right)\\
+               &=\prod_{i=1}^nE(e^{tX_i})\ \ \ \ (\text{por independencia})\\
+               &=\prod_{i=1}^n(pe^t+1-p)\ \ \ \ (\text{definición de $m_{X_i}(t)$})\\
+               &=(pe^t+1-p)^n.
+\end{align*}
+Y el resultado queda demostrado.
+\end{proof}
+
+\subsubsection{Distribución hipergeométrica\index{Distribución!hipergeométrica}}
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución hipergeométrica con parámetros $n$, $R$ y $N$ si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=Pr(X=x)=\frac{\binom{R}{x}\binom{N-R}{n-x}}{\binom{N}{n}},
+\end{equation}
+para $x$ entero entre $\max(n-N+R,0)$ y $\min(R,n)$, y se nota como $X\sim Hg(n,R,N)$.
+\end{Defi}
+
+Una variable con distribución hipergeométrica se da cuando se desea extraer $n$ unidades de un conjunto de $N$ objetos en total, que se pueden dividir en dos grupos: el primero de $R$ unidades y el segundo de $N-R$. Entonces la variable definida como el número de unidades extraídas del primer grupo tiene distribución hipergeométrica con parámetros $n$, $R$ y $N$. Suponga que se desea extraer 6 estudiantes de 15 en total, donde 10 son hombres y 5 son mujeres; la variable $X$ definida como \emph{el número de estudiantes hombres seleccionados} tiene distribución $Hg(6,10,15)$. Nótese que $X$ solo toma valores entre 1 y 6, puesto que al seleccionar 6 estudiantes, a lo más 5 mujeres pueden quedar en la muestra, es decir, por lo menos estarán en la muestra. En la Figura 1.7, se muestra la función de densidad para esta distribución.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.45]{hipergeometrica.eps}
+\caption{\textsl{Función de densidad de una distribución $Hg(6,10,15)$.}}
+\end{figure}
+
+Algunas propiedades de la distribución hipergeométrica se enuncian a continuación.
+
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución hipergeométrica con parámetros $n$, $R$ y $N$, entonces
+    \begin{enumerate}
+        \item $E(X)=\frac{nR}{N}$.
+        \item $Var(X)=\frac{nR(N-R)(N-n)}{N^2(N-1)}$.
+    \end{enumerate}
+\end{Res}
+
+El anterior resultado no incluye la función generadora de momentos, pues éste no ha resultado ser útil en la teoría relacionada con la distribución hipergeométrica.
+
+La distribución hipergeométrica también es útil en la teoría de muestreo, tal como ilustran \citeasnoun{Tille}, al considerar una región agricultural que consiste en $N=2010$ fincas de donde se desea extraer una muestra aleatoria simple sin reemplazo de tamaño $n=100$. Nótese que cada elemento de la población tiene la misma probabilidad de pertenecer a la muestra y puede ser seleccionado a lo más una vez. Suponga que adicionalmente se dispone la información sobre el área total cultivada de cada finca, de donde se sabe que en la población total existen 1580 fincas de menos de 160 hectáreas (subgrupo 1) y 430 de más de 160 hectáreas (subgrupo 2). Aunque el tamaño muestral $n$ está fijo, el número de fincas del subgrupo 1 seleccionadas denotado por $n_1$ es aleatorio y sigue una distribución $Hg(100,1580,2010)$; también el número de fincas del subgrupo 2 seleccionadas $n_2$ sigue una distribución hipergeométrica $Hg(100,430,2010)$.
+
+Usando el resultado anterior, podemos obtener que $E(n_1)=100\times1580/2010=78.6$, esto es, se espera seleccionar 78 o 79 fincas del subgrupo 1.
+
+Otro uso de la distribución hipergeométrica es el problema de captura-recaptura, donde se necesita estimar el tamaño de una población de interés. Para ello, se identifica un número $R$ menor que $N$ de individuos, luego se deja que estos $R$ individuos se mezclen bien con el resto de la población. Después de esto, se selecciona $n$ individuos de la mezcla homogénea, y se cuenta el número, $x$, de individuos marcados que quedaron seleccionados. Dado que la población estaba homogénea al momento de la selección, podemos pensar que las proporciones de objetos marcados en la muestra y en la población deben ser similares, esto es,
+
+\newpage
+
+\begin{equation}\label{captura}
+\frac{x}{n}\approx\frac{R}{N},
+\end{equation}
+
+de donde se tiene que $N\approx nR/x$. Para una ilustración de este escenario, ver Figura 1.8. Otra aplicación de la distribución hipergeométrica es cuando se desea estimar el tamaño de un subgrupo de una población conocida, el procedimiento es el mismo de la captura recaptura, y se tiene la relación de (\ref{captura}), de donde se tiene que $R\approx xN/n$. Suponga que en una ciudad existen 2396 empresas que pueden clasificar en empresas grandes, medianas o pequeñas según el número de empleados. Si en una muestra aleatoria simple sin reemplazos de tamaño 200 se encuentran 28 empresas grandes, podemos estimar el número total de empresas grandes en la población total como $28*2396/200\approx335$ empresas grandes. Más detalles sobre la estimación en las anteriores situaciones se describen en el siguiente capítulo.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1400 899, scale=0.14]{Captura_Recaptura.jpg}
+\caption{\textsl{Ilustración del problema de captura recaptura.}}
+\end{figure}
+
+Nótese que un experimento del tipo hipergeométrico está muy relacionado con un experimento Bernoulli, puesto que en la $i$-ésima extracción para $i=1,\cdots,n$, podemos definir $X_i$ como 1 si el resultado es uno de los $R$ objetos y 0 si no. De esta forma, tenemos $n$ variables con distribución Bernoulli, y la variable $Hg(n,R,N)$ viene siendo la variable $X=X_1+\cdots+X_n$. Aunque las variables $X_1$, $\cdots$, $X_n$ son del tipo Bernoulli, no podemos afirmar que $X$ tiene distribución binomial, puesto que dado el mecanismo de selección, estas $n$ variables no son independientes. Sin embargo, bajo algunas condiciones, sí podemos afirmar que una distribución hipergeométrica puede ser aproximada como una distribución binomial, tal como lo afirma el siguiente resultado.
+
+\begin{Res}
+Dada una variable aleatoria $X$ con distribución $Hg(n,R,N)$, si se tiene que $R/N\rightarrow p$, con $0<p<1$ cuando $R,N\rightarrow\infty$, entonces, la función de densidad de $X$ tiende a la función de densidad de una distribución $Bin(n,p)$.
+\end{Res}
+
+Para estudiar la convergencia enunciada en el anterior resultado, se calculó la función de densidad de cuatro distribuciones hipergeométricas con diferentes valores de $R$ y $N$, y las respectivas distribución $Bin(n,R/N)$. El código de R es como sigue y la gráfica arrojada se muestra en la Figura 1.9. Podemos observar de la gráfica resultante que la aproximación por medio de la distribución binomial puede ser muy adecuada para valores grandes de $R$ y $N$.
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{hiper_binomial.eps}
+\caption[\textsl{Aproximación de la distribución hipergeométrica mediante la binomial}]{\textsl{Ilustración de la aproximación de la distribución hipergeométrica mediante la distribución binomial. (Línea roja indica la correspondiente distribución binomial)}}
+\end{figure}
+
+\begin{verbatim}
+> Hg<-function(x,n,R,N){
++ x<-c(max(0,n-N+R):min(R,n))
++ res<-rePr(NA,length(x))
++ for(i in 1:length(x)){
++ res[i]<-choose(R,x[i])*choose(N-R,n-x[i])/choose(N,n)}
++ return(res)
++ }
+>
+> par(mfrow=c(2,2))
+>
+> plot(Hg(x,30,20,50),type="h",main="Hg(30,20,50)",xlab="x",
++  ylab="f(x)")
+> lines(dbinom(x,n,20/50),col=2)
+>
+> plot(Hg(x,30,50,80),type="h",main="Hg(30,50,80)",xlab="x",
++  ylab="f(x)")
+> lines(dbinom(x,n,50/80),col=2)
+> plot(Hg(x,30,100,200),type="h",main="Hg(30,100,200)",xlab="x",
++  ylab="f(x)")
+> lines(dbinom(x,n,100/200),col=2)
+>
+> plot(Hg(x,30,300,600),type="h",main="Hg(30,300,600)",xlab="x",
++  ylab="f(x)")
+> lines(dbinom(x,n,300/600),col=2)
+\end{verbatim}
+
+Volviendo al problema de la selección de una muestra con $n=100$ de fincas que se dividen en dos grupos, podemos aproximar la variable aleatoria $n_1$ con una distribución $Bin(100,1580/2010)$, y de esta forma calcular probabilidades acerca de los posibles valores de $n_1$.
+
+\subsubsection{Distribución Poisson\index{Distribución!Poisson}}
+La distribución Poisson debe su nombre al francés Siméon-Denis Poisson (1781-1840), quien descubrió esta distribución en el año 1838, cuando la usó para describir el número de ocurrencias de algún evento durante un intervalo de tiempo de longitud dada. Como de costumbre, damos la definición de esta distribución en términos de la función de densidad.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 511 599, scale=0.27]{Poisson.jpg}
+\caption{\textsl{Siméon-Denis Poisson (1781-1840)}}
+\end{figure}
+
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución Poisson con parámetros $\lambda>0$ si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=Pr(X=x)=\frac{e^{-\lambda}\lambda^x}{x!}I_{\{0,1,\cdots\}}(x)
+\end{equation}
+y se nota como $X\sim Pois(\lambda)$.
+\end{Defi}
+
+La función de densidad de una distribución Poisson presenta un pico en valores cercanos al parámetro $\lambda$. En la Figura 1.11, se ilustra la densidad de una distribución $Pois(5.5)$, donde se observa que el valor con mayor probabilidad corresponde al valor 5, y a medida que el valor de $x$ se aleja de 5, las probabilidades disminuyen.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{densidad_poisson.eps}
+\caption{\textsl{Función de densidad de una distribución $Pois(5)$.}}
+\end{figure}
+
+Nótese que una variable con distribución Poisson puede tomar cualquier valor entero no negativo, y por esta razón, es usada frecuentemente para describir datos de conteo. Cuando en la práctica se presentan un conjunto de valores que son conteos, debe tener en cuenta la diferencia entre las distribuciones binomial, hipergeométrica y Poisson. En primer lugar, los valores que toma una variable con distribución Poisson no debe tener un límite superior, es decir, puede ser cualquier entero positivo. Por lo tanto, contextos donde la variable en cuestión no puede ser más grande que algún valor no deben ser considerados como una variable Poisson. En segundo lugar, tanto la distribución binomial como la hipergeométrica, la variable puede ser vista como un número de éxito obtenido en una sucesión de ensayos, mientras que la distribución Poisson carece de esta interpretación. De esta forma, una variable que describe, por ejemplo, número de accidentes automovilísticos en una determinada localidad, número de transacciones en una entidad durante diez minutos, o en general, número de eventos ocurridos en un punto geográfico y/o en un determinado rango del tiempo puede ser vista como una variable con distribución Poisson.
+
+Por otro lado, aunque una variable con distribución Poisson solo toma valores enteros, el parámetro de la distribución puede ser cualquier número real positivo, esto es, el espacio paramétrico de la distribución es $\bTheta=(0,\infty)$.
+
+\newpage
+
+Ahora bien cuando no se puede conocer la procedencia de un conjunto de los datos, podemos utilizar el histograma de éstos para identificar la distribución de donde provienen, puesto que el histograma debe ser similar a la densidad teórica de la distribución. Considere el siguiente ejercicio: en R, la generación de números aleatorios puede ser llevada a cabo usando el comando \verb"rpois". En la Figura 1.12, se muestra el histograma de 300 datos provenientes de la distribución $Pois(5.5)$ generados usando la instrucción \verb"rpois(300,5.5)". Podemos observar que el histograma tiene un comportamiento muy similar a la función de densidad teórica de la distribución, presentando mayor frecuencia en el valor 5 y comportamiento decreciente para valores alejados de 5.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{hist_poisson.eps}
+\caption{\textsl{Histograma de un conjunto de datos provenientes de $Pois(5.5)$.}}
+\end{figure}
+
+Algunas propiedades de la distribución Poisson se enuncian a continuación:
+
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución Poisson con parámetro $\lambda$, entonces
+    \begin{enumerate}
+        \item $E(X)=\lambda$.
+        \item $Var(X)=\lambda$.
+        \item $m_X(t)=\exp\{\lambda(e^t-1)\}$.
+    \end{enumerate}
+\end{Res}
+
+\begin{proof}
+La demostración del anterior resultado se deja como ejercicio (Ejercicio 1.6) y consiste en encontrar la función generadora de momentos, $m_X(t)$, usando directamente su definición y la expansión de Tayler de $e^u$ dada por $e^u=\sum_{i=0}^{\infty}\frac{u^i}{i!}$. Una vez encontrada $m_X(t)$, se encuentra la esperanza y la varianza de manera habitual.
+\end{proof}
+
+El anterior resultado, a parte de proveernos propiedades de la distribución Poisson, también nos brinda una herramienta a la hora de identificar la distribución de datos cuya procedencia no se conoce, puesto que de acuerdo al resultado anterior, si un conjunto de datos proviene de la distribución Poisson, entonces el promedio debe ser cercano a la varianza; más aún, el promedio y la varianza deben ser cercanos al parámetro de la distribución. En la práctica, una distribución que puede ser confundida con la distribución Poisson es la distribución binomial, puesto que ambas toman valores enteros positivos, pero en la distribución Binomial, la varianza teórica está dada por $np(1-p)$, la cual es siempre menor que la esperanza $np$, situación que no ocurre si se tratara de una distribución Poisson.
+
+Para corroborar la anterior afirmación en la práctica, se simularon muestras de tamaño 10, 30, 50, 100, 300, 500 y 1000 que provienen de la distribución $Pois(5)$ y $Bin(20,0.25)$, y en cada muestra se calculó el promedio y la varianza, el código en R es como sigue, y tiene como resultado la Figura 1.13, donde podemos observar que en las muestras con distribución Poisson, la varianza muestral se asemeja al promedio muestral, mientras que en las muestras con distribución binomial, la varianza siempre estuvo por debajo del promedio con una diferencia considerable, corroborando las propiedades teóricas. De lo anterior, podemos concluir que en un conjunto de datos, si la varianza es muy similar al promedio, hay más evidencia a favor de la distribución Poisson que la binomial; mientras que si la varianza es considerablemente menor que el promedio, se puede decir que la distribución binomial ajusta mejor a los datos\footnote{En otras distribuciones como la distribución binomial negativa la varianza es más grande que la esperanza, y se denomina este fenómeno como la sobredispersión.}.
+
+\begin{verbatim}
+> set.seed(1234)
+>
+> n<-c(10,30,50,100,300,500,1000)
+> mp<-matrix(NA)
+> vp<-matrix(NA)
+>
+> for(i in 1:length(n)){
++ a<-rpois(n[i],5)
++ mp[i]<-mean(a)
++ vp[i]<-var(a)
++ }
+>
+> #####################
+> mb<-matrix(NA)
+> vb<-matrix(NA)
+>
+> for(i in 1:length(n)){
++ b<-rbinom(n[i],20,5/20)
++ mb[i]<-mean(b)
++ vb[i]<-var(b)
++ }
+>
+> par(mfrow=c(2,1))
+>
+> plot(mp,type="b",ylim=c(0,7),ylab="",xaxt="n",xlab="n",
++  main="Poisson(5)")
+> lines(vp,type="b", pch=4)
+> axis(1,1:length(n),n)
+> legend("bottomright",c("Promedio","Varianza"), pch=c(1,4),bty="n")
+>
+> plot(mb,type="b",ylim=c(0,7),ylab="",xaxt="n",xlab="n",
++  main="Binomial(20,0.25)")
+> lines(vb,type="b", pch=4)
+> axis(1,1:length(n),n)
+> legend("bottomright",c("Promedio","Varianza"), pch=c(1,4),bty="n")
+\end{verbatim}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.7]{poisson_binomial.eps}
+\caption[\textsl{Media y varianza de muestras de $Pois(5.5)$ y $Bin(20,0.25)$}]{\textsl{Promedio y varianza de muestras provenientes de distribuciones $Pois(5.5)$ y $Bin(20,0.25)$.}}
+\end{figure}
+
+\newpage
+
+Como se mencionaba anteriormente, en la práctica, si no se conoce la procedencia de los datos, sino solo los valores, unos datos provenientes de la distribución Poisson podrían confundirse con la distribución binomial. El siguiente resultado nos plantea una relación entre estas dos distribuciones bajo algunas circunstancias especiales.
+
+\begin{Res}
+Considera $n$ eventos del tipo Bernoulli, donde $p$ denota la proba\-bi\-li\-dad del éxito de cada uno de los $n$ eventos. Si el valor de $p$ es pequeño y $np\rightarrow\lambda>0$ cuando $n\rightarrow\infty$, entonces la variable $X$ con distribución $Bin(n,p)$ se distribuye aproximadamente con distribución $Pois(\lambda)$.
+\end{Res}
+
+\begin{proof}
+\citeasnoun[p. 114]{Liliana}.
+\end{proof}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.75]{binomial_poisson.eps}
+\caption[\textsl{Aproximación de la distribución Poisson mediante la binomial}]{\textsl{Ilustración de la aproximación de la distribución Poisson mediante la distribución binomial del Resultado 1.1.8. (La línea gris indica la correspondiente distribución Poisson)}}
+\end{figure}
+
+En el anterior resultado, existen dos condiciones para garantizar la convergencia, la probabilidad de éxito en cada ensayo $p$ debe ser pequeña y el número de ensayos $n$ debe ser grande. Para hacerse una idea sobre qué tan importantes son estas dos condiciones, se elaboró la Figura 1.14, la cual ilustra funciones de densidad de distribución binomial con diferentes valores de $n$ y de $p$, y también la correspondiente distribución Poisson. Se observa que efectivamente, a medida que aumenta el valor de $p$, la aproximación se torna cada vez más mala, sin importar el tamaño muestral $n$. Por otro lado, se observa que la condición de que $p$ sea pequeña es más importante que la condición de que $n$ sea grande, puesto que para la distribución $Bin(10,0.2)$, aunque $n$ sea pequeña, la aproximación sigue siendo buena.
+
+Ahora, aunque en la Figura 1.14 se observó que cuando $p$ es pequeña, la aproximación por la distribución Poisson resulta no adecuada, podemos transformar a una variable $X\sim Bin(n,p)$ con $p$ grande para que siga siendo la válida la aproximación. En este caso, es fácil ver que la variable $Y=n-X\sim Bin(n,1-p)$, si $p$ es grande, $1-p$ es pequeño, entonces para calcular $f_X(x)=Pr(X=x)$, tenemos que ésta es igual a $Pr(Y=n-x)$, y utilizando la distribución Poisson para aproximar la distribución de $Y$ tenemos que
+\begin{equation*}
+Pr(X=x)=Pr(Y=n-x)\approx \frac{e^{-\lambda}\lambda^{n-x}}{(n-x)!},
+\end{equation*}
+
+con $\lambda=n(1-p)$. En la Figura 1.15, se ilustra la bondad de la anterior aproximación para densidades de la distribución binomial con distintos valores de $p$ y $n$, se observa que la aproximación es bastante buena para valores grandes de $p$, mientras que cuando $p$ toma un valor cercano al 0.5, la anterior aproximación es muy similar a la presentada en el Resultado 1.1.8.
+
+Una propiedad interesante de la distribución Poisson es el hecho de que la suma de variables independientes con distribución Poisson sigue teniendo la distribución Poisson. Lo anterior lo afirma el siguiente resultado.
+
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_n$ variables aleatorias independientes con distribución $Pois(\lambda_i)$ para $i=1,\cdots,n$, entonces la variable $\sum_{i=1}^nX_i$ tiene distribución $Pois(\sum_{i=1}^n\lambda_i)$.
+\end{Res}
+\begin{proof}
+La demostración es análoga a la demostración del Resultado 1.1.4 y se deja como ejercicio (Ejercicio 1.7).
+\end{proof}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.75]{binomial_poisson1.eps}
+\caption[\textsl{Aproximación de la distribución Poisson mediante la binomial}]{\textsl{Ilustración de la aproximación de la distribución Poisson mediante la distribución binomial cuando $p$ es grande. (La línea gris indica la correspondiente distribución Poisson)}}
+\end{figure}
+
+Suponga que una central telefónica de atención de clientes cuenta con 5 operadores en cada turno, la variable de interés es el número de llamadas que atiende la central durante 5 minutos. Un estudio acerca del rendimiento de los 5 operadores de turno revela que el número de llamadas que atiende en 5 minutos sigue una distribución Poisson con parámetros 2, 3, 2, 4 y 3, respectivamente. Si además los operadores trabajan de forma independiente, entonces el anterior resultado garantiza que el número total de llamadas atendidas en 5 minutos puede ser modelado como una distribución $Pois(14)$, y podemos calcular probabilidades acerca de esta variable de la manera habitual.
+
+\subsection{Distribuciones continuas}
+En esta parte del libro consideraremos las distribuciones continuas, esto es, algunas distribuciones comunes para variables aleatorias continuas.
+
+\subsubsection{Distribución Uniforme Continua\index{Distribución!uniforme continua}}
+
+Una de las distribuciones continuas más simples es la distribución uniforme continua sobre un intervalo $[a,b]$, la cual se caracteriza en que para un subintervalo de $[a,b]$ de longitud fija, una variable con esta distribución tiene la misma probabilidad de ubicarse en cualquiera de estos subintervalos. Por consiguiente, esta distribución es apropiada para situaciones donde para un experimento no hay resultados que son más probables que otros, un aspecto similar a la distribución uniforme discreta. De esta forma, si suponemos que el primer bus puede demorar a lo más 15 minutos para llegar al portal de transporte, y puede llegar en cualquier momento en ese rango, en este caso, la variable definida como el tiempo de llegada del bus tiene una distribución uniforme $[0,15]$. Claramente el límite inferior 0 está dado por el contexto del problema y la naturaleza de la variable.
+
+La definición de esta distribución en términos de la función de densidad está dada a continuación.
+
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución uniforme continua sobre el intervalo $[a,b]$ con $a<b$ si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=\frac{1}{b-a}I_{[a,b]}(x),
+\end{equation}
+y se denotará por $X\sim U[a,b]$.
+\end{Defi}
+
+Análogo a lo discutido en la parte de la distribución uniforme discreta, cuando los datos provienen de la distribución $U[a,b]$, entonces el histograma debe ser plano, similar a la función de densidad teórica. Para observar lo anterior, simulamos dos muestras provenientes de la distribución $U[1,3]$ del tamaño 500 y 1000 usando la instrucción \verb"runif", y graficamos los correspondientes histogramas. El código usado es
+
+\begin{verbatim}
+set.seed(123)
+n<-c(500,1000)
+par(mfrow=c(1,2))
+for(i in 1:length(n)){
+a<-n[i]
+hist(runif(a,1,3),main="",xlab=a,ylab="Frecuencia")
+}
+\end{verbatim}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{random_unif_continua.eps}
+\caption[\textsl{Histograma de valores simulados de una distribución uniforme}]{\textsl{Histograma de valores simulados de una distribución $U[1,3]$ con tamaño de muestra 500 y 1000.}}
+\end{figure}
+
+Y la resultante gráfica está dada en la Figura 1.16, donde se observa que efectivamente no hay algún patrón reconocible en estos histogramas, sino que cada clase tiene aproximadamente la misma frecuencia, características propias de una distribución uniforme continua.
+
+La generación de números aleatorios de una distribución $U[0,1]$ es particularmente importante, puesto que son de utilidad para simular otras distribuciones más complicadas que la distribución uniforme. El procedimiento viene dado por el siguiente resultado tomado de \citeasnoun{Rober-Case}.
+\begin{Res}
+Si $U\sim U(0,1)$ y $F(x)$ es una función de distribución, entonces la función de distribución de la  variable $F^{-}(U)$ está dada por $F$, donde $F^{-}$ denota la función inversa generalizada de $F$ dada por $F^{-}(u)=\inf\{x:\ F(x)\geq u\}$.
+\end{Res}
+\newpage
+El anterior resultado nos indica que si queremos simular $n$ valores a partir de una cierta distribución $F$, se debe, en primer lugar, hallar la función de distribución inversa generalizada\footnote{Cuando la inversa de $F$ existe, ésta coincide con la inversa generalizada.} $F^{-}$, y en segundo lugar, simular $n$ observaciones de la distribución $U(0,1)$ que denotamos por $u_1$, $\cdots$, $u_n$. Finalmente, el anterior resultado garantiza que los valores $F^{-}(u_1)$, $\cdots$, $F^{-}(u_n)$ provienen de la distribución $F$.
+
+Por ejemplo, si queremos simular observaciones de la función de densidad $f(x)=e^{-x}I_{0,\infty}(x)$, esto es, la función de densidad de una distribución $Exp(1)$ que se describirá con mayor detalle más adelante, la función de distribución está dada por $F(x)=1-e^{-x}$, de donde la inversa de esta función está dada por $F^{-}(x)=-\ln(1-x)$, así que podemos simular observaciones usando esta función inversa.
+
+Asimismo, en el software R se disponen las instrucciones para simular observaciones de la mayoría de las distribuciones de probabilidades, y podemos utilizarlos directamente sin tener que recurrir al anterior resultado manualmente. El siguiente comando simula 100 observaciones de la distribución $Exp(1)$ con el Resultado 1.1.10 y usando la instrucción \verb"rexp" incorporado en R. En la Figura 1.17 se observan los histogramas de los valores obtenidos, donde se puede observar la similitud en las estructuras de los datos; por facilidad, usaremos en este libro las instrucciones de R.
+
+\begin{verbatim}
+> set.seed(1234)
+> n<-100
+> u<-runif(100)
+> e<--log(1-u)
+> e1<-rexPr(100,1)
+> par(mfrow=c(1,2))
+> hist(e,ylab="Frecuencia",main="(a)")
+> hist(e1,ylab="Frecuencia",main="(b)")
+\end{verbatim}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.55]{exp_unif.eps}
+\caption[\textsl{Histogramas de datos simulados de la distribución $Exp(1)$}]{\textsl{Histogramas de 100 observaciones simulados de una distribución $Exp(1)$, (a) con el Resultado 1.1.10, (b) con la instrucción rexp.}}
+\end{figure}
+
+Las siguientes propiedades de una distribución uniforme continua se pueden comprobar fácilmente.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución uniforme continua sobre $[a,b]$, entonces
+    \begin{enumerate}
+        \item $E(X)=\frac{a+b}{2}$.
+        \item $Var(X)=\frac{(b-a)^2}{12}$.
+        \item $m_X(t)=\frac{e^{bt}-e^{at}}{(b-a)t}$.
+    \end{enumerate}
+\end{Res}
+
+\begin{proof}
+Se deja como ejercicio (Ejercicio 1.8).
+\end{proof}
+
+\subsubsection{Distribución Gamma\index{Distribución!Gamma}}
+
+La distribución Gamma es una distribución muy importante, puesto que muchas distribuciones de uso común, como la distribución exponencial y la distribución Ji-cuadrado, son casos particulares de esta distribución. La definición de esta distribución en término de la función de densidad de probabilidad está dada por
+
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución Gamma con parámetro de forma $k>0$ y parámetro de escala $\theta>0$ si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=\frac{x^{k-1}e^{-x/\theta}}{\theta^k\Gamma(k)}I_{(0,\infty)}(x),
+\end{equation}
+donde $\Gamma(k)$ es la función Gamma dada por
+\begin{equation}
+\Gamma(k)=\int_{0}^\infty u^{k-1}e^{-u}du.
+\end{equation}
+En este libro, se usará la notación $X\sim Gamma(k,\theta)$.
+\end{Defi}
+
+La distribución Gamma tiene dos parámetros: $k$ que se denomina el parámetro de forma y $\theta$ el de escala. En este caso, el vector de parámetros es $\btheta=(k,\theta)'$ donde el espacio paramétrico está dado por $\bTheta=(0,\infty)\times(0,\infty)$. Pero cuando uno de los dos parámetros es fijo por ejemplo, si $\theta$ es fijo, entonces la distribución tendría un solo parámetro: $k$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.45]{distribucion_gamma.eps}
+\caption{\textsl{Funciones de densidad de la distribución Gamma.}}
+\end{figure}
+
+Nótese que, en primer lugar, una variable con distribución sólo puede tomar valores positivos, y en segundo lugar, la función de densidad no es simétrica puesto que el coeficiente de asimetría es positivo. En la Figura 1.18, se muestran algunas funciones de densidad de la distribución Gamma en las cuales se observa claramente la característica no simétrica.
+
+Los datos del ingreso salarial cuentan con la estructura de la distribución Gamma, puesto que la mayoría de la población tiene ingreso inferior a, por ejemplo, los 500 mil pesos colombianos, y a medida que aumenta el salario, menor número de individuos puede obtener este ingreso. Observe la Figura 1.19 donde se dispone el histograma de datos que denotan el ingreso: nótese que la clase dominante se encuentra alrededor de los 500 mil pesos, y a medida que incrementa el ingreso, menos datos se ubican en ese rango, y además se presenta una cola larga hacia la derecha, las cuales son características propias de una distribución Gamma.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{hist_gamma.eps}
+\caption[\textsl{Histograma de datos del tipo Gamma}]{\textsl{Histograma de un conjunto de 10 mil datos con características de una distribución Gamma.}}
+\end{figure}
+
+Algunas propiedades de la distribución Gamma se enuncian a continuación.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución Gamma con pa\-rá\-me\-tro de forma $k$ y parámetro de escala $\theta$, entonces
+    \begin{enumerate}
+        \item $E(X)=k\theta$.
+        \item $Var(X)=k\theta^2$.
+        \item $m_X(t)=\left(\frac{1}{1-\theta t}\right)^k$ para $t<1/\theta$, y no existe para otros valores de $t$.
+    \end{enumerate}
+\end{Res}
+
+Del anterior resultado, podemos ver que el parámetro de escala $\theta$ se puede escribir como función de la esperanza y la varianza de la distribución como $\theta=Var(X)/E(X)$, y por consiguiente, se tiene que el parámetro de forma se puede escribir como $k=E(X)/\theta=(E(X))^2/Var(X)$. De esta forma, para un conjunto de datos, una vez haya identificado que siguen una distribución Gamma, podemos calcular el promedio y la varianza de los datos y usarlos para tener un acercamiento a los dos parámetros de la distribución como $\theta'=s^2/\bar{x}$ y $k'=\bar{x}^2/s^2$.\footnote{Este concepto se conoce como la estimación de los parámetros que se discutirá en el siguiente capítulo.} El siguiente programa en R simula muestras de diferentes tamaños provenientes de una distribución $Gamma(3,2)$, y en cada una de estas muestras calculan $\theta'$ y $k'$.
+
+\begin{verbatim}
+> set.seed(1234)
+> n<-c(10,30,50,100,300,500,1000)
+> tg<-matrix(NA)
+> kg<-matrix(NA)
+>
+> for(i in 1:length(n)){
++ d<-rgamma(n[i],shape=3,scale=2)
++ tg[i]<-var(d)/mean(d)
++ kg[i]<-mean(d)/tg[i]
++ }
+>
+> par(mfrow=c(2,1))
+> plot(tg,type="b",ylab="",xaxt="n",xlab="n",
++ main="Parámetro de escala")
+> axis(1,1:length(n),n)
+> abline(h=2)
+>
+> plot(kg,type="b",ylab="",xaxt="n",xlab="n",
++ main="Parámetro de forma")
+> axis(1,1:length(n),n)
+> abline(h=3)
+\end{verbatim}
+
+Como resultado del anterior programa, se tiene la Figura 1.20, donde las dos líneas horizontales representan los valores verdaderos de $\theta$ y $k$. Podemos observar que los valores de $\theta'$ y $k'$ se encuentran aproximadamente alrededor de los valores verdaderos, pero a medida que la muestra crece, no se observa mejora alguna.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{est_Gamma.eps}
+\caption[\textsl{Estimación de $k$ y $\theta$ en una distribución Gamma}]{\textsl{Estimación de $k$ y $\theta$ en muestras provenientes de una distribución Gamma de diferentes tamaños.}}
+\end{figure}
+
+La distribución Gamma tiene una buena propiedad que establece que la suma de variables con distribución Gamma puede seguir teniendo la distribución Gamma bajo algunos supuestos. Esta propiedad será útil para algunos desarrollos en los siguiente capítulos, y lo enunciamos en el siguiente resultado.
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_n$ variables aleatorias independientes con distribución Gamma con parámetro de forma $k_i$ y parámetro de escala $\theta$ para $i=1,\cdots,n$, entonces la variable $\sum_{i=1}^nX_i$ tiene distribución Gamma con parámetro de forma $\sum_{i=1}^nk_i$ y parámetro de escala $\theta$.
+\end{Res}
+\begin{proof}
+Análogo a la demostración del Resultado 1.1.4 y se deja como ejercicio (Ejercicio 1.9).
+\end{proof}
+
+Existe otro resultado interesante que liga la distribución Gamma con la distribución Poisson, y nos será de utilidad más adelante.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución $Gamma(k,\theta)$ donde $k$ es un número entero positivo, entonces para todo $x$, se tiene que $P(X\leq x)=P(Y\geq k)$ donde $Y$ es una variable aleatoria con distribución $Pois(x/\theta)$.
+\end{Res}
+
+Podemos verificar de forma numérica la validez del anterior resultado. Sea $X\sim Gamma(2,3.5)$, y $x=4.2$ entonces $Pr(X\leq x)=Pr(X\leq 4.2)$ y se puede calcular con el comando \verb"pgamma(4.2,shape=2,scale=3.5)" y arroja como resultado 0.337. Por otro lado, de acuerdo al resultado anterior, $Y\sim Pois(4.2/3.5)=Pois(1.2)$ y $Pr(Y\geq k)=Pr(Y\geq 2)$, el cual se calcula con el comando \verb"ppois(k,4.2/3.5,lower" \verb".tail=F)+dpois(k,4.2/3.5)", y arroja el mismo resultado 0.337.
+
+De lo anterior observamos que una probabilidad con respecto a una variable con distribución Gamma se puede calcular en términos de una variable Poisson; el recíproco también es cierto. Suponga que $Y\sim Pois(5.3)$, entonces $Pr(Y\geq4)$ se puede calcular con \verb"ppois(4,5.3,lower.tail=F)+dpois(4,5.3)" y da como resultado 0.774. Pero de acuerdo al anterior resultado, esta probabilidad también se puede calcular como $Pr(X\leq x)$ donde $X$ tiene distribución Gamma como parámetro de escala $k=4$, y el parámetro de escala $\theta$ debe satisfacer $x/\theta=5.3$, y de esta ecuación se pueden hallar infinitas soluciones para $x$ y $\theta$; por ejemplo, al tomar $x=1$, tenemos que $\theta=1/5.3$, y así tenemos $Pr(X\leq 1)$ con $X\sim Gamma(4,1/5.3)$. Al calcular esta probabilidad con \verb"pgamma(1,shape=4,scale=1/5.3)" tenemos la misma probabilidad 0.774. El lector puede comprobar que si se hubiera escogido otro valor para $x$, por ejemplo $x=10$, y se halla el valor $\theta=x/5.3$, la probabilidad de $Pr(X\leq 10)$ también es 0.774.
+
+Con lo anterior, vemos que la probabilidad concerniente a una distribución Poisson puede ser calculada en términos de infinitas distribuciones Gamma. En particular si escogemos $\theta=2$, la distribución Gamma se reduce a una distribución $\chi^2$, y tenemos el siguiente resultado que es una consecuencia inmediata del Resultado 1.1.14.
+\begin{Res}
+Si $Y$ es una variable aleatoria con distribución $Pois(\lambda)$, entonces para cualesquieras enteros $y_1$ y $y_2$, se tiene que
+\begin{equation*}
+P(Y\geq y_1)=P(X\leq2\lambda)
+\end{equation*}
+
+donde $X\sim\chi^2_{2y_1}$. Y
+\begin{equation*}
+P(Y\leq y_2)=1-P(Y\geq y_2+1)=1-P(X\leq2\lambda)
+\end{equation*}
+donde $X\sim\chi^2_{2(y_2+1)}$.
+\end{Res}
+
+\subsubsection{Distribución exponencial\index{Distribución!exponencial}}
+
+La distribución exponencial es un caso particular de la distribución Gamma cuando el parámetro de forma $k$ toma el valor 1,  y por consiguiente se puede obtener fácilmente la función de densidad dada a continuación.
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución exponencial con parámetro de escala $\theta>0$ si su función de densidad está dada por:
+\begin{equation}\label{densidad_exp}
+f_X(x)=\frac{1}{\theta}e^{-x/\theta}I_{(0,\infty)}(x),
+\end{equation}
+y en este libro, se usará la notación $X\sim Exp(\theta)$.
+\end{Defi}
+
+Una variable exponencial toma valores en el intervalo $(0,\infty)$, y puede ser utilizada para describir el tiempo necesario para la ocurrencia de algún evento o la vida útil de un componente eléctrico. En la Figura 1.21 se muestra la función de densidad de la distribución exponencial con diferentes valores de $\theta$. En primer lugar, se observa que la función de densidad es siempre decreciente, y por consiguiente, para una variable $X\sim Exp(\theta)$, se tiene que $Pr(t_1<X<t_1+\delta)<Pr(t_2<X<t_2+\delta)$ si $t_1>t_2$. Para ver la interpretación de eso, suponga que $X$ denota la vida útil (en años) de una referencia de lavadora, entonces, como es natural, se afirma que es más probable que la lavadora funcione entre 2 y 3 años que entre 6 y 7 años, esto es, $Pr(6<X<7)<Pr(2<X<3)$, que es una característica reflejada en la función de densidad de una distribución exponencial.
+
+Más aún, suponga que dos tipos de lavadoras, A y B, tienen la vida útil (en años) que puede ser descrita por la distribución $Exp(2)$ y $Exp(5)$, respectivamente. Entonces, por el Resultado 1.1.12, donde provee propiedades de una distribución Gamma, podemos afirmar que las vidas útiles promedio de A y B son 2 y 5 respectivamente, es decir, las lavadoras del tipo B pueden funcionar por más años que los del tipo A. Por tanto, intuitivamente podemos afirmar que la probabilidad de que una lavadora funcione más de 6 años debe ser mayor en las del tipo B que en el tipo A, y recordando que esta probabilidad corresponde al área bajo la función de densidad en el intervalo $(6,\infty)$, podemos observar que la anterior afirmación sí se refleja en la Figura 1.21. Dadas las anteriores observaciones, podemos ver por qué la distribución exponencial es usada para describir este tipo de variables.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{densidad_exponencial.eps}
+\caption{\textsl{Función de densidad de distribuciones $Exp(2)$, $Exp(3)$ y $Exp(5)$.}}
+\end{figure}
+
+Ahora bien aunque muchas veces se ha dicho en la literatura estadística que una variable aleatoria que denota el tiempo puede ser descrita por la distribución exponencial dado que ésta siempre toma valores positivos, característica propia de la variable tiempo, la función de densidad de la distribución exponencial es siempre decreciente, y puede no ser apta para algunas situaciones; por ejemplo, considere una central telefónica que atiende quejas de consumidores. Si se desea estudiar la variable $X$ definida como el tiempo de duración de una llamada hecha por un consumidor, no es natural pensar que la probabilidad de que la llamada dura menos de un minuto sea mayor a la probabilidad de que dura menos de 5 minutos, esto es, puede no suceder que $Pr(X<1)>Pr(X<5)$; en otras palabras, no necesariamente, entre más corta sea la llamada, mayor probabilidad tiene asociada. Y en este caso, la distribución exponencial no resulta adecuada, sino posiblemente una distribución Gamma. Nótese que la distribución exponencial es un caso particular de la distribución Gamma, por consiguiente se pueden obtener fácilmente sus propiedades usando el Resultado 1.1.12.
+
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución exponencial con parámetro $\theta$, entonces
+    \begin{enumerate}
+        \item $E(X)=\theta$.
+        \item $Var(X)=\theta^2$.
+        \item $m_X(t)=\frac{1}{1-\theta t}$ para $t<1/\theta$, y no existe para otros valores de $t$.
+    \end{enumerate}
+\end{Res}
+
+Nótese que la varianza teórica de la distribución es el cuadrado de la esperanza. De esta forma, si un conjunto de datos continuos positivo tiene la varianza aproximadamente igual al promedio al cuadrado, podríamos afirmar que los datos provienen de una distribución exponencial.
+
+
+El siguiente resultado es un caso particular del Resultado 1.1.13 y será de utilidad en los siguientes capítulos.
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_n$ variables aleatorias independientes e idénticamente distribuidas con distribución exponencial con parámetro de escala $\theta$, entonces la variable $\sum_{i=1}^nX_i$ tiene distribución Gamma con parámetro de forma $n$ y parámetro de escala $\theta$.
+\end{Res}
+
+\subsubsection{Distribución Weibull\index{Distribución!Weibull}}
+
+La distribución Weibull debe su nombre al sueco Ernst Hjalmar Waloddi Weibull (1887-1979) y es útil en la rama de la estadística denominada análisis de sobrevivencia donde se estudian variables que denotan el tiempo transcurrido hasta que suceda un evento como fallecimiento de un paciente o falla de algún componente eléctrico.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 472 738, scale=0.2]{Mr_Weibull.jpg}
+\caption{\textsl{Ernst Hjalmar Waloddi Weibull (1887-1979).}}
+\end{figure}
+
+\newpage
+
+La función de densidad de esta distribución se da a continuación.
+
+\begin{Defi}
+Una variable $X$ tiene distribución Weibull con parámetro de forma $k>0$ y parámetro de escala $\theta>0$ si la función de densidad de $X$ está dada por
+\begin{equation}\label{densidad_weibull}
+f_X(x)=\frac{k}{\theta^k}x^{k-1}\exp\left\{-\frac{x^k}{\theta^k}\right\}I_{(0,\infty)}(x).
+\end{equation}
+
+Denotaremos esta distribución con $X\sim Weibull(k,\theta)$.
+\end{Defi}
+
+Nótese que la función de densidad de una distribución Weibull es similar en algunos términos a la de la distribución Gamma. De hecho, cuando el parámetro $k$ toma valor 1, la distribución Weibull se reduce a una distribución Exponencial de media $\theta$. En la Figura 1.23 se muestran algunas funciones de densidad de la distribución Weibull con diferentes valores de $k$ y $\theta$. Podemos observar que la función de densidad de la distribución Weibull(1,1) tiene la misma función de densidad que una distribución exponencial.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{densidad_Weibull.eps}
+\caption[\textsl{Densidad de una distribución Weibull}]{\textsl{Función de densidad de una distribución Weibull con diferentes pa\-rá\-me\-tros.}}
+\end{figure}
+
+Algunas propiedades de la distribución Weibull se dan a continuación.
+
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución $Weibull(k,\theta)$, entonces
+\begin{enumerate}
+  \item $E(X)=\theta\Gamma\left(1+\frac{1}{k}\right)$,
+  \item $Var(X)=\theta^2\left[\Gamma\left(1+\frac{2}{k}\right)-\left(\Gamma\left(1+\frac{1}{k}\right)\right)^2\right]$
+\end{enumerate}
+\end{Res}
+
+
+\subsubsection{Distribución normal\index{Distribución!normal}}
+
+La distribución normal también es llamada la distribución gaussiana, rindiendo ho\-me\-na\-je al matemático alemán Carl Friedrich Gauss (1777-1855). Esta distribución es, sin duda, una de las distribuciones más importantes, y de uso más frecuente en la teoría estadística, puesto que una gran parte de la teoría estadística fue desarrollada inicialmente para variables con esta distribución. Por otra parte, gracias al teorema del límite central, muchas distribuciones ajenas a la normal, incluyendo las variables discretas, pueden ser aproximadas por ésta cuando el tamaño muestral es grande. Para detalles sobre la historia de la distribución normal, consulte a \citeasnoun{normal}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 468 600, scale=0.3]{Gauss.jpg}
+\caption{\textsl{Carl Friedrich Gauss (1777-1855).}}
+\end{figure}
+
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución normal con parámetros $\mu$ y $\sigma^2$ si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x-\mu)^2\right\}I_\mathbb{R}(x),
+\end{equation}
+donde $\sigma>0$ y se nota como $X\sim N(\mu,\sigma^2)$.
+\end{Defi}
+La distribución normal tiene dos parámetros, representado como $\btheta=(\mu,\sigma^2)$ y $\bTheta=\mathbb{R}\times(0,\infty)$. Cada uno de los dos parámetros de la distribución normal determina un aspecto específico de la distribución. En primer lugar, se puede ver fácilmente que para cualquier valor $x$, se tiene que $f(\mu+x)=f(\mu-x)$, de donde se deduce que la función de densidad es simétrica con respecto a $\mu$. En segundo lugar, la función de densidad toma el valor máximo en el punto $x=\mu$, y el máximo es igual a $(2\pi\sigma^2)^{-1/2}$, de donde se tiene que entre más pequeño sea el valor de $\sigma^2$, el área bajo la función de densidad está más concentrada alrededor del valor $\mu$. En la Figura 1.25, se muestran algunas funciones de densidad para diferentes valores de $\mu$ y $\sigma^2$, donde se puede confirmar lo comentado anteriormente.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{densidad_normal.eps}
+\caption[\textsl{Densidad de una distribución normal}]{\textsl{Función de densidad de una distribución normal con diferentes parámetros.}}
+\end{figure}
+
+Ahora, haciendo una analogía entre el histograma de un conjunto de datos y una función de densidad, podemos sospechar que en primer lugar, si los datos provienen de una distribución normal, entonces el valor $\mu$ debe ubicarse alrededor del punto centro de los datos; y en segundo lugar, el valor $\sigma^2$ está asociado con la variación de los datos, ya que entre más pequeña sea ésta, más concentrados estarán los datos. El siguiente resultado confirma esta sospecha.
+
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución normal con pa\-rá\-me\-tros $\mu$ y $\sigma^2$, entonces
+    \begin{enumerate}
+        \item $E(X)=\mu$.
+        \item $Var(X)=\sigma^2$.
+        \item $m_X(t)=\exp\left\{\mu t+\frac{1}{2}\sigma^2t^2\right\}$.
+    \end{enumerate}
+\end{Res}
+
+En la vida práctica, para que un conjunto de datos tenga distribución normal, una herramienta básica es examinar si el histograma de los datos tiene la forma llamada campana de Gauss, esto es, características similares a la función de densidad presentada en la Figura 1.25. La mayor frecuencia debe estar asociada con la clase media, y a medida que las clases se alejan de la clase media, la frecuencia debe disminuir simétricamente. En la Figura 1.26 se muestra el histograma de varios conjuntos de datos simulados usando la función \verb"rnorm" de R. Obsérvese que la característica de la distribución normal es muy preeminente en muestras grandes, mientras que en muestras pequeñas, la detección de la normalidad mediante el histograma puede ser inadecuada.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{hist_normal.eps}
+\caption[\textsl{Histograma de datos provenientes de una distribución normal}]{\textsl{Histograma de grupos de datos provenientes de la distribución normal con diferentes tamaños muestrales.}}
+\end{figure}
+
+Una propiedad muy particular de la distribución normal es que la distribución se conserva para transformaciones lineales, y se enuncia a continuación.
+
+\begin{Res}
+Si $X\sim N(\mu,\sigma^2)$, y $\alpha$, $\beta$ son constantes, entonces la variable $\alpha X+\beta$ tiene distribución $N(\alpha\mu+\beta,\alpha^2\sigma^2)$.
+\end{Res}
+\begin{proof} Se usará el hecho de que la función generadora de momentos ca\-ra\-cte\-riza la distribución probabilística. Se tiene que:
+\newpage
+\begin{align*}
+m_{\alpha X+\beta}(t)&=E(e^{t(\alpha X+\beta)})\\
+                     &=E(e^{\alpha tX})e^{\beta t}\\
+                     &=m_X(\alpha t)e^{\beta t}\\
+                     &=e^{\mu\alpha t+\sigma^2\alpha^2t/2}e^{\beta t}\\
+                     &=e^{(\alpha\mu+\beta)t+\sigma^2\alpha^2t/2}
+\end{align*}
+la cual es la función generadora de momentos de una distribución $N(\alpha\mu+\beta,\alpha^2\sigma^2)$, y el resultado queda demostrado.
+\end{proof}
+
+Como consecuencia inmediata del anterior resultado, se define la estandarización que es fundamental en la teoría relacionada con las distribuciones normales.
+
+\begin{Defi}
+Si $X\sim N(\mu,\sigma^2)$ con $\mu=0$ y $\sigma=1$, entonces se dice que $X$ tiene distribución normal estándar\index{Distribución!normal estándar} y usualmente se denota por $Z$.
+\end{Defi}
+
+Utilizando el Resultado 1.1.20, podemos comprobar que una variable $X\sim N(\mu,\sigma^2)$ puede ser transformada a una variable $Z$ mediante una transformación lineal. Suponga que esta transformación se denota por $\alpha X+\beta$, entonces encontrar los valores de $\alpha$ y $\beta$ para los cuales la variable transformada tenga distribución normal estándar equivale a solucionar las siguientes igualdades para $\alpha$ y $\beta$
+
+\begin{equation*}
+\begin{cases}
+\alpha\mu+\beta=0\\
+\alpha^2\sigma^2=1
+\end{cases}
+\end{equation*}
+
+de donde se tienen dos soluciones $\alpha_1=1/\sigma$, $\beta_1=-\mu/\sigma$ y $\alpha_2=-1/\sigma$, $\beta_2=\mu/\sigma$. Y de esta forma, hemos encontrado dos variables $Z_1=\frac{X-\mu}{\sigma}$ y $Z_2=\frac{\mu-X}{\sigma}$ con la distribución normal estándar. Sin embargo, se acostumbra a utilizar la transformación dada por la primera solución, y esta transformación se conoce como la estandarización, y la variable $Z=Z_1=\frac{X-\mu}{\sigma}$ se conoce como la variable $X$ estandarizada.
+
+Análoga a las distribuciones Poisson, Gamma, la distribución normal también se conserva para suma de variables normales independientes, tal como lo muestra el siguiente resultado.
+
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_n$ variables aleatorias independientes, donde $X_i\sim N(\mu_i,\sigma^2_i)$ con $i=1,\cdots,n$, entonces la variable $\sum_{i=1}^nX_i\sim N(\sum_{i=1}^n\mu_i,\sum_{i=1}^n\sigma_i^2)$.
+\end{Res}
+\begin{proof}
+Se deja como ejercicio (Ejercicio 1.13).
+\end{proof}
+
+Combinando los resultados 1.1.20 y 1.1.21, se puede establecer que el promedio de variables independientes con la misma distribución normal sigue teniendo distribución normal, y lo enunciamos a continuación.
+
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_n$ variables aleatorias independientes e idénticamente distribuidas con distribución $N(\mu,\sigma^2)$, entonces la variable $\bar{X}=\sum_{i=1}^nX_i/n$ tiene distribución $N(\mu,\sigma^2/n)$.
+\end{Res}
+
+\begin{proof}
+Se deja como ejercicio (Ejercicio 1.14).
+\end{proof}
+
+Una de las razones por las que la distribución normal es de las más importantes en la teoría estadística radica en el hecho de que en un conjunto de variables independientes e idénticamente distribuidas no necesariamente con distribución normal, si el número de variables es grande, entonces la distribución del promedio de estas variables puede ser aproximada por la de una distribución normal. Lo anterior se conoce como el famoso <<teorema del límite Central>>\index{Teorema!del límite central} y se enuncia a continuación.
+
+\begin{Res}
+Sea $X_1$, $X_2$, $\cdots$, una sucesión de variables aleatorias in\-de\-pen\-dien\-tes e idénticamente distribuidas, suponga que las funciones generadoras de momentos $m_{X_i}(t)$ existen en una vecindad de 0, y la esperanza común se denota por $\mu$ y va\-rian\-za común se denota por $\sigma^2>0$, y se define $\bar{X}_{n}$ como $\sum_{i=1}^nX_i/n$, y la función de distribución de la variable $\sqrt{n}(\bar{X}_n-\mu)/\sigma$ se denota por $F_n(x)$, entonces se tiene que
+\begin{equation*}
+\lim_{n\rightarrow\infty}F_n(x)=\int_{-\infty}^x\dfrac{1}{\sqrt{2\pi}}e^{-y^2/2}dy,
+\end{equation*}
+es decir, la distribución límite de $\sqrt{n}(\bar{X}_n-\mu)/\sigma$ corresponde a la distribución normal estándar.
+\end{Res}
+
+\begin{proof}
+Se probará que la función generadora de momentos de la variable $\sqrt{n}(\bar{X}_n-\mu)/\sigma$ converge a la función $e^{t^2/2}$ que corresponde a la función generadora de momentos de una distribución $N(0,1)$. Para eso primero se define $Z_i$ como la variable $X_i$ estandarizada, entonces $Z_i\sim N(0,1)$ para todo $i=1,2,\cdots$. Y podemos comprobar fácilmente que $\sqrt{n}(\bar{X}_n-\mu)/\sigma=\sum_{i=1}^nZ_i/\sqrt{n}$, entonces tenemos
+\begin{align*}
+m_{\sqrt{n}(\bar{X}_n-\mu)/\sigma}(t)&=m_{\sum_{i=1}^nZ_i/\sqrt{n}}(t)\\
+&=\prod_{i=1}^nm_{Z_i}\left(\frac{t}{\sqrt{n}}\right)\ \ \ \ \ \ \text{por la independencia}\\
+&=\left(m_Z\left(\frac{t}{\sqrt{n}}\right)\right)^n,
+\end{align*}
+donde $Z$ denota una variable con distribución normal estándar. Ahora, usamos la expansión de Taylor para la función $m_Z\left(\frac{t}{\sqrt{n}}\right)$ alrededor del punto 0. Para eso recordamos que si $g(x)$ es una función derivable de cualquier orden, entonces se puede expandir $g(x)$ alrededor de un punto $a$ como
+\begin{equation}\label{Taylor_g}
+g(x)=\sum_{i=0}^\infty\frac{g^{(i)}(a)(x-a)^i}{i!},
+\end{equation}
+donde $g^{(i)}(a)$ es la $i$-ésima derivada de $g(x)$ evaluada en $x=a$ y $g^{(0)}(a)=g(a)$.
+
+De esta forma, tenemos que
+\begin{align*}
+m_Z\left(\frac{t}{\sqrt{n}}\right)&=\sum_{i=0}^\infty \frac{m_Z^{(i)}(0)\left(\frac{t}{\sqrt{n}}\right)^i}{i!}\\
+&=m_Z(0)+m_Z'(0)\left(\frac{t}{\sqrt{n}}\right)+\frac{1}{2}m_Z''(0)\left(\frac{t}{\sqrt{n}}\right)^2+\sum_{i=3}^\infty \frac{m_Z^{(i)}(0)\left(\frac{t}{\sqrt{n}}\right)^i}{i!}\\
+&=1+\frac{1}{2}\left(\frac{t}{\sqrt{n}}\right)^2+R\left(\frac{t}{\sqrt{n}}\right),
+\end{align*}
+donde
+\begin{equation*}
+R\left(\frac{t}{\sqrt{n}}\right)=\sum_{i=3}^\infty \frac{m_Z^{(i)}(0)\left(\frac{t}{\sqrt{n}}\right)^i}{i!}.
+\end{equation*}
+Y por consiguiente, tenemos que
+\begin{align}\label{Taylor_lim}
+\lim_{n\rightarrow\infty}m_{\sqrt{n}(\bar{X}_n-\mu)/\sigma}(t)&=\lim_{n\rightarrow\infty}\left(m_Z\left(\frac{t}{\sqrt{n}}\right)\right)^n\notag\\
+&=\lim_{n\rightarrow\infty}\left(1+\frac{1}{2}\left(\frac{t}{\sqrt{n}}\right)^2+R\left(\frac{t}{\sqrt{n}}\right)\right)^n\notag\\
+&=\lim_{n\rightarrow\infty}\left[1+\frac{1}{n}\left(\frac{t^2}{2}+nR\left(\frac{t}{\sqrt{n}}\right)\right)\right]^n.
+\end{align}
+
+Por otro lado, el teorema de Taylor afirma que para la función $g$ en (\ref{Taylor_g}), se tiene que
+\begin{equation*}
+\lim_{x\rightarrow a}\frac{\sum_{i=r+1}^{\infty}\frac{g^{(i)}(a)(x-a)^i}{i!}}{(x-a)^r}=0.
+\end{equation*}
+Aplicando lo anterior a $m_Z\left(\frac{t}{\sqrt{n}}\right)$ con $r=2$, tenemos que
+\begin{equation*}
+\lim_{\frac{t}{\sqrt{n}}\rightarrow0}\frac{R\left(\frac{t}{\sqrt{n}}\right)}{\left(\frac{t}{\sqrt{n}}\right)^2}=0,
+\end{equation*}
+la cual es equivalente a
+\begin{equation*}
+\lim_{n\rightarrow\infty}\frac{R\left(\frac{t}{\sqrt{n}}\right)}{\left(\frac{1}{\sqrt{n}}\right)^2}=\lim_{n\rightarrow\infty}nR\left(\frac{t}{\sqrt{n}}\right)=0,
+\end{equation*}
+para todo $t$. Y por consiguiente
+\begin{equation}\label{Taylor_exp}
+\lim_{n\rightarrow\infty}\left(\frac{t^2}{2}+nR\left(\frac{t}{\sqrt{n}}\right)\right)=\frac{t^2}{2}.
+\end{equation}
+Finalmente, combinando (\ref{Taylor_lim}) y (\ref{Taylor_exp}), y usando el hecho de que si una sucesión de números $a_n\rightarrow a$, entonces $\lim_{n\rightarrow\infty}\left(1+\frac{a_n}{n}\right)^n=e^a$, se tiene que
+\begin{equation*}
+\lim_{n\rightarrow\infty}\left[1+\frac{1}{n}\left(\frac{t^2}{2}+nR\left(\frac{t}{\sqrt{n}}\right)\right)\right]^n=e^{t^2/2},
+\end{equation*}
+y en conclusión
+\begin{equation*}
+\lim_{n\rightarrow\infty}m_{\sqrt{n}(\bar{X}_n-\mu)/\sigma}(t)=e^{t^2/2}.
+\end{equation*}
+En conclusión, la distribución límite de $\sqrt{n}(\bar{X}_n-\mu)/\sigma$ corresponde a la distribución normal estándar.
+\end{proof}
+
+En el anterior teorema se exige la existencia de la función generadora de momentos de las variables $X_1$, $X_2$, $\cdots$; en general, se puede demostrar la validez del resultado aún sin este supuesto, y la demostración se realiza por medio de funciones características de manera análoga.
+
+El teorema del límite central es una herramienta muy poderosa en el sentido de que se aplica para la mayoría de las distribuciones de probabilidad; sin embargo, el teorema no nos brinda una medida de qué tan buena es la aproximación, y se debe examinar para cada distribución. En las figuras 1.27 y 1.28, se muestran las distribuciones muestrales del promedio en muestras simuladas distribuciones $Pois(3)$ y $Gamma(3,2)$ con tamaños de muestral 5, 10, 30, 50, 100 y 500 respectivamente. Podemos observar que efectivamente la distribución $\bar{X}$ se aproxima a una distribución normal, especialmente para muestras grandes.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.51]{TLC_1.eps}
+\caption[\textsl{Distribución de la media en muestras de $Pois(3)$}]{\textsl{Distribución muestral del promedio en muestras con distribución $Pois(3)$ de diferentes tamaños.}}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.51]{TLC_2.eps}
+\caption[\textsl{Distribución de la media en muestras de $Gamma(3,2)$}]{\textsl{Distribución muestral del promedio en muestras con distribución $Gamma(3,2)$ de diferentes tamaños.}}
+\end{figure}
+
+\subsubsection{Distribución Ji-cuadrado}
+
+Otra distribución como caso particular de la distribución Gamma es la distribución Ji-cuadrado\index{Distribución!Ji-cuadrado} con $n$ grados de libertad es un caso particular de la distribución Gamma cuando el parámetro de forma $k$ toma el valor $n/2$ para algún $n$ entero, y el parámetro de escala $\theta$ toma el valor 2. La función de densidad de la distribución Ji-cuadrado se muestra en la siguiente definición.
+
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución Ji-cuadrado con $n$ grados de libertad, con $n$ entero positivo, si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=\frac{x^{(n/2)-1}e^{-x/2}}{2^{n/2}\Gamma(n/2)}I_{(0,\infty)}(x),
+\end{equation}
+y se nota como $X\sim\chi^2_n$.
+\end{Defi}
+
+Aunque la distribución Ji-cuadrado es un caso particular de la distribución Gamma, pero ésta está íntimamente relacionada con la distribución normal, tal como se muestra en la siguiente definición equivalente a la anterior, y resulta ser muy útil en el momento de demostrar que una variable tiene la distribución Ji-cuadrado.
+
+\begin{Defi}
+Si $Z_1$, $\cdots$, $Z_n$ son variables aleatorias independientes e idénticamente distribuidas con distribución normal estándar, entonces la variable $\sum_{i=1}^nZ_i^2$ tiene distribución Ji-cuadrado con $n$ grados de libertad.
+\end{Defi}
+
+Dado que la distribución $\chi^2$ es un caso particular de la distribución Gamma, la función de densidad también tiene facetas similares tales como la no simetría y la cola larga. En la Figura 1.29 se muestra la función de densidad de distribución $\chi^2_n$ para diferentes valores de $n$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{densidad_chi.eps}
+\caption[\textsl{Densidad de la distribuciones Ji-cuadrado}]{\textsl{Función de densidad de distribuciones Ji-cuadrado con diferentes grados de libertad.}}
+\end{figure}
+
+Usando el Resultado 1.1.12 para la distribución Gamma, se tiene fácilmente las siguientes propiedades de una variable con distribución Ji-cuadrado.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución chi-cuadro con $n$ grados de libertad, entonces
+    \begin{enumerate}
+        \item $E(X)=n$.
+        \item $Var(X)=2n$.
+        \item $m_X(t)=\left(\frac{1}{1-2t}\right)^{n/2}$ para $t<1/2$, y no existe para otros valores de $t$.
+    \end{enumerate}
+\end{Res}
+
+A continuación se presenta un resultado que nos será muy útil en los capítulos futuros.
+
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_m$ variables aleatorias independientes con distribución $\chi^2_{n_i}$ para $i=1,\cdots,m$, entonces la variable $X=\sum_{i=1}^mX_i$ tiene distribución Ji-cuadrado con $\sum_{i=1}^mn_i$ grados de libertad.
+\end{Res}
+\begin{proof}
+Se hará uso de la función generadora de momentos, tenemos que
+\begin{align*}
+m_{X}(t)&=E(e^{t\sum_{i=1}^mX_i})\\
+&=\prod_{i=1}^nE(e^{tX_i})\\
+&=\prod_{i=1}^nm_{X_i}(t)\\
+&=\prod_{i=1}^n\left(\frac{1}{1-2t}\right)^{n_i/2}\\
+&=\left(\frac{1}{1-2t}\right)^{\sum n_i/2},
+\end{align*}
+la cual corresponde a la función generadora de momentos de una distribución $\chi^2$ con grado de libertad $\sum_{i=1}^mn_i$, y el resultado queda demostrado.
+\end{proof}
+
+El anterior resultado establece que la suma de variables independientes con distribución $\chi^2$ sigue teniendo la distribución $\chi^2$. ¿Se puede afirmar que la resta de dos variables independientes $\chi^2$ sigue manteniendo la distribución $\chi^2$? Suponga que $X\sim\chi^2_{n_1}$ y $Y\sim\chi^2_{n_2}$ son independientes, y sea $Z=X-Y$, entonces
+\begin{align*}
+m_Z(t)&=E(e^{t(X-Y)})\\
+&=E(e^{tX})/E(e^{tY})\ \ \ \ \ \ \ \text{Por ser $X$ y $Y$ independientes}\\
+&=(1-2t)^{-n_1/2}/(1-2t)^{-n_2/2}\\
+&=(1-2t)^{-(n_1-n_2)/2},
+\end{align*}
+la cual corresponde a la función generadora de momentos de una distribución $\chi^2$ con grado de libertad $n_1-n_2$ siempre y cuando $n_1>n_2$. Por lo anterior, podemos afirmar que la resta de dos variables independientes $\chi^2$ sigue teniendo la distribución $\chi^2$ siempre y cuando la resta de los dos grados de libertad sea positiva.
+
+\subsubsection{Distribución $t$-student\index{Distribución!t-student}}
+Otra distribución de vital importancia en la teoría estadística es la denominada distribución $t$-student. El descubrimiento de esta distribución fue publicado por  el estadístico inglés William Sealy Gosset (1876-1937) en el año 1908 cuando trabajaba en la famosa empresa cervecera Guinness. La publicación la hizo de forma anónima bajo el nombre de Student, pues Guinness le prohibía la publicación por ser el descubrimiento parte de resultados de investigación realizada por la empresa. La definición de esta distribución se da a continuación.
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 427 600, scale=0.3]{Gosset.jpg}
+\caption{\textsl{William Sealy Gosset (1876-1937)}}
+\end{figure}
+
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución t-student con $n$ grados de libertad si su función de densidad está dada por:
+\begin{equation}\label{densidad_t_central}
+f_X(x)=\frac{\Gamma(\frac{n+1}{2})}{\sqrt{\pi n}\ \Gamma(\frac{n}{2})}\left(1+\frac{x^2}{n}\right)^{-(n+1)/2}I_\mathbb{R}(x),
+\end{equation}
+donde $n>0$ y se nota como $X\sim t_n$.
+\end{Defi}
+Otra definición que se encuentra frecuentemente en la literatura estadística es la siguiente, que es más útil que la definición anterior para demostrar que una variable tiene distribución $t$.
+
+\begin{Defi}
+Sea $Z$ una variable aleatoria con distribución normal estándar y $Y$ una variable aleatoria con distribución Ji-cuadrado con $n$ grados de libertad, si $Z$ y $Y$ son independientes, entonces la variable $\frac{Z}{\sqrt{Y/n}}$ tiene distribución t-student con $n$ grados de libertad.
+\end{Defi}
+
+La función de densidad de la distribución t-student es muy parecida a la de distribución normal estándar, tiene la forma de campana de Gauss y simétrica con respecto al valor 0, además entre más grande sea el grado de libertad, más se parece a la distribución normal estándar. En la Figura 1.31 se muestra la función de densidad de la distribución normal estándar y la de distribución $t$ con diferentes grados de libertad donde podemos observar la similitud entre estas distribuciones.
+
+Algunas propiedades de la distribución t-student se muestran en el siguiente resultado.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución t-student con $n$ grados de libertad, entonces
+    \begin{enumerate}
+        \item $E(X)=0$ para $n>1$.
+        \item $Var(X)=\frac{n}{n-2}$ para $n>2$.
+    \end{enumerate}
+\end{Res}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{densidad_t.eps}
+\caption[\textsl{Densidad de la distribución $N(0,1)$ y $t_2$}]{\textsl{Funciones de densidad de la distribución $N(0,1)$ y $t_n$ con diferentes grados de libertad.}}
+\end{figure}
+
+En primer lugar, nótese que cuando $n$ es grande, la varianza de $X$ se aproxima al valor 1, la varianza de una distribución normal estándar. Por otro lado, cabe resaltar que la distribución $t$-student no tiene función generadora de momentos.
+
+\subsubsection{Distribución $t$-student no central\index{Distribución!t-student no central}}
+La distribución $t$ student no central es una extensión natural de la $t$ student descrita anteriormente\footnote{La distribución con función de densidad (\ref{densidad_t_central}) también se conoce como la $t$-student central. En este libro se utilizarán indistintamente estos dos nombres.}, que permte que la esperanza de la distribución normal no sea cero, de allí el término <<no central>> para esta distribución. Análogo a la distribución $t$ central, existen definiciones equivalentes para la distribución $t$-student no central, las cuales presentamos a continuación.
+\begin{Defi}
+Una variable aleatoria X tiene distribución $t$-student no central con grados de libertad $n$, y parámetro de no centralidad $\mu$ si su densidad es
+
+\begin{equation*}
+f_X(x)=\frac{n^{n/2}\exp\left\{-\frac{n\mu^2}{2(x^2+n)}\right\}}{\sqrt{\pi}\Gamma(n/2)2^{(n-1)/2}(x^2+n)^{(n+1)/2}}\int_{0}^\infty v^n\exp\left\{-\frac{1}{2}\left(v-\frac{\mu x}{\sqrt{x^2+n}}\right)^2\right\}dv
+\end{equation*}
+
+y se denota como $X\sim t^{nc}_{n,\mu}$.
+\end{Defi}
+
+La función de densidad en la anterior definición, es sin duda muy compleja para cualquier cálculo concerniente a esta distribución. Para efectos de este libro, solo haremos uso de su función de distribución cuyo cálculo se puede llevar a cabo usando la instrucción \verb"pt" en R, más adelante explicaremos con detalles sobre el uso de esta función. La otra definición equivalente para la distribución $t$-student no central es por medio de construcción, y es útil a la hora de probar que cierta variable tiene esta distribución.
+\begin{Defi}
+Sea $X$ una variable aleatoria con distribución $N(\mu,1)$, y $Y$ una variable aleatoria con distribución Ji-cuadrado con $n$ grados de libertad, si $X$ y $Y$ son independientes, entonces la variable $\frac{X}{\sqrt{Y/n}}$ tiene distribución  $t$-student no central con grados de libertad $n$, y parámetro de no centralidad $\mu$
+\end{Defi}
+
+De la anterior definición, podemos ver que si $X$ y $Y$ son variables aleatorias independientes con $X\sim N(\mu,\sigma^2)$ y $Y\sim\chi^2_n$ entonces
+\begin{equation*}
+\frac{X/\sigma}{\sqrt{Y/n}}\sim t^{nc}_{n,\frac{\mu}{\sigma}}.
+\end{equation*}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.45]{densidad_t_nocentral.eps}
+\caption{\textsl{Distintas funciones de densidad $t$-student no central.}}
+\end{figure}
+
+\newpage
+
+En la Figura 1.32 se grafica la función de densidad de la distribución $t$-student no central con diferentes grados de libertad y diferentes parámetros de no centralidad. Se puede observar que la esperanza de la distribución $t$ no central es cercana, aunque no igual al parámetro de no centralidad $\mu$; además la función de densidad de esta distribución no es simétrica, pero se torna más simétrica cuando el grado de libertad es más grande.
+
+\subsubsection{Distribución F\index{Distribución!F}}
+
+Otra distribución muy útil es la distribución $F$ que también se conoce como la distribución F de Fisher o distribución de Fisher-Snedecor, haciendo referencia al gran estadístico Ronald Aylmer Fisher (1890-1962) y el fundador del primer departamento de estadística en los Estados Unidos, George Waddel Snedecor (1881-1974).
+
+\begin{figure}[!h]
+\centering
+\includegraphics[bb=0 0 268 326, scale=0.4]{Fisher.jpg}
+\caption{\textsl{Ronald Aylmer Fisher (1890-1962)}}
+\end{figure}
+
+La función de densidad de la distribución F se da en la siguiente definición.
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución F con $m$ grados de libertad en el numerador y $n$ grados de libertado en el denominador si su función de densidad está dada por:
+\begin{equation}
+f_X(x)=\frac{\Gamma(\frac{m+n}{2})}{\Gamma(\frac{m}{2})\Gamma(\frac{n}{2})}\left(\frac{m}{n}\right)^{m/2}\frac{z^{\frac{m}{2}-1}}{\left(1+\frac{m}{n}z\right)^{\frac{m+n}{2}}}I_{(0,\infty)}(x),
+\end{equation}
+y se nota como $X\sim F^m_n$.
+\end{Defi}
+
+Otra definición equivalente pero más útil de la distribución $F$ es como sigue:
+
+\begin{Defi}
+Sea $X$ y $Y$ variables aleatorias independientes con distribuciones Ji-cuadrado con $m$ y $n$ grados de libertad, respectivamente, entonces la variable $\dfrac{X/m}{Y/n}$ tiene distribución F con $m$ grados de libertad en el numerador y $n$ grados de libertado en el denominador.
+\end{Defi}
+
+En la Figura 1.34 se observa la función de densidad de la distribución $F$ para di\-fe\-ren\-tes grados de libertad. Podemos observar que ésta es similar a la de una distribución Gamma, no simétrica con cola larga y en algunos casos similar a la distribución exponencial.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{densidad_F.eps}
+\caption[\textsl{Densidad de la distribución $F$}]{\textsl{Funciones de densidad de la distribución $F$ con diferentes grados de libertad.}}
+\end{figure}
+
+Algunas propiedades de la distribución F se dan a continuación.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución F con $m$ grados de libertad en el numerador y $n$ grados de libertado en el denominador, entonces
+    \begin{enumerate}
+        \item $E(X)=\frac{n}{n-2}$ para $n>2$.
+        \item $Var(X)=\frac{2n^2(m+n-2)}{m(n-2)^2(n-4)}$ para $n>4$.
+        \item La distribución $F$ no tiene función generadora de momentos.
+    \end{enumerate}
+\end{Res}
+
+Usando la Definición 1.1.19, se tiene fácilmente el siguiente resultado.
+\begin{Res}
+Si $X\sim F^m_n$, entonces $1/X\sim F^n_m$.
+\end{Res}
+
+\begin{proof}
+Trivial usando la Definición 1.1.19.
+\end{proof}
+
+\subsubsection{Distribución Beta\index{Distribución!Beta}}
+
+La distribución Beta se difiere de las otras distribuciones continuas vistas anteriormente en el sentido de que la distribución Beta solo se usa para describir variables aleatorias que toman valores en el intervalo (0,1). Dado que los datos porcentuales tienen un rango entre 0 y 1\footnote{Cuando un porcentaje es 100\%.}, es común pensar que una distribución Beta puede ser apropiada para describir variables aleatorias que representan porcentajes. A continuación damos la definición de esta distribución en términos de su función de densidad.
+\begin{Defi}
+Una variable aleatoria $X$ tiene distribución Beta con parámetros $a>0$ y $b>0$ si su función de densidad está dada por
+\begin{equation}\label{densidad_beta}
+f_X(x)=\frac{1}{B(a,b)}x^{a-1}(1-x)^{b-1}I_{(0,1)}(x)
+\end{equation}
+donde $B(a,b)$ es la función Beta dada por
+\begin{equation*}
+B(a,b)=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}=\int_{0}^1u^{a-1}(1-u)^{b-1}du.
+\end{equation*}
+Usaremos la notación $X\sim Beta(a,b)$ para una variable con esta distribución.
+\end{Defi}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.57]{densidad_beta.eps}
+\caption{\textsl{Funciones de densidad de algunas distribuciones Beta.}}
+\end{figure}
+
+\newpage
+
+Podemos notar que cuando ambos parámetros $a$ y $b$ toman el valor 1, la distribución $Beta(a,b)$ se reduce a una distribución uniforme continua sobre el intervalo $(0,1)$, esto es, $Beta(1,1)=Unif(0,1)$. Por otro lado, podemos ver que la función de densidad de una distribución Beta depende de $x$ por medio de un polinomio de grado $a+b-2$, y la función de densidad toma diversas formas según cambian los parámetros $a$ y $b$. En la Figura 1.35 se muestra la función de densidad de algunas distribuciones Beta. Como puede ver el lector, la función de densidad puede ser una línea recta, polinomial, y en algunos casos puede no tener un máximo o modas. Esta gran versatilidad permite que la distribución Beta sea apta para describir muchas variables, siempre y cuando éstas toman valores en el intervalo (0,1).
+
+Algunas propiedades de la distribución Beta se enuncian a continuación.
+\begin{Res}
+Si $X$ es una variable aleatoria con distribución $Beta(a,b)$, entonces
+\begin{enumerate}
+    \item $E(X)=\frac{a}{a+b}$.
+    \item $Var(X)=\frac{ab}{(a+b)^2(a+b+1)}$.
+\end{enumerate}
+\end{Res}
+
+Observando la forma de la función de densidad de una distribución Beta dada en (\ref{densidad_beta}) podemos observar cierta simetría para $f(x)$ y $f(1-x)$, sugiriendo que la variable $1-X$ puede también tener la distribución Beta si $X$ la tiene. Tenemos el siguiente resultado.
+
+\begin{Res}
+Si $X\sim Beta(a,b)$ entonces $Y=1-X\sim Beta(b,a)$.
+\end{Res}
+
+\begin{proof}
+Una forma de probar lo anterior es encontrando la función de distribución de $Y$, tenemos que para $y\in(0,1)$,
+\begin{align*}
+F_Y(y)=Pr(Y\leq y)&=Pr(1-X\leq y)\\
+&=Pr(X\geq1-y)\\
+&=\int_{1-y}^1\frac{x^{a-1}(1-x)^{b-1}}{B(a,b)}dx
+\end{align*}
+Haciendo un cambio de variables $x=1-u$, tenemos que
+\begin{equation*}
+F_Y(y)=\int_0^y\frac{(1-u)^{a-1}u^{b-1}}{B(a,b)}dx
+\end{equation*}
+Y como $B(a,b)=B(b,a)$, podemos concluir que $Y\sim Beta(b,a)$.
+\end{proof}
+
+\subsubsection{Relaciones de las distribuciones}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 602 651, scale=0.5]{relacion.png}
+\caption{\textsl{Relaciones entre diferentes distribuciones.}}
+\end{figure}
+
+John D. Cook ha elaborado la gráfica mostrada en la Figura 1.36 acerca de las relaciones de las distribuciones de probabilidad. Según Cook, el gráfico está inspirado en \citeasnoun{Lawrence}, en donde los autores muestran en un gráfico mucho más extenso y completo cómo cada una de las distribuciones de probabilidad univariadas se relacionan y forman familias según las propiedades que tengan.
+
+Entre las propiedades que parametrizan las distribuciones de probabilidad se encuentran las siguientes:
+
+\begin{itemize}
+\item Propiedad de combinación lineal: por ejemplo, la suma de variables aleatorias normales independientes resulta tener una distribución normal.
+\item Propiedad de convolución: por ejemplo, una variable aleatoria con distribución Ji-cuadrado y con $n$ grados de libertad puede venir de la suma de $n$ variables independientes con distribución Ji-cuadrado y con un grado de libertad.
+\item Propiedad del producto: por ejemplo, el producto de variables independientes con distribución lognormales resulta tener una distribución lognormal.
+\item Propiedad de la inversa: por ejemplo, si una variable aleatoria tiene distribución $F$, su inversa aritmética también tendrá distribución $F$.
+\end{itemize}
+
+
+\subsection{Percentiles\index{Percentil}}
+
+Un concepto relacionado con las variables aleatorias que es muy importante para la inferencia estadística, específicamente la teoría de intervalo de confianza y las pruebas de hipótesis, es el concepto del percentil de una variable aleatoria. Definimos este concepto a continuación.
+
+\begin{Defi}
+Para una variable aleatoria $X$, el percentil $p$ de $X$, con $0<p<1$, se define como $\inf\{x:\ F_X(x)\geq p\}$ y se denota como $X_p$. Esto es, $X_p$ es el valor más pequeño que acumula una probabilidad no inferior de $p$.
+\end{Defi}
+
+Para variables aleatorias continuas, la función de distribución correspondiente también es continua, y existe un único punto $x$ con $F(x)=p$, de donde podemos ver que el percentil $p$ de $X$ es simplemente $F^{-1}(p)$.
+
+\begin{Eje}
+Sea $X$ una variable aleatoria con distribución $Exp(\theta)$, entonces la función de distribución de $X$ está dada por
+\begin{equation}
+F_X(x)=
+\begin{cases}
+1-e^{-x/\theta}\ \ \ \ \ \text{si $x>0$}\\
+0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \text{si no}\\
+\end{cases}
+\end{equation}
+
+Podemos ver que $F_X$ tiene inversa para valores de $x$ en $(0,\infty)$ dada por $F^{-1}(x)=-\theta\ln(1-x)$, con $0<x<1$. De donde podemos calcular el percentil $p$ de la distribución $Exp(\theta)$ como $-\theta\ln(1-p)$. Por ejemplo, el percentil 0.3 de $Exp(4)$ está dado por $-4\ln(1-0.3)=1.4267$.
+
+Por otro lado, en R, podemos obtener los percentiles de una distribución exponencial con la instrucción \verb"qexp" teniendo en cuenta que R utiliza una parametrización diferente que la de este libro. El comando para calcular el percentil 0.3 de $Exp(4)$ y el resultado es como sigue
+\begin{verbatim}
+> qexp(0.3,1/4)
+[1] 1.426700
+\end{verbatim}
+\end{Eje}
+
+En algunas distribuciones continuas, como la distribución normal estándar, la función de distribución es de una forma muy complicada, y se requiere de algoritmos numéricos para calcular los percentiles de esta distribución. El comando en R para ese fin es \verb"qnorm" y usa el algoritmo propuesto por \citeasnoun{Wichura}. En este texto, denotaremos el percentil $p$ de una distribución normal estándar como $z_p$, y los percentiles comunes que se utilizarán a lo largo del texto que se encuentran en el apéndice G.
+
+Para variables aleatorias discretas, el cálculo de los percentiles es un poco más complicado, puesto que la función de distribución es una función escalonada, y por consiguiente no tiene inversa. Ilustramos el cálculo en el siguiente ejemplo.
+
+\newpage
+
+\begin{Eje}
+Sea $X$ una variable aleatoria con distribución $Bin(8,0.3)$, entonces tenemos que la función de densidad está dada por
+\begin{equation}
+f(x)=Pr(X=x)=\begin{cases}
+0.058&\text{si $x=0$}\\
+0.198&\text{si $x=1$}\\
+0.296&\text{si $x=2$}\\
+0.254&\text{si $x=3$}\\
+0.136&\text{si $x=4$}\\
+0.047&\text{si $x=5$}\\
+0.01&\text{si $x=6$}\\
+0.001&\text{si $x=7$}\\
+0.00006&\text{si $x=8$}\\
+0&\text{en otro caso}
+\end{cases}
+\end{equation}
+
+Y su función de distribución está dada por
+\begin{equation}
+F(x)=Pr(X\leq x)=\begin{cases}
+0&\text{si $x<0$}\\
+0.058&\text{si $0\leq x<1$}\\
+0.255&\text{si $1\leq x<2$}\\
+0.552&\text{si $2\leq x<3$}\\
+0.806&\text{si $3\leq x<4$}\\
+0.942&\text{si $4\leq x<5$}\\
+0.989&\text{si $5\leq x<6$}\\
+0.999&\text{si $6\leq x<7$}\\
+0.9999&\text{si $7\leq x<8$}\\
+1&\text{si $x\geq8$}
+\end{cases}
+\end{equation}
+
+Suponga que se quiere hallar la mediana de la distribución $Bin(8,0.3)$, esto es, el percentil 50\%, tenemos que
+\begin{equation*}
+X_{50}=\inf\{x:\ F(x)\geq 0.5\}=\inf\{x:\ x\geq2\}=2
+\end{equation*}
+
+Nótese que en este caso, el valor 2 no solo es el percentil 50\%, también es el percentil 51\%, o 55\%.
+
+El cómputo de los percentiles en R para la distribución binomial se lleva a cabo usando el comando \verb"qbinom"
+\begin{verbatim}
+> qbinom(0.5,8,0.3)
+[1] 2
+\end{verbatim}
+
+\end{Eje}
+
+En muchos textos estadísticos en la tabla concerniente a la distribución F, sólo se disponen los percentiles de 90\%, 95\%, 97.5\% y 99\% y no los percentiles 10\%, 5\%, 2.5\% y 1\%. Sin embargo, por el Resultado 1.1.28, se puede ver fácilmente que el percentil $\alpha$ de una distribución $F^{n}_m$ es simplemente la inversa del percentil $1-\alpha$ de la distribución $F^{m}_n$. Para ver eso, suponga que $X\sim F^m_n$, y denotamos el percentil $\alpha$ de $X$ como $f^m_{n,\alpha}$, entonces tenemos que
+\begin{equation*}
+\alpha=Pr(X<f^m_{n,\alpha})=Pr\left(\frac{1}{X}>\frac{1}{f^m_{n,\alpha}}\right)=1-Pr\left(\frac{1}{X}<\frac{1}{f^m_{n,\alpha}}\right)
+\end{equation*}
+
+De donde tenemos que $1-\alpha=Pr\left(\frac{1}{X}<\frac{1}{f^m_{n,\alpha}}\right)$, y vemos que $\frac{1}{f^m_{n,\alpha}}$ es el percentil de $1/X$ que se distribuye como $F^n_m$. De lo anterior, $\frac{1}{f^m_{n,\alpha}}=f^n_{m,1-\alpha}$, y finalmente tenemos que $f^m_{n,\alpha}=\frac{1}{f^n_{m,1-\alpha}}$.
+
+En la Tabla 1.1 presentamos los comandos en R para calcular percentiles. También presentamos algunos percentiles usuales de las distribuciones $t$ student, Ji-cuadrado y F al final de este capítulo.
+
+\begin{table}[!htb]
+\centering
+{\small
+\begin{tabular}{|c|c|c|c|}\hline
+Distribución&Comando&\multicolumn{2}{|c|}{Ejemplo}\\\hline
+$Bin(n,p)$&\verb"qbinom"&Percentil 0.1 de $Bin(12,0.4)$&\verb"qbinom(0.1,12,0.4)"\\
+$Pois(\lambda)$&\verb"qpois"&Percentil 0.2 de $Pr(5)$&\verb"qpois(0.2,5)"\\
+$U(a,b)$&\verb"qunif"&Percentil 0.3 de $U(3,6)$&\verb"qunif(0.3,3,6)"\\
+$Gammma(k,\theta)$&\verb"qgamma"&Percentil 0.4 de $Gamma(2,8)$&\verb"qgamma(0.4,2,8)"\\
+$Exp(\theta)$&\verb"qexp"&Percentil 0.5 de $Exp(2)$&\verb"qexPr(0.5,1/2)"\\
+$N(\mu,\sigma^2)$&\verb"qnorm"&Percentil 0.6 de $N(2,9)$&\verb"qnorm(0.6,2,sqrt(9))"\\
+$N(0,1)$&\verb"qnorm"&Percentil 0.7 de $N(0,1)$&\verb"qnorm(0.7)"\\
+$t_n$&\verb"qt"&Percentil 0.8 de $t_{20}$&\verb"qt(0.8,20)"\\
+$\chi^2_n$&\verb"qchisq"&Percentil 0.9 de $\chi^2_{25}$&\verb"qchisq(0.9,25)"\\
+$F^m_n$&\verb"qf"&Percentil 0.95 de $F^{11}_{12}$&\verb"qf(0.95,11,12)"\\\hline
+\end{tabular} }
+\caption[\textsl{Comandos en R para cálculo de percentiles}]{\textsl{Comandos en R para cálculo de percentiles en las distribuciones de uso frecuente.}}
+\end{table}
+
+
+\section{Familia exponencial}
+
+En este apartado, se introduce el concepto de familia exponencial que es muy útil en algunos temas tratados en este libro, como son la teoría de estimación puntual y prueba de hipótesis; así mismo, resulta útil en la teoría bayesiana que, sin embargo, no será tratada en este libro.
+
+\subsection{Familia exponencial uniparamétrica\index{Familia exponencial!uniparamétrica}}
+
+En esta parte, se introduce la familia exponencial para distribuciones que depende solamente de un parámetro que se denominará familia exponencial uniparamétrica, cuya definición se da a continuación.
+
+\begin{Defi}
+Una distribución de probabilidad con parámetro $\theta$ pertenece a la familia exponencial uniparamétrica si la función de densidad se puede escribir de la forma
+    \begin{equation}\label{uniexpo}
+    f_X(x,\theta)=h(x)c(\theta)\exp\{d(\theta)T(x)\}
+    \end{equation}
+donde $T(x)$ y $h(x)$ son funciones que dependen de $x$ únicamente, y $d(\theta)$ y $c(\theta)$ son funciones que dependen de $\theta$ únicamente.
+\end{Defi}
+
+En algunos textos, la representación de la familia exponencial es $f_X(x,\theta)=\exp\{d(\theta)T(x)-c(\theta)\}h(x)$, la cual es equivalente a la definición anterior. A con\-ti\-nua\-ción se ilustra dos ejemplos de distribuciones pertenecientes a esta familia.
+
+\begin{Eje}
+La distribución Poisson con parámetro $\theta$ pertenece a la familia exponencial uniparamétrica puesto que
+\begin{align*}
+f(x,\theta)&=\frac{e^{-\theta}\theta^x}{x!}I_{\{0,1,\cdots\}}(x)\\
+           &=\exp\{x\ln\theta\}\exp\{-\theta\}\frac{I_{0,1,\cdots}(x)}{x!},
+\end{align*}
+en conclusión $f(x,\theta)$ es de la forma (\ref{uniexpo}) con $d(\theta)=\ln\theta$, $T(x)=x$, $c(\theta)=\exp\{-\theta\}$ y $h(x)=\dfrac{I_{\{0,1,\cdots\}}(x)}{x!}$.
+\end{Eje}
+
+\begin{Eje}
+La distribución Gamma con parámetro de forma $k$ conocida pertenece a la familia exponencial uniparamétrica puesto que
+\begin{align*}
+f(x,\theta)&=\frac{x^{k-1}e^{-x/\theta}}{\theta^k\Gamma(k)}I_{(0,\infty)}(x)\\
+           &=\exp\left\{-\frac{x}{\theta}\right\}\theta^{-k}\frac{x^{k-1}I_{(0,\infty)}(x)}{\Gamma(k)},
+\end{align*}
+el cual es de la forma (\ref{uniexpo}) con $d(\theta)=-1/\theta$, $T(x)=x$, $c(\theta)=\theta^{-k}$ y $h(x)=\dfrac{x^{k-1}I_{(0,\infty)}(x)}{\Gamma(k)}$.
+
+Nótese que esta representación de la familia exponencial no es única, puesto que al definir $d(\theta)=1/\theta$ y $T(x)=-x$, también se puede concluir que la distribución Gamma con $k$ fijo pertenece a la familia exponencial uniparamétrica.
+\end{Eje}
+
+En casi toda la teoría estadística, se trata más de una variable aleatoria que en la práctica, se observan los datos que corresponden a realizaciones de estas variables. En este caso, se examina la pertenencia de la familia exponencial de la función de densidad conjunta, y tenemos el siguiente resultado.
+\begin{Res}
+Si $X_1$, $\cdots$, $X_n$ son variables aleatorias independientes e idénticamente distribuidas con función de densidad común perteneciente a la familia exponencial uniparamétrica, entonces la función de densidad conjunta $f(x_1,\cdots,x_n)$ también pertenece a la familia exponencial uniparamétrica.
+\end{Res}
+\begin{proof}
+\begin{align}\label{exponencial_muestra}
+f(x_1,\cdots,x_n,\theta)&=\prod_{i=1}^nf(x_i,\theta)\notag\\
+                        &=\prod_{i=1}^nh(x_i)c(\theta)\exp\{d(\theta)T(x_i)\}\notag\\
+                        &=c(\theta)^n\left[\prod_{i=1}^nh(x_i)\right]\exp\left\{d(\theta)\sum_{i=1}^nT(x_i)\right\}
+\end{align}
+el cual es de la forma (\ref{uniexpo}).
+\end{proof}
+
+Usando el anterior resultado junto con el Ejemplo 1.2.1, donde se mostró que la distribución Poisson pertenece a la familia exponencial, podemos afirmar que cuando se tiene $n$ variables independientes e idénticamente distribuidas con distribución Poisson, la función conjunta también pertenece a la familia exponencial.
+
+Otra utilidad del resultado es que cuando se necesita ver que una función de densidad conjunta pertenece a la familia exponencial, basta ver para la función de densidad marginal.
+
+La estadística $\sum_{i=1}^nT(x_i)$ en (\ref{exponencial_muestra}) será de gran interés en los futuros capítulos, y estamos interesados en conocer sus propiedades como la esperanza y la varianza, y para eso solo necesitamos $E(T(X))$ y $Var(T(X))$ para $X$ con la misma distribución que $X_1$, $\cdots$, $X_n$. El siguiente resultado nos provee las respectivas fórmulas.
+
+\begin{Res}
+Si $X$ es una variable aleatoria con función de densidad perteneciente a la familia exponencial de la forma (\ref{uniexpo}), entonces
+\begin{enumerate}
+    \item $E\left(\dfrac{\partial d(\theta)}{\partial\theta}T(X)\right)=-\dfrac{\partial}{\partial\theta}\ln c(\theta)$
+    \item $Var\left(\dfrac{\partial d(\theta)}{\partial\theta}T(X)\right)=-\dfrac{\partial^2}{\partial\theta^2}\ln c(\theta)-E\left(\dfrac{\partial^2d(\theta)}{\partial\theta^2}T(X)\right)$
+\end{enumerate}
+\end{Res}
+
+Ahora, las distribuciones con dos parámetros, como la distribución $N(\mu,\sigma^2)$, pueden considerarse como distribución uniparamétrica cuando $\mu$ o $\sigma^2$ se considera fijo conocido. Y se puede ver que en ambos casos, la distribución pertenece a la familia exponencial uniparamétrica.
+
+\subsection{Familia exponencial multi-paramétrica\index{Familia exponencial!multi-paramétrica}}
+
+Las distribuciones Gamma, normal y beta dependen de dos parámetros, y para estas distribuciones, se puede generalizar la definición de la familia exponencial uniparamétrica para distribuciones dependientes de más de un parámetro. La definición correspondiente se da a continuación.
+\begin{Defi}
+Una distribución de probabilidad pertenece a la familia exponencial multi-paramétrica si la función de densidad se puede escribir de la forma
+    \begin{equation}\label{multiexpo}
+    f_X(x,\btheta)=c(\btheta)h(x)\exp\{d(\btheta)'T(x)\}
+    \end{equation}
+donde $T(x)$ y $d(\btheta)$ son funciones vectoriales, $h(x)$ y $c(\btheta)$ son funciones reales.
+\end{Defi}
+
+\begin{Eje}
+La distribución Gamma con parámetro de forma $k$ y parámetro de escala $\theta$ pertenece a la familia exponencial multi-paramétrica pues
+\begin{align*}
+f_X(x)&=\frac{x^{k-1}e^{-x/\theta}}{\theta^k\Gamma(k)}I_{(0,\infty)}(x)\\
+      &=\exp\left\{-\frac{x}{\theta}+(k-1)\ln{x}\right\}\frac{1}{\theta^k\Gamma(k)}I_{(0,\infty)}(x)\\
+      &=\exp\left\{\Bigl(-\frac{1}{\theta},k-1\Bigr)\begin{pmatrix}x\\ \ln{x}\end{pmatrix}\right\}\frac{1}{\theta^k\Gamma(k)}I_{(0,\infty)}(x)
+\end{align*}
+el cual es de la forma (\ref{multiexpo}) con $\btheta=(\theta,k)'$, $d(\btheta)=(-\frac{1}{\theta},k-1)'$,
+$c(\btheta)=\frac{1}{\theta^k\Gamma(k)}$, $T(x)=(x,\ln{x})'$ y $h(x)=I_{(0,\infty)}(x)$.
+\end{Eje}
+
+Nótese que al igual a la familia exponencial uniparamétrica, la representación de la familia exponencial multi-paramétrica tampoco es única, pues en el ejemplo anterior también se puede tomar
+$\eta(\mathbf{\theta})=(\frac{1}{\theta},k-1)'$ y $T(x)=(-x,\ln{x})'$.
+
+Las distribuciones normal, gamma, exponencial, Ji-cuadrado, beta, Bernoulli, binomial, binomial negativa, multinomial, Poisson y geométrica, pertenecen todas a la familia exponencial. También la distribución Weibull pertenece a la familia exponencial cuando el parámetro de forma es conocido. Por otra parte, las distribuciones Cauchy, Laplace, uniforme y Weibull cuando el parámetro de forma es desconocido no pertenecen a la familia exponencial.
+
+La razón por la que las distribuciones de la familia uniforme no pertenecen a la familia exponencial va más allá de los objetivos de este libro,
+pues se necesita conocimientos sobre teoría estadística basada en la teoría de la medida. La afirmación  de que la distribución uniforme no pertenece a la familia exponencial porque no se puede escribir de la forma (\ref{multiexpo}) no es una razón válida.
+
+\section{Ejercicios}
+\begin{enumerate}[{1}.1]
+
+\item Demuestre el Resultado 1.1.1.
+
+\item La función de densidad de una variable $X$ con distribución Bernoulli también se puede escribir como
+\begin{equation*}
+f_X(x)=\begin{cases}
+p&\text{si $x=1$}\\
+1-p&\text{si $x=0$}\\
+0&\text{si no}
+\end{cases}
+\end{equation*}
+Verifique que esta función coincide con la función de densidad dada en (\ref{densidad_Bernoulli}).
+
+\item Un vendedor de seguros realiza en promedio 10 visitas por semana a los posibles clientes, él por experiencia sabe que la probabilidad de que un cliente compre el seguro en una visita es de 0.2, y suponga que el resultado de una visita no se ve afectado por resultados de visitas anteriores.
+    \begin{enumerate}[(a)]
+        \item ¿Cuál es la probabilidad de que el vendedor en una semana venda más de dos seguros?
+        \item Suponga que el vendedor ha tenido semanas consecutivas con muy malas ventas, y que perderá el trabajo si en la próxima semana no vende por lo menos un seguro. Por lo tanto, el vendedor decide aumentar el número de visitas a la semana para tratar al menos un seguro, ¿por lo menos cuántas visitas debe realizar la próxima semana para que la probabilidad de vender al menos un seguro sea superior a 90\%?
+    \end{enumerate}
+
+\item Demuestre el Resultado 1.1.3.
+
+\item Para la distribución exponencial, escriba cuál es el parámetro y cuál es el espacio paramétrico.
+
+\item Demuestre el Resultado 1.1.7.
+
+\item Demuestre el Resultado 1.1.9.
+
+\item Demuestre el Resultado 1.1.11.
+
+\item Demuestre el Resultado 1.1.13.
+
+\item Demuestre que la función de densidad de la distribución $N(\mu,\sigma^2)$ cumple las siguientes propiedades
+\begin{enumerate}[(a)]
+    \item simétrica con respecto a $\mu$,
+    \item es creciente para $x<\mu$ y decreciente para $x>\mu$ y por consiguiente, tiene un máximo en $\mu$.
+\end{enumerate}
+
+\item Demuestre que si $X\sim N(\mu,\sigma^2)$ entonces $E(X)=\mu$ y $Var(X)=\sigma^2$ usando la función generadora de momentos de $X$ dada en el Resultado 1.1.19.
+
+\item Sea $X\sim N(\mu,\sigma^2)$, y sea $Z_1=\frac{X-\mu}{\sigma}$ y $Z_2=\frac{\mu-X}{\sigma}$, usando el Resultado 1.1.20 compruebe que tanto $Z_1$ como $Z_2$ tienen distribución normal estándar, es decir, la forma de estandarizar una variable con distribución normal no es única.
+
+\item Demuestre el Resultado 1.1.21.
+
+\item Demuestre el Resultado 1.1.22.
+
+\item Calcule las siguientes probabilidades:
+\begin{enumerate}[(a)]
+    \item $Pr(X>2)$, $Pr(X<-1)$ y $Pr(1<X<3)$ donde $X\sim N(1.5,4)$.
+    \item $Pr(\frac{X-2Y}{3}>4)$ donde $X\sim N(1.5,4)$ y $Y\sim N(-1,2)$ son variables independientes.
+\end{enumerate}
+
+\item Para $X_1$, $\cdots$, $X_n$ independientes e idénticamente distribuidas provenientes de las siguientes distribuciones, escriba cuál será la variable $\sqrt{n}(\bar{X}-\mu)/\sigma$ en el contexto del Resultado 1.1.23.
+
+\item Para las distribución Ji-cuadrado, escriba cuál es el parámetro y cuál es el espacio paramétrico.
+
+\item Si $X\sim\chi^2_{n}$, demuestre que $E(X)=n$ y $Var(X)=2n$ usando la Definición 1.1.13.
+
+\item  \begin{enumerate}[(a)]
+    \item Calcule el percentil 5\%, 10\% y 98\% de una variable con distribución normal estándar.
+    \item Calcule el percentil 5\% y 90\% de una variable con distribución $N(1,3)$.
+    \item Encuentre valores $a$ y $b$ tales que $Pr(a<Z<b)=0.98$.
+    \item Encuentre valores $a$ y $b$ tales que $Pr(a<X<b)=0.95$ donde $X\sim N(-2,5)$.
+\end{enumerate}
+
+\item Comprobar que en una distribución normal estándar $z_p=-z_{1-p}$, corrobora lo anterior calculando estos percentiles con los comandos dados en la Tabla 1.1. con un valor $p$ fijo.
+
+\item Encuentre los percentiles 5\%, 98\% de una variable con distribución Ji-cuadrado con 8 y 15 grados de libertad, respectivamente.
+
+\item Encuentre los percentiles 5\%, 98\% de una variable con distribución t-student con 10 y 20 grados de libertad, respectivamente.
+
+\item Encuentre los percentiles 5\%, 98\% de una variable con distribución $F_5^8$ y $F_8^{12}$, respectivamente.
+
+\item Demuestre que las siguientes distribuciones pertenecen a la familia exponencial identificando las funciones $d(\theta)$, $T(x)$, $c(\theta)$ y $h(x)$:
+\begin{enumerate}[(a)]
+    \item Binomial con $n$ conocido.
+    \item Exponencial.
+    \item Distribución normal con media $\mu$ conocido.
+    \item Distribución normal con varianza $\sigma^2$ conocida.
+    \item La función de densidad conjunta de $X_1$, $\cdots$, $X_n$, donde las variables $X_i$ son independientes e idénticamente distribuidas con distribución común $N(\mu,\sigma^2)$ con $\mu$ conocido (primero directamente y luego usando el Resultado 1.2.1.).
+    \item La función de densidad conjunta de $X_1$, $\cdots$, $X_n$ donde las variables $X_i$ son independientes e idénticamente distribuidas con distribución común $Pois(\lambda)$ (primero directamente y luego usando el Resultado 1.2.1.).
+\end{enumerate}
+
+\item Demuestre la distribución Weibull, cuando $k$ es conocido, pertenece a la familia exponencial uniparamétrica. Identifique $d(\theta)$, $T(x)$, $c(\theta)$ y $h(x)$.
+
+\item Demuestre que la distribución $N(\mu,\sigma^2)$ pertenece a la familia exponencial multiparamétrica. Identifique $d(\btheta)$, $T(x)$, $c(\btheta)$ y $h(x)$.
+
+\item Demuestre que la distribución Beta pertenece a la familia exponencial multiparamétrica. Identifique $d(\btheta)$, $T(x)$, $c(\btheta)$ y $h(x)$.
+
+\item Sean $X_1$, $\cdots$, $X_n$ variables aleatorias independientes e idénticamente distribuidas con distribución común, $N(\mu_1,\sigma^2_1)$ y $Y_1$, $\cdots$, $Y_m$ variables independientes e idénticamente distribuidas con distribución común $N(\mu_2,\sigma^2_2)$, además las variables $X_i$ son independientes de las variables $Y_j$, demuestre que la función de densidad conjunta de $X_1$, $\cdots$, $X_n$, $Y_1$, $\cdots$, $Y_m$ pertenece a la familia exponencial.
+
+\item Repita el punto anterior suponiendo que $\sigma^2_1=\sigma^2_2=\sigma^2$.
+
+\end{enumerate} 

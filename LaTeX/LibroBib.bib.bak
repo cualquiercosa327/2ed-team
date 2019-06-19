@@ -1,0 +1,361 @@
+@BOOK{Mood,
+  AUTHOR =       {Mood, A.M. and Graybill, F. A. and Boes, D.C.},
+  TITLE =        {Introduction to the Theory of Statistics},
+  PUBLISHER =    {McGraw-Hill},
+  YEAR =         {1974},
+  edition =      {Third},
+}
+
+@BOOK{Anderson,
+  AUTHOR =       {Anderson, T. W.},
+  TITLE =        {An Introduction to Multivariate Statistical Analysis},
+  PUBLISHER =    {McGraw-Hill},
+  YEAR =         {1984},
+  edition =      {John Willey \& Sons},
+}
+
+@BOOK{Johnson,
+  AUTHOR =       {Johnson, R. A. and Wichern, D. W.},
+  TITLE =        {Applied Multivariate Statistical Analysis},
+  PUBLISHER =    {Prentice Hall},
+  YEAR =         {1998},
+}
+
+@BOOK{Lehmann,
+  AUTHOR =       {Lehmann, E. L. and Romano, J. P.},
+  TITLE =        {Testing Statistical Hypotheses},
+  PUBLISHER =    {Springer},
+  YEAR =         {2005},
+  edition =      {Third},
+}
+
+@BOOK{Lehmann86,
+  AUTHOR =       {Lehmann, E. L.},
+  TITLE =        {Testing Statistical Hypotheses},
+  PUBLISHER =    {Springer},
+  YEAR =         {1986},
+  edition =      {Second},
+}
+
+@BOOK{Resnick,
+  AUTHOR =       {Resnick, S. I.},
+  TITLE =        {A Probability Path},
+  PUBLISHER =    {Birh\"{a}user},
+  YEAR =         {1999},
+}
+
+@BOOK{Casella,
+  AUTHOR =       {Casella, G. and Berger, R. L.},
+  TITLE =        {Statitical Inference},
+  PUBLISHER =    {Duxbury},
+  YEAR =         {2002},
+  edition =      {Second},
+}
+
+@BOOK{Peña,
+  AUTHOR =       {Peña, D.},
+  TITLE =        {Análisis de Datos Multivariantes},
+  PUBLISHER =    {McGraw-Hill},
+  YEAR =         {2002},
+}
+
+@BOOK{Bickel,
+  AUTHOR =       {Bickel, P. J. and Doksum, K. A.},
+  TITLE =        {Mathematical Statistics. Basic Ideas and Selected Topics},
+  PUBLISHER =    {Prentice-Hall},
+  YEAR =         {2001},
+  volume =       {1},
+  edition =      {Second},
+}
+
+@BOOK{Canavos,
+  AUTHOR =       {Canavos, G. C.},
+  TITLE =        {Probabilidad y Estadística. Aplicaciones y Métodos.},
+  PUBLISHER =    {McGraw-Hill},
+  YEAR =         {1988},
+}
+
+@BOOK{Rober-Case,
+  AUTHOR =       {Robert, C.P. and Casella, G.},
+  TITLE =        {Monte Carlo Statistical Methods},
+  PUBLISHER =    {Springer},
+  YEAR =         {1999},
+}
+
+@BOOK{Liliana,
+  AUTHOR =       {Blanco, L.},
+  TITLE =        {Probabilidad},
+  PUBLISHER =    {Universidad Nacional de Colombia, Unibiblos.},
+  YEAR =         {2004},
+}
+
+@BOOK{Mayorga,
+  AUTHOR =       {Mayorga, J. H.},
+  TITLE =        {Inferencia estadística},
+  PUBLISHER =    {Universidad Nacional de Colombia, Unibiblos.},
+  YEAR =         {2004},
+}
+
+@ARTICLE{Agre_Coull,
+  AUTHOR =       {Agresti, A. and Coull, B.},
+  TITLE =        {Approximate is Better than Exact for Interval Estimation of Binomial Proportions},
+  JOURNAL =      {The American Statistician},
+  YEAR =         {1998},
+  volume =       {52},
+  pages =        {119-126},
+}
+
+@ARTICLE{Wichura,
+  AUTHOR =       {Wichura, M. J.},
+  TITLE =        {Algorithm AS 241: The percentage Points of the Normal Distribution},
+  JOURNAL =      {Journal of the Royal Statistical Society. Series C (Applied Statistics)},
+  YEAR =         {1988},
+  volume =       {37},
+  number =       {3},
+  pages =        {477-484},
+}
+
+@ARTICLE{Zhang1,
+  AUTHOR =       {Zhang, Hanwen.},
+  TITLE =        {A Note About Maximum Likelihood Estimator in Hypergeometric Distribution},
+  JOURNAL =      {Comunicaciones en Estadística.},
+  YEAR =         {2009},
+  volume =       {2},
+  number =       {2},
+  pages =        {1},
+}
+
+@ARTICLE{Bartlett,
+  AUTHOR =       {Bartlett, M. S.},
+  TITLE =        {Properties of Sufficiency and Statistical Tests},
+  JOURNAL =      {Proceedings of the Royal Society of London},
+  YEAR =         {1937},
+  volume =       {A},
+  number =       {160},
+  pages =        {268-282},
+}
+
+@ARTICLE{Welch,
+  AUTHOR =       {Welch, B.},
+  TITLE =        {Further notes om Mrs. Aspin's tables},
+  JOURNAL =      {Biometrika},
+  YEAR =         {1949},
+  volume =       {36},
+  pages =        {243-246},
+}
+
+@ARTICLE{normal,
+  AUTHOR =       {Stahl, Saul.},
+  TITLE =        {La evolución de la distribución normal},
+  JOURNAL =      {Comunicaciones en Estadística},
+  YEAR =         {2008},
+  volume =       {1},
+  number =       {1},
+  pages =        {13-32},
+}
+
+@ARTICLE{McCullagh,
+  AUTHOR =       {McCullagh, P.},
+  TITLE =        {Does the Moment-Generating Function Characterize a Distribution?},
+  JOURNAL =      {The American Statistician},
+  YEAR =         {1994},
+  volume =       {48},
+  number =       {3},
+  pages =        {208},
+}
+
+@ARTICLE{Agresti,
+  AUTHOR =       {Agresti, A. and Caffo, B.},
+  TITLE =        {Simple and Effective Confidence Intervals for Proportions and Differences of Proportions Result from Adding Two Successes and Two Failures.},
+  JOURNAL =      {The American Statistician},
+  YEAR =         {2000},
+  volume =       {54},
+  pages =        {280-288},
+}
+
+@ARTICLE{Cepeda,
+  AUTHOR =       {Cepeda, E. and Aguilar, W. and Cervantes, V. and Corrales, M. and Díaz, I. and Rodríguez, D.},
+  TITLE =        {Intervalos de confianza e intervalos de credibilidad para una proporción},
+  JOURNAL =      {Revista Colombiana de Estadística},
+  YEAR =         {2008},
+  volume =       {31},
+  number =       {2},
+  pages =        {211-228},
+}
+
+@ARTICLE{Newcombe,
+  AUTHOR =       {Newcombe, R.},
+  TITLE =        {Interval Estimation for the Difference Between Independent Proportions: Comparison of Eleven Methods},
+  JOURNAL =      {Statistics in Medicine},
+  YEAR =         {1998},
+  volume =       {17},
+  pages =        {873-890},
+}
+
+@UNPUBLISHED{Zhang,
+  AUTHOR =       {Zhang, H. and Gutiérrez, A. and Cepeda, E.},
+  TITLE =        {Frequentist performance of some credibility and confidence intervals for the difference of two proportions},
+  NOTE =         {XIX simposio de estadística, Medellín, Colombia},
+  year =         {2009},
+}
+@BOOK{Gupta,
+  AUTHOR =       {Gupta, A. K. and Nagar, D. K.},
+  TITLE =        {Matrix variate distribucutions.},
+  PUBLISHER =    {Chapman \& Hall/CRC},
+  YEAR =         {2000},
+}
+
+
+@BOOK{Tille,
+  AUTHOR =       {Ardilly, P. and Tillé, Yves.},
+  TITLE =        {Sampling Methods: Exercises and Solutions.},
+  PUBLISHER =    {Springer},
+  YEAR =         {2006},
+}
+
+@BOOK{Gelman,
+  AUTHOR =       {Gelman, A. and Carlin, J. B. and Stern, H. S. and Rubin, D. B.},
+  TITLE =        {Bayesian Data Analysis.},
+  PUBLISHER =    {Chapman \& Hall/CRC},
+  YEAR =         {2004},
+}
+
+@BOOK{Conover98,
+  AUTHOR =       {Conover, W. J.},
+  TITLE =        {Practical Nonparametric Statistics},
+  PUBLISHER =    {Wiley},
+  edition=            {3},
+  YEAR =         {1998},
+}
+
+@BOOK{Gutierrez,
+  AUTHOR =       {Gutiérrez, H. A.},
+  TITLE =        {Estrategias de muestreo: diseño de encuestas y estimación de parámetros},
+  PUBLISHER =    {Universidad Santo Tomas},
+  YEAR =         {2009},
+}
+
+@BOOK{Tea,
+  AUTHOR =       {Salsburg, D.},
+  TITLE =        {The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century},
+  PUBLISHER =    {Holt Paperbacks},
+  YEAR =         {2002},
+}
+
+@ARTICLE{Racismo,
+  AUTHOR =       {Gutiérrez, H. A. and Zhang, H.},
+  TITLE =        {Análisis bayesiano para la diferencia de dos proporciones usando R},
+  JOURNAL =      {Revista de métodos cuantitativos para la economía y la empresa},
+  YEAR =         {2009},
+  volume =       {9},
+  pages =        {50-70},
+}
+
+@ARTICLE{Igualdad,
+  AUTHOR =       {Jortiz, J and Zhang, H.},
+  TITLE =        {Inclusión de la igualdad en la hipótesis nula},
+  JOURNAL =      {Comunicaciones en Estadística},
+  YEAR =         {2010},
+  volume =       {3},
+  number =       {2}
+  pages =        {163-168},
+}
+
+@BOOK{Carlin,
+  AUTHOR =       {Carlin, B. P. and Louis, T. A.},
+  TITLE =        {Bayes and Empirical Bayes for Data Analysis},
+  PUBLISHER =    {Chapman and Hall/CRC},
+  YEAR =         {1996},
+  edition =      {1},
+}
+
+@ARTICLE{Garwood,
+  AUTHOR =       {Garwood, F.},
+  TITLE =        {Fiducial limits for the Poisson Distribution},
+  JOURNAL =      {Biometrika},
+  YEAR =         {1936},
+  volume =       {28},
+  pages =        {437-442},
+}
+
+@ARTICLE{Student,
+  AUTHOR =       {Student},
+  TITLE =        {The Probable Error of a Mean},
+  JOURNAL =      {Biometrika},
+  YEAR =         {1908},
+  volume =       {6},
+  number=        {1}
+  pages =        {1-25},
+}
+
+@BOOK{Lehmann86,
+  AUTHOR =       {Lehmann, E. L.},
+  TITLE =        {Testing Statistical Hypotheses},
+  PUBLISHER =    {Springer},
+  YEAR =         {1986},
+  edition =      {Second},
+}
+
+@ARTICLE{Shapiro,
+  AUTHOR =       {Shapiro, S. S. and Wilk, M. B.},
+  TITLE =        {An analysis of variance test for normality (complete samples)},
+  JOURNAL =      {Biometrika},
+  YEAR =         {1965},
+  volume =       {52},
+  number=        {3/4}
+  pages =        {591-611},
+}
+
+@ARTICLE{Miller,
+  AUTHOR =       {Miller, L. H.},
+  TITLE =        {Table of percentage points of Kolmogorov statistics},
+  JOURNAL =      {Journal of the American Statistical Association},
+  YEAR =         {1956},
+  volume =       {51},
+  pages =        {111-121},
+}
+
+@ARTICLE{Mardia,
+  AUTHOR =       {Mardia, K. V.},
+  TITLE =        {Measures of Multivariate Skewness and Kurtosis with Applications},
+  JOURNAL =      {Biometrika},
+  YEAR =         {1970},
+  volume =       {57},
+  number =       {3},
+  pages =        {519-530},
+}
+
+@ARTICLE{BoxCox,
+  AUTHOR =       {Box, G. E. P. and Cox, D. R.},
+  TITLE =        {An Analysis of Transformations},
+  JOURNAL =      {Journal of the Royal Statistical Society. Series B (Methodological)},
+  YEAR =         {1964},
+  volume =       {26},
+  number =       {2},
+  pages =        {211-252},
+}
+
+@ARTICLE{Lawrence,
+  AUTHOR =       {Leemis, L. M. and McQueston, J. T.},
+  TITLE =        {Univariate Distribution Relationships},
+  JOURNAL =      {The American Statistician},
+  YEAR =         {2008},
+  volume =       {62},
+  number =       {1},
+  pages =        {45-53},
+}
+
+@ARTICLE{Mark,
+  AUTHOR =       {Schervish, M. J.},
+  TITLE =        {\emph{P} values: What They Are and What They Are Not},
+  JOURNAL =      {The American Statistician},
+  YEAR =         {1996},
+  volume =       {50},
+  number =       {3},
+  pages =        {203-206},
+}
+
+\clearpage
+\newpage
+\phantom{xxx}
+\thispagestyle{empty}

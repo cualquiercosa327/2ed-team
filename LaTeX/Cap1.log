@@ -1,0 +1,15 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2009.10.6)  23 OCT 2009 16:20
+entering extended mode
+**C:/Documents*and*Settings/usuario/Escritorio/Libro/Inferencia*estadística/Cap
+1.tex
+
+("C:/Documents and Settings/usuario/Escritorio/Libro/Inferencia estadística/Cap
+1.tex"
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
+! Undefined control sequence.
+l.1 \chapter
+            [Estimación puntual]{\Huge {\textcolor{purpura}{\tit {Estimación...
+
+? 

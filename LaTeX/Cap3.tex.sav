@@ -1,0 +1,1487 @@
+\chapter[Pruebas de hipótesis]{\Huge {\textcolor{purpura}{\tit {Pruebas de hipótesis}}}}
+
+El tema de las pruebas de hipótesis se difiere con la estimación puntual y la estimación por intervalo de confianza en el sentido de que éstos proveen valor o conjunto de valores específicos que el parámetro de interés puede tomar, mientras que una prueba de hipótesis trata de verificar si una cierta afirmación acerca del parámetro puede considerarse como válida basándose en una muestra observada. Por consiguiente, una prueba d hipótesis es muy útil en situaciones donde no es de mucho interés el valor (estimado)del parámetro, sino la validez de la afirmación en cuestión. A continuación se presentan un ejemplo donde resulta útil el uso de pruebas de hipótesis.
+
+Para el propósito de importación de ciertas motocicletas, la entidad ambiental del país importador necesita verificar que el nivel de contaminantes producidos por estas motocicletas cumplen con las normas del país. En particular la emisión de CO (denotada por $\mu$) no debe superar a $5.5g/Km$. En este caso sólo se necesita verificar si la afirmación $\mu\leq5.5g/Km$ puede considerarse como válida, mientras que la estimación puntual de $\mu$ no es de gran interés como se verá más adelante.
+
+\section{Conceptos preliminares}
+Dada una muestra aleatoria $X_1$, $\ldots$, $X_n$ provenientes de una distribución con función de densidad $f(x,\theta)$, donde el espacio paramétrico del parámetro $\theta$ se denota por $\bTheta$. Un sistema de hipótesis está conformado por dos afirmaciones acerca de $\theta$ de la siguiente forma
+\begin{equation}\label{general}
+H_0:\ \theta\in\bTheta_0\ \ \ \ vs.\ \ \ \ H_a:\ \theta\in\bTheta_1
+\end{equation}
+
+donde $\bTheta_0,\bTheta_1$ son subconjuntos de $\bTheta$ y se denominan espacio paramétrico nulo y espacio paramétrico alterno, respectivamente. La única condición que se deben cumplir es $\bTheta_0\cap\bTheta_1=\emptyset$. $H_0$ se denomina la hipótesis nula, y $H_a$ la hipótesis alterna. El procedimiento del juzgamiento de hipótesis consiste en, basado en una muestra aleatoria observada, decidir aceptar cuál de las dos hipótesis como válida. Para eso, se necesita, en primer lugar, encontrar una estadística de prueba; y posteriormente se debe establecer una regla de decisión que nos indica para qué valores de la estadística de prueba se debe rechazar $H_0$ y aceptar $H_a$.
+
+La búsqueda de una regla de decisión para un sistema de hipótesis se lleva a cabo usando teniendo en cuenta que en el procedimiento del juzgamiento de hipótesis, se puede cometer dos tipos de errores:
+\begin{itemize}
+    \item rechazar $H_0$ cuando ésta es verdadera. Este error se denomina error tipo I.
+    \item no rechazar $H_0$ cuando ésta es falsa. Este error se denomina error tipo II.
+\end{itemize}
+
+Es claro que ambos errores conducen a decisiones erróneas y éstas pueden causar pérdidas económicas y demás daños y perjuicios, por consiguiente una buena regla de decisión debe garantizar que la probabilidad de cometer tanto el error tipo I como el error tipo II sea pequeña. Sin embargo, no es fácil, por no decir imposible minimizar las dos probabilidades simultáneamente. Una solución a este problema es plantear el sistema (\ref{general}) de tal forma que el error tipo I sea menos grave que el error tipo II, y garantizar únicamente que la probabilidad de cometer error tipo I sea pequeña. Una falla evidente de este procedimiento es que no se controla la magnitud del error tipo II, y la probabilidad de cometer este error puede ser realmente grande en algunos casos, y lo anterior ha sido siempre una de las críticas que existen en la literatura hacia el procedimiento de pruebas de hipótesis. Para implementar el anterior procedimiento, se necesita determinar, para cada sistema de hipótesis, cuál de los dos error es más grave, en muchas situaciones prácticas se necesita la ayuda de expertos en el tema. Considera el ejemplo de motocicletas enunciada al comienzo de este capítulo.
+
+\begin{Eje}
+Suponga que la emisión de CO de un cierto tipo de motocicletas \emph{Scooter} no debe superar a 5.5g/Km. La entidad ambiental responsable selecciona un número determinado de estas motocicletas para efectuar pruebas correspondientes. Si se denota la emisión de CO de estas motocicletas por $\mu$, entonces existen dos hipótesis acerca de $\mu$: $\mu\leq5.5$ y $\mu>5.5$. Basado en los resultados de la muestra, la entidad debe decidir cuál de las dos hipótesis aceptar. Si el sistema de hipótesis planteado es
+\begin{equation}\label{sis_ejem}
+H_0:\ \mu\leq5.5\ \ \ \ vs.\ \ \ \ H_a:\ \mu>5.5
+\end{equation}
+
+entonces tenemos que
+\begin{itemize}
+    \item El error tipo I implica rechazar $\mu\leq5.5$ cuando realmente $\mu\leq5.5$, esto es, motocicletas que están emitiendo una cantidad permitida de CO no pasan la prueba. Y esto puede causar una pérdida económica para la empresa que fabrica y la empresa que importa estas motocicletas. Y esto puede causar despido de empleados, y en el peor de los casos, la quiebra de las dos empresas.
+    \item El error tipo II implica aceptar $\mu\leq5.5$ cuando en la realidad $\mu>5.5$, esto implica que motocicletas que emiten una gran cantidad de CO pasan la prueba y pueden ser importadas. Y esto causará inevitablemente la contaminación excesiva del medio ambiente.
+\end{itemize}
+Si el experto del tema considera más grave la pérdida económica de las empresas que la contaminación del medio ambiente, se puede mantener el sistema (\ref{sis_ejem}) planteado anteriormente; mientras que si la prioridad es conservar el medio ambiente, el sistema que se plantea debe ser
+\begin{equation*}
+H_0:\ \mu>5.5\ \ \ \ vs.\ \ \ \ H_a:\ \mu\leq5.5,
+\end{equation*}
+
+el cual, como se verá más adelante, tiene la misma regla de decisión que el sistema
+\begin{equation*}
+H_0:\ \mu\geq5.5\ \ \ \ vs.\ \ \ \ H_a:\ \mu<5.5
+\end{equation*}
+
+En este ejemplo, considerando el contexto del problema, el espacio paramétrico de $\mu$ es $\mathbf{\Theta}=(0,\infty)$, y en el sistema (\ref{sis_ejem}), $\bTheta_0=(0,5.5]$ y $\bTheta_1=(5.5,\infty)$.
+\end{Eje}
+
+En el ejemplo anterior, la unión de los conjuntos $\bTheta_0$ y $\bTheta_1$ conforma espacio paramétrico completo $\bTheta$, todos los sistemas de hipótesis tienen que cumplir con esta condición. Suponga que la empresa que fabrica las motocicletas de ejemplo anterior diseña un dispositivo para disminuir la emisión del gas CO, si las motocicletas sin el dispositivo emite $3.7g/Km$, entonces para probar la eficiencia del dispositivo, el sistema de hipótesis que se plantea será
+\begin{equation*}
+H_0:\ \mu=3.7\ \ \ \ vs.\ \ \ \ H_a:\ \mu<3.7.
+\end{equation*}
+
+Y en este caso, $\bTheta_0=\{3.7\}$, $\bTheta_1=(0,3.7)$ y la unión de estos conjuntos no conforman el espacio paramétrico completo.
+
+Para el desarrollo de la teoría básica concerniente al tema de pruebas de hipótesis primero se estudia muestras provenientes de la distribución normal y posteriormente se consideran muestras provenientes de distribuciones diferentes a la normal.
+
+\section{Una muestra}
+Como supuesto general para esta parte del libro, suponga que se dispone de una muestra $X_1$, $\cdots$, $X_n$ provenientes de una distribución $N(\mu,\sigma^2)$. Estudiaremos por separado los sistemas de hipótesis para $\mu$ y $\sigma^2$.
+
+\subsection{Pruebas de hipótesis para la media poblacional}
+Basado en una muestra proveniente de una distribución normal donde el parámetro de interés es la media poblacional $\mu$, y estamos interesados en saber si un valor específico para $\mu$ es razonable basado en la muestra observada. Consideramos el siguiente sistema de hipótesis
+\begin{equation}\label{igual_desigual}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq\mu_0
+\end{equation}
+
+Recordemos que en estimación por intervalo de confianza, la estimación de $\mu$ depende de si el valor de la varianza poblacional $\sigma^2$ es conocida o no. Aquí también se consideran los dos casos separadamente.
+
+\subsubsection{$\sigma^2$ conocida}
+
+Necesitamos encontrar una regla de decisión en términos de alguna estadística de prueba que nos permite juzgar el sistema para cada posible muestra observada. Hay diferentes formas de encontrar una regla de decisión, ilustramos el razonamiento de uno de estos métodos con una situación práctica.
+
+Suponga que la longitud de los clavos producidos en cierta fábrica debe ser de 5cm,  para verificar que los productos terminados en una línea de producción satisfacen con este requisito, se seleccionan aleatoriamente 50 clavos, se mide cada uno de estos y se obtiene la longitud promedio de estos 50 clavos. Es claro que el promedio muestral de estos 50 clavos es una estimación del promedio poblacional, de esta forma, si este promedio muestral  es de 7cm, claramente se concluye que la línea de producción no cumple con el requisito; se tiene la misma conclusión si este promedio es de 3cm, por ejemplo. Es decir, la simple lógica sugiere que se debe rechazar el hipótesis de que la longitud promedio de los clavos producidos por la línea de producción es de 5cm si el promedio muestral está muy alejado de 5cm.
+
+En términos generales, se rechaza $H_0$ en (\ref{igual_desigual}) cuando el valor de $\bar{X}$ está muy alejado de $\mu_0$, y podemos describirlo como
+\begin{center}
+Rechazar $H_0$ cuando $|\bar{x}-\mu_0|>K$ para algún $K>0$.
+\end{center}
+El uso del valor absol
+uto se debe a que matemáticamente la distancia entre dos valores $a$ y $b$ se mide con $|a-b|$. La anterior afirmación es la regla de decisión para el sistema (\ref{igual_desigual}) y necesitamos encontrar el valor de $K$ para completarla. Para eso podemos hacer uso de la definición del error tipo I. En primer lugar, se debe determinar cuál es la máxima magnitud permitida de la probabilidad de cometer el error tipo I conocida como el tamaño de prueba, denota este límite superior por $\alpha$, que también se denomina el tamaño de la prueba o el nivel de significación. Entonces recurriendo a la definición de cometer error tipo I, tenemos que
+\begin{align*}
+\alpha&=P(\text{Rechazar} H_0)\ \ \ \text{cuando $H_0$ es verdadera}\\
+&=P(|\bar{X}-\mu_0|>K)\ \ \ \text{cuando $H_0$ es verdadera}\\
+&=P(\bar{X}-\mu_0>K)+P(\bar{X}-\mu_0<-K)\ \ \ \text{cuando $H_0$ es verdadera}
+\end{align*}
+Nótese que cuando $H_0$ es verdadera, tenemos que $\mu=\mu_0$, entonces la distribución de $\bar{X}$ es $N(\mu_0,\sigma^2/n)$, (la distribución de alguna estadística suponiendo que $H_0$ es verdadera se denomina la distribución nula).
+Usando la distribución nula de $\bar{X}$, tenemos que
+\begin{align*}
+\alpha&=P\left(\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}>\frac{K}{\sigma/\sqrt{n}}\right)+P\left(\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}<-\frac{K}{\sigma/\sqrt{n}}\right)\\
+&=1-\Phi\left(\frac{K}{\sigma/\sqrt{n}}\right)+\Phi\left(-\frac{K}{\sigma/\sqrt{n}}\right)\\
+&=2\Phi\left(-\frac{K}{\sigma/\sqrt{n}}\right)
+\end{align*}
+
+de donde se concluye que $-\frac{K}{\sigma/\sqrt{n}}=z_{\alpha/2}$, de donde $K=-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}=z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$. Con el valor de $K$ encontrado, tenemos la siguiente regla de decisión para el sistema (\ref{igual_desigual}):
+\begin{center}
+Rechazar $H_0$ cuando $|\bar{X}-\mu_0|>z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$.
+\end{center}
+Se puede ver fácilmente que la anterior regla de decisión es equivalente a
+\begin{center}
+Rechazar $H_0$ cuando $|\frac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}|>z_{1-\alpha/2}$.
+\end{center}
+O
+\begin{center}
+Rechazar $H_0$ cuando $\bar{X}>\mu_0+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$ ó $\bar{X}<\mu_0-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$.
+\end{center}
+En conclusión, para el anterior sistema de hipótesis, existe tres regla de decisión equivalentes:
+\begin{enumerate}[(a)]
+\item $|\frac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}|>z_{1-\alpha/2}$ donde la estadística de prueba es $\frac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}$
+\item $|\bar{X}-\mu_0|>z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$ donde la estadística de prueba es $\bar{X}-\mu_0$
+\item $\bar{X}>\mu_0+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$ ó $\bar{X}<\mu_0-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$ donde la estadística de prueba es $\bar{X}$.
+\end{enumerate}
+
+Las anteriores reglas de decisión se basan en una estadística de prueba, en la práctica cuando se observa un conjunto de datos $x_1$, $\cdots$, $x_n$, se calcula el valor de la estadística y se verifica si se cumple cualquier de las anteriores reglas de decisión. Presentamos una ilustración en el siguiente ejemplo.
+
+\begin{Eje}
+Retomando el ejercicio 6 del capítulo 2. Una máquina de llenado de botellas debe estar programado para efectuar un llenado de 350ml, y se quiere conocer el funcionamiento real de la máquina, para eso se extrajo aleatoriamente 20 botellas llenadas por la máquina y se midió el contenido de la botella, los resultados fueron: 355, 350, 340, 345, 354, 358, 350, 343, 349, 346, 351, 358, 342, 350, 356, 345, 349, 356, 354, 346. Una simple gráfica QQ nos ilustra que se puede suponer que los datos proviene de una distribución normal. Suponga adicionalmente que la desviación estándar es igual a 5ml, si se desea evaluar la calidad de la máquina de llenado, el sistema de hipótesis es
+\begin{equation*}
+H_0:\ \mu=350\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq350,
+\end{equation*}
+
+y supongamos que se probará el sistema con un nivel de significación igual a 5\%.
+
+Como se comentó anteriormente, la regla de decisión puede ser cualquiera de las tres dadas anteriormente, puesto que las tres son equivalentes y conducen a la misma decisión. Si usamos la regla de decisión (b), se calcula $|\bar{x}-350|$ que es igual a 0.15, y por el otro lado se calcula $z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$ que es igual a 1.75, de donde se concluye que $|\bar{x}-350|$ no es mayor a $z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$, lo cual conduce a la decisión de no rechazar o aceptar $H_0$, y se puede afirmar que la máquina efectivamente realiza un llenado de 350ml.
+\end{Eje}
+
+\textbf{Región de rechazo}
+
+Otro concepto importante en las pruebas de hipótesis es la región de rechazo asociada a una regla de decisión, y se define como el conjunto conformado por todos los valores de la estadística de prueba que conducen a la decisión de rechazar $H_0$. En cada una de las tres anteriores reglas de decisión (a), (b) y (c), la estadística de prueba es diferente, y para cada una de ellas, podemos obtener el correspondiente región de rechazo:
+\begin{itemize}
+     \item Para la estadística $\frac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}$ de la regla de decisión (a), el región de rechazo es $\{c\in\mathbb{R}:c>z_{1-\alpha/2}\ \text{ó}\ c<-z_{1-\alpha/2}\}$. Podemos ilustrar este región de rechazo en la Figura 4.1, junto con la distribución nula de la estadística de prueba que corresponde a la distribución normal estándar.
+         \begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1268 1072, scale=0.2]{RC1.jpg}
+\caption{Ilustración del región de rechazo de la regla de decisión (a).}
+\end{figure}
+    \item Ahora para la estadística $\bar{X}$ de la regla de decisión (c), el región de rechazo es $\{c\in\mathbb{R}:c>\mu_0+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\ \text{ó}\ c<\mu_0-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}$. Ahora nótese que la distribución bajo el hipótesis nula de $\bar{X}$ es $N(\mu_0,\sigma^2/n)$. Ilustramos el región de rechazo en la Figura 4.2 suponiendo que $\sigma=2$ y $n=20$.
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1320 1061, scale=0.2]{RC2.jpg}
+\caption{Ilustración del región de rechazo de la regla de decisión (a).}
+\end{figure}
+\end{itemize}
+
+En resumen, para un sistema de hipótesis dado, puede haber varias reglas de decisión, y asociada a ellas, varias estadísticas de pruebas, y para cada una de las estadísticas de prueba, se tiene el respectivo región de rechazo. Por lo tanto, cuando se refiere al término región de rechazo, siempre debe especificar cuál es la estadística de prueba correspondiente.
+
+\textbf{$p$ valor}
+
+Una vez dado el concepto de región de rechazo, ahora estudiamos un concepto de fundamental importancia en las pruebas de hipótesis: el denominado $p$ valor. Para introducir el concepto, considérese de nuevo el sistema de hipótesis
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq\mu_0,
+\end{equation*}
+
+basándose en una muestra con distribución normal. Supongamos que se usa la regla de decisión (a) dada anteriormente, de manera que cuando se observa la realización de una muestra $x_1$, $\cdots$, $x_n$, se calcula el valor de la estadística de prueba, en este caso, $\frac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}$, si el valor de la estadística está dentro de la región de rechazo $\{c\in\mathbb{R}:c>z_{1-\alpha/2}\ \text{ó}\ c<-z_{1-\alpha/2}\}$, entonces se rechaza $H_0$, de lo contrario se acepta $H_0$.
+
+Retomando el Ejemplo 4.1, el valor de la estadística $\frac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}$ en la muestra observada es de -0.1677, si el nivel de significación de 5\%, entonces $z_{1-\alpha/2}=1.96$, y claramente el valor -0.1677 no se encuentra dentro del región de rechazo. Nótese que la decisión tomada es la misma que en el Ejemplo 3.1. Sin embargo, tanto el razonamiento del Ejemplo 3.1 como el uso del región de rechazo tiene una desventaja que radica en que si el usuario decide usar otro nivel de significación, el procedimiento debe realizarse de nuevo y eso no es eficiente computacionalmente. Es por esta razón que los programas o softwares estadísticos siempre calculan el $p$ valor que nos permite realizar la prueba de hipótesis para diferentes niveles de significación.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1280 1081, scale=0.2]{RC3.jpg}
+\caption{Ilustración del región de rechazo y $p$ valor de la regla de decisión (a).}
+\end{figure}
+
+El concepto del $p$ valor está íntimamente ligado con el región de rechazo. Observe la Figura 4.3, donde se muestra el región de rechazo si se utiliza la regla de decisión (a). Dada la forma de la distribución nula de la estadística de prueba y el región de rechazo, los valores que puede tomar la estadística de prueba se puede dividir en cuatro grupos: (1) entre 0 y $z_{1-\alpha/2}$, (2) mayor que $z_{1-\alpha/2}$, (3) entre 0 y $-z_{1-\alpha/2}$ y finalmente (4) menor que $-z_{1-\alpha/2}$. De esta forma, si en una muestra observada el valor de la estadística de prueba, digamos $v_1$, es como el caso (1) mostrado en la gráfica, es claro que no se rechaza $H_0$. Nótese que en este caso, el área hacia la derecha de $v_1$ es mayor que el área de RC2, el cual es $\alpha/2$. Ahora si el valor de la estadística $v_2$ es como el caso (2), entonces pertenece al región de rechazo, que es equivalente al hecho de que el área hacia la derecha de $v_2$ es menor que $\alpha/2$. Lo anterior sugiere establecer una nueva regla de decisión:
+\begin{center}
+Rechazar $H_0$ si el área a la derecha del valor de la estadística es menor a $\alpha/2$
+\end{center}
+que es equivalente a
+\begin{center}
+Rechazar $H_0$ si el área a la derecha del valor de la estadística multiplicado por 2 es menor a $\alpha$.
+\end{center}
+Ahora la anterior regla de decisión es correcta si el valor de la estadística es mayor que 0, en el caso contrario, el análisis es diferente. Suponga que el valor de la estadística es igual a $v_3$, es claro el área hacia la derecha de $v_3$ es mayor a $\alpha/2$, de hecho, es mayor a 0.5, sin embargo, éste pertenece a la región de rechazo. El análisis correcto, cuando el valor de la estadística es menor que 0, es observar el área hacia la izquierda. Entonces para el valor $v_3$, el área hacia la izquierda es menor a $\alpha/2$ y se rechaza $H_0$; para el valor $v_4$, el área hacia la izquierda es mayor a $\alpha/2$, y no se rechaza $H_0$.
+
+En conclusión, denotando el valor de la estadística de prueba $\frac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}$ como $v$, podemos establecer la siguiente regla de decisión:
+
+Rechazar $H_0$ si
+\begin{equation*}
+\left\{
+  \begin{array}{ll}
+    \hbox{el área a la derecha de $v$ multiplicado por 2 es menor a $\alpha$}, & \hbox{para\ $v>0$ ;} \\
+    \hbox{el área a la izquierda de $v$ multiplicado por 2 es menor a $\alpha$}, & \hbox{para \ $v<0$.}
+  \end{array}
+\right.
+\end{equation*}
+
+Ahora recordando que un área bajo la curva de una función de densidad se puede interpretar como una probabilidad, la anterior regla de decisión se convierte en:
+
+\begin{equation*}
+\text{Rechazar}\ H_0\ \text{si}
+\left\{
+  \begin{array}{ll}
+    \hbox{$2P\left(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}>v\right)<\alpha$}, & \hbox{para\ $v>0$ ;} \\
+    \hbox{$2P\left(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}<v\right)<\alpha$}, & \hbox{para \ $v<0$.}
+  \end{array}
+\right.
+\end{equation*}
+
+Y el $p$ valor asociado al valor de la estadística $v$ se define como
+\begin{equation*}
+p\ \text{valor}=\left\{
+  \begin{array}{ll}
+    \hbox{$2P\left(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}>v\right)$}, & \hbox{para\ $v>0$ ;} \\
+    \hbox{$2P\left(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}<v\right)$}, & \hbox{para \ $v<0$.}
+  \end{array}
+\right.
+\end{equation*}
+
+O equivalentemente
+\begin{equation*}
+p\ \text{valor}=\left\{
+  \begin{array}{ll}
+    \hbox{$2P(Z>v)$}, & \hbox{para\ $v>0$ ;} \\
+    \hbox{$2P(Z<v)$}, & \hbox{para \ $v<0$.}
+  \end{array}
+\right.
+\end{equation*}
+
+donde $Z$ denota una variable aleatoria con distribución normal estándar. Dada la anterior definición del $p$ valor podemos reescribir la regla de decisión en término del $p$ valor:
+\begin{center}
+Rechazar $H_0$ si el $p$ valor es menor al nivel de significación $\alpha$.
+\end{center}
+
+Ilustremos el cálculo y el uso del $p$ valor con el problema descrito en el Ejemplo 4.1. usando la regla de decisión (a). El valor de la estadística $\frac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}$ es -0.1677, el cual es menor que 0, por lo tanto, el $p$ valor se define como $2P(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}<-0.1677)=0.8668$. Entonces si el nivel de significación es de 5\%, no se rechaza $H_0$, pues el $p$ valor es mayor a 5\%. Ahora si se cambia el nivel de significación a 10\%, no es necesario volver a realizar cálculos numéricos para tomar la decisión que pues simplemente comparamos el $p$ valor con el 10\%, y la decisión sigue siendo "No rechazar $H_0$". Por esta razón, en la práctica, el uso de $p$ valor puede ser más sencillo que los otros procedimientos, y los software estadísticos, en mayoría de los casos, simplemente arrojan el valor de la estadística de prueba y el $p$ valor, y los usuarios pueden comparar el $p$ valor con el nivel de significación deseada.
+
+Es difícil dar una definición formal de $p$ valor, puesto que su cálculo depende en primer lugar del planteamiento del sistema de hipótesis, y en segundo lugar depende de la estadística de prueba que se utiliza. Una definición muy popular de $p$ valor, pero errónea, afirma que el $p$ valor es la probabilidad de que $H_0$ es verdadera. De esta manera, si el $p$ valor es menor que el nivel de significación $\alpha$, implica que la probabilidad de que $H_0$ sea verdadera es pequeña, conduciendo a la decisión de rechazar $H_0$. A pesar de que el anterior razonamiento funciona, no es correcto, puesto que para $H_0$, solo hay dos posibilidades, o es verdadera o es falsa, así que la probabilidad de que $H_0$ sea verdadera es o bien 0 o bien 1, mientras que $p$ valor puede tomar cualquier valor entre 0 y 1.
+
+\textbf{Función de potencia}
+
+Para un sistema de hipótesis, puede haber más de una regla de decisión, en este caso, necesitamos comparar estas reglas de decisión en términos de la probabilidad de cometer los dos tipos de errores, para eso, definimos la función de potencia.
+
+\begin{Defi}
+La función de potencia de una regla de decisión para un sistema de hipótesis es una función del parámetro $\theta$ definida como
+\begin{equation}
+\beta(\theta)=Pr(\text{Rechazar}\ H_0)
+\end{equation}
+\end{Defi}
+
+Nótese que $1-\beta(\theta)=Pr(\text{Aceptar}\ H_0)$, y podemos asociar la función de potencia con los dos errores que se puede cometer en una prueba de hipótesis de la siguiente forma
+\begin{itemize}
+    \item Si el hipótesis $H_0$ es verdadero, esto es, si $\theta\in\bTheta_0$ entonces al rechazar $H_0$, se está cometiendo el error tipo I, y la probabilidad de cometer el error tipo I es lo que hemos definido como el nivel de significación $\alpha$. De esta forma $\beta(\theta)=\alpha$
+    \item Si el hipótesis $H_0$ es falso, esto es, si $\theta\in\bTheta_0^c$ (no necesariamente $\theta\in\bTheta_1$) entonces aceptar $H_0$ equivale a cometer el error tipo II. Y si denotamos la probabilidad de cometer error tipo II como $\beta$, tenemos que $1-\beta(\theta)=\beta$.
+\end{itemize}
+
+Y en conclusión, la función de potencia queda expresada como
+\begin{equation}\label{funcion_potencia}
+\beta(\theta)=\begin{cases}
+\alpha&\text{si $\theta\in\bTheta_0$}\\
+1-\beta&\text{si $\theta\in\bTheta_0^c$}
+\end{cases}
+\end{equation}
+
+y podemos ver claramente que es una función del parámetro $\theta$. Ahora miramos cómo se calcula la función de potencia para la regla de decisión encontrada anteriormente para el sistema de hipótesis
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq\mu_0,
+\end{equation*}
+
+Tenemos que
+\begin{align}\label{Potencia_norm1}
+\beta(\mu)&=Pr(\text{Rechazar}\ H_0)\notag\\
+&=P(\bar{X}>\mu_0+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\ \text{ó}\ \bar{X}<\mu_0-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}})\notag\\
+&=P(\bar{X}>\mu_0+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}})+P(\bar{X}<\mu_0-z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}})\notag\\
+&=P\left(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}>\frac{\mu_0-\mu}{\sigma/\sqrt{n}}+z_{1-\alpha/2}\right)+P\left(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}<\frac{\mu_0-\mu}{\sigma/\sqrt{n}}-z_{1-\alpha/2}\right)\notag\\
+&=1-\Phi\left(\frac{\mu_0-\mu}{\sigma/\sqrt{n}}+z_{1-\alpha/2}\right)+\Phi\left(\frac{\mu_0-\mu}{\sigma/\sqrt{n}}-z_{1-\alpha/2}\right)
+\end{align}
+donde $\Phi$ denota la función de distribución de una variable normal estándar. Podemos observar las siguientes propiedades de la función $\beta(\mu)$:
+\begin{itemize}
+    \item Para $\mu\in\bTheta_0$, esto es, cuando $\mu=\mu_0$, $\beta(\mu)=1-\Phi(z_{1-\alpha/2})+\Phi(-z_{1-\alpha/2})=\alpha$, y coincide con el primer caso de (\ref{funcion_potencia}).
+    \item Para $\mu\in\bTheta_1$, esto es, cuando $\mu\neq\mu_0$, entre más alejado esté $\mu$ de $\mu_0$, el término $\frac{\mu_0-\mu}{\sigma/\sqrt{n}}+z_{1-\alpha/2}$ se aproxima a $\frac{\mu_0-\mu}{\sigma/\sqrt{n}}-z_{1-\alpha/2}$ y en consecuencia $\beta(\mu)$ se acerca al valor 1. Dado (\ref{funcion_potencia}), esto indica que cuando $\mu$ es muy diferente de $\mu_0$, la probabilidad de cometer error tipo II es muy pequeña, es decir, la regla de decisión será capaz de reconocer hipótesis nulas falsas.
+
+        También, cuando el tamaño de muestra $n$ es grande, $\frac{\mu_0-\mu}{\sigma/\sqrt{n}}+z_{1-\alpha/2}$ y $\frac{\mu_0-\mu}{\sigma/\sqrt{n}}-z_{1-\alpha/2}$ se hace grande, y ambos $\Phi\left(\frac{\mu_0-\mu}{\sigma/\sqrt{n}}+z_{1-\alpha/2}\right)$ y $\Phi\left(\frac{\mu_0-\mu}{\sigma/\sqrt{n}}-z_{1-\alpha/2}\right)$ se acerca a 1 y la función $\beta(\mu)$ también se acerca a 1, esto es, entre mayor sea la muestra, una hipótesis nula falsa es más fácil de detectar.
+    \item Es claro que la función de potencia depende del nivel de significación $\alpha$ que se interpreta como la probabilidad de cometer error tipo I, y se determina de antemano. Al principio se comentó que no se puede minimizar simultáneamente las probabilidades de cometer error tipo I y error tipo II, entonces se espera que la función de potencia tome valores pequeños cuando $\alpha$ es pequeño y al observar la forma de (\ref{Potencia_norm1}), confirmamos lo dicho anteriormente.
+\end{itemize}
+
+Ilustramos los anteriores comentarios acerca de la función de potencia (\ref{Potencia_norm1}) en las Figuras 4.4 y 4.5 donde es escogió $\mu_0=2$, $\sigma=1$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Potencia_norm.eps}
+\caption{Función de potencia (\ref{Potencia_norm1}) para diferentes tamaños de muestra con $\mu_0=2$, $\sigma=1$ y $\alpha=0.05$}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Potencia_norm_alpha.eps}
+\caption{Función de potencia (\ref{Potencia_norm1}) para diferentes niveles de significación con $\mu_0=2$, $\sigma=1$ y $n=20$}
+\end{figure}
+
+Ahora, consideramos el siguiente sistema de hipótesis basado en una muestra proveniente de una distribución normal.
+\begin{equation}\label{menor_mayor}
+H_0:\ \mu\leq\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu>\mu_0,
+\end{equation}
+
+Es natural pensar en rechazar $H_0$ y aceptar $H_a:\  \mu>\mu_0$ cuando en una muestra observada la estimación de $\mu$, $\bar{x}$ es muy grande comparado con $\mu_0$. Esto conduce a la siguiente regla de decisión:
+\begin{equation}\label{x-mu_mayor}
+\text{Rechazar}\ H_0\ \text{si}\ \bar{X}-\mu_0>K
+\end{equation}
+
+para algún $K>0$. De nuevo, para encontrar el valor de $K$, se hace uso de la definición del error tipo I, y restringiendo a que la probabilidad de cometer este tipo de error sea a lo más $\alpha$. Se encuentra que $K=z_{1-\alpha}\sigma/\sqrt{n}$, cuando $\sigma$ es conocida.
+
+En otras situaciones, el sistema de hipótesis de interés puede ser de la siguiente forma
+\begin{equation}\label{igua_mayor}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu>\mu_0
+\end{equation}
+
+con $\sigma$ conocida. En este caso, la hipótesis alterna es la misma que el sistema (\ref{menor_mayor}), y como una regla de decisión establece cuándo se debe rechazar la hipótesis nula, o equivalentemente, cuándo aceptar la hipótesis alterna. Entonces \textbf{dos sistemas que difieren en la hipótesis nula, pero concuerdan en la hipótesis alterna tienen la misma regla de decisión.} Por consiguiente, la regla de decisión para (\ref{igua_mayor}) es
+
+\begin{center}
+Rechazar $H_0$ si $\bar{X}-\mu_0>z_{1-\alpha}\frac{\sigma}{\sqrt{n}}$.
+\end{center}
+O equivalentemente
+
+\begin{center}
+Rechazar $H_0$ si $\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}>z_{1-\alpha}$.
+\end{center}
+
+Y es claro que para la anterior regla de decisión, la estadística de prueba es $\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}$ y el región de rechazo asociado es $\{c\in\mathbb{R}: c>z_{1-\alpha}\}$.
+
+Ahora, calculamos el $p$ valor, en primer lugar, observemos el región de rechazo que se ilustra en la Figura 4.5, suponga que el valor de la estadística observada en una muestra aleatoria es el valor $v$ (ver Figura 4.4), entonces la decisión de aceptar o rechazar $H_0$ depende del área bajo curva hacia la derecha de $v$ de la función de densidad de la distribución nula de la estadística de prueba, esto es, $P\left(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}>v\right)$. Si este área es mayor que el área de la región de rechazo $\alpha$, entonces $v$ no cae en la región de rechazo, y por consiguiente, se acepta $H_0$; por otro lado, si el área bajo curva hacia la derecha de $v$ es menor que $\alpha$, entonces se rechaza $H_0$.
+
+De esta forma, el $p$ valor para el sistema de hipótesis (\ref{menor_mayor}) o (\ref{igua_mayor}) ligado al valor observado de la estadístca $v$ se define como
+\begin{equation*}
+p\ \text{valor}=P\left(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{\sigma}>v\right)
+\end{equation*}
+
+o equivalentemente
+\begin{equation*}
+p\ \text{valor}=P(Z>v)=1-\Phi(z)
+\end{equation*}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1198 1029, scale=0.2]{RC4.jpg}
+\caption{Ilustración del región de rechazo de la regla del sistema (\ref{menor_mayor}) y (\ref{igua_mayor}).}
+\end{figure}
+
+Finalmente, estudiamos la función de potencia de la anterior regla de decisión. Tenemos que
+\begin{align}\label{Potencia_norm2}
+\beta(\mu)&=Pr(\text{Rechazar}\ H_0)\notag\\
+&=P(\bar{X}-\mu_0>z_{1-\alpha}\frac{\sigma}{\sqrt{n}})\notag\\
+&=P\left(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}>\frac{\mu_0-\mu}{\sigma/\sqrt{n}}+z_{1-\alpha}\right)\notag\\
+&=1-\Phi\left(\frac{\mu_0-\mu}{\sigma/\sqrt{n}}+z_{1-\alpha}\right)
+\end{align}
+
+Se puede verificar que los comentarios para la relación entre esta función de potencia con el tamaño muestral y el nivel de significación es la misma que la del sistema $\mu=\mu_0\ vs.\ \mu\neq\mu_0$
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Potencia_norm1.eps}
+\caption{Función de potencia (\ref{Potencia_norm2}) para diferentes tamaños de muestra con $\mu_0=2$, $\sigma=1$ y $\alpha=0.05$}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Potencia_norm1_alpha.eps}
+\caption{Función de potencia (\ref{Potencia_norm2}) para diferentes niveles de significación con $\mu_0=2$, $\sigma=1$ y $n=20$}
+\end{figure}
+
+
+Se dejan como ejercicio el desarrollo de una regla de decisión para sistemas
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu<\mu_0
+\end{equation*}
+
+que tiene la misma regla de decisión que el sistema
+\begin{equation*}
+H_0:\ \mu\geq\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu<\mu_0
+\end{equation*}
+
+Otra forma de encontrar una regla de decisión para sistemas como (\ref{menor_mayor}) o (\ref{igua_mayor}) es el método de la prueba de razón de verosimilitud que se describe a continuación.
+\begin{Defi}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria con función de densidad $f(x_i,\theta)$, donde $\theta$ es el parámetro desconocido. Suponga que se quiere probar el siguiente sistema de hipótesis:
+\begin{equation*}
+H_0:\ \theta=\theta_0\ \ \ \ vs.\ \ \ \ H_a:\ \theta=\theta_1,
+\end{equation*}
+
+se denomina la prueba de razón de verosimilitud a la prueba con regla de decisión dada por
+\begin{center}
+Rechazar $H_0$ si $\lambda>K$ para algún constante $K$,
+\end{center}
+donde $\lambda$ es la razón de verosimilitud dada por
+\begin{equation}\label{lambda}
+\lambda=\dfrac{L(\theta_1,x_1,\cdots,x_n)}{L(\theta_0,x_1,\cdots,x_n)}=\frac{\prod_{i=1}^nf(x_i,\theta_1)}{\prod_{i=1}^nf(x_i,\theta_0)},
+\end{equation}
+
+\end{Defi}
+
+Para entender mejor la anterior definición, recordemos que la función de verosimilitud $L(\theta,x_1,\cdots,x_n)$ se puede interpretar como la probabilidad de observar valores $x_1$, $\cdots$, $x_n$ cuando el valor del parámetro es $\theta$. Así que si $L(\theta_1,x_1,\cdots,x_n)$ es mucho más grande que $L(\theta_0,x_1,\cdots,x_n)$ podemos concluir que el valor $\theta_1$ es más creíble que $\theta_0$ para el parámetro, puesto que los valores observados son $x_1$, $\cdots$, $x_n$ y por consiguiente, la probabilidad de observar estos valores debe ser grande. En conclusión cuando $\lambda$ es grande, los datos muestran evidencias a favor de $\theta_1$, y se rechaza el valor de $\theta_0$.
+
+Una forma equivalente pero más sencillo de la prueba de razón de verosimilitud es rechazar $H_0$ cuando $\ln\lambda>\ln K$, puesto que la función logarítmica es una función estrictamente creciente, y valores grandes de $\lambda$ conducen a valores grandes de $\ln\lambda$ y viceversa. De esta manera, una regla de decisión equivalente es
+\begin{center}
+Rechazar $H_0$ si $\sum_{i=1}^n(\ln f(x_i,\theta_1)-\ln f(x_i,\theta_0))>K^*$ para alguna constante $K^*$.
+\end{center}
+
+La metodología de prueba de razón de verosimilitud sirve, aparentemente, para sistema de hipótesis donde tanto el hipótesis nulo como el alterno son igualdad. Es claro que muchos sistemas de hipótesis no es de esta forma, pero generalmente se puede escribir en forma de igualdades, como lo indica en el Tabla 4.1.
+\begin{table}\centering
+\begin{tabular}{c|c}\hline
+$\theta=\theta_0\ vs.\ \theta<\theta_0$&$\theta=\theta_0\ vs.\ \theta=\theta_1$ con $\theta_1<\theta_0$\\
+$\theta=\theta_0\ vs.\ \theta>\theta_0$&$\theta=\theta_0\ vs.\ \theta=\theta_1$ con $\theta_1>\theta_0$\\
+$\theta\leq\theta^*\ vs.\  \theta>\theta^*$&$\theta=\theta_0\ \ vs.\ \theta=\theta_1$ con $\theta_0\leq\theta^*$ y $\theta_1>\theta^*$\\
+$\theta\geq\theta^*\ vs.\ \theta<\theta^*$&$\theta=\theta_0\ vs.\ \theta=\theta_1$ con $\theta_0\geq\theta^*$ y $\theta_1<\theta^*$\\
+$\theta=\theta_0\ vs.\ \theta\neq\theta_0$&$\theta=\theta_0\ vs.\ \theta=\theta_1$ con $\theta_1\neq\theta_0$.\\\hline
+\end{tabular}\caption{Sistemas de hipótesis equivalentes}
+\end{table}
+Ahora, aunque un sistema de hipótesis de forma de igualdad versus desigualdad se puede escribir como un sistema conformado por dos igualdades, generalmente no es posible aplicar el método de la prueba de razón de verosimilitud, sino la prueba generalizada de razón de verosimilitud que se expondrá más adelante.
+
+Retomamos el sistema (\ref{igua_mayor}) en el siguiente ejemplo para ilustra el uso de la prueba de razón de verosimilitud.
+\begin{Eje}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de $N(\mu,\sigma^2)$ con $\sigma^2=\sigma^2_0$ conocida, consideramos el siguiente sisteam de hipótesis
+\begin{equation}\label{igua_mayor_sig   }
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu>\mu_0.
+\end{equation}
+
+De acuerdo con la Tabla 4.1, el anterior sistema es equivalente a
+\begin{equation}\label{igua_igua}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu=\mu_1
+\end{equation}
+
+con $\mu_1>\mu_0$. De esta manera, se puede establecer una regla de decisión usando la prueba de razón de verosimilitud.
+Tenemos que
+\begin{align*}
+\sum_{i=1}^n(\ln f(x_i,\theta_1)-\ln f(x_i,\theta_0))&=\sum_{i=1}^n\left(\frac{1}{2}\frac{(x_i-\mu_0)^2}{\sigma_0^2}-\frac{1}{2}\frac{(x_i-\mu_1)^2}{\sigma_0^2}\right)\\
+&=\frac{1}{2\sigma^2_0}\sum_{i=1}^n\left((x_i-\mu_0)^2-(x_i-\mu_1)^2\right)\\
+&=\frac{1}{\sigma^2_0}(\mu_1-\mu_0)\sum_{i=1}^nx_i+\frac{n(\mu_0^2-\mu_1^2)}{2\sigma^2_0}.
+\end{align*}
+De manera que la regla de decisión de la prueba de razón de verosimilitud está dada por:
+\begin{center}
+Rechazar $H_0$ si $\dfrac{1}{\sigma^2_0}(\mu_1-\mu_0)\sum_{i=1}^nx_i+\dfrac{n(\mu_0^2-\mu_1^2)}{2\sigma^2_0}>K^*$ para alguna constante $K^*$.
+\end{center}
+La anterior regla de decisión, sin duda, tiene una forma poco amigable. Para lograr una regla de decisión equivalente pero más simple, se observa que en la anterior regla de decisión la única cantidad aleatoria que varía de muestra a muestra es la realización de la estadística $\sum_{i=1}^nx_i$, entonces se despeja para este valor, y se tiene que
+\begin{center}
+Rechazar $H_0$ si $\sum_{i=1}^nx_i>\dfrac{\sigma^2_0}{\mu_1-\mu_0}(K^*-\dfrac{n(\mu_0^2-\mu_1^2)}{2\sigma^2_0})=K_1$,
+\end{center}
+o también se puede escribir la anterior regla de decisión como:
+\begin{center}
+Rechazar $H_0$ si $\bar{x}>K_1/n=K$.
+\end{center}
+Una vez establecida la regla de decisión, el siguiente paso es encontrar el valor de la constante involucrada $K$. Para eso se procede de la manera corriente, recurriendo a la definición del error tipo I, y se despeja el valor de $K$ de la igualdad
+\begin{equation*}
+\alpha=P(\text{cometer error tipo I}),
+\end{equation*}
+
+de donde se tiene que $K=\frac{\sigma_0}{\sqrt{n}}z_{1-\alpha}+\mu_0$, y de esta manera, se completa la regla de decisión:
+\begin{center}
+Rechazar $H_0$ si $\bar{x}>\dfrac{\sigma_0}{\sqrt{n}}z_{1-\alpha}+\mu_0$.
+\end{center}
+O equivalentemente
+\begin{center}
+Rechazar $H_0$ si $\dfrac{\sqrt{n}(\bar{x}-\mu_0)}{\sigma_0}>z_{1-\alpha}$.
+\end{center}
+\end{Eje}
+
+El lector puede darse cuenta que la anterior regla de decisión coincide con la hallada anteriormente, pero con mucho más operaciones algebraicas, entonces para qué utilizar la prueba de razón de verosimilitud, qué ventajas tiene ésta? Hay por lo menos las dos siguientes razones:
+\begin{itemize}
+    \item Una razón muy sencilla es que la prueba de razón de verosimilitud es una herramienta estándar que puede ser utilizada en muchas áreas de la estadística donde no es fácil proponer una regla de decisión.
+    \item Por otro lado, se puede ver que la prueba de razón de verosimilitud de nivel $\alpha$ es más potente que cualquier otra prueba de nivel no superior a $\alpha$, esto es, la prueba de razón de verosimilitud es la prueba que tiene menor probabilidad de cometer error tipo II. Es importante recordar que una al aumentar el nivel de significación $\alpha$, la potencia también aumenta  que puede haber una regla de decisión de
+
+\end{itemize}
+
+Ahora, como se mencionaba antes, aunque algunos sistemas de hipótesis que se desea probar puede ser expresado como
+\begin{equation*}
+H_0:\ \theta=\theta_0\ \ \ \ vs.\ \ \ \ H_a:\ \theta=\theta_1,
+\end{equation*}
+
+no siempre se puede encontrar una regla de decisión usando el método de la razón de verosimilitud. En estos casos, se puede aplicar el método de la razón generalizada de verosimilitud , que se describe a continuación.
+
+\begin{Defi}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria con función de densidad $f(x_i,\theta)$, donde $\theta$ es el parámetro desconocido. Suponga que se quiere probar el siguiente sistema de hipótesis:
+\begin{equation*}
+H_0:\ \theta\in\mathbf{\Theta}_0\ \ \ \ vs.\ \ \ \ H_a:\ \theta\in\mathbf{\Theta_1},
+\end{equation*}
+
+con $\mathbf{\Theta}_0\cup\mathbf{\Theta}_1\subseteq\mathbf{\Theta}$, el espacio paramétrico de $\theta$, y $\mathbf{\Theta}_0\cap\mathbf{\Theta}_0=\emptyset$, entonces la prueba con regla de decisión dada por
+\begin{center}
+Rechazar $H_0$ si $\lambda>K$ para algún constante $K$,
+\end{center}
+donde $\lambda$ es la razón generalizada de verosimilitud dada por
+\begin{equation}\label{lambda_general}
+\lambda=\dfrac{\sup_{\mathbf{\Theta}_0\cup\mathbf{\Theta}_1}L(\theta,x_1,\cdots,x_n)}{\sup_{\mathbf{\Theta}_0}L(\theta,x_1,\cdots,x_n)},
+\end{equation}
+
+donde $\sup_AL(\theta,x_1,\cdots,x_n)$ se denota el valor máximo que puede tomar la función de verosimilitud $L$ en el conjunto $A$.
+\end{Defi}
+
+La lógica de esta prueba es similar que la prueba de razón de verosimilitud, cuando $\lambda$ es muy grande, $\sup_{\mathbf{\Theta}_0\cup\mathbf{\Theta}_1}L(\theta,x_1,\cdots,x_n)$ es mayor que $\sup_{\mathbf{\Theta}_0}L(\theta,x_1,\cdots,x_n)$, implicando que el valor máximo de $L(\theta,x_1,\cdots,x_n)$ en $\mathbf{\Theta}_1$ es mayor que el valor máximo en $\mathbf{\Theta}_0$. Esto es, es mas creíble que $\theta$ toma valor en $\mathbf{\Theta}_1$ que en $\mathbf{\Theta}_0$, y por consiguiente se rechaza $H_0$.
+
+Por otro lado, cuando $\mathbf{\Theta}_1=\mathbf{\Theta}^c$, se tiene que $\mathbf{\Theta}_0\cup\mathbf{\Theta}_1=\mathbf{\Theta}$, y dado que $\mathbf{\Theta}$ es el espacio paramétrico completo de $\theta$, entonces el numerador de $\lambda$ en (\ref{lambda_general}) se convierte simplemente en la función de verosimilitud evaluada en el estomador $MV$ de $\theta$, esto es, $L(\hat{\theta}_{MV},x_1,\cdots,x_n)$.
+
+Anteriormente se mencionó que cuando el sistema de hipótesis que se desea probar es de la forma de igualdad frente a desigualdad, no siempre se puede aplicar la prueba de razón de verosimilitud, veamos en el siguiente ejemplo que la prueba de razón generalizada de verosimilitud puede resultar útil.
+
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución $N(\mu,\sigma^2)$, usaremos la prueba de razón generalizada de verosimilitud para encontrar una regla de decisión para el sistema
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq\mu_0.
+\end{equation*}
+
+En primer lugar, nótese que $\mathbf{\Theta}_0$ es el conjunto cuyo única valor es $\mu_0$, esto, es $\mathbf{\Theta}_0=\{\mu_0\}$, y $\mathbf{\Theta}_1=\mathbf{\Theta}_0^c$, así que el numerador de $\lambda$ es la función de verosimilitud evaluado en $\hat{\mu}_{MV}$.
+
+Ahora, para calcular la razón generalizada de verosimilitud $\lambda$, recordemos,en primer lugar que la función de verosimilitud está dada por
+\begin{equation*}
+L(\mu,x_1,\cdots,x_n)=(2\pi\sigma^2)^{-n/2}\exp\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\mu)^2\}.
+\end{equation*}
+
+Ahora, la estimación $MV$ de $\mu$ es el promedio muestral $\bar{x}$, entonces el numerador de $\lambda$ se convierte en
+\begin{equation*}
+L(\hat{\mu}_{MV},x_1,\cdots,x_n)=(2\pi\sigma^2)^{-n/2}\exp\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\bar{x})^2\}.
+\end{equation*}
+
+Y por otro lado, $\mathbf{\Theta}_0=\{\mu_0\}$, entonces el máximo valor de $L$ en $\mathbf{\Theta}_0$ es $L$ evaluada en $\mu_0$, entonces
+\begin{equation*}
+L(\mu_0,x_1,\cdots,x_n)=(2\pi\sigma^2)^{-n/2}\exp\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\mu_0)^2\}.
+\end{equation*}
+
+De donde se tiene que la razón generalizada de verosimilitud está dada por
+\begin{align*}
+\lambda&=\dfrac{(2\pi\sigma^2)^{-n/2}\exp\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\bar{x})^2\}}{(2\pi\sigma^2)^{-n/2}\exp\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\mu_0)^2\}}\\
+&=\exp\left\{\frac{1}{2\sigma^2}\left[\sum_{i=1}^n(x_i-\mu_0)^2-\sum_{i=1}^n(x_i-\bar{x})^2\right]\right\}.
+\end{align*}
+Usando la monotocidad de la función logarítmica y eliminando constantes de la desigualdad, se tiene la regla de decisión:
+\begin{center}
+Rechazar $H_0$ si $\sum_{i=1}^n[(x_i-\mu_0)^2-(x_i-\bar{x})^2]>K^*$
+\end{center}
+para alguna constante $K^*$. Ahora, es fácil ver que $\sum_{i=1}^n[(x_i-\mu_0)^2-(x_i-\bar{x})^2]=n(\bar{x}-\mu_0)^2$, entonces se rechaza $H_0$ cuando $(\bar{x}-\mu_0)^2>K_1$, la cual es equivalente a $|\bar{x}-\mu_0|>K$ encontrada al principio de este capítulo. Finalmente se encuentran el valor para $K$ siguiendo a los pasos expuestos anteriormente.
+\end{Eje}
+
+Aunque en muchos casos, como en el ejemplo anterior, la regla de decisión encontrada al utilizar la prueba de razón (generalizada) de verosimilitud es equivalente a la encontrada simplemente analizando el sistema de hipótesis y usando el sentido común. La prueba de razón de verosimilitud ofrece una metodología estándar para una amplia gama de sistemas de hipótesis, ésta es particularmente útil cuando la distribución de donde proviene la muestra es diferente que la distribución normal y/o el sentido común no da ninguna pista sobre cómo debe ser la regla de decisión.
+
+\subsubsection{$\sigma^2$ desconocida}
+
+Ahora, en muchos casos, la varianza poblacional no es conocida,en este caso, para el sistema de hipótesis
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq\mu_0
+\end{equation*}
+
+las reglas de decisión dadas para el caso cuando $\sigma^2$ es conocida ya no serán válidas, aunque el procedimiento para obtener las reglas de decisión son las mismas. En primer lugar, dada que el sistema de hipótesis es la misma, la regla de decisión sigue siendo: Rechazar $H_0$ cuando $|\bar{x}-\mu_0|>K$ para alguna constante positivo $K$. Al restringir la magnitud de cometer el error tipo I a ser igual al nivel de significación $\alpha$, se tiene
+\begin{equation*}
+\alpha=P(|\bar{X}-\mu_0|>K)
+\end{equation*}
+
+cuando $\mu=\mu_0$. Para encontrar el valor de $K$ en la anterior ecuación, se multiplica $\frac{\sqrt{n}}{S}$, de donde
+\begin{align*}
+\alpha=&P(\frac{\sqrt{n}|\bar{X}-\mu_0|}{S}>\frac{\sqrt{n}K}{S})\\
+&=P(\frac{\sqrt{n}(\bar{X}-\mu_0)}{S}>\frac{\sqrt{n}K}{S})+P(\frac{\sqrt{n}(\bar{X}-\mu_0)}{S}<-\frac{\sqrt{n}K}{S}).
+\end{align*}
+Ahora bajo el hipótesis nulo $\mu=\mu_0$, se tiene que la distribución de $\frac{\sqrt{n}(\bar{X}-\mu_0)}{S}$ es la distribución $t_{n-1}$, que es simétrica con respecto a 0. Por lo tanto, las dos probabilidades en la ecuación anterior son iguales, entonces se tiene
+\begin{equation*}
+\frac{\alpha}{2}=P(\frac{\sqrt{n}(\bar{X}-\mu_0)}{S}>\frac{\sqrt{n}K}{S}),
+\end{equation*}
+
+de donde $\frac{\sqrt{n}K}{S}=t_{n-1,1-\alpha/2}$, de esta manera se tiene que $K=t_{n-1,1-\alpha/2}\frac{S}{\sqrt{n}}$. De esta manera, se completa la regla de decisión, y tiene forma:
+\begin{center}
+Rechazar $H_0$ si $|\bar{x}-\mu_0|>t_{n-1,1-\alpha/2}\frac{s}{\sqrt{n}}$,
+\end{center}
+de manera equivalente se tiene la siguiente regla de decisión:
+\begin{equation}\label{regla}
+\text{Rechazar}\ H_0\ \text{si}\ \frac{\sqrt{n}(\bar{x}-\mu_0)}{s}>t_{n-1,1-\alpha/2} \text{o}\ \frac{\sqrt{n}(\bar{x}-\mu_0)}{s}<-t_{n-1,1-\alpha/2},
+\end{equation}
+
+donde la estadística de prueba es $\frac{\sqrt{n}(\bar{X}-\mu_0)}{S}$, y el región de rechazo está dado por $\{c\in\mathbb{R}: c>t_{n-1,1-\alpha/2}\ \text{ó}\ c<-t_{n-1,1-\alpha/2}\}$. Esta prueba es conocida como la prueba $t$ a dos colas, en la Figura 4.4, se muestra esta región de rechazo.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1198 1004, scale=0.2]{RC1t.jpg}
+\caption{Ilustración del región de rechazo de la prueba $t$ a dos colas.}
+\end{figure}
+
+También podemos calcular el $p$ valor para esta prueba. El razonamiento es análogo al caso cuando $\sigma^2$ es conocido, lo único que es diferente en el caso cuando $\sigma^2$ es desconocido es que la estadística de prueba es $\frac{\sqrt{n}(\bar{X}-\mu_0)}{S}$ cuya distribución nula es $t_{n-1}$, de esta forma, el $p$ valor para la prueba $t$ de dos colas está dado por:
+
+\begin{equation*}
+p\ \text{valor}=\left\{
+  \begin{array}{ll}
+    \hbox{$2P(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{S}>v)$}, & \hbox{para\ $v>0$ ;} \\
+    \hbox{$2P(\dfrac{\sqrt{n}(\bar{X}-\mu_0)}{S}<v)$}, & \hbox{para \ $v<0$.}
+  \end{array}
+\right.
+\end{equation*}
+
+o equivalentemente
+\begin{equation*}
+p\ \text{valor}=\left\{
+  \begin{array}{ll}
+    \hbox{$2P(T_{n-1}>v)$}, & \hbox{para\ $v>0$ ;} \\
+    \hbox{$2P(T_{n-1}<v)$}, & \hbox{para \ $v<0$.}
+  \end{array}
+\right.
+\end{equation*}
+
+donde $T_{n-1}$ denota una variable aleatoria con distribución $t_{n-1}$.
+
+Volviendo al Ejemplo 4.0.1, suponga que el valor de la desviación estándar es desconocida, en este caso, el sistema de hipótesis sigue siendo
+\begin{equation*}
+H_0:\ \mu=350\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq350,
+\end{equation*}
+
+y la regla de decisión es
+\begin{center}
+Rechazar $H_0$ si $\frac{\sqrt{n}(\bar{x}-\mu_0)}{s}>t_{n-1,1-\alpha/2}$ ó $\frac{\sqrt{n}(\bar{x}-\mu_0)}{s}<-t_{n-1,1-\alpha/2}$
+\end{center}
+donde se supone que $\alpha=5\%$. Para la muestra observada de tamaño 20, se tiene que $\bar{x}=349.85$ y $s=5.4$, entonces $\frac{\sqrt{n}(\bar{x}-\mu_0)}{s}=-0.12$, y $t_{n-1,1-\alpha/2}=2.093$, de donde se observa que el valor de la estadística de prueba no se encuentra dentro del región de rechazo, entonces se puede concluir que la máquina sí se lleva a cabo un llenado de 350ml.
+
+Por el otro lado, calculamos el $p$ valor. El valor de la estadística de prueba -0.12 es negativo, de manera que
+\begin{equation*}
+p\ \text{valor}=2P(T_{n-1}<-0.12),
+\end{equation*}
+
+con la ayuda de una tabla estadística de la distribución $t$ o la función \verb"pt" del software \verb"R", se tiene que el $p$ valor es 0.91, el cual es mayor a cualquier nivel de significación $\alpha$ usado en la práctica, de donde se concluye no se rechaza $H_0$.
+
+Si el sistema de interés es
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu>\mu_0.
+\end{equation*}
+
+o
+\begin{equation*}
+H_0:\ \mu\leq\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu>\mu_0.
+\end{equation*}
+
+Se vio en el ejemplo 4.2.2 para el caso cuando $\sigma^2$ es conocido, la regla de decisión encontrada es
+\begin{center}
+Rechazar $H_0$ si $\bar{x}>K$.
+\end{center}
+y el procedimiento para encontrar esta regla de decisión no está sujeta al supuesto de que la varianza es conocida. Entonces cuando no se tiene este supuesto, se obtiene la misma regla de decisión. Y el hecho de que la varianza es desconocida conlleva a que al encontrar el valor de la constante $K$, la distribución usada será la distribución $t_{n-1}$. Y se tiene que
+\begin{center}
+Rechazar $H_0$ si $\dfrac{\sqrt{n}(\bar{x}-\mu)}{s_{n-1}}>t_{n-1,1-\alpha}$.
+\end{center}
+Se puede encontrar la forma de calcular el $p$ valor cuando la estadística de prueba $\bar{X}$ toma un valor $v$, análogo al caso cuando $\sigma^2$ es conocida. Se tiene que
+\begin{equation*}
+p\ \text{valor}=P(\dfrac{\sqrt{n}(\bar{X}-\mu)}{S_{n-1}}>v)=P(T_{n-1}>v),
+\end{equation*}
+
+y se rechaza $H_0$ cuando el $p$ valor es menor que el nivel de significación $\alpha$.
+
+\subsubsection{Relación con intervalos de confianza}
+En el capítulo anterior, se mencionó que los intervalos de confianza para $\mu$ son útiles para tomar decisión sobre hipótesis como $\mu=\mu_0$, $\mu\leq\mu_0$ o $\mu\geq\mu_0$. Veamos que las decisiones tomadas usando los intervalos de confianza concuerdan con las vistas en el presente capítulo.
+
+En el caso de sistema de hipótesis
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq\mu_0,
+\end{equation*}
+
+con $\sigma^2$ conocida, se vio que un intervalo de confianza para $\mu$ es
+\begin{equation*}
+(\bar{x}-t_{n-1,1-\alpha/2}s_{n-1}/\sqrt{n},\bar{x}+t_{n-1,1-\alpha/2}s_{n-1}/\sqrt{n}).
+\end{equation*}
+
+Y se rechaza $H_0$ si el intervalo no contiene a $\mu_0$, esto es, si
+\begin{equation*}
+\mu_0<\bar{x}-t_{n-1,1-\alpha/2}s_{n-1}/\sqrt{n}\ \ \text{o}\ \ \mu>\bar{x}+t_{n-1,1-\alpha/2}s_{n-1}/\sqrt{n}
+\end{equation*}
+
+que es equivalente a
+\begin{equation*}
+t_{n-1,1-\alpha/2}<\sqrt{n}(\bar{x}-\mu_0)/s_{n-1}\ \ \text{o}\ \ \sqrt{n}(\bar{x}-\mu_0)/s_{n-1}<-t_{n-1,1-\alpha/2},
+\end{equation*}
+
+la cual es la regla de decisión encontrada anteriormente, ver (\ref{regla}).
+
+Por otro lado, si el sistema de interés es
+\begin{equation*}
+H_0:\ \mu\leq\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu>\mu_0,
+\end{equation*}
+
+entonces el intervalo útil es $(\bar{x}-z_{1-\alpha}\sigma/\sqrt{n},\infty)$, y rechaza $H_0$, si
+\begin{equation*}
+\bar{x}-z_{1-\alpha}\sigma/\sqrt{n}>\mu_0,
+\end{equation*}
+
+equivalente a
+\begin{equation*}
+\sqrt{n}(\bar{x}-\mu_0)/\sigma>z_{1-\alpha},
+\end{equation*}
+
+que es la regla de decisión encontrada anteriormente, ver (\ref{x-mu_mayor})
+
+Aunque en los anteriores, el uso de los intervalos de confianza es equivalente a los procedimientos de juzgamiento de hipótesis, el uso de los intervalos de confianza es muy limitado. Pues no funcionan para sistemas donde $\mathbf{\Theta}_1\neq\mathbf{\Theta}_0^c$. Por consiguiente, no funcionan para sistemas como
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu>\mu_0.
+\end{equation*}
+
+Otra observación importante acerca de los juzgamiento de hipótesis es con respecto al nivel de significación $\alpha$. En la práctica, el valor usado para $\alpha$ es generalmente 0.02, 0.05 o 0.1. Como se ha visto anteriormente, ésta es la probabilidad de cometer el error tipo I, pero en muchos informes estadísticos, presentan a $\alpha$ como la magnitud del error, sin mencionar el error tipo II. Y esto causa la falsa impresión de que entre más pequeño sea $\alpha$, más confiable es el resultado del procedimiento. Lo que ocurre realmente al escoger un valor de $\alpha$ pequeño, como 0.02 o 0.01, es que el área del región de rechazo también disminuye, pues ésta es igual a $\alpha$, de esta forma, es más difícil rechazar $H_0$. De hecho, existen situaciones donde al disminuir el valor de $\alpha$, la decisión puede cambiar de rechazar al no rechazar.
+
+Considera el sistema
+\begin{equation*}
+H_0:\ \mu=0\ \ \ \ vs.\ \ \ \ H_a:\ \mu\neq0,
+\end{equation*}
+
+con $\sigma^2$ desconocido. Se ha visto anteriormente que la regla de decisión es: rechazar $H_0$ si $\frac{\sqrt{n}(\bar{x}-\mu_0)}{s}>t_{n-1,1-\alpha/2} \text{o}\ \frac{\sqrt{n}(\bar{x}-\mu_0)}{s}<-t_{n-1,1-\alpha/2}$. Suponga que en una muestra de 20 observaciones, $\bar{x}=0.5$, y $s^2_{n-1}=1$, entonces $\sqrt{n}\bar{x}/s_{n-1}=2.24$. Ahora, si el nivel de significación $\alpha=0.05$, entonces $t_{n-1,1-\alpha/2}=2.09$, y llegamos a la conclusión de rechazar $H_0$; por otro lado, si $\alpha=0.02$, entonces $t_{n-1,1-\alpha/2}=2.54$, y llegamos a la conclusión de no rechazar $H_0$, y observamos cómo los resultados cambian al cambiar el nivel de significación.
+
+
+Finalmente, volvemos a tomar el tema del planteamiento de un sistema de hipótesis. Cuando se plantea un sistema como
+\begin{equation*}
+H_0:\ \theta\in\boldsymbol{\Theta}_0\ \ \ \ vs.\ \ \ \ H_a:\ \theta\in\boldsymbol{\Theta}_1.
+\end{equation*}
+
+La decisión se toma en base a una muestra observada, y la muestra debe tener suficiente evidencia en contra de $H_0$ para llegar a la decisión de rechazar $H_0$, de hecho, si revisamos los sistemas de hipótesis vistos anteriormente, podemos observar que el área del región de rechazo es de tan solo $\alpha$. En algunas situaciones, una muestra observada puede no mostrar suficiente evidencia en contra de $H_0$, ni en contra de $H_1$, en estas situaciones, el planteamiento del sistema de hipótesis es crucial en la toma correcta de decisiones.
+
+Considera el sistema
+\begin{equation*}
+H_0:\ \mu\geq5\ \ \ \ vs.\ \ \ \ H_a:\ \mu<5,
+\end{equation*}
+
+con $\sigma^2$ desconocido. Suponga que el nivel de significación es $\alpha=0.05$. Se ha visto anteriormente que la regla de decisión es: rechazar $H_0$ si $\sqrt{n}(\bar{x}-5)/s_{n-1}<t_{n-1,\alpha}=-1.73$. Suponga que en una muestra de 20 observaciones, $\bar{x}=5.2$, y $s^2_{n-1}=1$, entonces $\sqrt{n}(\bar{x}-5)/s_{n-1}=0.89$, y no se rechazar $H_0$, es decir, podemos aceptar $\mu\geq5$.
+
+Ahora cambiamos los hipótesis en el anterior sistema, y consideramos el siguiente sistema
+\begin{equation*}
+H_0:\ \mu\leq5\ \ \ \ vs.\ \ \ \ H_a:\ \mu>5,
+\end{equation*}
+
+se puede ver que la regla de decisión en este caso es: rechazar $H_0$ si $\sqrt{n}(\bar{x}-5)/s_{n-1}>t_{n-1,1-\alpha}=1.73$, para la misma muestra observada, $\sqrt{n}(\bar{x}-5)/s_{n-1}=0.89$, y llegamos a la conclusión de no rechazar $H_0$, es decir, aceptamos $\mu\leq5$. Obsérvese que dos personas pueden llegar a conclusiones totalmente diferentes utilizando los mismos datos, inclusive, utilizando, ambos, los correctos procedimientos estadísticos. Situaciones como ésta forman parte de las críticas que existen hacia los procedimientos de pruebas de hipótesis. El problema radica en el planteamiento del hipótesis, debemos recordar que en el procedimiento de buscar reglas de decisión, sólo se está teniendo en cuenta la magnitud del error tipo I, sin considerar el error tipo II, por lo tanto, el usuario de las técnicas de juzgamiento de hipótesis debe asociarse con el experto del tema específico, y plantear el sistema donde el error tipo I es menos grave que el error tipo II.
+
+Una observación interesante acerca de las pruebas de hipótesis es que el procedimiento de éste es similar al procedimiento matemático utilizado para hacer una demostración por contradicción, miremos por qué.
+Desde nuestros primeros contactos con la estadística nos hemos dado cuenta de que ésta está muy ligada a los fundamentos matemáticos (alguien dijo que la matemática es la esclava de todas las ciencias). También sabemos que una herramienta fundamental de la estadística es, sin duda alguna, el juzgamiento de hipótesis; mientras que para los matemáticos la demostración por contradicción es indispensable en muchos desarrollos teóricos. Bien, para la sorpresa de muchos, hay una similitud increíble entre estos métodos.
+Antes que todo recordemos cómo se demuestra la veracidad de una proposición, $P$, mediante contradicción:
+Se supone que la proposición, $P$, es falsa, luego se observa si con este supuesto se puede llegar a alguna contradicción.
+Si así sucede, podemos concluir que el supuesto anterior es falso; es decir, que la falsedad de $P$ es falsa, y por consiguiente se concluye lo que se quería que demostrar: que $P$ es verdadera.
+
+Ahora pensemos en el procedimiento del juzgamiento de una hipótesis $H_0$: Primero se supone que $H_0$ es verdadero, bajo este supuesto, se observa si el valor muestral de la estadística de prueba pertenece a la región de rechazo que equivale a la contradicción, lo cual sucede con una probabilidad $\alpha$ que, por lo general, es muy pequeña.
+Si este evento sucede, concluimos que $H_0$ es falso.
+Se puede ver la similitud entre estos dos procedimientos teniendo en cuenta que en el primer paso se asume un supuesto en ambos casos. En el segundo paso, podemos ver que una contradicción equivale, en el caso de juzgamiento de hipótesis, a que un evento, con probabilidad de ocurrencia muy pequeña, suceda. Este evento es: el valor de la estadística pertenece a la región de rechazo. En el tercer paso, si se llega a la contradicción se concluye que el supuesto planteado en el primer paso1 es falso; es decir, se rechaza $H_0$.
+
+\subsection{Pruebas de hipótesis acerca de la varianza poblacional}
+\subsubsection{Media poblacional $\mu$ conocido}
+Consideramos el siguiente sistema de hipótesis en una muestra aleatoria $X_1$, $\ldots$, $X_n$ proveniente de una distribución $N(\mu,\sigma^2)$ con $\mu$ conocida.
+\begin{equation}\label{sigma_igual_dif}
+H_0:\ \sigma^2=\sigma^2_0\ \ \ \ vs.\ \ \ \ H_a:\ \sigma^2\neq\sigma^2_0.
+\end{equation}
+
+El estimador $MV$ de $\sigma^2$ está dado por $\hat{\sigma}^2_{MV}=\frac{1}{n}\sum_{i=1}^n(X_i-\mu)^2$. Considerando la forma del sistema de hipótesis, se puede plantear un inicial regla de decisión: rechazar $H_0$ cuando $\hat{\sigma}^2_{MV}$ es muy grande comparado con $\sigma^2_0$ o muy pequeño comparado con $\sigma^2_0$. Esta idea puede ser formalizado como
+\begin{center}
+Rechazar $H_0$ cuando $\hat{\sigma}^2_{MV}-\sigma^2_0>K_1$ o $\hat{\sigma}^2_{MV}-\sigma^2_0<K_2$
+\end{center}
+para constantes $K_1>0$ y $K_2<0$. Para completar la regla de decisión, es necesario encontrar los valores de $K_1$ y $K_2$, para eso, recurrimos nuevamente a la definición del error tipo I, y al limitar a la probabilidad de cometer este error a ser igual a $\alpha$, tenemos
+\begin{align*}
+\alpha&=P(\hat{\sigma}^2_{MV}-\sigma^2_0>K_1)+P(\hat{\sigma}^2_{MV}-\sigma^2_0<K_2)\ \ \ \ \text{Cuando $H_0$ es cierta}\\
+&=P(\frac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}>\frac{nK_1}{\sigma^2_0}+n)+P(\frac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}<\frac{nK_2}{\sigma^2_0}+n).
+\end{align*}
+Recordando que $\frac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}\sim\chi^2_n$ bajo la hipótesis nula de $\sigma^2=\sigma^2_0$, se tiene que $\frac{nK_1}{\sigma^2_0}+n$ y $\frac{nK_2}{\sigma^2_0}+n$ son percentiles de la distribución $\chi^2_n$, y existen muchos percentiles que satisfacen la anterior igualdad. Los percentiles que se usan con más frecuencia son $\frac{nK_1}{\sigma^2_0}+n=\chi^2_{n,1-\alpha/2}$ y $\frac{nK_2}{\sigma^2_0}+n=\chi^2_{n,\alpha}$. De donde se tiene que $K_1=\frac{\chi^2_{n,1-\alpha/2}-n}{n\sigma^2_0}$ y $K_2=\frac{\chi^2_{n,\alpha/2}-n}{n\sigma^2_0}$. De esta forma, tenemos la siguiente regla de decisión para el sistema (\ref{sigma_igual_dif})
+\begin{center}
+Rechazar $H_0$ cuando $\hat{\sigma}^2_{MV}-\sigma^2_0>\frac{\chi^2_{n,1-\alpha/2}-n}{n\sigma^2_0}$ o $\hat{\sigma}^2_{MV}-\sigma^2_0<\frac{\chi^2_{n,\alpha/2}-n}{n\sigma^2_0}$.
+\end{center}
+Simples operaciones algebraicas nos conducen a la siguiente regla de decisión equivalente
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}>\chi^2_{n,1-\alpha/2}$ o $\dfrac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}<\chi^2_{n,\alpha/2}$.
+\end{center}
+Para obtener la forma de calcular el $p$ valor para el sistema (\ref{sigma_igual_dif}) ligado al anterior regla de decisión, se tiene en cuenta que la estadística de prueba es $\dfrac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}$. En una muestra observada, el valor que toma la estadística puede ser mayor o menor al percentil 0.5 de la distribución $\chi^2_{n}$, como lo ilustra en la Figura 4.6, puede tomar valores como $v_1$ o como $v_2$. Cuando el valor de la estadística, $v$ es mayor a $\chi^2_{n,0.5}$, podemos observar que $v$ cae en la región de rechazo cuando la probabilidad a la derecha es menor a $\alpha/2$, el área del región de rechazo a la derecha, esto es, cuando $P(\chi^2_n>v)<\alpha/2$, con $\chi^2_n$ una variable aleatoria con distribución $\chi^2_{n}$; por otro lado, cuando el valor de la estadística, $v$ es menor a $\chi^2_{n,0.5}$, se rechaza $H_0$ cuando $P(\chi^2_{n}<v)<\alpha/2$. En conclusión
+\begin{equation*}
+\text{Rechazar}\ H_0\ \text{si}
+\left\{
+  \begin{array}{ll}
+    \hbox{$2P(\chi^2_n>v)<\alpha$}, & \hbox{para\ $v>\chi^2_{n,0.5}$ ;} \\
+    \hbox{$2P(\chi^2_n<v)<\alpha$}, & \hbox{para \ $v<\chi^2_{n,0.5}$.}
+  \end{array}
+\right.
+\end{equation*}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1233 1022, scale=0.2]{pvalor_chi.jpg}
+\caption{Ilustración del $p$ valor para la hipótesis (\ref{sigma_igual_dif})}
+\end{figure}
+
+De esta forma, se define el $p$ valor como
+\begin{equation*}
+p\ \text{valor}=\left\{
+  \begin{array}{ll}
+    \hbox{$2P(\chi^2_n>v)$}, & \hbox{para\ $v>\chi^2_{n,0.5}$ ;} \\
+    \hbox{$2P(\chi^2_n<v)$}, & \hbox{para \ $v<\chi^2_{n,0.5}$.}
+  \end{array}
+\right.
+\end{equation*}
+
+y se rechaza $H_0$ cuando el $p$ valor es menor que el nivel de significación $\alpha$.
+
+Ahora, consideramos el siguiente sistema de hipótesis
+\begin{equation}\label{sigma_igual_mayo}
+H_0:\ \sigma^2=\sigma^2_0\ \ \ \ vs.\ \ \ \ H_a:\ \sigma^2>\sigma^2_0.
+\end{equation}
+
+Usaremos la prueba de la razón de verosimilitud para encontrar una regla de decisión. Para eso, primero transformamos el anterior sistema en el siguiente
+\begin{equation}\label{sigma_igual_mayor}
+H_0:\ \sigma^2=\sigma^2_0\ \ \ \ vs.\ \ \ \ H_a:\ \sigma^2=\sigma^2_1,
+\end{equation}
+
+con $\sigma^2_1>\sigma^2_0$.
+
+La función de verosimilitud en una muestra proveniente de la distribución normal está dada por
+\begin{equation*}
+L(\sigma^2)=(2\pi\sigma^2)^{-n/2}\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(X_i-\mu)^2\right\}.
+\end{equation*}
+
+Entonces la razón de verosimilitudes está dada por
+\begin{equation*}
+\lambda=\dfrac{(\sigma^2_1)^{-n/2}}{(\sigma^2_0)^{-n/2}}\exp\left\{-\frac{1}{2}\left(\frac{1}{\sigma_1^2}-\frac{1}{\sigma^2_0}\right)\sum_{i=1}^n(X_i-\mu)^2\right\},
+\end{equation*}
+
+y $H_0$ se rechaza para valores grandes de $\lambda$. Ahora, en la expresión de $\lambda$, la parte aleatoria que toma valores diferentes en muestras diferentes es $\sum_{i=1}^n(X_i-\mu)^2$, y obsérvese que la expresión $\frac{(\sigma^2_1)^{-n/2}}{(\sigma^2_0)^{-n/2}}$ y $-\frac{1}{2}\left(\frac{1}{\sigma_1^2}-\frac{1}{\sigma^2_0}\right)$ son ambos positivos, entonces cuando $\sum_{i=1}^n(X_i-\mu)^2$ toma valores grandes, $\lambda$ también lo hace. De esta forma podemos afirmar que se rechaza $H_0$ para valores grandes de $\sum_{i=1}^n(X_i-\mu)^2$. Esto es
+\begin{center}
+Rechazar $H_0$ cuando $\sum_{i=1}^n(X_i-\mu)^2>K$
+\end{center}
+para algún $K>0$. De nuevo, para encontrar el valor de $K$, se utiliza la definición del error tipo I, de donde
+\begin{align*}
+\alpha&=P(\sum_{i=1}^n(X_i-\mu)^2>K)\ \ \ \ \text{Cuando $H_0$ es cierta}\\
+&=P(\dfrac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}>\dfrac{K}{\sigma^2_0}).
+\end{align*}
+Cuando $H_0$ es cierta, $\dfrac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}\sim\chi^2_{n}$, entones la anterior expresión indica que $\dfrac{K}{\sigma^2_0}=\chi^2_{n,1-\alpha}$. De esta forma se tiene la siguiente regla de decisión
+\begin{center}
+Rechazar $H_0$ cuando $\sum_{i=1}^n(X_i-\mu)^2>\chi^2_{n,1-\alpha}\sigma^2_0$,
+\end{center}
+o equivalentemente
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}>\chi^2_{n,1-\alpha}$.
+\end{center}
+El $p$ valor asociado se calcula como
+\begin{equation*}
+p\ \text{valor}=P(\chi^2_n>v),
+\end{equation*}
+
+donde $v$ es el valor observado de la estadística de prueba $\frac{\sum_{i=1}^n(X_i-\mu)^2}{\sigma^2_0}$.
+
+\subsubsection{Media poblacional $\mu$ desconocida}
+Cuando la media poblacional $\mu$ es desconocida, el estimador de máxima verosimilitud para $\sigma^2$ es $\hat{\sigma^2}_{MV}=\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})^2$, y al adoptar el procedimiento presentado al principio de la sección 4.2.2 para el caso cuando $\mu$ es conocido, se puede encontrar que para el sistema
+\begin{equation*}
+H_0:\ \sigma^2=\sigma^2_0\ \ \ \ vs.\ \ \ \ H_a:\ \sigma^2\neq\sigma^2_0,
+\end{equation*}
+
+una regla de decisión es
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2_0}>\chi^2_{n-1,1-\alpha/2}$ o $\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2_0}<\chi^2_{n-1,\alpha/2}$.
+\end{center}
+Y se encuentra, similarmente, el $p$ valor dado por
+\begin{equation*}
+p\ \text{valor}=\left\{
+  \begin{array}{ll}
+    \hbox{$2P(\chi^2_{n-1}>v)$}, & \hbox{para\ $v>\chi^2_{n-1,0.5}$ ;} \\
+    \hbox{$2P(\chi^2_{n-1}<v)$}, & \hbox{para \ $v<\chi^2_{n-1,0.5}$.}
+  \end{array}
+\right.
+\end{equation*}
+
+donde $\chi^2_{n-1}$ denota una variable aleatoria con distribución $\chi^2_{n-1}$ y $v$ es el valor observado de la estadística de prueba $\frac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2_0}$.
+
+Aunque el anterior procedimiento es muy similar al caso cuando $\mu$ es conocido, el procedimiento de la prueba de razón de verosimilitudes sí presenta una pequeña diferencia. Considera el sistema
+\begin{equation*}
+H_0:\ \sigma^2=\sigma^2_0\ \ \ \ vs.\ \ \ \ H_a:\ \sigma^2=\sigma^2_1,
+\end{equation*}
+
+con $\sigma^2_1>\sigma^2_0$. Al replicar el procedimiento de la prueba de razón de verosimilitud para el caso cuando $\mu$ es conocido, se encuentra la misma estadística de prueba $\sum_{i=1}^n(X_i-\mu)^2$, que no se puede calcular cuando $\mu$ es desconocido. La solución a este problema es reemplazar $\mu$ por su estimador $\bar{X}$. De esta forma, se tiene que la razón de verosimilitud está dada por
+\begin{equation*}
+\lambda=\dfrac{(\sigma^2_1)^{-n/2}}{(\sigma^2_0)^{-n/2}}\exp\left\{-\frac{1}{2}\left(\frac{1}{\sigma_1^2}-\frac{1}{\sigma^2_0}\right)\sum_{i=1}^n(X_i-\bar{X})^2\right\}.
+\end{equation*}
+
+Usando $\sigma^2_1>\sigma^2_0$, se concluye que $H_0$ se rechaza cuando $\sum_{i=1}^n(X_i-\bar{X})^2>K$. Finalmente, usando la propiedad
+\begin{equation*}
+\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2_0}\sim\chi^2_{n-1},
+\end{equation*}
+
+bajo $H_0$, se tiene que $K=\sigma^2_0\chi^2_{n-1,1-\alpha}$, y la regla de decisión está dada por
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2_0}>\chi^2_{n-1,1-\alpha}$.
+\end{center}
+Y el $p$ valor asociado está dada por
+\begin{equation*}
+p\ \text{valor}=P(\chi^2_{n-1}>v)
+\end{equation*}
+
+donde $v$ es el valor observado de la estadística de prueba $\frac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2_0}$.
+
+
+\section{Dos muestras}
+Se trabajan ose tienen dos muestras aleatorias de tamaño $n_X$ y $n_Y$ denotados por $X_1$, $\ldots$, $X_{n_X}$ y $Y_1$, $\ldots$, $Y_{n_Y}$ provenientes de $N(\mu_X,\sigma^2_X)$ y $N(\mu_Y,\sigma^2_Y)$, respectivamente. Además se supone que las dos muestras son independientes,
+\subsection{Comparación entre dos medias}
+\begin{equation}\label{muX=muY}
+H_0:\ \mu^2_X=\mu^2_Y\ \ \ \ vs.\ \ \ \ H_a:\ \mu^2_X\neq\mu^2_Y,
+\end{equation}
+
+\subsubsection{$\sigma^2_X$ y $\sigma^2_Y$ conocidas}
+En primer lugar, suponemos que las varianzas poblacionales, $\sigma^2_X$ y $\sigma^2_Y$ son conocidas. Usaremos la prueba de razón generalizada de verosimilitudes para encontrar una regla de decisión para el sistema (\ref{muX=muY}).
+
+En primer lugar, dado que las dos muestras son independientes, se tiene que la función de verosimilitud de las dos muestras, es simplemente el producto de las dos funciones de verosimilitudes. Por lo tanto ésta está dada por
+\begin{multline*}
+L(x_1,\ldots,x_{n_X},y_1,\ldots,y_{n_Y})
+=(2\pi\sigma^2_X)^{-n_X/2}\exp\left\{-\frac{1}{2\sigma^2_X}\sum_{i=1}^{n_X}(X_i-\mu_X)^2\right\}\\(2\pi\sigma^2_Y)^{-n_Y/2}\exp\left\{-\frac{1}{2\sigma^2_Y}\sum_{i=1}^{n_Y}(Y_i-\mu_Y)^2\right\}
+\end{multline*}
+
+Dado que en el sistema considerado, $\boldsymbol{\Theta}_1=\boldsymbol{\Theta}_0^c$, se tiene que el numerador de la razón generalizada de verosimilitudes $\lambda$ está dada por la función de verosimilitud evaluada en los estimadores $MV$ de $\mu_X$ y $\mu_Y$. Esto es,
+\begin{multline*}
+L(\hat{\mu}_{X,MV},\hat{\mu}_{Y,MV})=(2\pi\sigma^2_X)^{-n_X/2}\exp\left\{-\frac{1}{2\sigma^2_X}\sum_{i=1}^{n_X}(X_i-\bar{X})^2\right\}\\(2\pi\sigma^2_Y)^{-n_Y/2}\exp\left\{-\frac{1}{2\sigma^2_Y}\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2\right\}.
+\end{multline*}
+Por otro lado, bajo la hipótesis nula $H_0$, $\mu_X=\mu_Y$, entonces las dos muestras provienen de distribución con la misma media poblacional, $\mu$. Se ha visto en el ejemplo 2.2.6 que el estimador $MV$ de la media poblacional común está dada por
+\begin{equation}\label{mu_comun}
+\hat{\mu}_{MV}=\dfrac{\sigma^2_Yn_X\bar{X}+\sigma^2_Xn_Y\bar{Y}}{n_X\sigma^2_Y+n_Y\sigma^2_X}.
+\end{equation}
+
+Y de esta forma, el denominador de $\lambda$ está dada por
+\begin{multline*}
+L(\hat{\mu}_{MV})=(2\pi\sigma^2_X)^{-n_X/2}\exp\left\{-\frac{1}{2\sigma^2_X}\sum_{i=1}^{n_X}(X_i-\hat{\mu}_{MV})^2\right\}\\(2\pi\sigma^2_Y)^{-n_Y/2}\exp\left\{-\frac{1}{2\sigma^2_Y}\sum_{j=1}^{n_Y}(Y_j-\hat{\mu}_{MV})^2\right\}.
+\end{multline*}
+En conclusión, $\ln\lambda$ está dada por
+\begin{multline*}
+\ln\lambda=-\frac{1}{2\sigma^2_X}\left\{\sum_{i=1}^{n_X}\left[(X_i-\bar{X})^2-(X_i-\hat{\mu}_{MV})^2\right]\right\}-\frac{1}{2\sigma^2_Y}\\\left\{\sum_{j=1}^{n_Y}\left[(Y_j-\bar{Y})^2-(Y_j-\hat{\mu}_{MV})^2\right]\right\},
+\end{multline*}
+donde
+\begin{align*}
+\sum_{i=1}^{n_X}\left[(X_i-\bar{X})^2-(X_i-\hat{\mu}_{MV})^2\right]
+&=\sum_{i=1}^{n_X}(2X_i-\bar{X}-\hat{\mu}_{MV})(\hat{\mu}_{MV}-\bar{X})\\
+&=-n_X(\bar{X}-\hat{\mu}_{MV})^2.
+\end{align*}
+Simples operaciones algebraicas muestran que
+\begin{equation}\label{auxiliar1}
+\bar{X}-\hat{\mu}_{MV}=\frac{\sigma^2_Xn_Y(\bar{X}-\bar{Y})}{n_X\sigma^2_Y+n_Y\sigma^2_X},
+\end{equation}
+
+de donde
+\begin{equation*}
+\sum_{i=1}^{n_X}\left[(X_i-\bar{X})^2-(X_i-\hat{\mu}_{MV})^2\right]=-\frac{n_Xn_Y^2\sigma_X^4(\bar{X}-\bar{Y})^2}{(n_X\sigma^2_Y+n_Y\sigma_X^2)^2}.
+\end{equation*}
+
+Análogamente, se tiene que
+\begin{equation*}
+\sum_{j=1}^{n_Y}\left[(Y_i-\bar{Y})^2-(Y_i-\hat{\mu}_{MV})^2\right]=-\frac{n_X^2n_Y\sigma_Y^4(\bar{X}-\bar{Y})^2}{(n_X\sigma^2_Y+n_Y\sigma_X^2)^2}.
+\end{equation*}
+
+De donde, tenemos que
+\begin{equation*}
+\ln\lambda=\frac{n_Xn_Y}{2(n_X\sigma^2_Y+n_Y\sigma^2_X)^2}(\bar{X}-\bar{Y})^2.
+\end{equation*}
+
+Se debe rechazar $H_0$ para valores grandes de $\ln\lambda$, la cual es equivalente a rechazar $H_0$ para valores grandes de $(\bar{X}-\bar{Y})^2$ o $|\bar{X}-\bar{Y}|$. Y tenemos la siguiente regla de decisión
+\begin{center}
+Rechazar $H_0$ cuando $|\bar{X}-\bar{Y}|>K$, para algún $K>0$.
+\end{center}
+Para encontrar el valor de $K$, tenemos que
+\begin{align}\label{barX-barYmayor}
+\alpha&=P(|\bar{X}-\bar{Y}|>K)\notag\\
+&=P(\bar{X}-\bar{Y}>K)+P(\bar{X}-\bar{Y}<-K),
+\end{align}
+suponiendo a $H_0$ es cierta. En este caso,
+\begin{equation*}
+\bar{X}-\bar{Y}\sim N(0,\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}),
+\end{equation*}
+
+y de (\ref{barX-barYmayor}), se concluye que $P(\bar{X}-\bar{Y}>K)=\alpha/2$, y se encuentra que $K=z_{1-\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}$. Y tenemos la regla de decisión
+\begin{center}
+Rechazar $H_0$ cuando $|\bar{X}-\bar{Y}|>z_{1-\alpha/2}\sqrt{\dfrac{\sigma^2_X}{n_X}+\dfrac{\sigma^2_Y}{n_Y}}$
+\end{center}
+o equivalentemente
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{\bar{X}-\bar{Y}}{\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}}>z_{1-\alpha/2}$ o $\dfrac{\bar{X}-\bar{Y}}{\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}}<-z_{1-\alpha/2}$.
+\end{center}
+Nótese que la anterior regla de decisión es equivalente al uso del intervalo de confianza (\ref{int_mux-muy_caso1}). Puesto que con el uso del intervalo, se rechaza $\mu_X=\mu_Y$ cuando el valor 0 no pertenece al intervalo, esto es, $0<\bar{X}-\bar{Y}-z_{1-\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}$ o $0>\bar{X}-\bar{Y}+z_{1-\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}$, lo cual es equivalente a la regla de decisión encontrada anteriormente.
+
+La forma de calcular el $p$ valor es similar a lo discutido para el sistema $\mu=\mu_0$ vs. $\mu\neq\mu_0$, cuando la varianza poblacional es conocida. Y se encuentra que
+\begin{equation*}
+p\ \text{valor}=\left\{
+  \begin{array}{ll}
+    \hbox{$2P(Z>v)$}, & \hbox{para\ $v>0$ ;} \\
+    \hbox{$2P(Z<v)$}, & \hbox{para \ $v<0$.}
+  \end{array}
+\right.
+\end{equation*}
+
+donde $v$ es el valor observado de la estadística de prueba $(\bar{X}-\bar{Y})/\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}$ y $Z$ denota una variable aleatoria con distribución normal estándar.
+
+\subsubsection{$\sigma^2_X$ y $\sigma^2_Y$ son desconocidas, pero iguales.}
+Suponga que $\sigma^2_X=\sigma^2_Y=\sigma^2$ es desconocida, se debe reemplazarlas por el estimador MV de la varianza común $\sigma^2$. Como se mencionaba en el capítulo 2, cuando las dos muestras provienen de distribuciones con la misma varianza poblacional $\sigma^2$, se puede usar las variables de las dos muestras para estimar la varianza común $\sigma^2$, en este caso, y se tiene que
+\begin{equation*}
+\hat{\sigma}^2_{MV}=\frac{(n_X-1)S^2_{n_X-1,X}+(n_Y-1)S^2_{n_Y-1,Y}}{n_X+n_Y}.
+\end{equation*}
+
+De esta forma tenemos que el numerador de la razón generalizada de verosimilitudes está dada por
+\begin{align}\label{nume_lambda_dosmuestras}
+&\ \ \ \ \ L(\hat{\mu}_{X,MV},\hat{\mu}_{Y,MV},\hat{\sigma}^2_{MV})\notag\\
+&=\left(2\pi\hat{\sigma}^2_{MV}\right)^{-(n_X+n_Y)/2}\exp\left\{-\frac{1}{2\hat{\sigma}^2_{MV}}\left[\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2\right]\right\}\notag\\
+&=\left(2\pi\hat{\sigma}^2_{MV}\right)^{-(n_X+n_Y)/2}\exp\left\{-\frac{n_X+n_Y}{2}\right\}.
+\end{align}
+
+Por otro lado, suponiendo $H_0$ verdadera, $\mu_X=\mu_Y=\mu$, entonces las dos muestras provienen de la misma distribución, y en este caso el estimador MV de $\mu$, está dada por (\ref{MV_mu_comun1}), esto es
+\begin{equation*}
+\hat{\mu}_{MV}=\dfrac{\sum_{i=1}^{n_X}X_i+\sum_{j=1}^{n_Y}Y_j}{n_X+n_Y},
+\end{equation*}
+
+y
+\begin{equation*}
+\hat{\sigma}^2_{0,MV}=\dfrac{\sum_{i=1}^{n_X}(X_i-\hat{\mu}_{MV})^2+\sum_{j=1}^{n_Y}(Y_j-\hat{\mu}_{MV})^2}{n_X+n_Y}.
+\end{equation*}
+
+De donde el denominador de $\lambda$ está dada por
+\begin{align}\label{verosimil1}
+&\ \ \ \ \ L(\hat{\mu}_{MV},\hat{\sigma^2}_{0,MV})\notag\\
+&=\left(2\pi\hat{\sigma}^2_{0,MV}\right)^{-(n_X+n_Y)/2}\exp\left\{-\frac{1}{2\hat{\sigma}^2_{0,MV}}\left[\sum_{i=1}^{n_X}(X_i-\hat{\mu}_{MV})^2+\sum_{j=1}^{n_Y}(Y_j-\hat{\mu}_{MV})^2\right]\right\}\\
+&=\left(2\pi\hat{\sigma}^2_{0,MV}\right)^{-(n_X+n_Y)/2}\exp\left\{-\frac{n_X+n_Y}{2}\right\}.
+\end{align}
+Dado lo anterior, podemos tener que
+\begin{equation*}
+\lambda=\left(\dfrac{\hat{\sigma}^2_{MV}}{\hat{\sigma}^2_{0,MV}}\right)^{-(n_X+n_Y)/2},
+\end{equation*}
+
+y podemos concluir que se rechaza $H_0$ para valores grandes de la estadística $\dfrac{\hat{\sigma}^2_{0,MV}}{\hat{\sigma}^2_{MV}}$, donde
+\begin{align}\label{lambda11}
+\dfrac{\hat{\sigma}^2_{0,MV}}{\hat{\sigma}^2_{MV}}&=\dfrac{\sum_{i=1}^{n_X}(X_i-\hat{\mu}_{MV})^2+\sum_{j=1}^{n_Y}(Y_j-\hat{\mu}_{MV})^2}{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}\notag\\
+&=\dfrac{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+n_X(\bar{X}-\hat{\mu}_{MV})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2+n_Y(\bar{Y}-\hat{\mu}_{MV})^2}{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}\notag\\
+&=1+\dfrac{n_X(\bar{X}-\hat{\mu}_{MV})^2+n_Y(\bar{Y}-\hat{\mu}_{MV})^2}{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}.
+\end{align}
+Ahora, simples operaciones algebraicas muestran que
+\begin{equation*}
+n_X(\bar{X}-\hat{\mu}_{MV})^2=\frac{n_Xn_Y^2(\bar{X}-\bar{Y})^2}{(n_X+n_Y)^2},
+\end{equation*}
+
+y
+\begin{equation*}
+n_Y(\bar{Y}-\hat{\mu}_{MV})^2=\frac{n_Yn_X^2(\bar{X}-\bar{Y})^2}{(n_X+n_Y)^2}.
+\end{equation*}
+
+De esta forma, reemplazando en (\ref{lambda11}), tenemos que
+\begin{equation*}
+\dfrac{\hat{\sigma}^2_{0,MV}}{\hat{\sigma}^2_{MV}}=1+\frac{n_Xn_Y}{n_X+n_Y}\frac{(\bar{X}-\bar{Y})^2}{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}
+\end{equation*}
+
+Entonces la regla de decisión para el sistema de interés es
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{(\bar{X}-\bar{Y})^2}{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}>K$,
+\end{center}
+para algún $K>0$. La cual es equivalente a
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{\bar{X}-\bar{Y}}{\sqrt{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}}>K_1$ o $\dfrac{\bar{X}-\bar{Y}}{\sqrt{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}}<-K_1$
+\end{center}
+para algún $K_1>0$.
+
+Para encontrar el valor de $K_1$, se debe conocer la distribución de la estadística de prueba bajo $H_0:\ \mu_X=\mu_Y$, aunque esta distribución no es ninguna de las comunes, recordamos (\ref{t}), y tenemos que bajo $H_0$
+\begin{equation*}
+\dfrac{\bar{X}-\bar{Y}}{S_p\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}}\sim t_{n_X+n_Y-2},
+\end{equation*}
+
+con $S^2_p=\frac{\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}{n_X+n_Y-2}$. Usando esta distribución, podemos modificar la regla de decisión encontrada anteriormente y así
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{\bar{X}-\bar{Y}}{S_p\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}}>K_2$ o $\dfrac{\bar{X}-\bar{Y}}{S_p\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}}<-K_2$,
+\end{center}
+de donde usando la definición de error tipo I, se tiene que $K_2=t_{n_X+n_Y-2,1-\alpha/2}$, y completamos la regla de decisión. Se deja como ejercicio la fórmula del $p$ valor.
+
+\subsubsection{$\sigma^2_X$ y $\sigma^2_Y$ son desconocidos y diferentes}
+Cuando las varianzas de las dos poblaciones son desconocidas y además diferentes, tenemos la misma situación considerada en la sección 3.1.2, donde se introdujo la estadística $D$ dada por (\ref{estadistica_D}), cuya distribución es $t_k$, con $k$ dado por (\ref{valor_k}). Y la regla de decisión queda determinada como
+\begin{center}
+Rechazar $H_0$ cuando $D>t_{k,1-\alpha/2}$ o $D<-t_{k,1-\alpha/2}$.
+\end{center}
+
+\subsection{Comparación entre dos varianzas}
+\begin{equation}\label{sigX=sigY}
+H_0:\ \sigma^2_X=\sigma^2_Y\ \ \ \ vs.\ \ \ \ H_a:\ \sigma^2_X\neq\sigma^2_Y,
+\end{equation}
+
+\begin{center}
+Rechazar $H_0$ cuando $\frac{\frac{1}{n_X}\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{\frac{1}{n_Y}\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}>K_1$ o
+$\frac{\frac{1}{n_X}\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{\frac{1}{n_Y}\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}<K_2$
+\end{center}
+para constantes $K_1>1$ y $K_2<1$. Para encontrar los valores de $K_1$ y $K_2$, recordemos, en primer lugar, la siguiente distribución
+\begin{equation*}
+\dfrac{\sigma^2_Y(n_Y-1)\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{\sigma^2_X(n_X-1)\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}\sim F^{n_X-1}_{n_Y-1},
+\end{equation*}
+
+que, bajo $H_0$, se convierte en
+\begin{equation}\label{sigx_sigy}
+\dfrac{(n_Y-1)\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{(n_X-1)\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}\sim F^{n_X-1}_{n_Y-1},
+\end{equation}
+
+Y usando la definición del error tipo I, tenemos que
+\begin{align*}
+\alpha&=P(\dfrac{n_Y\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{n_X\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}>K_1)+P(\dfrac{n_Y\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{n_X\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}<K_2)\\
+&=P(\dfrac{(n_Y-1)\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{(n_X-1)\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}>\frac{(n_Y-1)n_XK_1}{(n_X-1)n_Y})\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +P(\dfrac{(n_Y-1)\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{(n_X-1)\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2}<\frac{(n_Y-1)n_XK_2}{(n_X-1)n_Y})
+\end{align*}
+asumiendo que $H_0$ es verdadera. Recurriendo a (\ref{sigx_sigy}), se tiene que $\frac{(n_Y-1)n_XK_1}{(n_X-1)n_Y}$ y $\frac{(n_Y-1)n_XK_2}{(n_X-1)n_Y}$ son percentiles de la distribución $F^{n_X-1}_{n_Y-1}$. Por facilidad, podemos escoger $\frac{(n_Y-1)n_XK_1}{(n_X-1)n_Y}=f^{n_X-1}_{n_y-1,1-\alpha/2}$ y $\frac{(n_Y-1)n_XK_2}{(n_X-1)n_Y}=f^{n_X-1}_{n_y-1,\alpha/2}$. De esta forma, se tiene la siguiente regla de decisión:
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{\frac{1}{n_X}\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{\frac{1}{n_Y}\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}>\dfrac{(n_X-1)n_Yf^{n_X-1}_{n_y-1,1-\alpha/2}}{(n_Y-1)n_X}$ o $\dfrac{\frac{1}{n_X}\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{\frac{1}{n_Y}\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}>\dfrac{(n_X-1)n_Yf^{n_X-1}_{n_y-1,\alpha/2}}{(n_Y-1)n_X}$, \end{center}
+la cual es equivalente a
+\begin{center}
+Rechazar $H_0$ cuando $\dfrac{(n_Y-1)\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{(n_X-1)\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}>f^{n_X-1}_{n_y-1,1-\alpha/2}$ o $\dfrac{(n_Y-1)\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{(n_X-1)\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}>f^{n_X-1}_{n_y-1,\alpha/2}$. \end{center}
+En \verb"R", la función \verb"var.test" lleva a cabo el procedimiento.
+
+Ahora, consideramos el $p$ valor asociado a la anterior regla de decisión, cuya estadística de prueba es $\frac{(n_Y-1)\sum_{i=1}^{n_X}(X_i-\bar{X})^2}{(n_X-1)\sum_{j=1}^{n_Y}(Y_i-\bar{Y})^2}$. Suponga que se observa una muestra aleatoria, el valor que toma la estadística puede ser mayor o menor que el percentil 0.5 de la distribución $f^{n_X-1}_{n_y-1}$ como lo ilustra la Figura 4.7. Si el valor de la estadística es mayor que $f^{n_X-1}_{n_y-1,0.5}$, (el valor $v_1$ en la figura), se rechaza $H_0$ cuando $P(F^{n_X-1}_{n_Y-1}>v_1)<\alpha/2$, donde $F^{n_X-1}_{n_Y-1}$ denota una variable aleatoria con distribución $f^{n_X-1}_{n_Y-1}$; por otro lado, si el valor de la estadística es menor que $f^{n_X-1}_{n_y-1,0.5}$, (el valor $v_2$ en la figura), se rechaza $H_0$ cuando $P(F^{n_X-1}_{n_Y-1}<v_1)<\alpha/2$
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1285 802, scale=0.25]{pvalor_f.jpg}
+\caption{Ilustración del $p$ valor para la hipótesis (\ref{sigX=sigY})}
+\end{figure}
+
+Con lo anterior, podemos obtener la siguiente forma de calcular el $p$ valor.
+\begin{equation*}
+p\ \text{valor}=\left\{
+  \begin{array}{ll}
+    \hbox{$2P(F^{n_X-1}_{n_Y-1}>v)$}, & \hbox{para\ $v>f^{n_X-1}_{n_y-1,0.5}$ ;} \\
+    \hbox{$2P(F^{n_X-1}_{n_Y-1}<v)$}, & \hbox{para \ $v<f^{n_X-1}_{n_y-1,0.5}$.}
+  \end{array}
+\right.
+\end{equation*}
+
+El siguiente código de \verb"R" nos permite calcular el $p$ valor para el sistema de hipótesis (\ref{sigX=sigY}) para dos muestras.
+
+\begin{verbatim}
+> p.val<-function(x,y){
++ nx<-length(x)
++ ny<-length(y)
++ if(var(x)/var(y)>=qf(0.5,nx-1,ny-1)){
++ p.val<-2*(1-pf(var(x)/var(y),nx-1,ny-1))
++ }
++ if(var(x)/var(y)<qf(0.5,nx-1,ny-1)){
++ p.val<-2*(pf(var(x)/var(y),nx-1,ny-1))}
++ p.val
++ }
+\end{verbatim}
+
+\section{$k$ muestras}
+Suponga que se disponen de $k$ muestras independientes, donde la $i$ ésima muestra de tamaño $n_i$ se denota por $X_1^i$, $\ldots$, $X_{n_i}^i$. Suponga además que las muestras provienen de distribución $N(\mu_i,\sigma^2_i)$ para $i=1,\ldots,k$.
+
+\subsection{Igualdad de medias}
+El sistema de interés es
+\begin{equation}\label{k_medias}
+H_0:\ \mu_1=\ldots=\mu_k\ \ \ \ vs.\ \ \ \ H_a:\ \text{existen por lo menos dos medias diferentes}.
+\end{equation}
+
+Lo anterior es una generalización del problema de dos muestras estudiado anteriormente, donde se vio que dependiendo de las varianzas poblacionales, la regla de decisión cambia según si éstas son conocidas o no. En el caso de $k$ muestras, hay $k$ varianzas poblacionales, y pueden haber un gran número de casos, que dificultan el desarrollo teórico respectivo. Por esta razón, suponemos que las $k$ varianzas poblacionales son iguales, esto es, $\sigma^2_1=\ldots=\sigma^2_k=\sigma^2$. Bajo este supuesto, la función de verosimilitud de las $k$ muestras está dada por
+\begin{equation}\label{kmuestra_likelihood}
+L(\mu_1,\ldots,\mu_k,\sigma^2)=(2\pi\sigma^2)^{-\sum_{i=1}^kn_i/2}\exp\left\{-\frac{1}{2\sigma^2}\left[\sum_{i=1}^{k}\sum_{j=1}^{n_i}(X_j^i-\mu_i)^2\right]\right\}
+\end{equation}
+
+Y desarrollamos la prueba de razón generalizada de verosimilitudes como sigue.
+
+En primer lugar, los estimadores de máxima verosimilitud de $\mu_1$, $\ldots$, $\mu_k$ y la varianza común $\sigma^2$ están dadas por
+\begin{equation}\label{mui_MV}
+\hat{\mu}_{i,MV}=\bar{X}^i
+\end{equation}
+
+para $i=1,\ldots,k$, y
+\begin{equation}\label{varianza_comun}
+\hat{\sigma}^2_{MV}=\dfrac{n_1S^2_{1,n_1}+\ldots+n_kS^2_{k,n_k}}{n_1+\ldots+n_k}=\dfrac{\sum_{i=1}^k\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2}{\sum_{i=1}^kn_i}
+\end{equation}
+
+donde $\bar{X}^i$ y $S^2_{i,n_i}$ denotan el promedio muestral y la varianza muestral (dividiendo sobre $n_i$) de la $i$ ésima muestra. De esta forma, el numerador de la razón generalizada de verosimilitudes está dada por
+\begin{equation*}
+L(\hat{\mu}_{1,MV},\ldots,\hat{\mu}_{k,MV},\hat{\sigma}^2_{MV})=(2\pi\hat{\sigma}^2_{MV})^{-\sum_{i=1}^kn_i/2}\exp\left\{-\frac{\sum_{i=1}^kn_i}{2}\right\},
+\end{equation*}
+
+similar a la expresión (\ref{nume_lambda_dosmuestras}) obtenida para el caso de dos muestras.
+
+Ahora, bajo $H_0$, las $k$ medias poblacionales son iguales, y las $k$ muestras provienen de una misma distribución $N(\mu,\sigma^2)$. En este caso el estimador de máxima verosimilitud de la media común $\mu$ está dado por el promedio de las $k$ muestras, esto es,
+\begin{equation*}
+\hat{\mu}_{0,MV}=\dfrac{n_1\bar{X}^{1}+\ldots+n_k\bar{X}^{k}}{n_1+\ldots+n_k}=\dfrac{\sum_{i=1}^kn_i\bar{X}^i}{\sum_{i=1}^kn_i}=\dfrac{\sum_{i=1}^k\sum_{j=1}^{n_i}X_j^i}{\sum_{i=1}^kn_i},
+\end{equation*}
+
+y el estimador de la varianza común $\sigma^2$ está dada por
+\begin{equation*}
+\hat{\sigma}^2_{0,MV}=\dfrac{\sum_{i=1}^k\sum_{j=1}^{n_i}(X_j^i-\hat{\mu}_{0,MV})^2}{\sum_{i=1}^kn_i},
+\end{equation*}
+
+De esta forma, el denominador de la razón generalizada de verosimilitudes está dada por
+\begin{equation*}
+L(\hat{\mu}_{MV},\hat{\sigma}^2_{0,MV})=(2\pi\hat{\sigma}^2_{0,MV})^{-\sum_{i=1}^kn_i/2}\exp\left\{-\frac{\sum_{i=1}^kn_i}{2}\right\}.
+\end{equation*}
+
+De esta forma, tenemos que la razón generalizada de verosimilitudes está dada por
+\begin{equation*}
+\lambda=\left(\dfrac{\hat{\sigma}^2_{MV}}{\hat{\sigma}^2_{0,MV}}\right)^{-\sum_{i=1}^kn_i/2}
+\end{equation*}
+
+y podemos concluir que se rechaza $H_0$ para valores grandes de la estadística $\frac{\hat{\sigma}^2_{0,MV}}{\hat{\sigma}^2_{MV}}$, con
+\begin{align*}
+\frac{\hat{\sigma}^2_{0,MV}}{\hat{\sigma}^2_{MV}}&=\frac{\sum_{i=1}^k\sum_{j=1}^{n_i}(X_j^i-\hat{\mu}_{0,MV})^2}{\sum_{i=1}^k\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2}\\
+&=\frac{\sum_{i=1}^k\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2+\sum_{i=1}^kn_i(\bar{X}^i-\hat{\mu}_{0,MV})^2}{\sum_{i=1}^k\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2}\\
+&=1+\frac{\sum_{i=1}^kn_i(\bar{X}^i-\hat{\mu}_{0,MV})^2}{\sum_{i=1}^k\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2}.
+\end{align*}
+Y podemos afirmar que se debe rechazar $H_0$ cuando
+\begin{equation}\label{kmuestra_regla}
+\frac{\sum_{i=1}^kn_i(\bar{X}^i-\hat{\mu}_{0,MV})^2}{\sum_{i=1}^k\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2}>K,
+\end{equation}
+
+para algún $K>0$. De nuevo, para encontrar el valor de $K$, se debe conocer la distribución de la estadística de prueba bajo la hipótesis nula. Para eso, en primer lugar tengamos en cuenta que la distribución de $\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2/\sigma^2$ es la distribución $\chi^2_{n_i-1}$, y usando la independencia de las $k$ muestras, se tiene que
+\begin{equation}\label{kmuestra_estadistica1}
+\sum_{i=1}^k\sum_{j=1}^{n_i}\frac{(X^i_j-\bar{X}^i)^2}{\sigma^2}\sim\chi^2_{\sum_{i=1}^kn_i-k}.
+\end{equation}
+
+Ahora, consideramos el numerador de la estadística de prueba en (\ref{kmuestra_regla}), tenemos que
+\begin{align}\label{kmuestra_estadistica}
+\sum_{i=1}^k\frac{n_i(\bar{X}^i-\mu)^2}{\sigma^2}&=\sum_{i=1}^{k}\frac{(\sqrt{n_i}\bar{X}^i-\sqrt{n_i}\hat{\mu}_{0,MV}+\sqrt{n_i}\hat{\mu}_{0,MV}-\sqrt{n_i}\mu)^2}{\sigma^2}\notag\\
+&=\sum_{i=1}^k\frac{(\sqrt{n_i}\bar{X}^i-\sqrt{n_i}\hat{\mu}_{0,MV})^2}{\sigma^2}+\sum_{i=1}^k\frac{(\sqrt{n_i}\hat{\mu}_{0,MV}-\sqrt{n_i}\mu)^2}{\sigma^2}\notag\\
+&=\sum_{i=1}^k\frac{(\sqrt{n_i}\bar{X}^i-\sqrt{n_i}\hat{\mu}_{0,MV})^2}{\sigma^2}+\frac{\sum_{i=1}^kn_i(\hat{\mu}_{0,MV}-\mu)^2}{\sigma^2}
+\end{align}
+Bajo la hipótesis nula, se tiene que $\bar{X}^i\sim N(\mu,\sigma^2/n_i)$, de donde se tiene que $n_i(\bar{X}^i-\mu)^2/\sigma^2\sim\chi^2_1$, y usando la independencia de las $k$ muestras, se tiene que bajo la hipótesis nula
+\begin{equation*}
+\sum_{i=1}^k\frac{n_i(\bar{X}^i-\mu)^2}{\sigma^2}\sim\chi^2_k.
+\end{equation*}
+
+Por otro lado, bajo $H_0$, $\hat{\mu}_{0,MV}$ es el promedio de las $k$ muestras provenientes de una distribución $N(\mu,\sigma^2)$, entonces se tiene que $\hat{\mu}_{0,MV}\sim N(\mu,\sigma^2/\sum_{i=1}^kn_i)$, entonces
+\begin{equation}\label{chi_cuadrado_k}
+\frac{\hat{\mu}_{0,MV}-\mu}{\sqrt{\dfrac{\sigma^2}{\sum_{i=1}^kn_i}}}\sim N(0,1),
+\end{equation}
+
+de donde
+\begin{equation}\label{chi_cuadrado_1}
+\frac{\sum_{i=1}^kn_i(\hat{\mu}_{0,MV}-\mu)^2}{\sigma^2}\sim\chi^2_1.
+\end{equation}
+
+Usando las distribuciones (\ref{chi_cuadrado_k}), (\ref{chi_cuadrado_1}), y la identidad (\ref{kmuestra_estadistica}), podemos concluir que bajo $H_0$,
+\begin{equation}\label{kmuestra_estadistica2}
+\sum_{i=1}^k\frac{(\sqrt{n_i}\bar{X}^i-\sqrt{n_i}\hat{\mu}_{0,MV})^2}{\sigma^2}=\sum_{i=1}^k\frac{n_i(\bar{X}^i-\hat{\mu}_{0,MV})^2}{\sigma^2}\sim\chi^2_{k-1}.
+\end{equation}
+
+Usando las distribuciones (\ref{kmuestra_estadistica1}) (\ref{kmuestra_estadistica2}) y la independencia de las dos estadísticas, se tiene que
+\begin{equation*}
+\frac{\sum_{i=1}^kn_i(\bar{X}^i-\hat{\mu}_{0,MV})^2}{\sum_{i=1}^k\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2}\sim f^{k-1}_{\sum_{i=1}^kn_i-k}.
+\end{equation*}
+
+Ahora, retomando la regla de decisión encontrada anteriormente (\ref{kmuestra_regla}), usando nuevamente la definición del error tipo I, se tiene que $K=f^{k-1}_{\sum_{i=1}^kn_i-k,1-\alpha}$, y la regla de decisión finalmente está dada por
+\begin{center}
+Rechazar $H_0$ cuando
+$\frac{\sum_{i=1}^kn_i(\bar{X}^i-\hat{\mu}_{0,MV})^2}{\sum_{i=1}^k\sum_{j=1}^{n_i}(X^i_j-\bar{X}^i)^2}>f^{k-1}_{\sum_{i=1}^kn_i-k,1-\alpha}$.
+\end{center}
+
+
+\subsection{Igualdad de varianzas}
+El sistema de interés es
+\begin{equation}\label{k_varianzas}
+H_0:\ \sigma^2_1=\ \cdots\ =\sigma^2_k\ \ \ \ vs.\ \ \ \ H_a:\ \text{existen por lo menos dos varianzas diferentes}.
+\end{equation}
+
+Nuevamente, hacemos uso de la prueba de la razón generalizada de verosimilitudes. La función de verosimilitud de las $k$ muestras está dada por (\ref{kmuestra_likelihood}). Bajo la hipótesis nula, $\sigma^2_1=\ldots=\sigma^2_k=\sigma^2$, se ha visto anteriormente que los estimadores de máxima verosimilitud de $\sigma^2$, $\mu_1$, $\ldots$, $\mu_k$ están dados por (\ref{mui_MV}) y (\ref{varianza_comun}). Por otro lado, los estimadores de máxima verosimilitud de $\mu_i$ y $\sigma^2_i$ están dadas por las respectivas medias y varianzas muestrales (dividiendo por $n_i-1$) de la $i$-ésima muestra para $i=1,\ldots,k$. De esta forma, encontramos que la razón generalizada de verosimilitudes está dada por
+\begin{equation*}
+\lambda=\frac{\prod_{i=1}^n(\hat{\sigma}^2_{i,MV})^{-n_i/2}}{(\hat{\sigma}^2_{MV})^{-\sum_{i=1}^kn_i/2}},
+\end{equation*}
+
+y se tiene que bajo $H_0$, $2\ln\lambda$ se distribuye aproximadamente como $\chi^2_{k-1}$ \cite[p.394]{Bickel}. Y por consiguiente, se rechaza $H_0$ cuando $\sum_{i=1}^kn_i\ln\hat{\sigma}^2_{MV}-\sum_{i=1}^kn_i\ln\hat{\sigma}^2_{i,MV}>\chi^2_{k-1,1-\alpha}$.
+
+\citeasnoun{Bartlett} hizo una modificación a la anterior estadística de prueba con el fin de que la distribución de la estadística de prueba se acerca más a la distribución $\chi^2_{k-1}$. La modificación de Bartlett consiste en reemplazar los estimadores de máxima verosimilitud por los estimadores insesgados, reemplazar $n_i$ por $n_i-1$ y dividir la estadística por la constance $c$ dado por
+\begin{equation*}
+c=1+(\frac{k-1}{3})\left(\sum_{i=1}^k\frac{1}{n_i-1}-\frac{1}{\sum_{i=1}^kn_i-k}\right).
+\end{equation*}
+
+La estadística de prueba queda entonces expresado como
+\begin{equation*}
+A=\frac{1}{c}\left\{(\sum_{i=1}^kn_i-k)\ln S^2-\sum_{i=1}^k(n_i-1)\ln S^2_i\right\}
+\end{equation*}
+
+donde $S^2_i$ es el estimador insesgado de $\sigma^2_i$ en la $i$-ésima muestra, y $S^2=\sum_{i=1}^k(n_i-1)S^2_i/(\sum_{i=1}^kn_i-k)$. Y se rechaza $H_0$ cuando $A>\chi^2_{k-1,1-\alpha}$.
+
+\section{Bajo distribuciones ajenas a la normal}
+
+\subsection{Muestras provenientes de la distribución Bernoulli}
+Suponga que la muestra aleatoria $X_1$, $\ldots$, $X_n$ constituyen de una muestra aleatoria proveniente de la distribución Bernoulli con probabilidad de éxito $p$, se ha visto anteriormente que el estimador de máxima verosimilitud y el de momentos corresponden al promedio muestral $\bar{X}$, que además es el estimador suficiente y UMVUE. Si el sistema de interés es
+\begin{align}\label{k_varianzas}
+H_0:\ p=p_0\ \ \ \ vs.\ \ \ \ H_a:\ p\neq p_0,
+\end{align}
+
+se puede concluir fácilmente que se rechaza $H_0$ para valores muy grandes o muy pequeños de $\bar{X}$, esto es, se rechaza $H_0$ si $\bar{X}>K_1$ o $\bar{X}<K_2$ para algunos valores $K_1$ y $K_2$. De nuevo, la definición del error tipo I conduce a
+\begin{equation*}
+\alpha=P(\bar{X}>K_1)+P(\bar{X}<K_2)
+\end{equation*}
+
+o equivalentemente
+\begin{equation*}
+\alpha=P(\sum_{i=1}^nX_i>nK_1)+P(\sum_{i=1}^nX_i<nK_2).
+\end{equation*}
+
+Recordando la definición de los percentiles, y el hecho de que la distribución nula de $\sum_{i=1}^nX_i$ es $Bin(n,p_0)$, se puede concluir que los valores $nK_1$ y $nK_2$ son percentiles de la distribución $Bin(n,p_0)$, si los denotamos por $B_{q_1}$ y $B_{q_2}$, se tiene que $1-q_1+q_2=\alpha$, o equivalentemente $q_1-q_2=1-\alpha$. Por ejemplo, para $\alpha=0.05$, los valores de $q_1$ y $q_2$ pueden ser 0.97 y 0.2 respectivamente, o también pueden ser 0.96 y 0.1. Ahora, a diferencia de las distribuciones continuas, en distribuciones discretas como la distribución binomial, no puede encontrar cualquier percentil. Por ejemplo, considera la función de densidad de la distribución $Bin(5,0.4)$ ilustrada en la Figura 4.8, nótese que el valor 0 corresponde al percentil 8\%, el valor 1 al percentil 34\%, y no es claro cuál es el percentil 2.5\%, o el 5\%.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1186 1078, scale=0.2]{densidad_binom.jpg}
+\caption{Función de densidad de la distribución $Bin(5,0.4)$.}
+\end{figure}
+
+A continuación se presenta la prueba binomial de dos colas. Considera las dos ecuaciones
+\begin{equation*}
+\sum
+\end{equation*}
+
+En \verb"R", el comando \verb"binom.test" que lleva a cabo el test para una proporción. Por ejemplo, para probar el sistema $p=0.2$ vs. $p\neq0.2$ basado en una muestra de tamaño 20 con 6 éxitos, el procedimiento en \verb"R" y el correspondiente resultado es:
+
+\begin{verbatim}
+> binom.test(6,20,0.2,alternative="two.sided")
+
+        Exact binomial test
+
+data:  6 and 20
+number of successes = 6, number of trials = 20, p-value = 0.2650
+alternative hypothesis: true probability of success is not equal to 0.2
+95 percent confidence interval:
+ 0.1189316 0.5427892
+sample estimates:
+probability of success
+                   0.3
+\end{verbatim}
+
+El p-valor es de 0.265, indicando que no se rechaza la hipótesis nula. Nótese que el intervalo de confianza del 95\% es (0.12,0.54) y contiene el valor de $p$ del hipótesis nula, concuerda con la conclusión obtenida del p-valor.
+
+Para sistemas de tipo
+\begin{align}\label{k_varianzas}
+H_0:\ p=p_0\ \ \ \ vs.\ \ \ \ H_a:\ p> p_0,
+\end{align}
+
+o
+\begin{align}\label{k_varianzas}
+H_0:\ p\leq p_0\ \ \ \ vs.\ \ \ \ H_a:\ p\neq p_0.
+\end{align}
+
+También se puede emplear el comando \verb"binom.test" con la opción \verb"greater". Por otro lado, para sistemas como
+\begin{align}\label{k_varianzas}
+H_0:\ p=p_0\ \ \ \ vs.\ \ \ \ H_a:\ p< p_0,
+\end{align}
+
+o
+\begin{align}\label{k_varianzas}
+H_0:\ p\geq p_0\ \ \ \ vs.\ \ \ \ H_a:\ p< p_0,
+\end{align}
+
+se utiliza la opción \verb"less",
+
+Fisher's exact test \cite{Casella} pg. 399
+
+\subsection{Muestras provenientes de la distribución Poisson}
+
+\subsection{Muestras provenientes de la distribución Exponencial}
+
+
+\section{Acerca de ...}
+
+He empezado la lectura de un libro que me recomendaron: The cult of statistical significance de Ziliak y McCloskey (2008)... simplemente estoy chequeando algunos de sus apartados. En general, el libro tiene un buen punto y es el que le da el nombre al título de esta entrada... aunque definitivamente los autores son enemigos de todas las ideas de Fisher, el libro se basa en una crítica científica a la mala costumbre de los estadísticos en el juzgamiento de hipótesis.  Y tiene razón. ¿Por qué las decisiones científicas están restringidas a un espacio discreto binario $ \{0,1\}$ inducido por una regla de decisión? Los autores del libro sugieren que tendría más sentido científico que las decisiones estuvieran sujetas a una función de perdida continua en el intervalo $ (0,1)$.
+
+Tiene sentido, máxime cuando a la hora de realizar contrastes sea cual sea la rama de aplicación (econometría, mercadeo, epidemiología, ciencia política, etc.), siempre se utiliza la misma regla de decisión que Fisher impuso hace varias décadas: Si el valor $ p$ es menor que 0.05, entonces rechace la hipótesis. Pero la verdad que todos sabemos, y a veces no queremos aceptar, es otra. A continuación un ejemplo detallado adaptado de las primeras páginas del libro.
+
+Imagínese que usted y su pequeño niño de cuatro años caminan por una de las aceras de la ciudad. Se detienen en una esquina y compran un perro caliente (hot dog). El vendedor del carrito de perros lo atiende muy amablemente y le da justo lo que usted pidió. El semáforo se va a poner en rojo pero usted se atreve a cruzar la calle. Situación número uno: cuando va a llegar a la otra acera, usted se da cuenta que el vendedor olvidó colocar mostaza en su perro. Si usted y su hijo se atreven a devolverse y cruzar la calle esquivando carros, motos y tracto mulas, existe una probabilidad - digamos 0.95 - de que logren tener la  mostaza en su perro caliente sin que haya ocurrido ningún accidente. Situación número dos: cuando usted va a llegar a la otra acera, usted se da cuenta que olvido a su hijo y cuando voltea su mirada, el niño está intentando cruzar la calle. Inmediatamente usted se devuelve esquivando carros, motos y tracto mulas. Existe una probabilidad de 0.95 de que usted alcance a su hijo y llegue a la otra acera de la calle sano y salvo.
+
+Dos situaciones con dos premios distintos, la mostaza o su hijo, y con la misma probabilidad. La significación estadística ignora esta diferencia puesto que las dos decidiones son iguales en cuanto a la probabilidad de "éxito". Ambas variables NIÑO y MOSTAZA son significativas si $ p<0.05$ y la conclusión sería: Existen dos razones, que son igualmente importantes, para cruzar la calle.
+
+Tiene su punto, un muy buen punto.
+
+Hablo desde mi propia perspectiva... los métodos estadísticos deben tener validez teórica desde el punto de vista del usuario. Es decir, en epidemiología, economía, contaduría, sociología o en marketing, los métodos estadísticos tienen validez siempre y cuando sirvan para apoyar la teoría desarrollada en estas áreas del conocimiento. No le digan a un gerente de mercadeo que la variable satisfacción del consumidor no entra en el modelo re regresión porque el beta no resultó significativo. En estos aspectos, la ciencia estadística debe ser vista como una herramienta. Ahora, como sucede con toda herramienta, es necesario adecuarla al terreno y afinarla de tal manera que se convierta en una herramienta indispensable en manos del experto y no en una más de las herramientas a las cuales se puede acceder. En esta ocasión, le tocó el turno al análisis de correspondencias. Específicamente al muy conocido y bien ponderado mapa perceptual, resultado de éste análisis.
+
+Jim Berger ha diseñado un software que demuestra que las interpretaciones usuales acerca de los p-valores pueden ser erradas. La ayuda para manejar el software se encuentra en este documento.
+
+Al respecto, John Cook hace una lista de cinco autores que tienen puntos de vista muy críticos acerca de la práctica e interpretación  usual del estadístico con respecto al procedimiento de las pruebas de hipótesis.
+
+Andrew Gelman: En la realidad, la hipótesis nula es siempre falsa. ¿Es el tratamiento A igual de efectivo al tratamiento B? Seguramente no. Está claro que antes de la realización de un experimento deben existir algunas diferencias que se pueden manifestar con un número suficiente de datos.
+
+Jim Berger: Un p-valor pequeño implica que los datos recolectados son inverosímiles bajo la hipótesis nula. Sin embargo, también pueden serlo bajo la hipótesis alternativa. Las comparaciones de las hipótesis deberían estar condicionadas a la realización de los datos.
+
+Stephen Ziliak and Deirdra McCloskey: La significación estadística no es lo mismo que la significación científica. La cuestión más importante para la ciencia es el tamaño de un efecto y no si existe o no tal efecto.
+
+William Gosset: El error estadístico es sólo uno de los componentes del error real y quizás sea un componente pequeño.
+
+John Ioannidis: p-valores pequeños no implican una probabilidad pequeña de que la hipótesis nula sea incorrecta. En una revisión de estudios médicos se encontró que el 74\% de los estudios con p-valores menores que 0.05 llegaban a conclusiones erróneas.
+
+ Algun extremista diría que la herramienta de las pruebas de hipótesis y de sus respectivos p-valores es una mala herramienta. Mi punto de vista es que cuándo se entiende que un p-valor es una variable aleatoria, entonces las conclusiones y por consiguiente la toma de decisiones se hace con más cuidado. Sin embargo existe otra herramienta estadística que puede ser usada como complemento a los p-valores. Se trata de los factores de Bayes que son la razón entre las probabilidades a posteriorí de las dos hipótesis dada la realización de los datos. Según John Cook, los factores de Bayes no tienen las debilidades de las pruebas de hipótesis, especialmente las que señalan los criticismos de Jim Berger y John Ioannidis.
+
+
+
+
+
+
+\section{p valores aleatorios}
+
+En esta época de avances computacionales, una lección de intervalos de confianza incluye, además de teoría, simulaciones que tienden a enfatizar el carácter aleatorio de los límites de los intervalos de confianza: Un parámetro se fija y el 95\% de los intervalos construidos en la simulación lo cubren. Pero y qué pasa con la enseñanza de otros conceptos fundamentales de la inferencia estadística. En esta entrada vamos a enfocarnos en una metodología alternativa en la enseñanza del p valor.
+
+La respuesta que muchos usuarios de la estadística - no estadísticos - encuentran frente a la pregunta ¿Qué es un p valor? es
+
+Un p valor es la probabilidad de que la hipótesis nula (Ho) sea cierta.
+
+La anterior respuesta es, además de pragmática y utilitarista, falsa. Lo cierto es que, técnicamente, la definición de p valor es la siguiente:
+
+Un p valor es la probabilidad, calculada al asumir que Ho es cierta, de que la estadística de prueba tome valore tan extremos o más extremos que los calculados con la muestra actual.
+
+ Ahora, dado que las estadísticas de prueba se construyen para cuantificar las desviaciones de la hipótesis nula con los datos actuales, entonces rechazamos Ho cuando el p valor es pequeño porque si éste es pequeño entonces los datos actuales proveen una fuerte evidencia en contra de Ho. En otras palabras, el hecho de que el p valor sea grande hace que Ho sea difícil de rechazar; por tanto es casi intuitivo, pero no valido, tomar al p valor como una medida de soporte en contra (o a favor) del rechazo de Ho.
+
+Sin embargo, esta presentación estándar esconde la aleatoriedad del p valor. Sí, el p valor es una estadística por tanto es aleatorio y no puede ser interpretado como una medida de soporte. Este blog sugiere, siguiendo los lineamentos de Murdoch (2008), que la enseñanza de este importante concepto siga una metodología alternativa - basada en simulaciones - totalmente diferente a lo que hasta ahora se está realizando. Con un simple ejemplo es posible que el estudiante entienda que un p valor es una cantidad aleatoria condicionada a las realizaciones de las variables aleatorias de la muestra y, por consiguiente será posible liberarnos de las definiciones incorrectas que pueden guiar a malinterpretaciones en el campo aplicado.
+
+Considere una prueba t, basada en una muestra aleatoria de tamaño n y con distribución normal (mu, 1), apoyada en el siguiente sistema de hipótesis
+
+Ho: mu igual a cero            VS.      Ha: mu distinto de cero.
+
+Es claro que la estadística de prueba sigue una distribución t-student con (n-1) grados de libertad. Para presentar los resultados en clase, es conveniente empezar con Ho: mu igual a cero
+
+Bajo la hipótesis nula, el histograma de los p valores toma la forma de una distribución plana y uniforme sobre el intervalo [0, 1]. Para enfatizar el punto de que un p valor no es la probabilidad de que Ho sea cierto, el instructor sólo necesita explicar este histograma, en donde claramente Ho es cierta, sin embargo el p valor está uniformemente distribuido entre cero y uno.
+Bajo la hipótesis alternativa, la distribución de los p valores no es uniforme. Para el estudiante será obvio que el chance de obtener p valores menores al nivel de significación será más alto bajo la hipótesis alterna que bajo la hipótesis nula y ese efecto es más claro a medida que mu incrementa su valor. En este punto, es posible introducir el concepto de potencia.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{pval1.eps}
+\caption{\emph{pval}}
+\end{figure}
+
+Una vez que el estudiante ha comprendido el comportamiento básico, podemos introducir  la posibilidad de que el sistema de hipótesis sea tal que Ho: mu menor a cero
+
+Si mu menor que cero, la distribución de los p sobre el intervalo [0, 1] no será uniforme y tenderá al valor uno. En este punto, el estudiante entenderá que la distribución de los p valores no está determinada por el sistema de hipótesis sino por los parámetros.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{pval2.eps}
+\caption{\emph{pval2}}
+\end{figure}
+
+Cuando el estudiante entiende que el p valor es una variable aleatoria, entonces comprenderá mejor el razonamiento detrás del juzgamiento de hipótesis, interpretará correctamente los resultados y los efectos en la violación de los supuestos. Haciendo clíc acá encontrará el programa en R de la simulación de los p valores que generaron las anteriores gráficas.
+
+
+\subsection{Nota bibliográfica}
+
+William Gosset descubrió la distribución t mientras trabajaba para la compañía cervecera Guinness. Dado que los empleadores prohibían a los empleados la publicación de artículos de los resultados encontrados en sus estudios de control de calidad, Gosset publicó su investigación bajo el seudónimo de Student - razón por la que la famosa distribución no se lleva su apellido sino que se conoce como la distribución t de Student. Esta historia hace parte del viejo arsenal de anécdotas que los profesores de estadística utilizamos para amenizar la clase de inferencia estadística repleta de fórmulas, enunciados y teoremas.
+
+De alguna manera, este cuentico de hadas se puede volver más interesante si nos preguntamos lo siguiente: ¿por qué razón tal descubrimiento surgió de las entrañas de una cervecera y no de una compañía vinícola (fabricante de vinos)?
+
+John Cook,  afirma que los cerveceros siempre se han enorgullecido de la consistencia de sus cervezas, mientras que los productores de vino se enorgullecen de la variedad de sus cosechas. Por esta razón nunca escucharemos a ningún amante de la cerveza exclamar que 1998 fue un <<buen año>>, de la manera que lo haría un sommeliér (experto en vinos) refiriéndose a alguna cosecha de alguna cepa de algún país. De hecho, la variedad de las cepas es en gran parte la culpable de que una botella de vino de la misma marca, pero de diferente cosecha, tenga un sabor distinto en el paladar. Por otro lado, el sabor de una cerveza destapada hoy será el mismo sabor que el de una cerveza destapada hace un año. Por tanto, los cerveceros valoran tanto la consistencia que invierten dinero y recursos en departamentos de investigación en control de calidad.
+
+Es hora de que las grandes cerveceras en Colombia se metan la mano al dril para patrocinar los estudios rigurosos de algunos de sus estadísticos, si es que emplean estadísticos en sus procesos de control de calidad. Si pueden apoyar el deporte, en particular el futbol, con grandes sumas de dinero pues que también aporten al desarrollo de la ciencia.
+
+\subsubsection{Nota bibliográfica}
+
+Erin Leahey, en un reciente artículo, escribe acerca del uso del nivel de significación en pruebas estadísticas, el valor 0.05 y el sistema de tres estrellas que se han convertido en métodos legítimos y dominantes en la mayoría de las investigaciones de tipo social. De acuerdo a Erin, el sistema de hipótesis merece una estrella cuando el p-valor es menor de 0.05, dos estrellas si el p-valor es menor de 0.01 y tres estrellas si el p-valor es menor de 0.001. Erin atribuye el primer uso del nivel de significación 0.05 a Ronald Fisher en su libro publicado en 1935 Diseño de experimentos. También nota que otras formas de pruebas de significación eran muy populares en la década de 1930, cuando cerca del 40\% de los artículos publicados en ASR y AJS aplicaban sólo una técnica de prueba de significación.
+
+El famoso 0.05, que nos da de comer a la mayoría de nosotros, fue muy usado desde 1930 hasta 1950, pero declinó hasta 1970. Sin embargo, volvió a revivir hasta nuestra época. Actualmente, cerca del 80\% de los artículos publicados en ASR y AJS emplean ambos procedimientos (nivel de significación y estrellas). El sistema de tres estrellas emergió en la década de 1950, pero se volvió muy popular sólo después de 1970. Un porcentaje cercano al 40\% de artículos publicados en los anteriores journals utilizan la metodología de las tres estrellas.
+
+¿Qué es lo cuenta en la difusión de tales prácticas? Erin dá vários argumentos para responder a esta pregunta. Por ejemplo, ella concluye que los factores institucionales como inversión en investigación y computadores, entrenamiento a nivel de postgrado y la preferencia del editor del journal pueden ser algunos de los factores más importantes en la difusión de tales prácticas. Interesantemente, ella encontró que los egresados de Harvard tenían un efecto negativo significativo al adoptar tales prácticas estadísticas.
+
+Por supuesto, este estudio está limitado a la muestra que tomó Erin y no puede ser generalizado. Sin embargo, es una lectura divertida. Si alguien está interesado en los elementos históricos de cómo las prácticas estadísticas fueron introducidas y comenzaron a legitimarse en la investigación social, Camic y Xie (1994) es un muy buen punto de partida.
+
+
+
+\section{Ejercicios}
+
+1. Para las siguientes situaciones, plantea un sistema de hipótesis donde el error tipo I es más grave que el error tipo II.
+\begin{enumerate}[(a)]
+    \item El gerente de una empresa de ventas desea conocer el rendimiento del empleado Perez, y el índice que el gerente tiene en cuenta es el porcentaje de ventas exitosas $p$, y el gerente cree que un porcentaje inferior a los 20\% es indicio de un desempeño pobre. Desde el punto de vista del gerente ¿cómo se puede plantear el sistema de hipótesis?
+    \item
+\end{enumerate}
+
+2. Sea $X_1$, $\cdots$, $X_n$ proveniente de una población $N(\mu,\sigma^2)$ donde $\sigma^2=\sigma_0^2$ es conocida, para el siguiente sistema de hipótesis
+\begin{equation*}
+H_0:\ \mu\geq\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu<\mu_0,
+\end{equation*}
+
+desarrolla una regla de decisión para el anterior sistema. Debe especificar además la estadística de prueba, dibujar el región de rechazo y obtener la fórmula del $p$ valor.
+
+2. Repetir el anterior ejercicio con el sistema de hipótesis
+\begin{equation*}
+H_0:\ \mu\leq\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu>\mu_0
+\end{equation*}
+
+con $\sigma^2$ desconocida, y ver que la regla de decisión encontrada es equivalente al uso de intervalos de confianza.
+
+3. Un tipo de bombillo industrial debe tener la vida útil promedio superior a 12 mil horas para poder entrar al mercado colombiano. Para verificar que cumplen con este requisito, se seleccionó 20 bombillos y los resultados del laboratorio indican que la vida útil de estos 20 bombillos son (en miles de horas):  11.4, 12.1, 12.5, 13.1, 12.6, 11.9, 12.4, 13.1, 14.0, 11.9, 13.1, 12.8, 12.6, 13.2, 12.4, 11.6, 13.0, 12.4, 12.6, 12.5. Plantea un sistema de hipótesis adecuado para decidir si los bombillos pueden o no entrar al mercado colombiano.
+
+4. Sea $X_1$, $\cdots$, $X_n$ proveniente de una población $N(\mu,\sigma^2)$ donde $\sigma^2$ es desconocida. Encuentra una regla de decisión para el siguiente sistema de hipótesis:
+\begin{equation*}
+H_0:\ \mu=\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu<\mu_0.
+\end{equation*}
+\begin{enumerate}[(a)]
+    \item Sin usar la prueba de razón de verosimilitud
+    \item Usando la prueba de razón de verosimilitud
+\end{enumerate}
+
+Usa el método de la prueba de razón de verosimilitud para
+
+5. Sea $X_1$, $\cdots$, $X_n$ proveniente de una población $N(\mu,\sigma^2)$ donde $\mu$ es desconocida, encuentra una regla de decisión para el sistema de hipótesis:
+\begin{equation*}
+H_0:\ \sigma^2=\sigma^2_0\ \ \ \ vs.\ \ \ \ H_a:\ \sigma^2<\sigma^2_0.
+\end{equation*}
+
+6. Escriba la fórmula del $p$ valor para el sistema (\ref{muX=muY}) cuando las varianzas son iguales pero desconocidas.
+
+7. Sea $X_1$, $\cdots$, $X_n$ y $Y_1$, $\cdots$, $Y_m$ dos muestras aleatorias independientes provenientes de $N(\mu_X,\sigma_X^2)$ $N(\mu_Y,\sigma_Y^2)$ respectivamente. Encuentra reglas de decisión para los siguientes sistemas de hipótesis
+\begin{enumerate}[(a)]
+\item $H_0:\ \mu_X-\mu_Y\leq\mu_0\ \ \ \ vs.\ \ \ \ H_a:\ \mu_X-\mu_Y>\mu_0$ con $\sigma^2_X=\sigma^2_Y$ desconocidas.
+\item $H_0:\ \sigma^2_X=\sigma^2_Y\ \ \ \ vs.\ \ \ \ H_a:\ \sigma^2_X\neq\sigma^2_Y$ con $\mu_X$ y $\mu_Y$ desconocidos.
+\end{enumerate}
+
+8. Un ganadero desea aumentar la producción lechera diaria de sus vacas, y decide probar un nuevo concentrado. Para verificar la efectividad del nuevo concentrado, el ganadero separa 35 vacas, de los cuales 15 son alimentados con el concentrado actual y los restantes con el concentrado nuevo. Después de tres semanas de alimentación, él toma nota de la producción lechera, para las vacas alimentadas con el concentrado actual, los resultados fueron (en litros): 16.4, 18.9, 15.7, 20.2, 16.8, 19.4, 14.7, 17.8, 19.5, 16.8, 18.4, 14.6, 20.7, 21.1, 17.3, y para las vacas alimentadas con el concentrado nuevo, los resultados fueron: 19.4, 18.1, 21.0, 20.4, 20.5, 17.4, 19.6, 18.4, 21.4, 19.2, 15.7, 22.8, 21.6, 17.2, 18.4, 19.4, 20.5, 23.6, 18.4, 18.3.
+Contesta las siguientes preguntas usando técnicas de prueba de hipótesis
+\begin{enumerate}[(a)]
+\item ¿Los dos tipos de concentrados son iguales de efectivos? Si la respuesta es negativa, ¿cuál es más efectivo?
+\item ¿Cuál concentrado produce resultados más homogéneos?
+\end{enumerate}
+
+9. Sea $X_1$, $\cdots$, $X_n$ proveniente de una población $P(\theta)$, encuentra una regla de decisión para el sistema de hipótesis:
+\begin{equation*}
+H_0:\ \theta\geq\theta_0\ \ \ \ vs.\ \ \ \ H_a:\ \theta<\theta_0.
+\end{equation*}
+
+
+10. Sea $X_1$, $\cdots$, $X_n$ proveniente de una población $Ber(p)$, encuentra una regla de decisión para el sistema de hipótesis usando la razón de verosimilitud:
+\begin{equation*}
+H_0:\ p=p_0\ \ \ \ vs.\ \ \ \ H_a:\ p=p_1,
+\end{equation*}
+ con $p_0<p_1$.
+

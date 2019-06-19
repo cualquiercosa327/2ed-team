@@ -1,0 +1,12 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2009.10.6)  12 JUN 2010 12:47
+entering extended mode
+**//Servidor-pc/users/Public/Documents/Compartidos/Teoría*estadística/Cap2.tex
+("//Servidor-pc/users/Public/Documents/Compartidos/Teoría estadística/Cap2.tex"
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
+! Undefined control sequence.
+l.1 \chapter
+            [Estimación por intervalo de confianza]{Estimación por intervalo...
+
+? 

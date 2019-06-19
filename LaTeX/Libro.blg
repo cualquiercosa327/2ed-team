@@ -1,0 +1,32 @@
+This is BibTeX, Version 0.99cThe top-level auxiliary file: Libro.aux
+The style file: agsm.bst
+A level-1 auxiliary file: portada.aux
+A level-1 auxiliary file: preface.aux
+A level-1 auxiliary file: Concepto.aux
+A level-1 auxiliary file: Cap1.aux
+A level-1 auxiliary file: Cap2.aux
+A level-1 auxiliary file: Cap3.aux
+A level-1 auxiliary file: Cap4.aux
+A level-1 auxiliary file: Cap5.aux
+A level-1 auxiliary file: misce.aux
+Database file #1: LibroBib.bib
+I was expecting a `,' or a `}'---line 261 of file LibroBib.bib
+ :   
+ :   pages =        {163-168},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 288 of file LibroBib.bib
+ :   
+ :   pages =        {1-25},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 291 of file LibroBib.bib
+ : @book{Lehmann86
+ :                ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 306 of file LibroBib.bib
+ :   
+ :   pages =        {591-611},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+(There were 4 error messages)

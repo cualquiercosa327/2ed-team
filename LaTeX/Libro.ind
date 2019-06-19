@@ -1,0 +1,379 @@
+\begin{theindex}
+
+  \item $p$ valor, \hyperpage{215}, \hyperpage{294}
+    \subitem Bernoulli
+      \subsubitem dos muestras, \hyperpage{279}
+      \subsubitem una muestra, \hyperpage{271}, \hyperpage{273}, 
+		\hyperpage{276}
+    \subitem exponencial
+      \subsubitem una muestra, \hyperpage{288, 289}
+    \subitem multinomial
+      \subsubitem $k$ muestras, \hyperpage{348}
+      \subsubitem dos muestras, \hyperpage{345}
+      \subsubitem una muestra, \hyperpage{340}
+    \subitem normal
+      \subsubitem igualdad de $k$ medias, \hyperpage{267}
+      \subsubitem igualdad de dos medias, \hyperpage{254}
+      \subsubitem igualdad de dos varianzas, \hyperpage{260}
+      \subsubitem media te\'orica, \hyperpage{217, 218}, 
+		\hyperpage{225}, \hyperpage{229}, \hyperpage{235}, 
+		\hyperpage{240}
+      \subsubitem varianza te\'orica, \hyperpage{244}, 
+		\hyperpage{248--250}
+    \subitem normal multivariante
+      \subsubitem independencia, \hyperpage{368}
+    \subitem Poisson
+      \subsubitem dos muestras, \hyperpage{286}
+    \subitem prueba binomial, \hyperpage{273}
+
+  \indexspace
+
+  \item Correcci\'on de continuidad, \hyperpage{272}
+  \item Cota de Cramer-Rao, \hyperpage{121}
+
+  \indexspace
+
+  \item Desigualdad de Cramer-Rao
+    \subitem estimador insesgado, \hyperpage{123}
+  \item Desigualdad de informaci\'on, \hyperpage{121}
+  \item Distancia de Mahalanobis, \hyperpage{321}
+  \item Distribuci\'on
+    \subitem Bernoulli, \hyperpage{8}
+    \subitem Beta, \hyperpage{51}
+    \subitem binomial, \hyperpage{10}
+    \subitem exponencial, \hyperpage{32}
+    \subitem F, \hyperpage{49}
+    \subitem Gamma, \hyperpage{28}
+    \subitem hipergeom\'etrica, \hyperpage{13}
+    \subitem Ji-cuadrado, \hyperpage{42}
+    \subitem multinomial, \hyperpage{319}
+      \subsubitem propiedades, \hyperpage{319}
+    \subitem normal, \hyperpage{36}
+    \subitem normal est\'andar, \hyperpage{39}
+    \subitem normal multivariante, \hyperpage{320}
+      \subsubitem esperanza condicional, \hyperpage{330}
+      \subsubitem propiedades, \hyperpage{326, 327}, \hyperpage{329}
+    \subitem Poisson, \hyperpage{17}
+    \subitem t-student, \hyperpage{45}
+    \subitem t-student no central, \hyperpage{47}
+    \subitem T2 de Hotelling, \hyperpage{333}
+    \subitem uniforme continua, \hyperpage{24}
+    \subitem uniforme discreta, \hyperpage{6}
+    \subitem Weibull, \hyperpage{34}
+    \subitem Wishart, \hyperpage{331}
+      \subsubitem propiedades, \hyperpage{332, 333}
+
+  \indexspace
+
+  \item Eficiencia relativa, \hyperpage{138}
+  \item Error
+    \subitem tipo I, \hyperpage{210}
+    \subitem tipo II, \hyperpage{210}
+  \item Error cuadr\'atico medio, \hyperpage{98}
+  \item Espacio param\'etrico, \hyperpage{6}, \hyperpage{209}
+    \subitem alterno, \hyperpage{209}
+    \subitem nulo, \hyperpage{209}
+  \item Esperanza condicional, \hyperpage{112}
+  \item Estad\IeC {\'\i }stica, \hyperpage{64}
+    \subitem auxiliar, \hyperpage{128}
+  \item Estad\IeC {\'\i }stica  de prueba
+    \subitem normal
+      \subsubitem media te\'orica, \hyperpage{214}
+  \item Estad\IeC {\'\i }stica de prueba, \hyperpage{210}
+  \item Estimaci\'on, \hyperpage{65}
+  \item Estimador, \hyperpage{65}
+    \subitem asint\'oticamente insesgado, \hyperpage{100}
+    \subitem completo, \hyperpage{126}
+      \subsubitem Bernoulli, \hyperpage{126}
+      \subsubitem familia exponencial, \hyperpage{127, 128}
+      \subsubitem uniforme, \hyperpage{127}
+    \subitem consistente, \hyperpage{133}, \hyperpage{135}
+      \subsubitem invarianza, \hyperpage{135}
+      \subsubitem media muestral, \hyperpage{135}
+    \subitem de m\'axima verosimilitud, \hyperpage{68}, \hyperpage{337}
+      \subsubitem Bernoulli, \hyperpage{69}
+      \subsubitem exponencial, \hyperpage{69}
+      \subsubitem Gamma, \hyperpage{76}
+      \subsubitem hipergeom\'etrica, \hyperpage{77}
+      \subsubitem invarianza, \hyperpage{79}
+      \subsubitem multinomial, \hyperpage{338, 339}, \hyperpage{343}
+      \subsubitem normal, \hyperpage{72}
+      \subsubitem normal multivariante, \hyperpage{349}, 
+		\hyperpage{354}
+      \subsubitem Poisson, \hyperpage{68}
+      \subsubitem uniforme, \hyperpage{78}
+    \subitem de m\IeC {\'\i }nimos cuadrados, \hyperpage{96}, 
+		\hyperpage{353}
+      \subsubitem media te\'orica, \hyperpage{96}
+    \subitem de momentos, \hyperpage{83}
+      \subsubitem Beta, \hyperpage{89}
+      \subsubitem Gamma, \hyperpage{85}
+      \subsubitem invarianza, \hyperpage{93}
+      \subsubitem media te\'orica, \hyperpage{83}
+      \subsubitem normal, \hyperpage{83}
+      \subsubitem Poisson, \hyperpage{84}
+      \subsubitem uniforme, \hyperpage{92}, \hyperpage{94}
+      \subsubitem varianza te\'orica, \hyperpage{83}
+    \subitem funci\'on del par\'ametro, \hyperpage{131}
+    \subitem insesgado, \hyperpage{98}
+      \subsubitem media muestral, \hyperpage{98}
+    \subitem sobreestimaci\'on, \hyperpage{98}
+    \subitem subestimaci\'on, \hyperpage{98}
+    \subitem suficiente, \hyperpage{106}
+      \subsubitem Bernoulli, \hyperpage{109, 110}
+      \subsubitem Beta, \hyperpage{109}
+      \subsubitem en familia exponencial, \hyperpage{109, 110}
+      \subsubitem exponencial, \hyperpage{109}
+      \subsubitem normal, \hyperpage{109}, \hyperpage{111}
+      \subsubitem Poisson, \hyperpage{106}, \hyperpage{108}
+    \subitem UMVUE, \hyperpage{123}, \hyperpage{129}
+      \subsubitem normal, \hyperpage{129}
+      \subsubitem Poisson, \hyperpage{124}, \hyperpage{129}
+
+  \indexspace
+
+  \item Familia exponencial
+    \subitem multi-param\'etrica, \hyperpage{58}
+    \subitem uniparam\'etrica, \hyperpage{56}
+  \item Funci\'on de potencia, \hyperpage{219}
+    \subitem exponencial
+      \subsubitem una muestra, \hyperpage{289}
+    \subitem normal
+      \subsubitem igualdad de dos medias, \hyperpage{254}
+      \subsubitem igualdad de dos varianzas, \hyperpage{262}
+      \subsubitem media te\'orica, \hyperpage{220}, \hyperpage{227}, 
+		\hyperpage{229}, \hyperpage{237}, \hyperpage{240}
+      \subsubitem varianza te\'orica, \hyperpage{245}, \hyperpage{248}, 
+		\hyperpage{250}
+  \item Funci\'on de verosimilitud, \hyperpage{67}, \hyperpage{337}
+
+  \indexspace
+
+  \item Gr\'aficas QQ plot, \hyperpage{70}, \hyperpage{385}
+    \subitem distribuci\'on Beta, \hyperpage{397}
+    \subitem distribuci\'on exponencial, \hyperpage{386}
+    \subitem distribuci\'on Gamma, \hyperpage{394}
+    \subitem distribuci\'on normal, \hyperpage{73}, \hyperpage{388}
+    \subitem distribuci\'on normal multivariante, \hyperpage{398}
+    \subitem distribuci\'on Weibull, \hyperpage{391}
+
+  \indexspace
+
+  \item Hip\'otesis
+    \subitem alterna, \hyperpage{209}
+    \subitem compuesta, \hyperpage{213}
+    \subitem nula, \hyperpage{209}
+    \subitem simple, \hyperpage{213}
+
+  \indexspace
+
+  \item Informaci\'on de Fisher
+    \subitem binomial, \hyperpage{117}
+    \subitem en una muestra, \hyperpage{115}
+    \subitem en una variable, \hyperpage{113}
+    \subitem estimador suficiente, \hyperpage{120}
+    \subitem normal, \hyperpage{116}
+    \subitem Poisson, \hyperpage{117}
+  \item Intervalo de confianza
+    \subitem Bernoulli, \hyperpage{201}
+      \subsubitem Agresti-Caffo, \hyperpage{203, 204}
+      \subsubitem Newcombe, \hyperpage{204}
+      \subsubitem Wald, \hyperpage{202, 203}
+    \subitem bilateral, \hyperpage{147}
+    \subitem escogencia, \hyperpage{148}
+    \subitem exponencial
+      \subsubitem aproximado, \hyperpage{199}
+      \subsubitem exacto, \hyperpage{195}
+    \subitem funci\'on del par\'ametro, \hyperpage{159}
+    \subitem longitud, \hyperpage{149}
+      \subsubitem esperada, \hyperpage{149}
+      \subsubitem varianza, \hyperpage{149}
+    \subitem normal, \hyperpage{149}
+      \subsubitem cociente de varianzas, \hyperpage{190}, 
+		\hyperpage{192}
+      \subsubitem coeficiente de variaci\'on, \hyperpage{178}
+      \subsubitem diferencia de medias, \hyperpage{182--184}, 
+		\hyperpage{188}
+      \subsubitem media te\'orica, \hyperpage{150}, \hyperpage{160}, 
+		\hyperpage{163}, \hyperpage{166}
+      \subsubitem varianza te\'orica, \hyperpage{169}, \hyperpage{176}
+    \subitem Poisson, \hyperpage{204}
+    \subitem unilateral, \hyperpage{148}
+
+  \indexspace
+
+  \item Lema de Neyman-Pearson, \hyperpage{232}
+
+  \indexspace
+
+  \item M\'aximo de una muestra, \hyperpage{64}
+    \subitem funci\'on de densidad, \hyperpage{105}
+    \subitem funci\'on de distribuci\'on, \hyperpage{104}
+  \item M\'etodo de Delta, \hyperpage{131}
+  \item M\'etodo de la variable pivote, \hyperpage{150}
+  \item M\'etodo de los momentos, \hyperpage{83}
+  \item M\'etodo de m\'axima verosimilitud, \hyperpage{66}
+  \item M\'etodo de m\IeC {\'\i }nimos cuadrados, \hyperpage{95}
+  \item M\IeC {\'\i }nimo de una muestra, \hyperpage{64}
+  \item Margen de error, \hyperpage{158}
+  \item Matriz, \hyperpage{413}
+  \item Matriz de correlaci\'on, \hyperpage{315}
+    \subitem propiedades, \hyperpage{316}
+  \item Matriz de informaci\'on, \hyperpage{118}
+    \subitem normal, \hyperpage{118}
+  \item Matriz de varianzas y covarianzas, \hyperpage{313}
+    \subitem propiedades, \hyperpage{314}
+  \item Media muestral, \hyperpage{64}
+  \item Momento, \hyperpage{83}
+  \item Momento muestral, \hyperpage{83}
+  \item Muestra aleatoria, \hyperpage{64}
+  \item Multiplicador de Lagrange, \hyperpage{152}, \hyperpage{338}
+
+  \indexspace
+
+  \item Nivel de confianza, \hyperpage{147}
+  \item Nivel de significaci\'on, \hyperpage{212}
+
+  \indexspace
+
+  \item Par\'ametro, \hyperpage{5}
+    \subitem de escala, \hyperpage{194}
+    \subitem de localizaci\'on, \hyperpage{194}
+  \item Percentil, \hyperpage{54}
+  \item Probabilidad de cobertura, \hyperpage{147}
+  \item Prueba
+    \subitem  de raz\'on generalizada de verosimilitudes
+      \subsubitem multinomial, \hyperpage{344}
+      \subsubitem normal, \hyperpage{264}, \hyperpage{269}
+      \subsubitem normal multivariante, \hyperpage{366, 367}, 
+		\hyperpage{370}
+      \subsubitem Poisson, \hyperpage{282}, \hyperpage{286}
+    \subitem binomial, \hyperpage{272}
+    \subitem de Bartlett, \hyperpage{269}
+    \subitem de Ji-cuadrado de independencia, \hyperpage{281}, 
+		\hyperpage{422}
+    \subitem de raz\'on de verosimilitud, \hyperpage{229}
+      \subsubitem distribuci\'on asint\'otica, \hyperpage{275}
+      \subsubitem normal, \hyperpage{230}, \hyperpage{246}, 
+		\hyperpage{250}
+      \subsubitem regla de decisi\'on, \hyperpage{230}
+    \subitem de raz\'on generalizada de verosimilitudes, 
+		\hyperpage{233}
+      \subsubitem Bernoulli, \hyperpage{275}
+      \subsubitem distribuci\'on asint\'otica, \hyperpage{275}
+      \subsubitem exponencial, \hyperpage{289}, \hyperpage{293}
+      \subsubitem multinomial, \hyperpage{339}
+      \subsubitem normal, \hyperpage{233}, \hyperpage{251}, 
+		\hyperpage{256}
+    \subitem exacta de Fisher, \hyperpage{281}, \hyperpage{421}
+  \item Prueba de bondad de ajuste, \hyperpage{400}
+    \subitem Kolmogorov-Smirnov, \hyperpage{402}
+    \subitem Mardia, \hyperpage{404}
+    \subitem Shapiro-Wilk, \hyperpage{401}
+  \item Prueba de hip\'otesis, \hyperpage{209}
+    \subitem Bernoulli, \hyperpage{270}, \hyperpage{278}
+      \subsubitem dos muestras, \hyperpage{278}
+      \subsubitem una muestra, \hyperpage{270}, \hyperpage{272}
+    \subitem exponencial, \hyperpage{288}
+      \subsubitem dos muestras, \hyperpage{293}
+      \subsubitem una muestra, \hyperpage{288}
+    \subitem multinomial
+      \subsubitem $k$ muestras, \hyperpage{347}
+      \subsubitem dos muestras, \hyperpage{343, 344}
+      \subsubitem una muestra, \hyperpage{339}
+    \subitem normal, \hyperpage{251}
+      \subsubitem igualdad de $k$ medias, \hyperpage{264}
+      \subsubitem igualdad de $k$ varianzas, \hyperpage{268}
+      \subsubitem igualdad de dos medias, \hyperpage{251}, 
+		\hyperpage{256}, \hyperpage{259}
+      \subsubitem igualdad de dos varianzas, \hyperpage{259}
+      \subsubitem media te\'orica, \hyperpage{212}, \hyperpage{224}, 
+		\hyperpage{228}, \hyperpage{234}, \hyperpage{240}
+      \subsubitem varianza te\'orica, \hyperpage{243}, \hyperpage{246}, 
+		\hyperpage{249, 250}
+    \subitem normal multivariante, \hyperpage{360}
+      \subsubitem combinaci\'on lineal de medias, \hyperpage{362}
+      \subsubitem independencia, \hyperpage{367}, \hyperpage{369}
+      \subsubitem matriz de varianzas, \hyperpage{365, 366}
+      \subsubitem vector de medias, \hyperpage{362}
+    \subitem Poisson, \hyperpage{282}
+      \subsubitem dos muestras, \hyperpage{285}
+      \subsubitem una muestra, \hyperpage{282}
+    \subitem Tama\~no, \hyperpage{212}
+
+  \indexspace
+
+  \item Regi\'on de confianza
+    \subitem normal multivariante
+      \subsubitem vector de medias, \hyperpage{356}, \hyperpage{358}, 
+		\hyperpage{362}
+  \item Regi\'on de rechazo, \hyperpage{214}
+    \subitem normal
+      \subsubitem media te\'orica, \hyperpage{215}, \hyperpage{225}, 
+		\hyperpage{235}
+      \subsubitem varianza te\'orica, \hyperpage{248}
+  \item Regla de decisi\'on, \hyperpage{210}
+    \subitem Bernoulli
+      \subsubitem dos muestras, \hyperpage{279}
+      \subsubitem una muestra, \hyperpage{271}, \hyperpage{276}
+    \subitem exponencial
+      \subsubitem dos muestras, \hyperpage{294}
+      \subsubitem una muestra, \hyperpage{288, 289}
+    \subitem multinomial
+      \subsubitem $k$ muestras, \hyperpage{348}
+      \subsubitem dos muestras, \hyperpage{345}
+      \subsubitem una muestra, \hyperpage{340}
+    \subitem normal
+      \subsubitem igualdad de $k$ medias, \hyperpage{267}
+      \subsubitem igualdad de $k$ varianzas, \hyperpage{269}
+      \subsubitem igualdad de dos medias, \hyperpage{253}, 
+		\hyperpage{258, 259}
+      \subsubitem igualdad de dos varianzas, \hyperpage{259, 260}
+      \subsubitem media te\'orica, \hyperpage{213}, \hyperpage{235}, 
+		\hyperpage{240}
+      \subsubitem varianza te\'orica, \hyperpage{244}, 
+		\hyperpage{248--250}
+    \subitem normal multivariante
+      \subsubitem combinaci\'on lineal de medias, \hyperpage{363, 364}
+      \subsubitem independencia, \hyperpage{368}, \hyperpage{371}
+      \subsubitem matriz de varianzas, \hyperpage{367}
+    \subitem Poisson
+      \subsubitem dos muestras, \hyperpage{286}
+      \subsubitem una muestra, \hyperpage{282, 283}
+  \item Regla de desici\'on
+    \subitem normal
+      \subsubitem media te\'orica, \hyperpage{228}
+
+  \indexspace
+
+  \item Sesgo, \hyperpage{98}
+
+  \indexspace
+
+  \item Tablas de contingencia, \hyperpage{421}
+  \item Teorema
+    \subitem de Basu, \hyperpage{128}
+    \subitem de factorizaci\'on de Fisher-Neyman, \hyperpage{107}, 
+		\hyperpage{109}
+    \subitem del l\IeC {\'\i }mite central, \hyperpage{40}
+    \subitem Rao-Blackwell, \hyperpage{111}
+  \item Transformaci\'on
+    \subitem Box-Cox, \hyperpage{407}
+    \subitem logar\IeC {\'\i }tmica, \hyperpage{408}
+    \subitem ra\IeC {\'\i }z cuadrada, \hyperpage{408}
+
+  \indexspace
+
+  \item Variable pivote, \hyperpage{150}, \hyperpage{163}, 
+		\hyperpage{194}
+    \subitem normal, \hyperpage{150}
+  \item Vector, \hyperpage{413}
+  \item Vector aleatorio, \hyperpage{309}
+    \subitem esperanza, \hyperpage{311}
+    \subitem funci\'on de densidad, \hyperpage{310}
+    \subitem funci\'on de densidad marginal, \hyperpage{311}
+    \subitem funci\'on de distribuci\'on, \hyperpage{310}
+    \subitem funci\'on generadora de momentos, \hyperpage{317}
+    \subitem independencia, \hyperpage{317}
+
+\end{theindex}

@@ -1,0 +1,385 @@
+\indexentry{Par\'ametro|hyperpage}{5}
+\indexentry{Espacio param\'etrico|hyperpage}{6}
+\indexentry{Distribuci\'on!uniforme discreta|hyperpage}{6}
+\indexentry{Distribuci\'on!Bernoulli|hyperpage}{8}
+\indexentry{Distribuci\'on!binomial|hyperpage}{10}
+\indexentry{Distribuci\'on!hipergeom\'etrica|hyperpage}{13}
+\indexentry{Distribuci\'on!Poisson|hyperpage}{17}
+\indexentry{Distribuci\'on!uniforme continua|hyperpage}{24}
+\indexentry{Distribuci\'on!Gamma|hyperpage}{28}
+\indexentry{Distribuci\'on!exponencial|hyperpage}{32}
+\indexentry{Distribuci\'on!Weibull|hyperpage}{34}
+\indexentry{Distribuci\'on!normal|hyperpage}{36}
+\indexentry{Distribuci\'on!normal est\'andar|hyperpage}{39}
+\indexentry{Teorema!del l\IeC {\'\i }mite central|hyperpage}{40}
+\indexentry{Distribuci\'on!Ji-cuadrado|hyperpage}{42}
+\indexentry{Distribuci\'on!t-student|hyperpage}{45}
+\indexentry{Distribuci\'on!t-student no central|hyperpage}{47}
+\indexentry{Distribuci\'on!F|hyperpage}{49}
+\indexentry{Distribuci\'on!Beta|hyperpage}{51}
+\indexentry{Percentil|hyperpage}{54}
+\indexentry{Familia exponencial!uniparam\'etrica|hyperpage}{56}
+\indexentry{Familia exponencial!multi-param\'etrica|hyperpage}{58}
+\indexentry{Muestra aleatoria|hyperpage}{64}
+\indexentry{Estad\IeC {\'\i }stica|hyperpage}{64}
+\indexentry{Media muestral|hyperpage}{64}
+\indexentry{M\IeC {\'\i }nimo de una muestra|hyperpage}{64}
+\indexentry{M\'aximo de una muestra|hyperpage}{64}
+\indexentry{Estimador|hyperpage}{65}
+\indexentry{Estimaci\'on|hyperpage}{65}
+\indexentry{M\'etodo de m\'axima verosimilitud|hyperpage}{66}
+\indexentry{Funci\'on de verosimilitud|hyperpage}{67}
+\indexentry{Estimador!de m\'axima verosimilitud|hyperpage}{68}
+\indexentry{Estimador!de m\'axima verosimilitud!Poisson|hyperpage}{68}
+\indexentry{Estimador!de m\'axima verosimilitud!exponencial|hyperpage}{69}
+\indexentry{Estimador!de m\'axima verosimilitud!Bernoulli|hyperpage}{69}
+\indexentry{Gr\'aficas QQ plot|hyperpage}{70}
+\indexentry{Estimador!de m\'axima verosimilitud!normal|hyperpage}{72}
+\indexentry{Gr\'aficas QQ plot!distribuci\'on normal|hyperpage}{73}
+\indexentry{Estimador!de m\'axima verosimilitud!Gamma|hyperpage}{76}
+\indexentry{Estimador!de m\'axima verosimilitud!hipergeom\'etrica|hyperpage}{77}
+\indexentry{Estimador!de m\'axima verosimilitud!uniforme|hyperpage}{78}
+\indexentry{Estimador!de m\'axima verosimilitud!invarianza|hyperpage}{79}
+\indexentry{Estimador!de m\'axima verosimilitud!normal!dos muestras|hyperpage}{79}
+\indexentry{Estimador!de m\'axima verosimilitud!normal!dos muestras|hyperpage}{80}
+\indexentry{Estimador!de m\'axima verosimilitud!normal!dos muestras|hyperpage}{81}
+\indexentry{M\'etodo de los momentos|hyperpage}{83}
+\indexentry{Momento|hyperpage}{83}
+\indexentry{Momento muestral|hyperpage}{83}
+\indexentry{Estimador!de momentos|hyperpage}{83}
+\indexentry{Estimador!de momentos!media te\'orica|hyperpage}{83}
+\indexentry{Estimador!de momentos!varianza te\'orica|hyperpage}{83}
+\indexentry{Estimador!de momentos!normal|hyperpage}{83}
+\indexentry{Estimador!de momentos!Poisson|hyperpage}{84}
+\indexentry{Estimador!de momentos!Gamma|hyperpage}{85}
+\indexentry{Estimador!de momentos!Beta|hyperpage}{89}
+\indexentry{Estimador!de momentos!uniforme|hyperpage}{92}
+\indexentry{Estimador!de momentos!invarianza|hyperpage}{93}
+\indexentry{Estimador!de momentos!uniforme|hyperpage}{94}
+\indexentry{Estimador!de momentos!uniforme|hyperpage}{94}
+\indexentry{M\'etodo de m\IeC {\'\i }nimos cuadrados|hyperpage}{95}
+\indexentry{Estimador!de m\IeC {\'\i }nimos cuadrados|hyperpage}{96}
+\indexentry{Estimador!de m\IeC {\'\i }nimos cuadrados!media te\'orica|hyperpage}{96}
+\indexentry{Sesgo|hyperpage}{98}
+\indexentry{Estimador!insesgado|hyperpage}{98}
+\indexentry{Estimador!sobreestimaci\'on|hyperpage}{98}
+\indexentry{Estimador!subestimaci\'on|hyperpage}{98}
+\indexentry{Error cuadr\'atico medio|hyperpage}{98}
+\indexentry{Estimador!insesgado!media muestral|hyperpage}{98}
+\indexentry{Estimador!asint\'oticamente insesgado|hyperpage}{100}
+\indexentry{M\'aximo de una muestra!funci\'on de distribuci\'on|hyperpage}{104}
+\indexentry{M\'aximo de una muestra!funci\'on de densidad|hyperpage}{105}
+\indexentry{Estimador!suficiente|hyperpage}{106}
+\indexentry{Estimador!suficiente!Poisson|hyperpage}{106}
+\indexentry{Teorema!de factorizaci\'on de Fisher-Neyman|hyperpage}{107}
+\indexentry{Estimador!suficiente!Poisson|hyperpage}{108}
+\indexentry{Estimador!suficiente!Bernoulli|hyperpage}{109}
+\indexentry{Estimador!suficiente!normal|hyperpage}{109}
+\indexentry{Estimador!suficiente!exponencial|hyperpage}{109}
+\indexentry{Teorema!de factorizaci\'on de Fisher-Neyman|hyperpage}{109}
+\indexentry{Estimador!suficiente!Beta|hyperpage}{109}
+\indexentry{Estimador!suficiente!en familia exponencial|hyperpage}{109}
+\indexentry{Estimador!suficiente!Bernoulli|hyperpage}{110}
+\indexentry{Estimador!suficiente!Bernoulli|hyperpage}{110}
+\indexentry{Estimador!suficiente!en familia exponencial|hyperpage}{110}
+\indexentry{Estimador!suficiente!normal|hyperpage}{111}
+\indexentry{Teorema!Rao-Blackwell|hyperpage}{111}
+\indexentry{Esperanza condicional|hyperpage}{112}
+\indexentry{Esperanza condicional|hyperpage}{112}
+\indexentry{Informaci\'on de Fisher!en una variable|hyperpage}{113}
+\indexentry{Informaci\'on de Fisher!en una muestra|hyperpage}{115}
+\indexentry{Informaci\'on de Fisher!normal|hyperpage}{116}
+\indexentry{Informaci\'on de Fisher!binomial|hyperpage}{117}
+\indexentry{Informaci\'on de Fisher!Poisson|hyperpage}{117}
+\indexentry{Matriz de informaci\'on|hyperpage}{118}
+\indexentry{Matriz de informaci\'on!normal|hyperpage}{118}
+\indexentry{Informaci\'on de Fisher!estimador suficiente|hyperpage}{120}
+\indexentry{Desigualdad de informaci\'on|hyperpage}{121}
+\indexentry{Cota de Cramer-Rao|hyperpage}{121}
+\indexentry{Desigualdad de Cramer-Rao!estimador insesgado|hyperpage}{123}
+\indexentry{Estimador!UMVUE|hyperpage}{123}
+\indexentry{Estimador!UMVUE!Poisson|hyperpage}{124}
+\indexentry{Estimador!completo|hyperpage}{126}
+\indexentry{Estimador!completo!Bernoulli|hyperpage}{126}
+\indexentry{Estimador!completo!uniforme|hyperpage}{127}
+\indexentry{Estimador!completo!familia exponencial|hyperpage}{127}
+\indexentry{Estimador!completo!familia exponencial|hyperpage}{128}
+\indexentry{Estad\IeC {\'\i }stica!auxiliar|hyperpage}{128}
+\indexentry{Teorema!de Basu|hyperpage}{128}
+\indexentry{Estimador!UMVUE|hyperpage}{129}
+\indexentry{Estimador!UMVUE!Poisson|hyperpage}{129}
+\indexentry{Estimador!UMVUE|hyperpage}{129}
+\indexentry{Estimador!UMVUE|hyperpage}{129}
+\indexentry{Estimador!UMVUE!normal|hyperpage}{129}
+\indexentry{Estimador!funci\'on del par\'ametro|hyperpage}{131}
+\indexentry{M\'etodo de Delta|hyperpage}{131}
+\indexentry{Estimador!consistente|hyperpage}{133}
+\indexentry{Estimador!consistente!media muestral|hyperpage}{135}
+\indexentry{Estimador!consistente!invarianza|hyperpage}{135}
+\indexentry{Estimador!consistente|hyperpage}{135}
+\indexentry{Eficiencia relativa|hyperpage}{138}
+\indexentry{Intervalo de confianza!bilateral|hyperpage}{147}
+\indexentry{Probabilidad de cobertura|hyperpage}{147}
+\indexentry{Nivel de confianza|hyperpage}{147}
+\indexentry{Intervalo de confianza!unilateral|hyperpage}{148}
+\indexentry{Intervalo de confianza!unilateral|hyperpage}{148}
+\indexentry{Intervalo de confianza!escogencia|hyperpage}{148}
+\indexentry{Intervalo de confianza!longitud|hyperpage}{149}
+\indexentry{Intervalo de confianza!longitud!esperada|hyperpage}{149}
+\indexentry{Intervalo de confianza!longitud!varianza|hyperpage}{149}
+\indexentry{Intervalo de confianza!normal|hyperpage}{149}
+\indexentry{Intervalo de confianza!normal!media te\'orica|hyperpage}{150}
+\indexentry{M\'etodo de la variable pivote|hyperpage}{150}
+\indexentry{Variable pivote|hyperpage}{150}
+\indexentry{Intervalo de confianza!normal!media te\'orica!bilateral|hyperpage}{150}
+\indexentry{Variable pivote!normal|hyperpage}{150}
+\indexentry{Multiplicador de Lagrange|hyperpage}{152}
+\indexentry{Margen de error|hyperpage}{158}
+\indexentry{Intervalo de confianza!funci\'on del par\'ametro|hyperpage}{159}
+\indexentry{Intervalo de confianza!normal!media te\'orica|hyperpage}{160}
+\indexentry{Intervalo de confianza!normal!media te\'orica|hyperpage}{163}
+\indexentry{Variable pivote|hyperpage}{163}
+\indexentry{Intervalo de confianza!normal!media te\'orica|hyperpage}{166}
+\indexentry{Intervalo de confianza!normal!varianza te\'orica|hyperpage}{169}
+\indexentry{Intervalo de confianza!normal!varianza te\'orica|hyperpage}{169}
+\indexentry{Intervalo de confianza!normal!varianza te\'orica|hyperpage}{176}
+\indexentry{Intervalo de confianza!normal!coeficiente de variaci\'on|hyperpage}{178}
+\indexentry{Intervalo de confianza!normal!diferencia de medias|hyperpage}{182}
+\indexentry{Intervalo de confianza!normal!diferencia de medias|hyperpage}{183}
+\indexentry{Intervalo de confianza!normal!diferencia de medias|hyperpage}{184}
+\indexentry{Intervalo de confianza!normal!diferencia de medias|hyperpage}{188}
+\indexentry{Intervalo de confianza!normal!cociente de varianzas|hyperpage}{190}
+\indexentry{Intervalo de confianza!normal!cociente de varianzas|hyperpage}{190}
+\indexentry{Intervalo de confianza!normal!cociente de varianzas|hyperpage}{192}
+\indexentry{Par\'ametro!de escala|hyperpage}{194}
+\indexentry{Par\'ametro!de localizaci\'on|hyperpage}{194}
+\indexentry{Variable pivote|hyperpage}{194}
+\indexentry{Intervalo de confianza!exponencial!exacto|hyperpage}{195}
+\indexentry{Intervalo de confianza!exponencial!aproximado|hyperpage}{199}
+\indexentry{Intervalo de confianza!Bernoulli|hyperpage}{201}
+\indexentry{Intervalo de confianza!Bernoulli!Wald|hyperpage}{202}
+\indexentry{Intervalo de confianza!Bernoulli!Agresti-Caffo|hyperpage}{203}
+\indexentry{Intervalo de confianza!Bernoulli!Wald|hyperpage}{203}
+\indexentry{Intervalo de confianza!Bernoulli!Agresti-Caffo|hyperpage}{204}
+\indexentry{Intervalo de confianza!Bernoulli!Newcombe|hyperpage}{204}
+\indexentry{Intervalo de confianza!Poisson|hyperpage}{204}
+\indexentry{Prueba de hip\'otesis|hyperpage}{209}
+\indexentry{Hip\'otesis!nula|hyperpage}{209}
+\indexentry{Hip\'otesis!alterna|hyperpage}{209}
+\indexentry{Espacio param\'etrico|hyperpage}{209}
+\indexentry{Espacio param\'etrico!nulo|hyperpage}{209}
+\indexentry{Espacio param\'etrico!alterno|hyperpage}{209}
+\indexentry{Estad\IeC {\'\i }stica de prueba|hyperpage}{210}
+\indexentry{Regla de decisi\'on|hyperpage}{210}
+\indexentry{Error!tipo I|hyperpage}{210}
+\indexentry{Error!tipo II|hyperpage}{210}
+\indexentry{Prueba de hip\'otesis!normal!media te\'orica|hyperpage}{212}
+\indexentry{Prueba de hip\'otesis!Tama\~no|hyperpage}{212}
+\indexentry{Nivel de significaci\'on|hyperpage}{212}
+\indexentry{Hip\'otesis!simple|hyperpage}{213}
+\indexentry{Hip\'otesis!compuesta|hyperpage}{213}
+\indexentry{Regla de decisi\'on!normal!media te\'orica|hyperpage}{213}
+\indexentry{Estad\IeC {\'\i }stica  de prueba!normal!media te\'orica|hyperpage}{214}
+\indexentry{Regi\'on de rechazo|hyperpage}{214}
+\indexentry{Regi\'on de rechazo!normal!media te\'orica|hyperpage}{215}
+\indexentry{Regi\'on de rechazo!normal!media te\'orica|hyperpage}{215}
+\indexentry{$p$ valor|hyperpage}{215}
+\indexentry{$p$ valor!normal!media te\'orica|hyperpage}{217}
+\indexentry{$p$ valor!normal!media te\'orica|hyperpage}{218}
+\indexentry{Funci\'on de potencia|hyperpage}{219}
+\indexentry{Funci\'on de potencia!normal!media te\'orica|hyperpage}{220}
+\indexentry{Prueba de hip\'otesis!normal!media te\'orica|hyperpage}{224}
+\indexentry{Regi\'on de rechazo!normal!media te\'orica|hyperpage}{225}
+\indexentry{$p$ valor!normal!media te\'orica|hyperpage}{225}
+\indexentry{Funci\'on de potencia!normal!media te\'orica|hyperpage}{227}
+\indexentry{Prueba de hip\'otesis!normal!media te\'orica|hyperpage}{228}
+\indexentry{Regla de desici\'on!normal!media te\'orica|hyperpage}{228}
+\indexentry{$p$ valor!normal!media te\'orica|hyperpage}{229}
+\indexentry{Funci\'on de potencia!normal!media te\'orica|hyperpage}{229}
+\indexentry{Prueba!de raz\'on de verosimilitud|hyperpage}{229}
+\indexentry{Prueba!de raz\'on de verosimilitud!regla de decisi\'on|hyperpage}{230}
+\indexentry{Prueba!de raz\'on de verosimilitud!normal|hyperpage}{230}
+\indexentry{Lema de Neyman-Pearson|hyperpage}{232}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes|hyperpage}{233}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes!normal|hyperpage}{233}
+\indexentry{Prueba de hip\'otesis!normal!media te\'orica|hyperpage}{234}
+\indexentry{Regla de decisi\'on!normal!media te\'orica|hyperpage}{235}
+\indexentry{Regla de decisi\'on!normal!media te\'orica|hyperpage}{235}
+\indexentry{Regi\'on de rechazo!normal!media te\'orica|hyperpage}{235}
+\indexentry{$p$ valor!normal!media te\'orica|hyperpage}{235}
+\indexentry{Funci\'on de potencia!normal!media te\'orica|hyperpage}{237}
+\indexentry{Prueba de hip\'otesis!normal!media te\'orica|hyperpage}{240}
+\indexentry{Regla de decisi\'on!normal!media te\'orica|hyperpage}{240}
+\indexentry{$p$ valor!normal!media te\'orica|hyperpage}{240}
+\indexentry{Funci\'on de potencia!normal!media te\'orica|hyperpage}{240}
+\indexentry{Prueba de hip\'otesis!normal!varianza te\'orica|hyperpage}{243}
+\indexentry{Regla de decisi\'on!normal!varianza te\'orica|hyperpage}{244}
+\indexentry{Regla de decisi\'on!normal!varianza te\'orica|hyperpage}{244}
+\indexentry{$p$ valor!normal!varianza te\'orica|hyperpage}{244}
+\indexentry{Funci\'on de potencia!normal!varianza te\'orica|hyperpage}{245}
+\indexentry{Prueba de hip\'otesis!normal!varianza te\'orica|hyperpage}{246}
+\indexentry{Prueba!de raz\'on de verosimilitud!normal|hyperpage}{246}
+\indexentry{Regla de decisi\'on!normal!varianza te\'orica|hyperpage}{248}
+\indexentry{Regla de decisi\'on!normal!varianza te\'orica|hyperpage}{248}
+\indexentry{Regi\'on de rechazo!normal!varianza te\'orica|hyperpage}{248}
+\indexentry{$p$ valor!normal!varianza te\'orica|hyperpage}{248}
+\indexentry{Funci\'on de potencia!normal!varianza te\'orica|hyperpage}{248}
+\indexentry{Prueba de hip\'otesis!normal!varianza te\'orica|hyperpage}{249}
+\indexentry{Regla de decisi\'on!normal!varianza te\'orica|hyperpage}{249}
+\indexentry{$p$ valor!normal!varianza te\'orica|hyperpage}{249}
+\indexentry{Funci\'on de potencia!normal!varianza te\'orica|hyperpage}{250}
+\indexentry{Prueba de hip\'otesis!normal!varianza te\'orica|hyperpage}{250}
+\indexentry{Prueba!de raz\'on de verosimilitud!normal|hyperpage}{250}
+\indexentry{Regla de decisi\'on!normal!varianza te\'orica|hyperpage}{250}
+\indexentry{$p$ valor!normal!varianza te\'orica|hyperpage}{250}
+\indexentry{Prueba de hip\'otesis!normal|hyperpage}{251}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes!normal|hyperpage}{251}
+\indexentry{Prueba de hip\'otesis!normal!igualdad de dos medias|hyperpage}{251}
+\indexentry{Regla de decisi\'on!normal!igualdad de dos medias|hyperpage}{253}
+\indexentry{$p$ valor!normal!igualdad de dos medias|hyperpage}{254}
+\indexentry{Funci\'on de potencia!normal!igualdad de dos medias|hyperpage}{254}
+\indexentry{Prueba de hip\'otesis!normal!igualdad de dos medias|hyperpage}{256}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes!normal|hyperpage}{256}
+\indexentry{Regla de decisi\'on!normal!igualdad de dos medias|hyperpage}{258}
+\indexentry{Prueba de hip\'otesis!normal!igualdad de dos medias|hyperpage}{259}
+\indexentry{Regla de decisi\'on!normal!igualdad de dos medias|hyperpage}{259}
+\indexentry{Prueba de hip\'otesis!normal!igualdad de dos varianzas|hyperpage}{259}
+\indexentry{Regla de decisi\'on!normal!igualdad de dos varianzas|hyperpage}{259}
+\indexentry{Regla de decisi\'on!normal!igualdad de dos varianzas|hyperpage}{260}
+\indexentry{$p$ valor!normal!igualdad de dos varianzas|hyperpage}{260}
+\indexentry{Funci\'on de potencia!normal!igualdad de dos varianzas|hyperpage}{262}
+\indexentry{Prueba de hip\'otesis!normal!igualdad de $k$ medias|hyperpage}{264}
+\indexentry{Prueba! de raz\'on generalizada de verosimilitudes!normal|hyperpage}{264}
+\indexentry{Regla de decisi\'on!normal!igualdad de $k$ medias|hyperpage}{267}
+\indexentry{$p$ valor!normal!igualdad de $k$ medias|hyperpage}{267}
+\indexentry{Prueba de hip\'otesis!normal!igualdad de $k$ varianzas|hyperpage}{268}
+\indexentry{Prueba! de raz\'on generalizada de verosimilitudes!normal|hyperpage}{269}
+\indexentry{Regla de decisi\'on!normal!igualdad de $k$ varianzas|hyperpage}{269}
+\indexentry{Prueba!de Bartlett|hyperpage}{269}
+\indexentry{Regla de decisi\'on!normal!igualdad de $k$ varianzas|hyperpage}{269}
+\indexentry{Prueba de hip\'otesis!Bernoulli|hyperpage}{270}
+\indexentry{Prueba de hip\'otesis!Bernoulli!una muestra|hyperpage}{270}
+\indexentry{Regla de decisi\'on!Bernoulli!una muestra|hyperpage}{271}
+\indexentry{$p$ valor!Bernoulli!una muestra|hyperpage}{271}
+\indexentry{Correcci\'on de continuidad|hyperpage}{272}
+\indexentry{Prueba de hip\'otesis!Bernoulli!una muestra|hyperpage}{272}
+\indexentry{Prueba!binomial|hyperpage}{272}
+\indexentry{$p$ valor!Bernoulli!una muestra|hyperpage}{273}
+\indexentry{$p$ valor!prueba binomial|hyperpage}{273}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes!Bernoulli|hyperpage}{275}
+\indexentry{Prueba!de raz\'on de verosimilitud!distribuci\'on asint\'otica|hyperpage}{275}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes!distribuci\'on asint\'otica|hyperpage}{275}
+\indexentry{Regla de decisi\'on!Bernoulli!una muestra|hyperpage}{276}
+\indexentry{$p$ valor!Bernoulli!una muestra|hyperpage}{276}
+\indexentry{Prueba de hip\'otesis!Bernoulli|hyperpage}{278}
+\indexentry{Prueba de hip\'otesis!Bernoulli!dos muestras|hyperpage}{278}
+\indexentry{Regla de decisi\'on!Bernoulli!dos muestras|hyperpage}{279}
+\indexentry{$p$ valor!Bernoulli!dos muestras|hyperpage}{279}
+\indexentry{Prueba!exacta de Fisher|hyperpage}{281}
+\indexentry{Prueba!de Ji-cuadrado de independencia|hyperpage}{281}
+\indexentry{Prueba de hip\'otesis!Poisson|hyperpage}{282}
+\indexentry{Prueba de hip\'otesis!Poisson!una muestra|hyperpage}{282}
+\indexentry{Prueba! de raz\'on generalizada de verosimilitudes!Poisson|hyperpage}{282}
+\indexentry{Regla de decisi\'on!Poisson!una muestra|hyperpage}{282}
+\indexentry{Regla de decisi\'on!Poisson!una muestra|hyperpage}{283}
+\indexentry{Prueba de hip\'otesis!Poisson!dos muestras|hyperpage}{285}
+\indexentry{Prueba! de raz\'on generalizada de verosimilitudes!Poisson|hyperpage}{286}
+\indexentry{Regla de decisi\'on!Poisson!dos muestras|hyperpage}{286}
+\indexentry{$p$ valor!Poisson!dos muestras|hyperpage}{286}
+\indexentry{Prueba de hip\'otesis!exponencial|hyperpage}{288}
+\indexentry{Prueba de hip\'otesis!exponencial!una muestra|hyperpage}{288}
+\indexentry{Regla de decisi\'on!exponencial!una muestra|hyperpage}{288}
+\indexentry{$p$ valor!exponencial!una muestra|hyperpage}{288}
+\indexentry{Regla de decisi\'on!exponencial!una muestra|hyperpage}{288}
+\indexentry{$p$ valor!exponencial!una muestra|hyperpage}{289}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes!exponencial|hyperpage}{289}
+\indexentry{Regla de decisi\'on!exponencial!una muestra|hyperpage}{289}
+\indexentry{Funci\'on de potencia!exponencial!una muestra|hyperpage}{289}
+\indexentry{Funci\'on de potencia!exponencial!una muestra|hyperpage}{289}
+\indexentry{Prueba de hip\'otesis!exponencial!dos muestras|hyperpage}{293}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes!exponencial|hyperpage}{293}
+\indexentry{Regla de decisi\'on!exponencial!dos muestras|hyperpage}{294}
+\indexentry{$p$ valor|hyperpage}{294}
+\indexentry{Vector aleatorio|hyperpage}{309}
+\indexentry{Vector aleatorio!funci\'on de distribuci\'on|hyperpage}{310}
+\indexentry{Vector aleatorio!funci\'on de densidad|hyperpage}{310}
+\indexentry{Vector aleatorio!funci\'on de densidad|hyperpage}{310}
+\indexentry{Vector aleatorio!funci\'on de densidad marginal|hyperpage}{311}
+\indexentry{Vector aleatorio!esperanza|hyperpage}{311}
+\indexentry{Matriz de varianzas y covarianzas|hyperpage}{313}
+\indexentry{Matriz de varianzas y covarianzas!propiedades|hyperpage}{314}
+\indexentry{Matriz de correlaci\'on|hyperpage}{315}
+\indexentry{Matriz de correlaci\'on!propiedades|hyperpage}{316}
+\indexentry{Vector aleatorio!funci\'on generadora de momentos|hyperpage}{317}
+\indexentry{Vector aleatorio!independencia|hyperpage}{317}
+\indexentry{Distribuci\'on!multinomial|hyperpage}{319}
+\indexentry{Distribuci\'on!multinomial!propiedades|hyperpage}{319}
+\indexentry{Distribuci\'on!normal multivariante|hyperpage}{320}
+\indexentry{Distancia de Mahalanobis|hyperpage}{321}
+\indexentry{Distribuci\'on!normal multivariante!propiedades|hyperpage}{326}
+\indexentry{Distribuci\'on!normal multivariante!propiedades|hyperpage}{327}
+\indexentry{Distribuci\'on!normal multivariante!propiedades|hyperpage}{329}
+\indexentry{Distribuci\'on!normal multivariante!esperanza condicional|hyperpage}{330}
+\indexentry{Distribuci\'on!Wishart|hyperpage}{331}
+\indexentry{Distribuci\'on!Wishart!propiedades|hyperpage}{332}
+\indexentry{Distribuci\'on!Wishart!propiedades|hyperpage}{333}
+\indexentry{Distribuci\'on!T2 de Hotelling|hyperpage}{333}
+\indexentry{Funci\'on de verosimilitud|hyperpage}{337}
+\indexentry{Estimador!de m\'axima verosimilitud|hyperpage}{337}
+\indexentry{Estimador!de m\'axima verosimilitud!multinomial|hyperpage}{338}
+\indexentry{Multiplicador de Lagrange|hyperpage}{338}
+\indexentry{Estimador!de m\'axima verosimilitud!multinomial|hyperpage}{339}
+\indexentry{Prueba de hip\'otesis!multinomial!una muestra|hyperpage}{339}
+\indexentry{Prueba!de raz\'on generalizada de verosimilitudes!multinomial|hyperpage}{339}
+\indexentry{Regla de decisi\'on!multinomial!una muestra|hyperpage}{340}
+\indexentry{$p$ valor!multinomial!una muestra|hyperpage}{340}
+\indexentry{Prueba de hip\'otesis!multinomial!dos muestras|hyperpage}{343}
+\indexentry{Estimador!de m\'axima verosimilitud!multinomial|hyperpage}{343}
+\indexentry{Prueba de hip\'otesis!multinomial!dos muestras|hyperpage}{344}
+\indexentry{Prueba! de raz\'on generalizada de verosimilitudes!multinomial|hyperpage}{344}
+\indexentry{Regla de decisi\'on!multinomial!dos muestras|hyperpage}{345}
+\indexentry{$p$ valor!multinomial!dos muestras|hyperpage}{345}
+\indexentry{Prueba de hip\'otesis!multinomial!$k$ muestras|hyperpage}{347}
+\indexentry{Regla de decisi\'on!multinomial!$k$ muestras|hyperpage}{348}
+\indexentry{$p$ valor!multinomial!$k$ muestras|hyperpage}{348}
+\indexentry{Estimador!de m\'axima verosimilitud!normal multivariante|hyperpage}{349}
+\indexentry{Estimador!de m\IeC {\'\i }nimos cuadrados|hyperpage}{353}
+\indexentry{Estimador!de m\'axima verosimilitud!normal multivariante|hyperpage}{354}
+\indexentry{Regi\'on de confianza!normal multivariante!vector de medias|hyperpage}{356}
+\indexentry{Regi\'on de confianza!normal multivariante!vector de medias|hyperpage}{358}
+\indexentry{Prueba de hip\'otesis!normal multivariante|hyperpage}{360}
+\indexentry{Regi\'on de confianza!normal multivariante!vector de medias|hyperpage}{362}
+\indexentry{Prueba de hip\'otesis!normal multivariante!vector de medias|hyperpage}{362}
+\indexentry{Prueba de hip\'otesis!normal multivariante!combinaci\'on lineal de medias|hyperpage}{362}
+\indexentry{Regla de decisi\'on!normal multivariante!combinaci\'on lineal de medias|hyperpage}{363}
+\indexentry{Regla de decisi\'on!normal multivariante!combinaci\'on lineal de medias|hyperpage}{364}
+\indexentry{Prueba de hip\'otesis!normal multivariante!matriz de varianzas|hyperpage}{365}
+\indexentry{Prueba de hip\'otesis!normal multivariante!matriz de varianzas|hyperpage}{366}
+\indexentry{Prueba! de raz\'on generalizada de verosimilitudes!normal multivariante|hyperpage}{366}
+\indexentry{Regla de decisi\'on!normal multivariante!matriz de varianzas|hyperpage}{367}
+\indexentry{Prueba de hip\'otesis!normal multivariante!independencia|hyperpage}{367}
+\indexentry{Prueba! de raz\'on generalizada de verosimilitudes!normal multivariante|hyperpage}{367}
+\indexentry{Regla de decisi\'on!normal multivariante!independencia|hyperpage}{368}
+\indexentry{$p$ valor!normal multivariante!independencia|hyperpage}{368}
+\indexentry{Prueba de hip\'otesis!normal multivariante!independencia|hyperpage}{369}
+\indexentry{Prueba! de raz\'on generalizada de verosimilitudes!normal multivariante|hyperpage}{370}
+\indexentry{Regla de decisi\'on!normal multivariante!independencia|hyperpage}{371}
+\indexentry{Gr\'aficas QQ plot|hyperpage}{385}
+\indexentry{Gr\'aficas QQ plot!distribuci\'on exponencial|hyperpage}{386}
+\indexentry{Gr\'aficas QQ plot!distribuci\'on normal|hyperpage}{388}
+\indexentry{Gr\'aficas QQ plot!distribuci\'on Weibull|hyperpage}{391}
+\indexentry{Gr\'aficas QQ plot!distribuci\'on Gamma|hyperpage}{394}
+\indexentry{Gr\'aficas QQ plot!distribuci\'on Beta|hyperpage}{397}
+\indexentry{Gr\'aficas QQ plot!distribuci\'on normal multivariante|hyperpage}{398}
+\indexentry{Prueba de bondad de ajuste|hyperpage}{400}
+\indexentry{Prueba de bondad de ajuste!Shapiro-Wilk|hyperpage}{401}
+\indexentry{Prueba de bondad de ajuste!Kolmogorov-Smirnov|hyperpage}{402}
+\indexentry{Prueba de bondad de ajuste!Mardia|hyperpage}{404}
+\indexentry{Transformaci\'on!Box-Cox|hyperpage}{407}
+\indexentry{Transformaci\'on!logar\IeC {\'\i }tmica|hyperpage}{408}
+\indexentry{Transformaci\'on!ra\IeC {\'\i }z cuadrada|hyperpage}{408}
+\indexentry{Matriz|hyperpage}{413}
+\indexentry{Vector|hyperpage}{413}
+\indexentry{Tablas de contingencia|hyperpage}{421}
+\indexentry{Prueba!exacta de Fisher|hyperpage}{421}
+\indexentry{Prueba!de Ji-cuadrado de independencia|hyperpage}{422}

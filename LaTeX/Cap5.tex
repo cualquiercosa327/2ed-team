@@ -1,0 +1,1264 @@
+\chapter[Inferencia multivariante]{Inferencia multivariante}
+
+En el ámbito de la inferencia univariada, se definió una muestra aleatoria como un conjunto de variables aleatorias independientes e idénticamente distribuidas. En la inferencia multivariante, se define análogamente a una muestra aleatoria como un conjunto de vectores aleatorios independientes e idénticamente distribuidos.
+
+En este parte del libro estudiamos tópicos de inferencia para los parámetros de una distribución multivariante basada en una muestra aleatoria $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$. Con\-si\-de\-ra\-re\-mos el método de máxima verosimilitud para encontrar los estimadores puntuales, y posteriormente el tema de pruebas de hipótesis. Es claro que dentro del ámbito de la inferencia multivariante, la distribución teórica también tiene más de un parámetro, y en este caso se hablará de regiones de confianza para el vector de parámetros. Sin embargo, en muchos casos, este tema no es de tanto interés como lo es en la in\-fe\-ren\-cia univariada puesto que no es posible visualizar las regiones de confianza cuando éstas son subconjuntos de $\mathbb{R}^p$ con $p>2$. Cuando se estudia la distribución normal multivariante éstas regiones de confianza son útiles para juzgar un sistema de hipótesis utilizando la dualidad que existe entre estos dos métodos.
+
+Primero consideramos el método de máxima verosimilitud, para lo cual se define la función de verosimilitud.
+\begin{Defi}
+Dado un conjunto de vectores aleatorios $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ con función de densidad $f_{\mathbf{X}}(\mathbf{x},\boldsymbol{\theta})$, donde $\boldsymbol{\theta}$ es el vector de los parámetros de la distribución, se define la función de verosimilitud como la función de densidad conjunta de los $n$ vectores aleatorios, y se denota como $L(\mathbf{x}_1,\cdots,\mathbf{x}_n,\boldsymbol{\theta})$\index{Función de verosimilitud}.
+\end{Defi}
+
+Es claro que cuando los vectores aleatorios constituyen una muestra aleatoria, se tiene que
+\begin{equation*}
+L(\mathbf{x}_1,\cdots,\mathbf{x}_n,\boldsymbol{\theta}))=\prod_{i=1}^nf_{\mathbf{X}_i}(\mathbf{x}_i,\boldsymbol{\theta})
+\end{equation*}
+El estimador de máxima verosimilitud de $\boldsymbol{\theta}$ se define como el valor de $\boldsymbol{\theta}$ que maximiza la función de verosimilitud, y se denota como $\hat{\boldsymbol{\theta}}_{MV}$\index{Estimador!de máxima verosimilitud}.
+
+\section{Inferencia en la distribución multinomial}
+
+\subsection{Una muestra}
+
+\textbf{\emph{Estimador de máxima verosimilitud y sus propiedades}\index{Estimador!de máxima verosimilitud!multinomial}}
+
+En esta parte retomamos el Ejemplo 5.2.1 del capítulo anterior, donde en un pro\-ble\-ma de investigación de intención de voto en una elección presidencial se observa la necesidad de estimar los parámetros $p_1$, $\cdots$, $p_r$ en una distribución multinomial $(n,p_1,\cdots,p_r)$ donde $n$ se asume conocido. Tal como se describió en el Ejemplo 5.2.1 en una muestra aleatoria, se observa el valor que toma el vector $(X_1,\cdots,X_r)$, y estamos interesados en encontrar $\hat{p_i}_{MV}$ para $i=1,\cdots,r$. Para eso, primero encontramos la función de verosimilitud, que en este caso concuerda con la función de densidad conjunta del vector $(X_1,\cdots,X_r)$. Tenemos que
+\begin{equation*}
+L(x_1,\cdots,x_r,p_1,\cdots,p_r)=\dfrac{n!}{x_1!\cdots x_r!}p_1^{x_1}\cdots p_r^{x_r}.
+\end{equation*}
+
+Con el fin de encontrar los valores de $p_i$ que maximiza $L$, calculamos $\ln L$ como es de costumbre, y tenemos que
+\begin{equation*}
+\ln L(x_1,\cdots,x_r,p_1,\cdots,p_r)=\ln n!-\ln x_1!-\cdots-\ln x_r!+x_1\ln p_1+\cdots+x_r\ln p_r
+\end{equation*}
+
+Entonces nuestro objetivo es maximizar la función $\ln L$, pero teniendo en cuenta que las probabilidades $p_i$ deben cumplir la restricción de que $p_1+\cdots+p_r=1$, es decir, tenemos un problema de maximización con restricciones, y recurrimos a la técnica del multiplicador de Lagrange. Tenemos que la función de Lagrange\index{Multiplicador de Lagrange} está dada por
+\begin{equation*}
+\Lambda=\ln n!-\ln x_1!-\cdots-\ln x_r!+x_1\ln p_1+\cdots+x_r\ln p_r+\lambda(p_1+\cdots+p_r-1)
+\end{equation*}
+
+Y derivamos $\Lambda$ con respecto a $p_1$, $\cdots$, $p_r$ y $\lambda$, tenemos que para cada $i=1,\cdots,r$
+\begin{equation*}
+\frac{\partial\Lambda}{\partial p_i}=\frac{x_i}{p_i}+\lambda
+\end{equation*}
+y
+\begin{equation*}
+\frac{\partial\Lambda}{\partial\lambda}=p_1+\cdots+p_r-1
+\end{equation*}
+
+Igualando estas derivadas a cero, tenemos que $p_i=-x_i/\lambda$ para todo $i=1,\cdots,r$ y $\sum_{i=1}^rp_i=1$. De donde tenemos que $-\sum_{i=1}^rx_i/\lambda=1$, esto es $\lambda=-\sum_{i=1}^rx_i=-n$. Y finalmente tenemos que los $p_i$ que maximizan a $\ln L$ y que cumplen con la restricción de $p_1+\cdots+p_r=1$ están dados por
+\begin{equation*}
+\hat{p}_{i,MV}=\frac{X_i}{n}=\bar{X}_i
+\end{equation*}
+
+para todo $i=1,\cdots,r$. Esto es, los estimadores de máxima verosimilitud son simplemente las proporciones muestrales.
+
+Aplicando el anterior resultado al problema de elecciones presidenciales del Ejemplo 5.2.1, podemos calcular las estimaciones de $p_1$, $p_2$ y $p_3$ como $810/2436\approx0.3325=33.25\%$, $654/2436\approx0.2684=26.84\%$ y $972/2436\approx0.399=39.9\%$, respectivamente. Y si se supone que 10 millones 500 mil personas se inscribieron para participar en la votación, podemos afirmar que se espera que el candidato A obtenga $33.25\%$ de las votaciones, es decir,
+$10500000*0.3325=3491250$ votos, casi 3 millones y medio de votos.
+
+\textbf{\emph{Propiedad del estimador de máxima verosimilitud}\index{Estimador!de máxima verosimilitud!multinomial}}
+
+Se vio que el estimador de máxima verosimilitud del vector $(p_1,\cdots,p_r)$ es el vector de proporciones muestrales $(\bar{X}_1,\cdots,\bar{X}_r)$, ahora estudiamos este estimador en términos del sesgo y la varianza.
+
+El concepto del sesgo para el caso multivariado es una extensión natural del sesgo del caso univariado, y en este caso, estamos interesados en ver si $E(\bar{X}_1,\cdots,\bar{X}_r)$ es igual al vector de parámetros $(p_1,\cdots,p_r)$. Es fácil verificar que eso es cierto, puesto que si $\mathbf{p}=(p_1,\cdots,p_r)$, tenemos que
+\begin{equation*}
+E(\bar{X}_1,\cdots,\bar{X}_r)=\frac{1}{n}E(X_1,\cdots,X_r)=\frac{1}{n}n\mathbf{p}
+\end{equation*}
+
+usando el hecho de que el vector $(X_1,\cdots,X_r)$ es $Multi(n,p_1,\cdots,p_r)$ y el Resultado 5.2.1.
+
+Ahora para calcular la matriz de varianzas y covarianzas del estimador $(\bar{X}_1,\cdots,\bar{X}_r)$ utilizamos de nuevo el Resultado 5.2.1, y tenemos que
+\begin{equation*}
+Var(\bar{X}_1,\cdots,\bar{X}_r)=\frac{1}{n^2}Var(X_1,\cdots,X_r)=\frac{1}{n}[diag(\mathbf{p})-\mathbf{p}\mathbf{p}']
+\end{equation*}
+
+y naturalmente al incrementar el tamaño la estimación de máxima verosimilitud se hace más precisa.
+
+\textbf{\emph{Prueba de hipótesis}\index{Prueba de hipótesis!multinomial!una muestra}}
+
+En esta parte consideramos el problema de prueba de hipótesis sobre el vector de probabilidades $\mathbf{p}=(p_1,\cdots,p_r)$. Dado que se trata de un vector de parámetros, puede haber una variedad grande de sistemas; por ejemplo, puede haber un sistema con $H_0$ simple de la forma
+\begin{equation}\label{multi_test}
+H_0:\ \mathbf{p}=(p^*_1,\cdots,p^*_r)'\ \ \ \ \text{vs.}\ \ \ \ \ H_1:\ \mathbf{p}\neq(p^*_1,\cdots,p^*_r)'.
+\end{equation}
+
+También puede haber hipótesis sobre sólo algunas de estas probabilidades; por ejemplo, sólo es de interés saber si se puede asumir $p_1=p_2$, mas no son de interés las otras probabilidades $p_3$, $\cdots$, $p_k$. En este caso el sistema de hipótesis es
+
+\begin{equation*}
+H_0:\ p_1=p_2\ \ \ \ \text{vs.}\ \ \ \ \ H_1:\ p_1\neq p_2.
+\end{equation*}
+
+En cualquier caso utilizaremos la prueba de razón de verosimilitud. Primero consideramos el sistema de $H_0$ simple (\ref{multi_test}). Para este sistema, la estadística de razón generalizada de verosimilitud\index{Prueba!de razón generalizada de verosimilitudes!multinomial} está dada por
+
+\newpage
+
+\begin{equation}\label{razon_vero}
+\lambda=\frac{sup_{\bTheta_0\bigcup\bTheta_1}L(p_1,\cdots,p_r)}{sup_{\bTheta_0}L(p_1,\cdots,p_r)}.
+\end{equation}
+
+Ahora, en el sistema de hipótesis (\ref{multi_test}) $\bTheta_0\bigcup\bTheta_1=\bTheta$, el espacio paramétrico completo del vector $(p_1,\cdots,p_r)$, entonces el numerado de la estadística $\lambda$ se convierte en la función de verosimilitud evaluada en el estimador de máxima verosimilitud. Por otro lado, como $H_0$ es una hipótesis simple, entonces el denominador de la estadística $\lambda$ es la función de verosimilitud evaluada en los valores especificados por $H_0$, esto es, $(p^*_1,\cdots,p^*_r)$. De lo anterior, tenemos que
+\begin{equation*}
+\lambda=\frac{\bar{x}_1^{x_1}\cdots\bar{x}_r^{x_r}}{(p_1^*)^{x_1}\cdots(p_r^*)^{x_r}}
+\end{equation*}
+
+donde $\bar{x}_i$ es la proporción observada de la categoría $i$, para $i=1,\cdots,r$. Y se rechaza $H_0$ para valores grandes de la estadística $\lambda$. Para establecer exactamente cuánto un valor de $\lambda$ se puede considerar como grande, es necesario conocer la distribución nula de $\lambda$, pero por la forma de esta estadística será muy difícil encontrar tal distribución. Por consiguiente, se recurre a la distribución asintótica de la estadística $2\ln\lambda$ que en este caso está dada por
+\begin{equation*}
+2\ln\lambda=2\sum_{i=1}^rx_i\ln\left(\frac{\bar{x}_i}{p_i^*}\right)
+\end{equation*}
+
+cuya distribución asintótica es $\chi^2_{v_1-v_0}$ donde $v_1$ y $v_0$ son el número de parámetros libres bajo $H_1$ y $H_0$, respectivamente. En el sistema (\ref{multi_test}), $H_0$ es una hipótesis simple para el vector $(p_1,\cdots,p_r)$, por consiguiente ninguna $p_i$ se puede cambiar libremente, y por consiguiente $v_0=0$. Por otro lado, en el espacio paramétrico completo $\bTheta$, los parámetros deben cumplir la restricción de $p_1+\cdots+p_r=1$, por lo tanto, el valor $p_r$ está determinado de manera única mediante $p_r=1-p_1-\cdots-p_{r-1}$ y por consiguiente solo hay $r-1$ parámetros libres en $\bTheta$ y por consiguiente $v_1=k-1$. Y finalmente que
+\begin{equation*}
+2\ln\lambda=2\sum_{i=1}^rx_i\ln\left(\frac{\bar{x}_i}{p_i^*}\right)\sim_{asym}\chi^2_{k-1}
+\end{equation*}
+
+bajo $H_0$. Y por consiguiente se rechaza \index{Regla de decisión!multinomial!una muestra}$H_0$ si $-2\ln\lambda>\chi^2_{r-1,1-\alpha}$.
+
+También podemos calcular el $p$ valor teniendo en cuenta la forma de región de rechazo. Éste se calcula como\index{$p$ valor!multinomial!una muestra}
+\begin{equation*}
+p\ \text{valor}=1-F_{\chi^2_{r-1}}(v)
+\end{equation*}
+
+donde $v$ es el valor de la estadística $2\ln\lambda$ y $F_{\chi^2_{r-1}}$ denota la función de distribución de la distribución $\chi^2_{r-1}$. Aplicamos el anterior resultado en el siguiente ejemplo.
+
+\begin{Eje}
+Retomando el Ejemplo 5.2.1 donde estudia el favoritismo en una elección presidencial con tres candidatos A, B y C. Si se cree que A puede obtener 43\% de los votos, mientras que B y C pueden obtener 25\% y 32\%, respectivamente. Si en una muestra de 2436, el número de personas que apoyan a los tres candidatos son 810, 654 y 972, respectivamente. Entonces para ver si esta hipótesis $H_0:\ \mathbf{p}=(0.43,0.25,0.32)$ es apoyada por los datos, calculamos la estadística de razón de verosimilitud como
+\begin{align*}
+2\ln\lambda&=2\left(810*\ln\left(\frac{810/2436}{0.43}\right)+654*\ln\left(\frac{654/2436}{0.25}\right)+972*\ln\left(\frac{972/2436}{0.32}\right)\right)\\
+&=105.72
+\end{align*}
+el cual comparando en el percentil $\chi^2_{2,0.95}=5.99$ conduce al rechazo de $H_0$. Es decir, los datos sugieren que el vector de parámetros $(p_1,p_2,p_3)$ no toma el valor de $(0.43,0.25,0.32)$, pero eso no necesariamente implica que los tres valores supuestos son todos equivocados, sino que por lo menos uno de estos valores no es apropiado para el parámetro teórico.
+
+El anterior cálculo también se puede llevar a cabo usando el siguiente código que calcula conjuntamente las estimaciones muestrales, el valor de la estadística $2\ln\lambda$ y el $p$ valor.
+\begin{verbatim}
+> multi<-function(x,p0){
++ if(length(x)!=length(p0))
++ stop("X y P0 deben tener el mismo tamaño")
++ r<-length(x)
++ est<-x/sum(x)
++ estad<-2*sum(x*log(est/p0))
++ p<-pchisq(estad,r-1,lower.tail = F)
++ list(estima=est,estadistica=estad,p.valor=p)
++ }
+>
+> x<-c(810,654,972)
+> p_0<-c(0.43,0.25,0.32)
+>
+> multi(x,p_0)
+$estima
+[1] 0.3325123 0.2684729 0.3990148
+
+$estadistica
+[1] 105.7276
+
+$p.valor
+[1] 1.100361e-23
+\end{verbatim}
+
+Nótese que obtenemos la misma decisión de rechazar $H_0$.
+
+\end{Eje}
+
+Como se comentó al principio del capítulo, también podemos utilizar la estadística de razón de verosimilitud para probar otros sistemas acerca de $\mathbf{p}$ donde $H_0$ no es necesariamente simple. Ilustramos con el siguiente ejemplo.
+
+\begin{Eje}
+Continuando con el ejemplo anterior, suponga que se cree que el nivel de popularidad del candidato A y C son aproximadamente iguales, y por consiguiente se sospecha que obtenga el mismo porcentaje de votos. En este caso el sistema de hipótesis que se desea probar es
+\begin{equation*}
+H_0:\ p_1=p_3\ \ \ \ \text{vs.}\ \ \ \ H_1:\ p_1\neq p_3
+\end{equation*}
+
+Si hacemos uso de la estadística (\ref{razon_vero}), el numerador de $\lambda$ es de nuevo la función de verosimilitud evaluada en los estimadores de máxima verosimilitud de $p_1$, $p_2$ y $p_3$; mientras que para encontrar el denominador de $\lambda$, es necesario encontrar el estimador de máxima verosimilitud de la función de verosimilitud bajo $H_0$.
+
+Bajo $H_0$ $p_1=p_3$, la función de verosimilitud toma la forma de
+\begin{equation*}
+L_0=\dfrac{n!}{x_1!x_2!x_3!}p_1^{x_1}p_2^{x_2}p_1^{x_3}=\dfrac{n!}{x_1!x_2!x_3!}p_1^{x_1+x_3}p_2^{x_2}.
+\end{equation*}
+
+Podemos maximizar la función $\ln L$ sujeto a la restricción $p_1+p_2+p_3=1$ que ahora toma la forma de $2p_1+p_2=1$ bajo $H_0$. De nuevo, utilizando el multiplicador de Lagrange tenemos que los estimadores de máxima verosimilitud de $p_1$ y $p_2$ bajo $H_0$ están dados por
+\begin{equation*}
+\hat{p}_1=\frac{x_1+x_3}{2(x_1+x_2+x_3)}=\frac{1-\bar{x}_2}{2}
+\end{equation*}
+
+y
+\begin{equation*}
+\hat{p}_2=\frac{x_2}{x_1+x_2+x_3}=\bar{x}_2.
+\end{equation*}
+
+Y la estadística de razón de verosimilitud $\lambda$ está dada por
+\begin{align*}
+\lambda&=\dfrac{\bar{x}_1^{x_1}\bar{x}_2^{x_2}\bar{x}_3^{x_3}}{(\frac{1-\bar{x}_2}{2})^{x_1+x_3}\bar{x}_2^{x_2}}\\
+&=\dfrac{\bar{x}_1^{x_1}\bar{x}_3^{x_3}}{(\frac{1-\bar{x}_2}{2})^{x_1+x_3}}
+\end{align*}
+
+Con el fin de utilizar la distribución nula asintótica de la estadística $2\ln\lambda$ para encontrar una regla de decisión, tenemos que
+\begin{equation*}
+2\ln\lambda=2\left(x_1\ln\left(\frac{2\bar{x}_1}{1-\bar{x}_2}\right)+x_3\ln\left(\frac{2\bar{x}_3}{1-\bar{x}_2}\right)\right)
+\end{equation*}
+
+que se distribuye bajo $H_0$ como $\chi^2_{v_1-v_0}$ asintóticamente. Bajo la hipótesis nula $p_1=p_2$, entonces una vez se conoce el valor de $p_2$, necesariamente $p_1=p_3=(1-p_2)/2$ de donde podemos ver que solo hay un parámetro libre bajo $H_0$, de donde $v_0=1$; por otro lado, en $\bTheta$ el número de parámetros libres es $k-1$, en este caso $v_1=2$. Y tenemos que la distribución nula asintótica de $2\ln\lambda$ es $\chi^2_1$ y tenemos que la regla de decisión será rechazar $H_0$ si $2\ln\lambda$ es mayor que el percentil $\chi^2_{1,1-\alpha}$.
+
+Para los datos del ejemplo anterior, la estadística de prueba se calcula como
+\begin{equation*}
+2\ln\lambda=2\left(810\ln\left(\frac{2*810/2436}{1-654/2436}\right)+972\ln\left(\frac{2*972/2436}{1-654/2436}\right)\right)=14.75
+\end{equation*}
+
+el cual comparado con el percentil $\chi^2_{1,0.95}=3.84$ conduce a la decisión de rechazar $H_0$, es decir, los datos muestran evidencia en contra de la hipótesis de que los candidatos A y C obtendrán el mismo porcentaje de votos.
+\end{Eje}
+
+\subsection{Dos muestras\index{Prueba de hipótesis!multinomial!dos muestras}}
+Una aplicación muy importante de la distribución multinomial se encuentra en la rama de la investigación de mercados que entre todos sus tópicos estudia la percepción de los clientes con respecto a un producto. Una herramienta fundamental para conocer la opinión de los clientes en la investigación de mercados es por medio de las encuestas donde puede haber preguntas del tipo "¿Le gusta el empaque del producto?'', donde las posibles respuestas pueden ser Mucho, Poco o Nada. De lo anterior, si en una muestra de $n$ personas, definimos $X_1$, $X_2$ y $X_3$ como número de personas que respondieron Mucho, Poco y Nada sobre el empaque, entonces claramente $(X_1,X_2,X_3)$ se distribuye como $Multi(n,p_1,p_2,p_3)$.
+
+Ahora, cada producto según su presentación, empaque y precio puede cambiar su grado de aceptación en diferentes grupos de clientes, por ejemplo los diferentes estratos socioeconómicos, o hombres y mujeres, y dependiendo del perfil de estos grupos, las estrategias de promoción del producto van dirigiendo más a estos grupos. Por consiguiente, es importante para los directivos de la marca saber si efectivamente hay diferencia en los distintos grupos poblacionales con respecto a la percepción de la marca.
+
+Por ejemplo, para saber si un nuevo sabor de café tiene mejor acogida entre los hombres o entre las mujeres, se realiza un estudio por encuesta donde se pregunta a los entrevistados cómo les ha parecido el producto. Si las posibles respuestas sobre el grado de gusto son bueno, regular y malo, entonces podemos en primer lugar calcular las estimaciones puntuales acerca de qué porcentajes de hombres les parecen bueno, regular y malo, y también los mismos porcentajes entre las mujeres, y posteriormente formular el siguiente sistema de hipótesis para ver si los hombres y las mujeres tienen diferencias significativas con respecto a la percepción que tienen acerca del nuevo producto.
+\begin{equation*}
+H_0:\ (p_{11},p_{21},p_{31})=(p_{12},p_{22},p_{32})\ \ \ \ \text{vs.}\ \ \ \ H_1:\ (p_{11},p_{21},p_{31})\neq(p_{12},p_{22},p_{32})
+\end{equation*}
+
+donde $p_{11}$, $p_{21}$ y $p_{31}$ corresponden a porcentajes de hombres a los que les ha parecido bueno, regular y malo el producto, y $p_{12}$, $p_{22}$ y $p_{32}$ los porcentajes correspondientes entre las mujeres.
+
+\textbf{\emph{Estimador de máxima verosimilitud y sus propiedades\index{Estimador!de máxima verosimilitud!multinomial}}}
+
+Suponemos que tenemos dos vectores de la misma dimensión $(X_1,\cdots,X_r)$ y $(Y_1,\cdots,Y_r)$ que se distribuyen $Multi(n_X,p_{11},\cdots,p_{r1})$ y $Multi(n_Y,p_{12},\cdots,p_{r2})$, respectivamente. Al suponer que estos dos vectores son independientes, tenemos que la función de verosimilitud conjunta de las dos muestras está dada por
+\begin{equation*}
+L=\dfrac{n_X!}{x_1!\cdots x_r!}p_{11}^{x_1}\cdots p_{r1}^{x_r}\dfrac{n_Y!}{y_1!\cdots y_r!}p_{12}^{y_1}\cdots p_{r2}^{y_r}.
+\end{equation*}
+
+Para encontrar los estimadores de máxima verosimilitud, simplemente utilizamos el multiplicador de Lagrange para maximizar $\ln L$ dada por
+
+\begin{multline}\label{multi_lnL}
+\ln L=x_1\ln p_{11}+\cdots+x_r\ln p_{r1}+y_1\ln p_{12}+\cdots+y_r\ln p_{r2}\\+\ln\dfrac{n_X!}{x_1!\cdots x_r!}+\ln\dfrac{n_Y!}{y_1!\cdots y_r!}
+\end{multline}
+
+
+sujeto a las dos restricciones $p_{11}+\cdots+p_{r1}=1$ y $p_{12}+\cdots+p_{r2}=1$, y es fácil ver que los estimadores de máxima verosimilitud están dados por (Ejercicio 6.3)
+\begin{equation}\label{multi_MV1}
+\hat{p}_{i1,MV}=\frac{X_i}{n_X}=\bar{X}_i
+\end{equation}
+
+y
+\begin{equation}\label{multi_MV2}
+\hat{p}_{i2,MV}=\frac{Y_i}{n_Y}=\bar{Y}_i
+\end{equation}
+
+para $i=1,\cdots,r$. Además también es fácil ver que cada uno de estos estimadores es insesgado.
+
+\textbf{\emph{Prueba de hipótesis}\index{Prueba de hipótesis!multinomial!dos muestras}}
+
+Dada la motivación en el campo de investigación de mercados, estamos interesados en el siguiente sistema de hipótesis
+\begin{equation}\label{multi_dos}
+H_0:\ (p_{11},\cdots,p_{r1})=(p_{12},\cdots,p_{r2})\ \ \ \ \text{vs.}\ \ \ \ H_1:\ (p_{11},\cdots,p_{r1})\neq(p_{12},\cdots,p_{r2}).
+\end{equation}
+
+Utilizaremos la prueba de razón generalizada de verosimilitud\index{Prueba! de razón generalizada de verosimilitudes!multinomial} dada en (\ref{razon_vero}) para este sistema. De nuevo $\bTheta_0\bigcup\bTheta_1=\bTheta$ es el espacio paramétrico completo de los vectores $(p_{11},\cdots,p_{r1})$ y $(p_{12},\cdots,p_{r2})$, por consiguiente el numerador de $\lambda$ será la función de verosimilitud $L$ evaluada en los estimadores de máxima verosimilitud encontrados en (\ref{multi_MV1}) y (\ref{multi_MV2}), $L(\hat{p}_{11},\cdots,\hat{p}_{r1},\hat{p}_{12},\cdots,\hat{p}_{r2})$.
+
+Por otro lado, para encontrar el denominador de $\lambda$, es necesario maximizar $L$ bajo $H_0$. Bajo $H_0$, tenemos que $p_{i1}=p_{i2}=p_i$ para todo $i=1,\cdots,r$, y $L$ se convierte en
+\begin{align*}
+L&=\dfrac{n_X!}{x_1!\cdots x_r!}p_{1}^{x_1}\cdots p_{r}^{x_r}\dfrac{n_Y!}{y_1!\cdots y_r!}p_{1}^{y_1}\cdots p_{r}^{y_r}.\\
+&=p_1^{x_1+y_1}\cdots p_{r}^{x_r+y_r}\dfrac{n_X!}{x_1!\cdots x_r!}\dfrac{n_Y!}{y_1!\cdots y_r!}.
+\end{align*}
+
+Tomando logaritmo a $L$, tenemos que
+\begin{equation*}
+\ln L=(x_1+y_1)\ln p_1+\cdots+(x_r+y_r)\ln p_r+\ln\dfrac{n_X!}{x_1!\cdots x_r!}+\ln\dfrac{n_Y!}{y_1!\cdots y_r!}.
+\end{equation*}
+
+Maximizando $\ln L$ sujeto a la restricción de que $p_1+\cdots+p_r=1$, tenemos que el estimador de máxima verosimilitud de $p_i$ bajo $H_0$ es
+\begin{equation*}
+\hat{p}_i=\frac{x_i+y_i}{n_X+n_Y}.
+\end{equation*}
+
+para todo $i=1,\cdots,r$. Y por consiguiente el denominador de $\lambda$ será $L(\hat{p}_1,\cdots,\hat{p}_r)$. Y
+\begin{equation*}
+\lambda=\frac{L(\hat{p}_{11},\cdots,\hat{p}_{r1},\hat{p}_{12},\cdots,\hat{p}_{r2})}{L(\hat{p}_1,\cdots,\hat{p}_r)}
+\end{equation*}
+
+de donde la estadística $2\ln\lambda$ está dada por
+\begin{align*}
+2\ln\lambda&=2\left(\ln L(\hat{p}_{11},\cdots,\hat{p}_{r1},\hat{p}_{12},\cdots,\hat{p}_{r2})+\ln L(\hat{p}_1,\cdots,\hat{p}_r)\right)\\
+&=2(x_1\ln\bar{x}_1+\cdots+x_r\ln\bar{x}_r+y_1\ln\bar{y}_1+\cdots+y_r\ln\bar{y}_r\\
+&\ \ \ \ \ \ \ \ \ \ -(x_1+y_1)\ln\frac{x_1+y_1}{n_X+n_Y}-\cdots-(x_r+y_r)\ln\frac{x_r+y_r}{n_X+n_Y}).
+\end{align*}
+
+La distribución nula asintótica de esta estadística es $\chi^2_{v_1-v_0}$ donde $v_1$ y $v_0$ son los grados de libertad de los parámetros bajo $\bTheta$ y $\bTheta_0$, respectivamente. Bajo $\bTheta$, la única restricción que deben cumplir los parámetros es que $p_{11}+\cdots+p_{r1}=1$ y $p_{12}+\cdots+p_{r2}=1$, por lo tanto $v_1=2(r-1)$; por otro lado, bajo $\bTheta_0$, los parámetros de las dos muestras son iguales, entonces $v_0=r-1$, de donde $v_1-v_0=r-1$, y tenemos que
+\begin{equation*}
+2\ln\lambda\sim_{asym}\chi^2_{r-1}
+\end{equation*}
+
+Y la regla de decisión para el sistema\index{Regla de decisión!multinomial!dos muestras} (\ref{multi_dos}) es rechazar $H_0$ si $2\ln\lambda>\chi^2_{r-1,1-\alpha}$.
+
+Teniendo en cuenta que $H_0$ se rechaza para valores grandes de $2\ln\lambda$ podemos calcular el $p$ valor como\index{$p$ valor!multinomial!dos muestras}
+\begin{equation*}
+p\ \text{valor}=1-F_{\chi^2_{r-1}}(v)
+\end{equation*}
+
+donde $v$ es el valor de la estadística $2\ln\lambda$ y $F_{\chi^2_{r-1}}$ denota la función de distribución de la distribución $\chi^2_{r-1}$. Aplicamos la anterior teoría en el siguiente ejemplo.
+
+\begin{Eje}
+Suponga que se desea conocer la opinión que tienen los consumidores acerca del nuevo café con sabor de vainilla que una compañía lanzó hace dos meses al mercado. A cada persona entrevistada se le pregunta cómo le ha parecido el producto, y la respuesta puede ser Bueno, Regular o Malo. La entrevista se realizó con 586 personas, donde 349 son hombres y 237 son mujeres. Estamos interesados en saber si hay alguna diferencia significativa entre los dos géneros con respecto a la percepción que tienen acerca del producto. Si se detecta que el producto es débil entre las mujeres, se puede diseñar estrategias para traer más consumidores femeninos y así obtener mayor ganancia para la compañía.
+
+En la Tabla 6.1 se muestran los resultados de la encuesta donde cada entrada representa el número de personas del género correspondiente que respondieron Bueno, Regular y Malo. Y el sistema de que desea probar es
+\begin{equation*}
+H_0:\ (p_{11},p_{21},p_{31})=(p_{12},p_{22},p_{32})\ \ \ \ \text{vs.}\ \ \ \ H_1:\ (p_{11},p_{21},p_{31})\neq(p_{12},p_{22},p_{32})
+\end{equation*}
+
+donde $p_{11}$, $p_{21}$ y $p_{31}$ corresponden a porcentajes de hombres a los que les han parecido bueno, regular y malo el producto, y $p_{12}$, $p_{22}$ y $p_{32}$ los porcentajes correspondientes entre las mujeres.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|cc|}\hline
+&Hombre&Mujer\\\hline
+Bueno&192&127\\
+Regular&140&90\\
+Malo&17&20\\\hline
+Total&349&237\\\hline
+\end{tabular}\caption{\textsl{Datos del ejemplo 6.1.3}}
+\end{table}
+
+En este ejemplo, $k=3$, $n_X=349$ y $n_Y=237$, y el siguiente código calcula las estimaciones puntuales, la estadística $2\ln\lambda$ y el correspondiente $p$ valor
+
+\begin{verbatim}
+> multi_2_muestra<-function(x,y){
++ if(length(x)!=length(y))
++ stop("X y Y deben tener el mismo tamaño")
++ r<-length(x)
++ est.X<-x/sum(x)
++ est.Y<-y/sum(y)
++ l1<-sum(x*log(x/sum(x)))+sum(y*log(y/sum(y)))
++ l2<-sum((x+y)*log((x+y)/sum(x+y)))
++ estad<-2*(l1-l2)
++ p<-pchisq(estad,r-1,lower.tail = F)
++ list(estima.X=est.X,estima.Y=est.Y,estadistica=estad,p.valor=p)
++ }
+> hombre<-c(192,140,17)
+> mujer<-c(127,90,20)
+> multi_2_muestra(hombre,mujer)
+$estima.X
+[1] 0.5501433 0.4011461 0.0487106
+
+$estima.Y
+[1] 0.53586498 0.37974684 0.08438819
+
+$estadistica
+[1] 2.99966
+
+$p.valor
+[1] 0.2231681
+\end{verbatim}
+Del $p$ valor podemos ver que no hay una diferencia significativa entre los hombres y mujeres con respecto a la percepción del nuevo café con sabor a vainilla. De lo anterior, según la posición que tiene el producto frente a los competidores, las estrategias de mercadeo de este producto pueden seguir sin alterarse (si el producto ya tiene buena posición en el mercado) o en el otro caso, incorporar mejoras para atraer consumidores de ambos géneros sin enfocarse en un género en particular.
+\end{Eje}
+
+\subsection{$k$ muestras\index{Prueba de hipótesis!multinomial!$k$ muestras}}
+La teoría expuesta anteriormente se puede extender para el caso de $k$ muestras, que en el caso de investigación de mercados, puede ser utilizado para investigar si un producto tiene diferentes posiciones en $k$ subgrupos poblacionales con $k>2$. Por ejemplo, cómo es el hábito o frecuencia de consumo de espaguetis en estratos bajos, medios y altos\footnote{En el caso de Colombia, los estratos 1 y 2 se pueden clasificar como los bajos, 3 y 4 como medios, y 5 y 6 como altos.}
+
+En general, se dispone de una muestra aleatoria para cada subgrupo poblacional donde tenemos $k$ vectores de parámetros $\mathbf{p}_1$, $\cdots$, $\mathbf{p}_k$ con $\mathbf{p}_j=(p_{1j},\cdots,p_{rj})$ con $p_{ij}$ denotando la proporción teórica de individuos de la población $j$ que dieron la respuesta $i$, para $j=1,\cdots,k$ y $i=1,\cdots,r$. Y denotamos la muestra observada de tamaño $n_j$ en la población $j$ como $X_{1j}$, $\cdots$, $X_{rj}$, esto es, $X_{ij}$ denota el número de individuos de la población $j$ que dieron la respuesta $i$.
+
+Es claro que teniendo el supuesto de que las $k$ poblaciones son independientes, los estimadores de máxima verosimilitud de los porcentajes $p_{ij}$ son simplemente las proporciones muestrales, es decir
+\begin{equation}\label{multi_r1}
+\hat{p}_{ij}=\frac{X_{ij}}{n_i}=\bar{X}_{ij}
+\end{equation}
+
+para $j=1,\cdots,k$ y $i=1,\cdots,r$. Y para ver si hay diferencia en las $k$ poblaciones, planteamos el sistema
+\begin{equation}\label{multi_r}
+H_0:\ \mathbf{p}_1=\cdots=\mathbf{p}_k\ \ \ \ \text{vs.}\ \ \ \ H_1:\ \text{Existen $\mathbf{p}_i\neq\mathbf{p}_j$ para algún $i$, $j$}
+\end{equation}
+
+Y para calcular la estadística $2\ln\lambda$, primero obtenemos el estimador de máxima verosimilitud de los parámetros bajo $H_0$ que establece que $p_{i1}=\cdots=p_{ij}=p_i$ para todo $i=1,\cdots,r$ y $j=1,\cdots,k$. Los estimadores de $p_i$ están dados por
+\begin{equation}\label{p_i_MV}
+\hat{p}_i=\frac{x_{i1}+\cdots+x_{ik}}{n_1+\cdots+n_k}.
+\end{equation}
+
+Usando la anterior expresión y (\ref{multi_r1}), tenemos que la estadística $2\ln\lambda$ está dada por
+\begin{equation*}
+2\ln\lambda=2\sum_{i=1}^r\sum_{j=1}^kx_{ij}\ln\frac{\bar{x}_{ij}}{\hat{p}_i}.
+\end{equation*}
+
+Para encontrar el grado de libertad de la distribución nula asintótica de $2\ln\lambda$, observamos que en el espacio paramétrico completo, en cada una de las $k$ poblaciones hay $r$ parámetros que deben cumplir la condición de que la suma de las proporciones teóricas sea igual a 1; de esta forma, en cada población hay $r-1$ parámetros libres y en total $v_1=k(r-1)$. Por otro lado, bajo $H_0$ las $k$ poblaciones tienen el mismo vector de parámetros, es decir $r$ parámetros, y al tener en cuenta la restricción, tenemos que $v_0=r-1$, de esta forma tenemos que
+\begin{equation*}
+2\ln\lambda\sim_{asym}\chi^2_{(r-1)*(k-1)}.
+\end{equation*}
+
+Rechazamos $H_0$\index{Regla de decisión!multinomial!$k$ muestras} si $2\ln\lambda>\chi^2_{(r-1)*(k-1),1-\alpha}$ y el $p$ valor correspondiente se puede calcular como\index{$p$ valor!multinomial!$k$ muestras}
+\begin{equation*}
+p\ \text{valor}=1-F_{\chi^2_{(r-1)*(k-1)}}(v)
+\end{equation*}
+
+donde $v$ es el valor de $2\ln\lambda$ en la muestra. El lector puede ver que las fórmulas desarrolladas para el caso de dos muestras es simplemente un caso particular de las fórmulas anteriores cuando $k=2$.
+
+\begin{Eje}
+Con el fin de conocer el perfil de los diferentes estratos con respecto a la frecuencia de consumo de espaguetis, se analizan los datos de la Tabla 6.2 obtenidos en una encuesta realizada a hogares de diferentes estratos con respecto al consumo de espaguetis.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|ccc|}\hline
+&Estrato bajo&Estrato medio&Estrato alto\\\hline
+Más de tres veces a la semana &95&53&33\\
+Entre una y tres veces a la semana &120&97&79\\
+De vez en cuando&35&45&19\\
+Nunca consume espaguetis&6&13&3\\\hline
+Total entrevistados&256&208&134\\\hline
+\end{tabular}\caption{\textsl{Datos del Ejemplo 6.1.4}}
+\end{table}
+
+La siguiente función nos permite calcular las estimaciones puntuales, el valor de la estadística de prueba y el correspondiente $p$ valor.
+\begin{verbatim}
+> multi_k_muestra<-function(x){
++ # columna j de x debe corresponder a los conteos en la muestra j
++ r<-dim(x)[1]
++ k<-dim(x)[2]
++ est<-matrix(NA,r,k)
++ for(j in 1:k){
++ est[,j]<-x[,j]/colSums(x)[j]} ## estimación MV
++ p_0<-rowSums(x)/(sum(x)) ## estimación MV bajo H0
++ l1<-sum(x*log(est))
++ l2<-sum(rowSums(x)*log(p_0))
++ estad<-2*(l1-l2)
++ p<-pchisq(estad,(r-1)*(k-1),lower.tail = F)
++ list(est=est,estadistica=estad,p.valor=p)
++ }
+>
+> x<-matrix(c(95,120,35,6,53,97,45,13,33,79,19,3),4,3)
+> multi_k_muestra(x)
+$est
+          [,1]      [,2]       [,3]
+[1,] 0.3710938 0.2548077 0.24626866
+[2,] 0.4687500 0.4663462 0.58955224
+[3,] 0.1367188 0.2163462 0.14179104
+[4,] 0.0234375 0.0625000 0.02238806
+
+$estadistica
+[1] 20.04436
+
+$p.valor
+[1] 0.002719489
+\end{verbatim}
+Podemos observar que hay una diferencia significativa entre los estratos con respecto al consumo de espaguetis que indica que al momento de promocionar el producto, se debe tener en cuenta el grupo poblacional que más consume espaquetis y que, dadas las estimaciones puntuales, pueden ser los consumidores de estratos bajos.
+\end{Eje}
+
+
+\section{Inferencia en la distribución normal multivariante}
+\subsection{Estimador de máxima verosimilitud\index{Estimador!de máxima verosimilitud!normal multivariante}}
+
+En una muestra aleatoria proveniente de la distribución $N_p(\boldsymbol{\mu},\mathbf{\Sigma})$, los parámetros son $\boldsymbol{\mu}$ y $\mathbf{\Sigma}$, la función de verosimilitud está dada por:
+\begin{align*}
+L(\mathbf{x}_1,\cdots,\mathbf{x}_n,\boldsymbol{\theta}))&=\prod_{i=1}^nf_{\mathbf{X}_i}(\mathbf{x}_i,\boldsymbol{\theta})\\
+&=\prod_{i=1}^n|\mathbf{\Sigma}|^{-1/2}(2\pi)^{-p/2}\exp\left\{-\frac{1}{2}(\mathbf{x}_i-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\mathbf{x}_i-\boldsymbol{\mu})\right\}\\
+&=|\mathbf{\Sigma}|^{-n/2}(2\pi)^{-pn/2}\exp\left\{-\frac{1}{2}\sum_{i=1}^n(\mathbf{x}_i-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\mathbf{x}_i-\boldsymbol{\mu})\right\}
+\end{align*}
+Recordando que maximizar una función $f$ es equivalente a maximizar la función $\ln f$, tenemos que
+\begin{equation}\label{ln_L_p}
+\ln L=\dfrac{n}{2}\ln|\mathbf{\Sigma}^{-1}|-\dfrac{pn}{2}\ln2\pi-\frac{1}{2}\sum_{i=1}^n(\mathbf{x}_i-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\mathbf{x}_i-\boldsymbol{\mu}).
+\end{equation}
+La forma clásica para maximizar $\ln L$ consiste en sumar y restar el término $\bar{\mathbf{x}}$, el promedio de $\mathbf{x}_1$, $\cdots$, $\mathbf{x}_n$. Tenemos que:
+\begin{align*}
+\sum_{i=1}^n(\mathbf{x}_i-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\mathbf{x}_i-\boldsymbol{\mu})&=\sum_{i=1}^n(\mathbf{x}_i-\bar{\mathbf{x}}+\bar{\mathbf{x}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\mathbf{x}_i-\bar{\mathbf{x}}+\bar{\mathbf{x}}-\boldsymbol{\mu})\\
+&=\underbrace{\sum_{i=1}^n(\mathbf{x}_i-\bar{\mathbf{x}})'\mathbf{\Sigma}^{-1}(\mathbf{x}_i-\bar{\mathbf{x}})}_{A}+n(\bar{\mathbf{x}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu}).
+\end{align*}
+En la anterior expresión $A$ es un escalar, y por consiguiente, $A=tr(A)$, donde $tr(\cdot)$ denota el operador traza, esto es
+\begin{align*}
+A&=\sum_{i=1}^ntr((\mathbf{x}_i-\bar{\mathbf{x}})'\mathbf{\Sigma}^{-1}(\mathbf{x}_i-\bar{\mathbf{x}}))\\
+&=\sum_{i=1}^ntr(\mathbf{\Sigma}^{-1}(\mathbf{x}_i-\bar{\mathbf{x}})(\mathbf{x}_i-\bar{\mathbf{x}}))')\\
+&=tr(\mathbf{\Sigma}^{-1}\sum_{i=1}^n(\mathbf{x}_i-\bar{\mathbf{x}})(\mathbf{x}_i-\bar{\mathbf{x}}))')\\
+&=tr(\mathbf{\Sigma}^{-1}n\mathbf{S}_n)\\
+&=ntr(\mathbf{\Sigma}^{-1}\mathbf{S}_n),
+\end{align*}
+
+con $\mathbf{S}_n=\frac{1}{n}\sum_{i=1}^n(\mathbf{x}_i-\bar{\mathbf{x}})(\mathbf{x}_i-\bar{\mathbf{x}})$. Sustituyendo la anterior expresión en (\ref{ln_L_p}), se tiene que
+\begin{equation}\label{ln_L}
+\ln L=\dfrac{n}{2}\ln|\mathbf{\Sigma}^{-1}|-\dfrac{pn}{2}\ln2\pi-\dfrac{n}{2}tr(\mathbf{\Sigma}^{-1}\mathbf{S}_n)-\dfrac{n}{2}(\bar{\mathbf{x}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu}).
+\end{equation}
+
+Para encontrar el valor de $\boldsymbol{\mu}$ que maximiza esta función, se observa que es el mismo valor de $\boldsymbol{\mu}$ que minimiza el término $(\bar{\mathbf{x}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})$, pero la matriz $\mathbf{\Sigma}^{-1}$ es semidefinida positiva, es decir, $(\bar{\mathbf{x}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})\geq0$, por lo tanto el valor más pequeño que puede tomar es el valor 0, y esto ocurre cuando $\boldsymbol{\mu}=\bar{\mathbf{x}}$. Por lo tanto, se concluye que $\hat{\boldsymbol{\mu}}_{MV}=\bar{\mathbf{X}}$.
+
+Ahora, para encontrar el valor de $\mathbf{\Sigma}$ que maximiza a $\ln L$, en primer lugar se sustituye $\boldsymbol{\mu}$ por su estimador, lo cual conduce a maximizar la función $\boldsymbol{\mu}$, agregando el término $\frac{n}{2}\ln|\mathbf{S}_n|$ y eliminando el término $-\dfrac{pn}{2}\ln2\pi$ que no dependen de $\mathbf{\mathbf{\Sigma}}$, se tiene que la función que se debe maximizar es
+\begin{equation}
+L^*=-\dfrac{n}{2}\ln|\mathbf{\Sigma}|+\frac{n}{2}\ln|\mathbf{S}_n|-\dfrac{n}{2}tr(\mathbf{\Sigma}^{-1}\mathbf{S}_n).
+\end{equation}
+
+Aplicando propiedades del determinante, se tiene que:
+\begin{align*}
+L^*&=\dfrac{n}{2}\ln\frac{1}{|\mathbf{\Sigma}|}+\frac{n}{2}\ln|\mathbf{S}_n|-\dfrac{n}{2}tr(\mathbf{\Sigma}^{-1}\mathbf{S}_n)\\
+&=\dfrac{n}{2}\ln|\mathbf{\Sigma}^{-1}|+\frac{n}{2}\ln|\mathbf{S}_n|-\dfrac{n}{2}tr(\mathbf{\Sigma}^{-1}\mathbf{S}_n)\\
+&=\dfrac{n}{2}\ln|\mathbf{\Sigma}^{-1}\mathbf{S}_n|-\dfrac{n}{2}tr(\mathbf{\Sigma}^{-1}\mathbf{S}_n).
+\end{align*}
+
+Ahora, para cualquier matriz cuadrada $A$, se tiene que $|A|=\prod\lambda_i$ y $tr(A)=\sum\lambda_i$ donde los valores $\lambda_i$ denotan los valores propios de $A$. Aplicando el anterior resultado a la matriz $\mathbf{\Sigma}^{-1}\mathbf{S}_n$, se tiene que
+\begin{align*}
+L^*&=\dfrac{n}{2}\ln\prod_{i=1}^p\lambda_i-\dfrac{n}{2}\sum_{i=1}^p\lambda_i\\
+&=\dfrac{n}{2}\sum_{i=1}^p\ln\lambda_i-\dfrac{n}{2}\sum_{i=1}^p\lambda_i\\
+&=\dfrac{n}{2}\sum_{i=1}^Pr(\ln\lambda_i-\lambda_i)
+\end{align*}
+donde $\lambda_1$, $\cdots$, $\lambda_p$ son los valores propios de $\mathbf{\Sigma}^{-1}\mathbf{S}_n$.
+
+Ahora, considere la función $f(x)=\ln x-x$. Esta función tiene un máximo en $x=1$, entonces la función $L^*$ tiene un máximo cuando $\lambda_i=1$ para todo $i=1,\cdots,p$. Es decir, $L^*$ tiene un máximo cuando los valores propios de $\mathbf{\Sigma}^{-1}\mathbf{S}_n$ son iguales a 1. Esto implica que $\mathbf{\Sigma}^{-1}\mathbf{S}_n$ es la matriz identidad, de donde se concluye que el valor de $\mathbf{\Sigma}$ que maximiza la función $\ln L$ es $\mathbf{S}_n=\frac{1}{n}\sum_{i=1}^n(\mathbf{x}_i-\bar{\mathbf{x}})(\mathbf{x}_i-\bar{\mathbf{x}})$. En conclusión $\hat{\mathbf{\Sigma}}_{MV}=\mathbf{S}_n$.
+
+Existe otra forma de encontrar los estimadores $\hat{\boldsymbol{\mu}}_{MV}$ y $\hat{\mathbf{\Sigma}}_{MV}$ utilizando derivadas, análogamente al caso de inferencia univariada bajo distribución normal, pero en este caso se deriva con respecto a vector y matriz. En el apéndice F, se hace un resumen de las derivadas matriciales que se utilizará a continuación.
+
+Primero escribimos a la función $\ln L$ dada en (\ref{ln_L}) como
+\begin{equation*}
+\ln L=\dfrac{n}{2}\ln|\mathbf{\Sigma}^{-1}|-\dfrac{pn}{2}\ln2\pi-\dfrac{n}{2}tr(\mathbf{\Sigma}^{-1}\mathbf{S}_n)-\dfrac{n}{2}tr\left\{\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})'\right\}.
+\end{equation*}
+
+Las derivadas de $\ln L$ con respecto a los parámetros $\boldsymbol{\mu}$ y $\mathbf{\Sigma}$ se calculan como
+\begin{align*}
+\frac{\partial \ln L}{\partial\boldsymbol{\mu}}&=-\dfrac{n}{2}\frac{\partial tr\left\{\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})'\right\}}{\partial\boldsymbol{\mu}}\\
+&=-\dfrac{n}{2}\frac{\partial tr\left\{\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})'\right\}}{\partial(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})'}\frac{(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})'}{\partial\boldsymbol{\mu}}\\
+&=-\dfrac{n}{2}\mathbf{\Sigma}^{-1}(-2)(\bar{\mathbf{x}}-\boldsymbol{\mu}),
+\end{align*}
+
+De donde se tiene que $\hat{\boldsymbol{\mu}}_{MV}=\bar{\mathbf{x}}$.
+
+Ahora, para encontrar $\hat{\mathbf{\Sigma}}_{MV}$, no derivamos $\ln L$ con respecto a $\mathbf{\Sigma}$, sino con respecto a $\mathbf{\Sigma}^{-1}$, apoyándonos en el argumento de que el valor de $\mathbf{\Sigma}$ que satisface $\frac{\partial \ln L}{\partial\mathbf{\Sigma}^{-1}}=0$  también satisface $\frac{\partial \ln L}{\partial\mathbf{\Sigma}}=0$. Tenemos
+\begin{align*}
+\frac{\partial \ln L}{\partial\mathbf{\Sigma}^{-1}}&=\frac{n}{2}\frac{\partial\ln|\mathbf{\Sigma}^{-1}|}{\partial\mathbf{\Sigma}^{-1}}-\frac{n}{2}\frac{\partial tr\left\{\mathbf{\Sigma}^{-1}(\mathbf{S}_n+(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')\right\}}{\partial\mathbf{\Sigma}^{-1}}\\
+&=\frac{n}{2}\frac{\partial\ln|\mathbf{\Sigma}^{-1}|}{\partial|\mathbf{\Sigma}^{-1}|}\frac{\partial|\mathbf{\Sigma}^{-1}|}{\partial\mathbf{\Sigma}^{-1}}-\frac{n}{2}\frac{\partial tr\left\{\mathbf{\Sigma}^{-1}(\mathbf{S}_n+(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')\right\}}{\partial\mathbf{\Sigma}^{-1}}\\
+&=\frac{n}{2}\left\{2\mathbf{\Sigma}-diag(\mathbf{\Sigma})\right\}\\
+&-\frac{n}{2}\left\{2(\mathbf{S}_n+(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')-diag(\mathbf{S}_n+(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')\right\}\\
+&=\frac{n}{2}\left\{2(\mathbf{\Sigma}-\mathbf{S}_n-(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')-diag(\mathbf{\Sigma}-\mathbf{S}_n-(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')\right\}
+\end{align*}
+
+De esta forma, se debe cumplir que
+\begin{equation*}
+2(\mathbf{\Sigma}-\mathbf{S}_n-(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')-diag(\mathbf{\Sigma}-\mathbf{S}_n-(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')=\mathbf{0}
+\end{equation*}
+
+Es fácil verificar que para una matriz $\mathbf{A}$, si $2\mathbf{A}-diag(\mathbf{A})=\mathbf{0}$, entonces necesariamente $\mathbf{A}=\mathbf{0}$. Por lo tanto, tenemos que
+\begin{equation*}
+\mathbf{\Sigma}=\mathbf{S}_n+(\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})'
+\end{equation*}
+
+Reemplazando $\boldsymbol{\mu}$ por su estimador de máxima verosimilitud $\bar{\mathbf{X}}$, tenemos que
+\begin{equation*}
+\hat{\mathbf{\Sigma}}_{MV}=\mathbf{S}_n
+\end{equation*}
+
+Ahora, usando $\mathbf{S}_n$ como estimador de $\mathbf{\Sigma}$, podemos obtener un estimador de la matriz de correlaciones $\boldsymbol{\rho}$ como
+\begin{equation}\label{estrho}
+\hat{\rho}_{MV}=\hat{\mathbf{D}}^{-1/2}\mathbf{S}_n\hat{\mathbf{D}}^{-1/2},
+\end{equation}
+donde $\hat{\mathbf{D}}=diag(\mathbf{S}_n)$.
+
+Ilustramos el cálculo de estas matrices con los datos de \citeasnoun{Student} correspondientes a horas de incremento de sueño debido al uso de dos tipos de sedantes. Estos datos se encuentran en la Tabla 5.2. En R, las funciones que calculan la matriz de varianzas y covarianzas muestrales y la matriz de correlaciones son \verb"var" y \verb"cor".
+\begin{verbatim}
+> a<-c(0.7,-1.6,-0.2,-1.2,-1,3.4,3.7,0.8,0,2)
+> b<-c(1.9,0.8,1.1,0.1,-0.1,4.4,5.5,1.6,4.6,1.4)
+> x<-matrix(c(a,b),10,2)
+
+
+
+> var(x)*9/10
+        [,1]   [,2]
+[1,] 3.1064 2.7822
+[2,] 2.7822 3.6081
+
+> cor(x)
+       [,1]      [,2]
+[1,] 1.000000 0.831037
+[2,] 0.831037 1.000000
+\end{verbatim}
+
+De donde tenemos que la matriz de varianzas y covarianzas y la matriz de correlaciones muestrales están dadas por
+
+\begin{equation*}
+\hat{\mathbf{S}}_{n}=\begin{pmatrix}
+3.11&2.78\\
+2.78&3.61s
+\end{pmatrix}
+\end{equation*}
+
+y
+\begin{equation*}
+\hat{\rho}=\begin{pmatrix}
+1&0.83\\
+0.83&1
+\end{pmatrix}
+\end{equation*}
+
+También podemos encontrar el estimador de mínimos cuadrados para el vector de medias teóricas $\boldsymbol{\mu}$. Siguiendo el mismo razonamiento en la estimación de mínimos cuadrados en el caso univariado, se espera que el el vector $\boldsymbol{\mu}$ esté cercano a las observaciones $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$. En este caso, necesitamos medir la distancia entre $\boldsymbol{\mu}$ y cada $\mathbf{X}_i$ con $i=1,\cdots,n$, una de las distancias más comunes entre vectores es la distancia euclidiana. Utilizando esta distancia, debemos encontrar el valor de $\boldsymbol{\mu}$ que minimiza la cantidad
+\begin{equation}\label{Q_multivariado}
+Q=\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})'(\mathbf{X}_i-\boldsymbol{\mu}).
+\end{equation}
+
+Y lo presentamos a continuación.
+
+\begin{Res}
+Sea $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ una muestra aleatoria proveniente de una distribución con media teórica $\boldsymbol{\mu}$, entonces el estimador de mínimos cuadrados de $\boldsymbol{\mu}$ es $\bar{\mathbf{X}}$.\index{Estimador!de mínimos cuadrados}
+\end{Res}
+
+\begin{proof}
+Para encontrar el estimador de mínimos cuadrados de $\boldsymbol{\mu}$ derivamos la expresión (\ref{Q_multivariado}) con respecto a $\boldsymbol{\mu}$, tenemos que
+\begin{equation*}
+\frac{\partial Q}{\partial\boldsymbol{\mu}}=-2\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu}).
+\end{equation*}
+
+Igualando la anterior expresión a cero, tenemos que $\boldsymbol{\mu}=\sum_{i=1}^n\mathbf{X}_i/n=\bar{X}$, el cual coincide con el estimador de máxima verosimilitud encontrado anteriormente.
+\end{proof}
+
+Adicionalmente, para el desarrollo del anterior estimador, no se tuvo en cuenta la distribución teórica; de esta forma, en muestras provenientes de cualquier distribución multivariante podemos estimar el vector de medias teóricas con la media muestral $\bar{X}$. Los lectores pueden ver que bajo la distribución multinomial el estimador de máxima verosimilitud de $\mathbf{p}$ también coincide con el estimador de mínimos cuadrados $\bar{X}$.
+
+\subsection{Propiedades de los estimadores de máxima verosimilitud\index{Estimador!de máxima verosimilitud!normal multivariante}}
+En el ámbito de la inferencia multivariante, la calidad de un estimador se mide a través de su esperanza y su matriz de varianzas y covarianzas.
+
+Para el estimador de máxima verosimilitud de $\boldsymbol{\mu}$: $\bar{\mathbf{X}}$, se ha visto que la distribución del estimador es $N_p(\boldsymbol{\mu},\frac{1}{n}\mathbf{\Sigma})$ (\ref{barX}), de donde se concluye que $E(\bar{\mathbf{X}})=\boldsymbol{\mu}$, esto es, $\bar{\mathbf{X}}$ es un estimador insesgado de $\boldsymbol{\mu}$. Por otro lado, $Var(\bar{\mathbf{X}})=\frac{1}{n}\mathbf{\Sigma}$, esto implica que al aumentar el tamaño de la muestra $n$, los componentes de la matriz de varianzas y covarianzas de $\bar{\mathbf{X}}$ disminuyen, y se puede estimar con más precisión al vector $\boldsymbol{\mu}$.
+
+Ahora, con respecto al estimador de máxima verosimilitud de $\mathbf{\Sigma}$, notado como $\mathbf{S}_n$, primero se estudia su sesgo. Luego, se tiene que
+\begin{align*}
+E(\mathbf{S}_n)&=\dfrac{1}{n}E(\sum_{i=1}^n(\mathbf{x}_i-\bar{\mathbf{x}})(\mathbf{x}_i-\bar{\mathbf{x}}))\\
+&=\dfrac{1}{n}E(\sum_{i=1}^n(\mathbf{x}_i-\boldsymbol{\mu})(\mathbf{x}_i-\boldsymbol{\mu})')-E((\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')\\
+&=\dfrac{1}{n}\sum_{i=1}^nE((\mathbf{x}_i-\boldsymbol{\mu})(\mathbf{x}_i-\boldsymbol{\mu})')-E((\bar{\mathbf{x}}-\boldsymbol{\mu})(\bar{\mathbf{x}}-\boldsymbol{\mu})')\\
+&=\mathbf{\Sigma}-Var(\bar{\mathbf{x}}-\boldsymbol{\mu})\\
+&=\mathbf{\Sigma}-\dfrac{1}{n}\mathbf{\Sigma}\\
+&=\dfrac{n-1}{n}\mathbf{\Sigma},
+\end{align*}
+de donde se concluye que el estimador de máxima verosimilitud $\mathbf{S}_n$ no es insesgado para $\mathbf{\Sigma}$ (la misma situación ocurrió en la inferencia univariada). Pero una simple modificación de $\mathbf{S}_n$ multiplicando por $\frac{n}{n-1}$ nos lleva a un estimador insesgado. En conclusión, un estimador insesgado para $\mathbf{\Sigma}$ es
+\begin{equation*}
+\mathbf{S}_{n-1}=\frac{1}{n-1}\sum_{i=1}^n(\mathbf{X}_i-\bar{\mathbf{X}})(\mathbf{X}_i-\bar{\mathbf{X}})'.
+\end{equation*}
+
+\begin{Res}
+Se tiene que $(n-1)\mathbf{S}_{n-1}$ tiene distribución $W(n-1,\mathbf{\Sigma})$.
+\end{Res}
+\begin{proof}
+En primer lugar, tenemos que
+\begin{align*}
+ (n-1)\mathbf{S}_{n-1}&=\sum_{i=1}^n(\mathbf{X}_i-\bar{\mathbf{X}})(\mathbf{X}_i-\bar{\mathbf{X}})'\\
+ &=\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu}+\boldsymbol{\mu}-\bar{\mathbf{X}})(\mathbf{X}_i-\boldsymbol{\mu}+\boldsymbol{\mu}-\bar{\mathbf{X}})'\\
+ &=\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})(\mathbf{X}_i-\boldsymbol{\mu})'+\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})(\boldsymbol{\mu}-\bar{\mathbf{X}})'\\
+ &+(\boldsymbol{\mu}-\bar{\mathbf{X}})\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})'+n(\boldsymbol{\mu}-\bar{\mathbf{X}})(\boldsymbol{\mu}-\bar{\mathbf{X}})'\\
+ &=\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})(\mathbf{X}_i-\boldsymbol{\mu})'+n(\bar{\mathbf{X}}-\boldsymbol{\mu})(\boldsymbol{\mu}-\bar{\mathbf{X}})'\\
+ &+n(\boldsymbol{\mu}-\bar{\mathbf{X}})(\bar{\mathbf{X}}-\boldsymbol{\mu})'+n(\boldsymbol{\mu}-\bar{\mathbf{X}})(\boldsymbol{\mu}-\bar{\mathbf{X}})'\\
+ &=\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})(\mathbf{X}_i-\boldsymbol{\mu})'-n(\bar{\mathbf{X}}-\boldsymbol{\mu})(\bar{\mathbf{X}}-\boldsymbol{\mu})'\\
+ &-n(\bar{\mathbf{X}}-\boldsymbol{\mu})(\bar{\mathbf{X}}-\boldsymbol{\mu})'+n(\bar{\mathbf{X}}-\boldsymbol{\mu})(\bar{\mathbf{X}}-\boldsymbol{\mu})'\\
+ &=\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})(\mathbf{X}_i-\boldsymbol{\mu})'-n(\bar{\mathbf{X}}-\boldsymbol{\mu})(\bar{\mathbf{X}}-\boldsymbol{\mu})'
+\end{align*}
+
+En el primer término los vectores $\mathbf{X}_i-\boldsymbol{\mu}$ con $i=1,\cdots,n$ son independientes e idénticamente distribuidos como $N_p(\boldsymbol{0},\mathbf{\Sigma})$, entonces por la definición de la distribución Wishart, se tiene que el término $\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})(\mathbf{X}_i-\boldsymbol{\mu})'$ tiene distribución $W(n,\mathbf{\Sigma})$, y su función característica está dada por $|I_p-2i\Theta\Sigma|^{-n/2}$.
+
+Por otro lado, $\bar{\mathbf{X}}\sim N_p(\boldsymbol{\mu},\frac{1}{n}\mathbf{\Sigma})$, de donde se concluye que $\bar{\mathbf{X}}-\boldsymbol{\mu}\sim N_p(\boldsymbol{0},\frac{1}{n}\mathbf{\Sigma})$, y por consiguiente $\sqrt{n}(\bar{\mathbf{X}}-\boldsymbol{\mu})\sim N_p(\boldsymbol{0},\mathbf{\Sigma})$, entonces se concluye que $n(\bar{\mathbf{X}}-\boldsymbol{\mu})(\bar{\mathbf{X}}-\boldsymbol{\mu})'\sim W(1,\mathbf{\Sigma})$, y su función característica está dada por $|I_p-2i\Theta\Sigma|^{-1/2}$.
+
+Usando la igualdad $(n-1)\mathbf{S}_{n-1}=\sum_{i=1}^n(\mathbf{X}_i-\boldsymbol{\mu})(\mathbf{X}_i-\boldsymbol{\mu})'-n(\bar{\mathbf{X}}-\boldsymbol{\mu})(\bar{\mathbf{X}}-\boldsymbol{\mu})'$, se tiene que la función característica de $(n-1)\mathbf{S}_{n-1}$ está dada por $|I_p-2i\Theta\Sigma|^{-n/2}/|I_p-2i\Theta\Sigma|^{-1/2}=|I_p-2i\Theta\Sigma|^{-(n-1)/2}$, la cual corresponde a una distribución $W(n-1,\mathbf{\Sigma})$.
+\end{proof}
+
+Del anterior resultado, se tiene que $E((n-1)\mathbf{S}_{n-1})=(n-1)\mathbf{\Sigma}$, de donde $E(\mathbf{S}_{n-1})=\mathbf{\Sigma}$, indicando una vez más que $\mathbf{S}_{n-1}$ es un estimador insesgado para $\mathbf{\Sigma}$.
+
+Para los datos de incremento de sueños utilizados anteriormente, podemos calcular la matriz $\mathbf{S}_{n-1}$ usando
+\begin{verbatim}
+> a<-c(0.7,-1.6,-0.2,-1.2,-1,3.4,3.7,0.8,0,2)
+> b<-c(1.9,0.8,1.1,0.1,-0.1,4.4,5.5,1.6,4.6,1.4)
+> x<-matrix(c(a,b),10,2)
+> var(x)
+         [,1]     [,2]
+[1,] 3.451556 3.091333
+[2,] 3.091333 4.009000
+> cor(x)
+       [,1]      [,2]
+[1,] 1.000000 0.831037
+[2,] 0.831037 1.000000
+\end{verbatim}
+
+dando como resultado
+\begin{equation*}
+\mathbf{S}_{n-1}=\begin{pmatrix}
+3.45&3.09\\
+3.09&4.01
+\end{pmatrix}
+\end{equation*}
+
+Utilizando la anterior matriz $\mathbf{S}_{n-1}$ y el Resultado 5.2.6., podemos conocer acerca del incremento en horas de sueño debido al sedante A y la necesidad de aplicar este sedante a un paciente si tenemos el resultado en el paciente utilizando el sedante B.
+
+Si denotamos $X_A$ y $X_B$ como los incrementos en sueño debido a los sedantes A y B, y $\mu_A$ y $\mu_B$ sus medias teóricas, respectivamente, entonces el Resultado 5.2.6. afirma que
+\begin{equation*}
+E(X_A|X_B=b)=\mu_A+\sigma_{AB}(\sigma_{B})^{-2}(b-\mu_B)
+\end{equation*}
+
+y
+\begin{equation*}
+Var(X_A|X_B=b)=\sigma_{A}^{2}-\sigma_{AB}^2(\sigma_{B})^{-2}
+\end{equation*}
+
+donde $\sigma_{A}^2$, $\sigma_{B}^2$ y $\sigma_{AB}$ denotan $Var(X_A)$, $Var(X_B)$ y $Cov(X_A,X_B)$, respectivamente. Es claro que $E(X_A|X_B=b)$ y $Var(X_A|X_B=b)$ dependen de los parámetros teóricos y por consiguiente son desconocidos. Sin embargo, al utilizar las estimaciones de estos parámetros teóricos, podemos obtener las estimaciones de esta esperanza condicional y esta varianza condicional. Al tener en cuenta que $\mu_A$ y $\mu_B$ se estiman con los promedios muestrales dados por 0.66 y 2.33, respectivamente, tenemos que
+\begin{equation*}
+\hat{E}(X_A|X_B=b)=0.66+3.09*(b-2.33)/4.01
+\end{equation*}
+y
+
+\begin{equation*}
+\hat{Var}(X_A|X_B=b)=3.45-3.09^2/4.01=1.069
+\end{equation*}
+
+De esta forma, si en un paciente particular, el sedante B produjo un incremento de 3 horas de sueño, tenemos que $0.66+3.09*(3-2.33)/4.01= 1.176$ y podemos concluir que se espera que el sedante A produzca aproximadamente 1 hora y 10 minutos de sueño, con una desviación estándar de aproximadamente $\sqrt{1.069}=1.03$ horas.
+
+\section{Región de confianza y pruebas de hipótesis para el vector de medias}
+
+Se necesita hallar un $\mathfrak{S}$ subconjunto de $\mathbb{R}^p$\index{Región de confianza!normal multivariante!vector de medias} de tal forma que $Pr(\boldsymbol{\mu}\in\mathfrak{S})=1-\alpha$. Un acercamiento a este problema puede ser encontrar intervalos de confianza de $100\times(1-\alpha)\%$ para cada componente de $\boldsymbol{\mu}$, esto es: $Pr(\mu_i\in S_i)=1-\alpha$ para todo $i=1,\cdots,p$. Y proponer como candidato para $\mathfrak{S}$ el producto cartesiano $\mathfrak{S}^*=S_1\times\cdots\times S_p$ que es un rectángulo en $\mathbb{R}^p$. Pero el nivel de confianza de $\mathfrak{S}^*$ no necesariamente es $100\times(1-\alpha)\%$. Lo único que se puede afirmar es que
+\begin{align*}
+Pr(\boldsymbol{\mu}\in S_1\times\cdots\times S_p)&=Pr(\mu_1\in S_1\times \mu_p\in S_p)\\
+                                               &=Pr(\bigcap_{i=1^p\mu_i\in S_i})\\
+                                               &=Pr((\bigcup_{i=1}^p\mu_i\notin S_i)^c)\\
+                                               &=1-Pr(\bigcup_{i=1}^p\mu_i\notin S_i)\\
+                                               &\geq1-\sum_{i=1}^pPr(\mu_i\notin S_i)\\
+                                               &=1-p\alpha.
+\end{align*}
+De esta forma, si $\boldsymbol{\mu}=(\mu_1,\mu_2)'$, entonces para $\alpha=0.05$, se tiene que $Pr(\boldsymbol{\mu}\in S_1\times S_2)\geq0.9$, es decir, el nivel de confianza de $S_1\times\cdots\times S_p$ puede ser inferior a los 95\%. Más aún, cuando el número de variables de estudio $p$ aumenta, $1-p\alpha$ se torna muy pequeño, y así la región de confianza $S_1\times\cdots\times S_p$ no será muy útil en la práctica. La única alternativa para que $1-p\alpha$ no disminuya demasiado es disminuir el valor de $\alpha$, pero de esta manera, cada $S_i$ tendrá una longitud muy grande (ver (\ref{length})), es decir, cada $S_i$ será casi todo el eje real, y el producto cartesiano $S_1\times\cdots\times S_p$ se convertirá en $\mathbb{R}^p$ y una región de confianza de esta magnitud es poco precisa y por consiguiente, no es muy útil en la práctica.
+
+\subsection{$\mathbf{\Sigma}$ conocida}
+En el caso de la inferencia univariada, cuando la varianza es conocida, se encuentra un intervalo de confianza para $\mu$ usando la variable pivote $\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}$. En la inferencia multivariada, se puede encontrar una variable pivote para $\boldsymbol{\mu}$ con distribución univariante. Aplicando la propiedad 6 del Resultado 5.2.4. al vector aleatorio $\bar{\mathbf{X}}$ cuya distribución es $N_p(\boldsymbol{\mu},\frac{1}{n}\mathbf{\Sigma})$, se tiene que
+\begin{equation*}
+n(\bar{\mathbf{X}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\boldsymbol{\mu})\sim\chi^2_p.
+\end{equation*}
+
+De esta forma, $n(\bar{\mathbf{X}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\boldsymbol{\mu})$ es una variable pivote para $\boldsymbol{\mu}$ y se puede construir un intervalo de confianza para esta variable pivote\footnote{Nótese que esta variable pivote es simplemente la distancia de Mahalanobis entre el promedio muestral $\bar{\mathbf{X}}$ y el media teórica $\boldsymbol{\mu}$.}. Usando el hecho de que
+\begin{equation}\label{S1pivote}
+Pr(n(\bar{\mathbf{X}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\boldsymbol{\mu})<\chi^2_{p,1-\alpha})=1-\alpha.
+\end{equation}
+
+El método de la variable pivote expuesta en capítulos anteriores sugiere que el siguiente paso es despejar el parámetro de interés, en este caso el vector $\boldsymbol{\mu}$, pero claramente esto no se puede llevar a cabo por la complejidad de la variable pivote. Por lo tanto, sencillamente se afirma que una región de confianza para $\boldsymbol{\mu}$ es el conjunto\index{Región de confianza!normal multivariante!vector de medias}
+\begin{equation}\label{S1}
+\mathfrak{S}_1(\boldsymbol{\mu})=\{\mathbf{v}\in\mathbb{R}^p:n(\bar{\mathbf{X}}-\mathbf{v})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\mathbf{v})<\chi^2_{p,1-\alpha}\}.
+\end{equation}
+
+Para explorar acerca de la forma de la anterior región, tomamos $p=2$, y denotando la matriz $\mathbf{\Sigma}^{-1}$ como $A$ tenemos que
+\begin{align*}
+(\bar{\mathbf{x}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})&=(\boldsymbol{\mu}-\bar{\mathbf{x}})'\mathbf{\Sigma}^{-1}(\boldsymbol{\mu}-\bar{\mathbf{x}})\\
+&=(\mu_1-\bar{x}_1,\mu_2-\bar{x}_2)\begin{pmatrix}
+a_{11}&a_{12}\\
+a_{12}&a_{22}
+\end{pmatrix}
+\begin{pmatrix}
+\mu_1-\bar{x}_1\\\mu_2-\bar{x}_2
+\end{pmatrix}\\
+&=a_{11}(\mu_1-\bar{x}_1)^2+2a_{12}(\mu_1-\bar{x}_1)(\mu_2-\bar{x}_2)+a_{22}(\mu_2-\bar{x}_2)^2.
+\end{align*}
+
+Vista como una función de $\mu_1$ y $\mu_2$, la anterior función describe un elipse con centro en las estimaciones $(\bar{x}_1,\bar{x}_2)$. En la Figura 6.1, se muestra algunas gráficas de esta función con $\bar{x}_1=\bar{x}_2=0$, $n=10$ y $\alpha=0.05$, con diferentes valores de $\mathbf{\Sigma}$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 640 621, scale=0.45]{Elipses.jpg}
+\caption{\textsl{Región de confianza $\mathfrak{S}_1(\boldsymbol{\mu})$ con $p=2$ y diferentes valores de $\mathbf{\Sigma}$.}}
+\end{figure}
+
+\newpage
+Observamos que
+\begin{enumerate}
+    \item La gráfica (a) corresponde al caso cuando $\mathbf{\Sigma}=\mathbf{I}_2$, observa que en este caso la región de confianza es un círculo.
+    \item La gráfica (b) corresponde al caso cuando $\mathbf{\Sigma}=\begin{pmatrix}
+        2&0\\
+        0&4
+        \end{pmatrix}$, en este caso la región de confianza es la parte que encierra una elipse. Además nótese que como la varianza de la segunda variable es más grande, entonces la proyección del elipse sobre el eje de $\mu_2$ es también más amplio.
+    \item Ahora, la gráfica (c) corresponde al caso cuando $\mathbf{\Sigma}=\begin{pmatrix}
+        2&2\\
+        2&4
+        \end{pmatrix}$, donde la elipse está inclinada hacia la derecha asemejandose a una recta con tendencia positiva, puesto que una covarianza positiva entre las dos variables indica que cuando $\mu_1$ toma valores grandes, también lo hace $\mu_2$.
+    \item Finalmente, la gráfica (d) corresponde al caso cuando $\mathbf{\Sigma}=\begin{pmatrix}
+        2&-2\\
+        -2&4
+        \end{pmatrix}$. En este caso, la gráfica muestra una tendencia negativa entre las dos variables, consecuencia de que la covarianza es negativa.
+\end{enumerate}
+
+En el anterior procedimiento para encontrar región de confianza para $\boldsymbol{\mu}$, se utilizó el intervalo de confianza para la variable pivote $n(\bar{\mathbf{X}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\boldsymbol{\mu})$ dado en (\ref{S1pivote}), el cual es un intervalo unilateral superior. Se puede pensar en hallar un intervalo unilateral inferior o bilateral para esta variable pivote para encontrar otras regiones de confianza para $\boldsymbol{\mu}$.
+
+Primero consideramos un intervalo unilateral inferior. Dada la distribución de $n(\bar{\mathbf{X}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\boldsymbol{\mu})$, se tiene que
+\begin{equation*}
+Pr(\chi^2_{p,\alpha}<n(\bar{\mathbf{X}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\boldsymbol{\mu}))=1-\alpha.
+\end{equation*}
+
+De esta manera, otra región de confianza para $\boldsymbol{\mu}$ estaría dada por
+\begin{equation}\label{S2}
+\mathfrak{S}_2(\boldsymbol{\mu})=\{\mathbf{v}\in\mathbb{R}^p:\chi^2_{p,\alpha}<n(\bar{\mathbf{X}}-\mathbf{v})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\mathbf{v})\}.
+\end{equation}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 640 585, scale=0.45]{ElipseS2.jpg}
+\caption{\textsl{Región de confianza $\mathfrak{S}_2(\boldsymbol{\mu})$ con $p=2$ y diferentes valores de $\mathbf{\Sigma}$.}}
+\end{figure}
+
+Cuando $p=2$, la función $(\bar{\mathbf{x}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})$ vista como función de $\mu_1$ y $\mu_2$ es una elipse como se vio anteriormente, entonces la región $\mathfrak{S}_2(\boldsymbol{\mu})$ describe la parte fuera de una elipse como lo ilustra la Figura 6.2 con las mismas especificaciones que la Figura 6.1. Aunque estas regiones tienen un nivel de confianza del 95\%, no son usadas en la práctica. Nótese que la estimación puntual $(\bar{x}_1,\bar{x}_2)$, se encuentra en el centro de las elipses, y por consiguiente, queda excluida de la región de confianza $\mathfrak{S}_2$, algo contradictorio, sin duda.
+
+Por otro lado, un intervalo bilateral para la variable pivote $n(\bar{\mathbf{X}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\boldsymbol{\mu})$, nos conduce a la siguiente región de confianza para $\boldsymbol{\mu}$:
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 640 585, scale=0.5]{ElipseS3.jpg}
+\caption{\textsl{Región de confianza $\mathfrak{S}_3(\boldsymbol{\mu})$ con $p=2$ y diferentes valores de $\mathbf{\Sigma}$.}}
+\end{figure}
+
+\begin{equation}\label{S3}
+\mathfrak{S}_3(\boldsymbol{\mu})=\{\mathbf{v}\in\mathbb{R}^p:\chi^2_{p,\alpha/2}<n(\bar{\mathbf{X}}-\mathbf{v})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\mathbf{v})<\chi^2_{p,1-\alpha/2}\}.
+\end{equation}
+
+La expresión (6.3.4) representa un disco como lo ilustra la Figura 6.3. En la práctica tampoco resulta útil $\mathfrak{S}_3$ puesto que la estimación puntual de $\boldsymbol{\mu}$ también se encuentra excluida. En conclusión, la región de confianza más apropiada para $\boldsymbol{\mu}$ es $\mathfrak{S}_1(\boldsymbol{\mu})$, y será usada de ahora en adelante.
+
+
+Retomando la dualidad que existe entre la estimación por intervalo de confianza y las pruebas de hipótesis, podemos establecer que para el sistema:\index{Prueba de hipótesis!normal multivariante}
+$$H_0:\ \boldsymbol{\mu}=\boldsymbol{\mu}_0\ \ \ \ vs.\ \ \ \ H_1:\ \boldsymbol{\mu}\neq\boldsymbol{\mu}_0,$$ $H_0$ será rechazada cuando $\boldsymbol{\mu}_0$ no se encuentra en la región de confianza $\mathfrak{S}_1(\boldsymbol{\mu})$, esto es, cuando $n(\bar{\mathbf{X}}-\boldsymbol{\mu}_0)'\mathbf{\Sigma}^{-1}(\bar{\mathbf{X}}-\boldsymbol{\mu}_0)>\chi^2_{p,1-\alpha}$.
+
+\subsection{$\mathbf{\Sigma}$ desconocida}
+
+Cuando la matriz de varianzas y covarianzas es desconocida, es natural usar su estimador insesgado $\mathbf{S}_{n-1}$, en este caso la estadística pivote de la sección anterior se convierte en
+\begin{equation}\label{T2}
+(\bar{\mathbf{x}}-\boldsymbol{\mu})'(\mathbf{S}_{n-1})^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu}).
+\end{equation}
+Para conocer si la anterior estadística sigue siendo una variable pivote para $\boldsymbol{\mu}$, es necesario encontrar su distribución.
+
+\newpage
+
+Luego, observamos que
+\begin{enumerate}
+  \item $\bar{X}\sim N_p(\boldsymbol{\mu},\mathbf{\Sigma}/n)$ y
+  \item $(n-1)\mathbf{S}_{n-1}\sim W(n-1,\mathbf{\Sigma})$ de donde $\frac{(n-1)}{n}\mathbf{S}_{n-1}\sim W(n-1,\mathbf{\Sigma}/n)$
+\end{enumerate}
+Usando las anteriores propiedades y la definición de la distribución $T^2$ de Hotelling, tenemos que
+
+\begin{equation*}
+(\bar{\mathbf{x}}-\boldsymbol{\mu})'\left(\frac{\mathbf{S}_{n-1}}{n}\right)^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})=n(\bar{\mathbf{x}}-\boldsymbol{\mu})'(\mathbf{S}_{n-1})^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})\sim T^2(p,n-1)
+\end{equation*}
+
+Nótese que cuando $p=1$, la estadística $T^2$ se convierte en $\frac{n(\bar{X}-\mu)^2}{S_{n-1}}$ la cual es el cuadrado de la estadística $\frac{\sqrt{n}(\bar{X}-\mu)}{S_{n-1}}$ cuya distribución corresponde a $t_{n-1}$.
+
+Para obtener calcular percentiles y/o probabilidades de una distribución $T^2$, Bowker (1960) encontró el siguiente resultado.
+\begin{Res}
+Dada una variable con distribución $T^2$ con grados de libertad $p$ y $n-1$, se tiene que
+\begin{equation*}
+\frac{T^2}{n-1}\left(\frac{n-p}{p}\right)\sim F^p_{n-p}.
+\end{equation*}
+\end{Res}
+
+Con lo anterior, se concluye que $n(\bar{\mathbf{x}}-\boldsymbol{\mu})'(\mathbf{S}_{n-1})^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu})$ es una variable pivote para $\boldsymbol{\mu}$, de esta forma, se tiene que una región de confianza para $\boldsymbol{\mu}$ es\index{Región de confianza!normal multivariante!vector de medias}
+\begin{equation}\label{S}
+\mathfrak{S}(\mathbf{v})=\{\mathbf{v}\in\mathbb{R}^p:n(\bar{\mathbf{X}}-\mathbf{v})'(\mathbf{S}_{n-1})^{-1}(\bar{\mathbf{X}}-\mathbf{v})<c\},
+\end{equation}
+
+donde $c$ es el percentil $1-\alpha$ de la distribución $T^2$ con grados de libertad $p$ y $n-1$. Aquí se toma el límite superior para la variable pivote puesto que se vio en el caso cuando $\mathbf{\Sigma}$ es conocida, que las regiones de confianza obtenidas usando el límite inferior o ambos superior e inferior no son adecuadas en la práctica.
+
+Ahora, usando la relación que existe entre la distribución $T^2$ y la distribución $F$, se tiene que la región de confianza $\mathfrak{S}$ se puede escribir como
+\begin{equation}\label{S}
+\mathfrak{S}(\mathbf{v})=\left\{\mathbf{v}\in\mathbb{R}^p:\dfrac{n(n-p)}{p(n-1)}(\bar{\mathbf{X}}-\mathbf{v})'(\mathbf{S}_{n-1})^{-1}(\bar{\mathbf{X}}-\mathbf{v})<f^p_{n-p, 1-\alpha}\right\}.
+\end{equation}
+Esta región de confianza, igual que el caso cuando $\mathbf{\Sigma}$ es conocida, consta del área interior de una elipse.
+
+Dada la anterior región de confianza para $\boldsymbol{\mu}$, se puede obtener una regla de decisión para el sistema\index{Prueba de hipótesis!normal multivariante!vector de medias}
+$$H_0:\ \boldsymbol{\mu}=\boldsymbol{\mu}_0\ \ \ \ vs.\ \ \ \ H_1:\ \boldsymbol{\mu}\neq\boldsymbol{\mu}_0$$
+dada por: Rechazar $H_0$, si $\dfrac{n(n-p)}{Pr(n-1)}(\bar{\mathbf{X}}-\mathbf{\mu}_0)'(\mathbf{S}_{n-1})^{-1}(\bar{\mathbf{X}}-\mathbf{\mu}_0)>f^p_{n-p, 1-\alpha}$
+
+Ahora, volvemos al principio del capítulo 6.2, donde se consideró la propuesta de usar $S_1\times\cdots\times S_p$ como región de confianza para $\boldsymbol{\mu}$ donde $S_i$ es un intervalo de confianza para $\mu_i$ con $i=1,\cdots,p$.
+
+\section[Inferencia para una combinación lineal de medias]{Región de confianza y pruebas de hipótesis para una combinación lineal de medias\index{Prueba de hipótesis!normal multivariante!combinación lineal de medias}}
+En algunas situaciones, el vector de parámetros de interés no es el vector de medias $\boldsymbol{\mu}$, sino alguna función de él, o a veces se desea confirmar o refutar alguna relación que puede existir entre los componentes de $\boldsymbol{\mu}$. Por ejemplo, un laboratorio médico fabrica un nuevo tipo de medicamentos para bajar el nivel de colesterol, y confía en que con dos meses de tratamiento, puede lograr una reducción de un 20\%.
+
+Para confirmar o refutar esta afirmación, se ensaya el medicamento con $n$ pacientes, se les toma el nivel de colesterol antes de iniciar el tratamiento, y denotamos estas observaciones como $x_{11}$, $\cdots$, $x_{1n}$; y después de dos meses del tratamiento con el nuevo medicamento, se vuelve a tomar el nivel del colesterol, denotando estas observaciones como $x_{21}$, $\cdots$, $x_{2n}$. En este caso, se dispone de dos variables de estudio: el nivel de colesterol sin tratamiento y el nivel de colesterol después del tratamiento; si denotamos sus respectivas esperanzas como $\mu_1$ y $\mu_2$, lo que se quiere probar es que $0.8\mu_1=\mu_2$.
+
+Muchas relaciones entre los componentes de $\boldsymbol{\mu}$ como la de la anterior situación, pueden ser descritas como $C\boldsymbol{\mu}=\mathbf{v}$, donde $C$ es de dimensión $k\times p$, y $\mathbf{v}$ de $k\times1$. Por ejemplo, la relación $0.8\mu_1=\mu_2$ es equivalente a $(0.8,-1)\begin{pmatrix}
+\mu_1\\\mu_2
+\end{pmatrix}=0$, en donde $C=(0.8,1)$, y $\boldsymbol{v}=0$. Y al encontrar una regla de decisión para aceptar o rechazar $C\boldsymbol{\mu}=\mathbf{v}$, se habrá resuelto el problema.
+
+En conclusión, el marco de trabajo es: dada una muestra aleatoria $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ con distribución $N_p(\boldsymbol{\mu},\mathbf{\Sigma})$, se quiere probar la hipótesis $H_0$: $C\boldsymbol{\mu}=\mathbf{v}$. Utilizando la propiedad 1 del resultado 5.2.4, tenemos que cada uno de los vectores aleatorios $C\mathbf{X}_1$, $\cdots$, $C\mathbf{X}_n$ tiene distribución $N_p(C\boldsymbol{\mu},C\mathbf{\Sigma} C')$, además usando la propiedad (\ref{Cova}), se tiene que estos son independientes.
+
+De esta forma, al definir nuevos vectores aleatorios $\mathbf{Y}_i=C\mathbf{X}_i$ con $i=1,\cdots,n$, el problema se convierte en probar la hipótesis $H_0: \boldsymbol{\mu}_Y=\mathbf{v}$ para una muestra aleatoria $\mathbf{Y}_1$, $\cdots$, $\mathbf{Y}_n$, y este problema ya ha sido tratado en la sección anterior tanto para el caso cuando la matriz de varianzas y covarianzas es conocida como cuando no lo es. A continuación se adaptará este procedimiento para el caso cuando la matriz de varianzas y covarianzas es desconocida, el otro caso se deja como ejercicio.
+
+De acuerdo a la teoría desarrollada en la sección anterior, se rechaza $H_0: \boldsymbol{\mu}_Y=\mathbf{v}$ si\index{Regla de decisión!normal multivariante!combinación lineal de medias}
+\begin{equation}\label{pruebaY}
+\dfrac{n(n-k)}{k(n-1)}(\bar{\mathbf{Y}}-\mathbf{v})'(\mathbf{S}_{n-1,Y})^{-1}(\bar{\mathbf{Y}}-\mathbf{v})>f^k_{n-k, 1-\alpha}
+\end{equation}
+
+donde $k$ es la dimensión de los vectores $\mathbf{Y}_i$, y $\mathbf{S}_{n-1,Y}$ es la matriz de varianzas y covarianzas muestrales de $\mathbf{Y}_1$, $\cdots$, $\mathbf{Y}_n$.
+
+En la práctica, se observan los valores que toman los vectores aleatorios originales: $\mathbf{x}_1$, $\cdots$, $\mathbf{x}_n$, y para verificar si se cumple o no la regla de decisión (\ref{pruebaY}), se puede adoptar cualquiera de los dos siguientes procedimientos:
+\begin{enumerate}
+\item Calcular las respectivas observaciones $\mathbf{y}_1$, $\cdots$, $\mathbf{y}_n$, premultiplicando cada uno de $\mathbf{x}_1$, $\cdots$, $\mathbf{x}_n$ por la matriz $C$. Nótese que una vez especificamos la relación que se desea probar, la matriz $C$ es conocida (más adelante, se consideran diferentes tipos de relaciones y las formas de la matriz $C$). Al calcular $\bar{\mathbf{y}}$ y $\mathbf{S}_{n-1,Y}$, se puede determinar fácilmente la aceptación o el rechazo de $H_0$. Sin embargo, este procedimiento representa bastantes cálculos, puesto que para obtener los $\mathbf{y}_1$, $\cdots$, $\mathbf{y}_n$, se realiza una multiplicación matricial $n$ veces.
+\item El segundo procedimiento consiste en escribir la regla de decisión (\ref{pruebaY}) en términos de las observaciones $\mathbf{x}_1$, $\cdots$, $\mathbf{x}_n$. Para eso se observa que en primer lugar,
+    \begin{align*}
+    \bar{\mathbf{Y}}&=\frac{1}{n}\sum_{i=1}^n\mathbf{Y}_i=\frac{1}{n}\sum_{i=1}^nC\mathbf{X}_i
+    =C(\frac{1}{n}\sum_{i=1}^n\mathbf{X}_i)=C\bar{\mathbf{X}}.
+    \end{align*}
+    Por otro lado, se tiene que
+    \begin{align*}
+    \mathbf{S}_{n-1,Y}&=\frac{1}{n-1}\sum_{i=1}^n(\mathbf{Y}_i-\bar{Y})(\mathbf{Y}_i-\bar{Y})'\\
+    &=\frac{1}{n-1}\sum_{i=1}^n(C\mathbf{X}_i-C\bar{X})(C\mathbf{X}_i-\bar{X})'\\
+    &=\frac{1}{n-1}\sum_{i=1}^nC(\mathbf{X}_i-\bar{X})(\mathbf{X}_i-\bar{X})'C'\\
+    &=C(\frac{1}{n-1}\sum_{i=1}^n(\mathbf{X}_i-\bar{X})(\mathbf{X}_i-\bar{X})')C'=C\mathbf{S}_{n-1,X}C'.
+    \end{align*}
+    Usando estas propiedades, (\ref{pruebaY}) se convierte en:\index{Regla de decisión!normal multivariante!combinación lineal de medias}
+    Se rechaza $H_0: \boldsymbol{\mu}_Y=\mathbf{v}$ si
+    \begin{equation}\label{pruebaX}
+    \dfrac{n(n-k)}{k(n-1)}(C\bar{\mathbf{X}}-\mathbf{v})'(C\mathbf{S}_{n-1,X}C')^{-1}(C\bar{\mathbf{X}}-\mathbf{v})>f^k_{n-k, 1-\alpha}
+    \end{equation}
+\end{enumerate}
+
+Ahora, retomamos el ejemplo del medicamento para bajar el nivel de colesterol. Suponga que el tratamiento fue aplicado a 20 pacientes, y los resultados se muestran en la Tabla 6.3. Los siguientes códigos nos permiten determinar si se cumple o no la regla de decisión.
+\begin{verbatim}
+> ante<-c(230,245,220,250, 260,250,220,300,310,290,260,240,210,
++         220,250,245,274,230,285,275)
+> desp<-c(210,230,215,220,240,220,210,260,280,270,230,235,200,
++         200,210,230,250,210,260,230)
+> X<-data.frame(cbind(ante,desp))
+> bar<-mean(X)
+> bar
+ante  desp
+253.2 230.5
+> S2<-var(X)
+> n<-length(ante)
+> C<-matrix(c(0.8,-1),1,2)
+> k<-nrow(C)
+> f<-(C%*%mean(X))^2*(C%*%S2%*%t(C))^{-1}*n*(n-k)/(k*(n-1))
+> f
+         [,1]
+[1,] 194.4231
+> alpha<-0.05
+> qf(1-alpha,k,n-k)
+[1] 4.38075
+\end{verbatim}
+
+Se observa que el valor de la estadística $F$ es mucho mayor comparando con el percentil de la distribución, de donde se concluye que los datos muestran una fuerte evidencia en contra de la hipótesis nula, y el medicamento no está disminuyendo el nivel de colesterol en un 20\%. Nótese que en la muestra observada, el nivel promedio de colesterol antes y después del tratamiento es 253.2 y 230.5, respectivamente, esto indica que el medicamento disminuyó el nivel de colesterol en un 9\%, muy lejano al 20\% que esperaba el laboratorio.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ccc}\hline
+Paciente&Antes&Después\\\hline
+1&230&210\\
+2&245&230\\
+3&220&215\\
+4&250&220\\
+5&260&240\\
+6&250&220\\
+7&220&210\\
+8&300&260\\
+9&310&280\\
+10&290&270\\
+11&260&230\\
+12&240&235\\
+13&210&200\\
+14&220&200\\
+15&250&210\\
+16&245&230\\
+17&274&250\\
+18&230&210\\
+19&285&260\\
+20&275&230\\\hline
+\end{tabular}\caption[\textsl{Datos nivel colesterol antes y después del tratamiento}]{\textsl{El nivel de colesterol de 20 pacientes antes y después del tratamiento medido en mg/dL.}}
+\end{table}
+
+Ahora la pregunta es, ¿este 9\% de disminución que se observó en la muestra es realmente significativo, o se puede considerar despreciable? En este caso, la hipótesis planteada se cambia a $H_0: \mu_1=\mu_2$, la cual puede escribir como $H_0: (1,-1)\begin{pmatrix}
+\mu_1\\\mu_2
+\end{pmatrix}=0$. Al utilizar el anterior código de R modificando la matriz $C$, se tiene que el valor de la estadística es 80.9, de tal manera que comparado con el percentil 4.38, se concluye que el nivel promedio de colesterol con el tratamiento sí presenta una disminución significativa.
+
+\section{Prueba de hipótesis para la matriz de varianzas y covarianzas\index{Prueba de hipótesis!normal multivariante!matriz de varianzas}}
+Cuando el parámetro de interés es la matriz de varianzas y covarianzas $\mathbf{\Sigma}$, comúnmente se trabaja sólo con la prueba de hipótesis cerca de $\mathbf{\Sigma}$, mas no con la región de confianza, puesto que ésta pertenece a un espacio de dimensión muy grande. Aun cuando el número de variables de estudio es dos, la dimensión de $\mathbf{\Sigma}$ es de $2\times2$, y su respectiva región de confianza sería un subconjunto de $\mathbb{R}^2\times\mathbb{R}^2$, lo cual dificulta la visualización y la correspondiente interpretación. Por lo tanto, sólo estamos enfocados en el problema de prueba de hipótesis para $\mathbf{\Sigma}$.
+
+Suponga habitualmente que se dispone de una muestra aleatoria $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ proveniente de la distribución $N_p(\boldsymbol{\mu},\mathbf{\Sigma})$, y se desea probar el sistema de hipótesis\index{Prueba de hipótesis!normal multivariante!matriz de varianzas}
+\begin{equation}\label{HipoGamma}
+H_0:\ \mathbf{\Sigma}=\mathbf{\Sigma}_0\ \ \ \ vs.\ \ \ \ H_1:\ \mathbf{\Sigma}\neq\mathbf{\Sigma}_0.
+\end{equation}
+
+En el caso univariado, cuando se trató el tema de pruebas de hipótesis acerca de la varianza teórica, se consideró el caso cuando la media teórica es conocida y posteriormente cuando ésta no es conocida. Sin embargo, en la práctica, en muchas ocasiones, se carece del conocimiento acerca de la media teórica. En el caso de pruebas de hipótesis acerca de la matriz de varianzas y covarianzas, es muy difícil tener conocimiento del vector de medias teóricas $\boldsymbol{\mu}$, puesto que se deben conocer las $p$ medias teóricas de las $p$ variables de estudio. Por esta razón, no asumiremos ningún conocimiento previo de $\boldsymbol{\mu}$, sino que lo estimaremos usando $\bar{\mathbf{X}}$ en caso de ser requerido.
+
+Usaremos el método de la prueba de de razón generalizada\index{Prueba! de razón generalizada de verosimilitudes!normal multivariante} de verosimilitud presentada anteriormente para el sistema de hipótesis (\ref{HipoGamma}). Recordemos que
+\begin{equation}
+\lambda=\dfrac{\sup_{\mathbf{\Theta}_0\cup\mathbf{\Theta}_1}L(\theta,x_1,\cdots,x_n)}{\sup_{\mathbf{\Theta}_0}L(\theta,x_1,\cdots,x_n)},
+\end{equation}
+y rechaza $H_0$ para valores grandes de $\lambda$. Ahora, usando como la función logarítmica es monótona, se tiene que se rechaza $H_0$ para valores grandes de $\ln\lambda$, la cual es igual a
+\begin{equation*}
+\ln\lambda=\sup_{\mathbf{\Theta}_0\cup\mathbf{\Theta}_1}\ln L(\theta,x_1,\cdots,x_n)-\sup_{\mathbf{\Theta}_0}\ln L(\theta,x_1,\cdots,x_n),
+\end{equation*}
+
+recurriendo nuevamente a que la función logarítmica es monótona.
+
+Ahora, retomando la ecuación (\ref{ln_L})
+\begin{equation*}
+\ln L=-\dfrac{n}{2}\ln|\mathbf{\Sigma}|-\dfrac{pn}{2}\ln2\pi-\dfrac{n}{2}tr(\mathbf{\Sigma}^{-1}\mathbf{S}_n)-\dfrac{n}{2}(\bar{\mathbf{x}}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\bar{\mathbf{x}}-\boldsymbol{\mu}),
+\end{equation*}
+
+y teniendo en cuenta que $\mathbf{\Theta}_0\cup\mathbf{\Theta}_1=\mathbf{\Theta}$, y $\hat{\boldsymbol{\mu}}_{MV}=\bar{\mathbf{X}}$, tenemos que:
+\begin{align}\label{Lmax}
+\sup_{\mathbf{\Theta}_0\cup\mathbf{\Theta}_1}\ln L(\theta,x_1,\cdots,x_n)&=-\dfrac{n}{2}\ln|\mathbf{S}_n|-\dfrac{pn}{2}\ln2\pi-\dfrac{n}{2}tr((\mathbf{S}_n)^{-1}\mathbf{S}_n)\notag\\
+&=-\dfrac{n}{2}\ln|\mathbf{S}_n|-\dfrac{pn}{2}\ln2\pi-\dfrac{n}{2}tr(I_p)\notag\\
+&=-\dfrac{n}{2}\ln|\mathbf{S}_n|-\dfrac{pn}{2}\ln2\pi-\dfrac{np}{2}.
+\end{align}
+
+Y por otro lado,
+\begin{align*}
+\sup_{\mathbf{\Theta}_0}\ln L(\theta,x_1,\cdots,x_n)&=\ln L(\mathbf{\Sigma}_0,x_1,\cdots,x_n)\\
+&=-\dfrac{n}{2}\ln|\mathbf{\Sigma}_0|-\dfrac{pn}{2}\ln2\pi-\dfrac{n}{2}tr(\mathbf{\Sigma}_0^{-1}\mathbf{S}_n).
+\end{align*}
+
+De esta forma, se tiene que
+\begin{align}\label{lnlambda}
+\ln\lambda&=\dfrac{n}{2}\ln|\mathbf{\Sigma}_0|+\dfrac{n}{2}tr(\mathbf{\Sigma}_0^{-1}\mathbf{S}_n)-\dfrac{n}{2}\ln|\mathbf{S}_n|-\dfrac{np}{2}\notag\\
+&=\frac{1}{2}\left\{n(\ln|\mathbf{\Sigma}_0|-\ln|\mathbf{S}_n|)+ntr(\mathbf{\Sigma}_0^{-1}\mathbf{S}_n)-np\right\}.
+\end{align}
+
+Se tiene que la distribución de $2\ln\lambda$ es $\chi^2_{v}$, donde $v=v_1-v_0$ con $v_1$ denotando el número de parámetros bajo la hipótesis alterna y $v_0$ el número de parámetros bajo la hipótesis nula, en el sistema de hipótesis (\ref{HipoGamma}), $v_0=0$, puesto que bajo $H_0$, $\mathbf{\Sigma}=\mathbf{\Sigma}_0$, y no hay ningún parámetro desconocido; por otro lado, bajo $H_1$, $\mathbf{\Sigma}$ puede tomar cualquier forma, y no se conoce ningún valor específico que toma, por lo tanto, $v_1$ es el número de componentes distintos de $\mathbf{\Sigma}$, esto es, $v_1=p(p+1)/2$. Por lo tanto, $2\ln\lambda\sim\chi^2_{p(p+1)/2}$, y se rechaza $H_0$ cuando \index{Regla de decisión!normal multivariante!matriz de varianzas} $2\ln\lambda>\chi^2_{Pr(p+1)/2,1-\alpha}$.
+
+Otra forma de expresar la estadística de prueba es usando los valores propios de la matriz $\mathbf{\Sigma}_0^{-1}\mathbf{S}_n$. Supongamos que estos se denotan por $\lambda_1$, $\cdots$, $\lambda_p$, tenemos que:
+\begin{align*}
+2\ln\lambda&=n(\ln|\mathbf{\Sigma}_0|-\ln|\mathbf{S}_n|)+ntr(\mathbf{\Sigma}_0^{-1}\mathbf{S}_n)-np\\
+&=-n\ln|\mathbf{\Sigma}_0^{-1}\mathbf{S}_n|+ntr(\mathbf{\Sigma}_0^{-1}\mathbf{S}_n)-np\\
+&=-n\ln\prod_{i=1}^p\lambda_i+n\sum_{i=1}^p\lambda_i-np\\
+&=n(\sum_{i=1}^Pr(\lambda_i-\ln\lambda_i)-p)
+\end{align*}
+
+El sistema de hipótesis (\ref{HipoGamma}), incluye un gran serie de estructuras dependiente de la forma que toma la matriz $\mathbf{\Sigma}_0$. A continuación, se presentan algunos casos particulares que son de utilidad en la práctica.
+
+\subsubsection{Prueba de independencia de un conjunto de variables aleatorias\index{Prueba de hipótesis!normal multivariante!independencia}}
+Un problema común en un estudio estadístico es determinar, en un conjunto de variables de estudio, cuáles son independientes. Bajo el supuesto de que la muestra aleatoria proviene de una distribución normal, una covarianza nula implica la independencia. Por lo tanto, para probar que un conjunto de variables son independientes, basta probar que la matriz de varianzas y covarianzas es una matriz diagonal. De esta manera, se plantea el siguiente sistema de hipótesis.
+\begin{center}
+$H_0$:\ $\mathbf{\Sigma}$ es diagonal \ \ \ \ vs.\ \ \ \ $H_1$:\ $\mathbf{\Sigma}$ no es diagonal.
+\end{center}
+Se usa la prueba de razón generalizada de verosimilitud\index{Prueba! de razón generalizada de verosimilitudes!normal multivariante} para encontrar la estadística de prueba para este sistema. Para calcular la estadística de prueba $2\ln\lambda$, recordamos la ecuación (\ref{Lmax}),
+\begin{equation*}
+\sup_{\mathbf{\Theta}_0\cup\mathbf{\Theta}_1}\ln L(\theta,x_1,\cdots,x_n)=-\dfrac{n}{2}\ln|\mathbf{S}_n|-\dfrac{pn}{2}\ln2\pi-\dfrac{np}{2}.
+\end{equation*}
+
+Por otro lado, el estimador $MV$ de $\mathbf{\Sigma}$ bajo $H_0$ es la matriz $\hat{\mathbf{D}}=diag(\mathbf{S}_n)$, puesto que las covarianzas son restringidas a tomar el valor 0, entonces se tiene que
+\begin{align*}
+\sup_{\mathbf{\Theta}_0}\ln L(\theta,x_1,\cdots,x_n)=-\dfrac{n}{2}\ln|\hat{\mathbf{D}}|-\dfrac{pn}{2}\ln2\pi-\dfrac{n}{2}tr(\hat{\mathbf{D}}^{-1}\mathbf{S}_n).
+\end{align*}
+
+Por lo tanto, se tiene que
+\begin{align*}
+2\ln\lambda&=n(\ln|\hat{\mathbf{D}}|-\ln|\mathbf{S}_n|)+ntr(\hat{\mathbf{D}}^{-1}\mathbf{S}_n)-np.
+\end{align*}
+
+Aunque dado un conjunto de valores observados de los vectores aleatorias de la muestra aleatoria, se puede calcular el valor de la anterior estadística, existe una expresión equivalente, pero más sencillo. Tenemos que
+\begin{align*}
+\ln|\mathbf{S}_n|-\ln|\hat{\mathbf{D}}|&=\ln\frac{|\mathbf{S}_n|}{|\hat{\mathbf{D}}|}\\
+&=\ln\frac{|\mathbf{S}_n|}{|\hat{\mathbf{D}}^{1/2}||\hat{\mathbf{D}}^{1/2}|}\\
+&=\ln|\hat{\mathbf{D}}^{-1/2}||\mathbf{S}_n||\hat{\mathbf{D}}^{-1/2}|\\
+&=\ln|\hat{\boldsymbol{\rho}}|.
+\end{align*}
+
+Por otro lado,
+\begin{align*}
+tr(\hat{\mathbf{D}}^{-1}\mathbf{S}_n)&=tr(\hat{\mathbf{D}}^{-1/2}\hat{\mathbf{D}}^{-1/2}\mathbf{S}_n)\\
+&=tr(\hat{\mathbf{D}}^{-1/2}\mathbf{S}_n\hat{\mathbf{D}}^{-1/2})\\
+&=tr(\hat{\boldsymbol{\rho}})\\
+&=p
+\end{align*}
+
+pues $\hat{\boldsymbol{\rho}}$ es una matriz de dimensión $p\times p$ donde los elementos de la diagonal son 1. Usando las dos anteriores expresiones, se tiene que
+\begin{equation*}
+2\ln\lambda=-n\ln|\boldsymbol{\rho}|.
+\end{equation*}
+
+Con lo desarrollado anteriormente, se puede calcular el valor de la estadística $2\ln\lambda$ en una muestra observada, pero para decidir sobre la aceptación o el rechazo de la hipótesis nula, se necesita saber la distribución de la estadística, la cual es $\chi^2_v$, con $v=v_1-v_0$. $v_1$ es el número de parámetros bajo la hipótesis alterna, la cual especifica que $\mathbf{\Sigma}$ no es una matriz diagonal, así que su estimación se lleva a cabo de la forma habitual, mediante la matriz $\mathbf{S}_n$, tal que el número de parámetros que se estiman es $p(p+1)/2$, el número de elementos diferentes en $\mathbf{\Sigma}$. Por otro lado, bajo la hipótesis nula, $\mathbf{\Sigma}$ es una matriz diagonal, así que el número de parámetros que se estiman es el número de elementos en la diagonal de $\mathbf{\Sigma}$, esto es $v_0=p$. En conclusión, $2\ln\lambda\sim\chi^2_{p(p+1)/2-p}$ y en una muestra observada, \index{Regla de decisión!normal multivariante!independencia}se rechaza $H_0$ cuando el valor de la estadística es mayor a $\chi^2_{p(p+1)/2-p,1-\alpha}$. El $p$-valor\index{$p$ valor!normal multivariante!independencia} se puede calcular fácilmente como $1-F_{\chi^2_{p(p+1)/2-p}}(v)$ donde $v$ denota el valor observado de la estadística $2\ln\lambda$.
+
+\begin{Eje}
+Consideramos los datos de la Tabla 5.2 acerca del incremento de sueño producidos por dos tipos de sedantes, al final de la sección 6.2.2 se calculó el tiempo esperado de incremento con el sedante A usando lo observado con respecto al sedante B. La correlación muestral de estos dos tiempos es de 0.83, lo cual sugiere que las variables son dependientes, y tiene sentido usar una variable para pronosticar la otra. Aquí usaremos la prueba desarrollada anteriormente para corroborar que las dos variables son efectivamente dependientes.
+\begin{verbatim}
+> a<-c(0.7,-1.6,-0.2,-1.2,-1,3.4,3.7,0.8,0,2)
+> b<-c(1.9,0.8,1.1,0.1,-0.1,4.4,5.5,1.6,4.6,3.4)
+> x<-matrix(c(a,b),10,2)
+> alpha<-0.5
+> p<-2
+> n<-10
+> esta<--n*log(det(cor(x)))
+> perce<-qchisq(1-alpha,p*(p+1)/2-p)
+> p.val<-pchisq(esta,p*(p+1)/2-p,lower.tail=F)
+> esta
+[1] 11.73193
+> perce
+[1] 0.4549364
+> p.val
+[1] 0.0006143678
+\end{verbatim}
+De donde podemos ver que el valor de la estadística $2\ln\lambda$ es muy grande comparado con el percentil $\chi^2_{p(p+1)/2-p,1-\alpha}$, produciendo un $p$-valor muy pequeño indicando que las variables son dependientes.
+
+\end{Eje}
+
+\subsubsection{Prueba de independencia entre conjuntos de variables aleatorias\index{Prueba de hipótesis!normal multivariante!independencia}}
+
+En algunas situaciones, se puede clasificar las variables de estudio en varios grupos, y podemos estar interesados en saber si estos grupos de variables son independientes. Por ejemplo, con respecto al estudio sobre regiones en términos de calidad de vida, podemos preguntarnos si las variables asociadas con la tasa de natalidad y mortalidad son independientes de las variables de esperanza de vida tanto de hombres como de mujeres.
+
+Supongamos que se dispone una muestra aleatoria $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ proveniente de una distribución normal $N_p(\boldsymbol{\mu},\mathbf{\Sigma})$, y que las $p$ variables se clasifican en $k$ grupos, con $p_1$, $\cdots$, $p_k$ variables, respectivamente, donde $p_1+\cdots+p_k=p$. Sin pérdida de generalidad, suponga que para cada $\mathbf{X}_i$, las primeras $p_1$ variables corresponden a las del primer grupo, las siguientes $p_2$ corresponden a las del segundo grupo, y así sucesivamente; en caso contrario, se reordenan los componentes para que el anterior supuesto se cumpla.
+
+Con el anterior supuesto, verificar que los $k$ grupos de variables sean independientes es equivalente al hecho de que la matriz de varianzas y covarianzas sea diagonal por bloques, esto es:
+\begin{center}
+$H_0$:\ $\mathbf{\Sigma}=\begin{pmatrix}
+\mathbf{\Sigma}_1&\mathbf{0}&\cdots&\mathbf{0}\\
+\mathbf{0}&\mathbf{\Sigma}_2&\cdots&\mathbf{0}\\
+\vdots&\vdots&\ddots&\vdots\\
+\mathbf{0}&\mathbf{0}&\cdots&\mathbf{\Sigma}_k
+\end{pmatrix}$ \ \ \ \ vs.\ \ \ \ $H_1$:\ $\mathbf{\Sigma}$ es de otra forma.
+\end{center}
+donde $\mathbf{\Sigma}_i$ es de dimensión $p_i\times p_i$ y representa la matriz de varianzas y covarianzas de las variables del grupo $i$, con $i=1,\cdots,k$. Para juzgar el anterior sistema de hipótesis, volvemos a utilizar la prueba de razón generalizada de verosimilitudes\index{Prueba! de razón generalizada de verosimilitudes!normal multivariante}. De nuevo,
+\begin{equation*}
+\sup_{\mathbf{\Theta}_0\cup\mathbf{\Theta}_1}\ln L(\theta,x_1,\cdots,x_n)=-\dfrac{n}{2}\ln|\mathbf{S}_n|-\dfrac{pn}{2}\ln2\pi-\dfrac{np}{2}.
+\end{equation*}
+Por otro lado, el estimador de $\mathbf{\Sigma}$ bajo la hipótesis $H_0$ es la matriz diagonal por bloques:
+\begin{equation}
+\mathbf{S}_D=\begin{pmatrix}
+\mathbf{S}_{1,n}&\mathbf{0}&\cdots&\mathbf{0}\\
+\mathbf{0}&\mathbf{S}_{2,n}&\cdots&\mathbf{0}\\
+\vdots&\vdots&\ddots&\vdots\\
+\mathbf{0}&\mathbf{0}&\cdots&\mathbf{S}_{k,n}
+\end{pmatrix},
+\end{equation}
+donde $\mathbf{S}_{i,n}$ es la matriz de varianzas y covarianzas muestrales de las variables aleatorias del grupo $i$, con $i=1,\cdots,k$. Entonces se tiene que
+\begin{align*}
+\sup_{\mathbf{\Theta}_0}\ln L(\theta,x_1,\cdots,x_n)=-\dfrac{n}{2}\ln|\mathbf{S}_D|-\dfrac{pn}{2}\ln2\pi-\dfrac{n}{2}tr((\mathbf{S}_D)^{-1}\mathbf{S}_n).
+\end{align*}
+De esta forma, la estadística de prueba está dada por:
+\begin{equation*}
+2\ln\lambda=n\ln|\mathbf{S}_D|+ntr((\mathbf{S}_D)^{-1}\mathbf{S}_n)-n\ln|\mathbf{S}_n|-np.
+\end{equation*}
+Para simplificar la anterior expresión, nótese que
+\begin{align*}
+(\mathbf{S}_D)^{-1}\mathbf{S}_n&=\begin{pmatrix}
+\mathbf{S}_{1,n}&\mathbf{0}&\cdots&\mathbf{0}\\
+\mathbf{0}&\mathbf{S}_{2,n}&\cdots&\mathbf{0}\\
+\vdots&\vdots&\ddots&\vdots\\
+\mathbf{0}&\mathbf{0}&\cdots&\mathbf{S}_{k,n}
+\end{pmatrix}^{-1}\begin{pmatrix}
+\mathbf{S}_{1,n}&\mathbf{S}_{12,n}&\cdots&\mathbf{S}_{1k,n}\\
+\mathbf{S}_{21,n}&\mathbf{S}_{2,n}&\cdots&\mathbf{S}_{2k,n}\\
+\vdots&\vdots&\ddots&\vdots\\
+\mathbf{S}_{k1,n}&\mathbf{S}_{k2,n}&\cdots&\mathbf{S}_{k,n}
+\end{pmatrix}\\
+&=\begin{pmatrix}
+(\mathbf{S})^{-1}_{1,n}&\mathbf{0}&\cdots&\mathbf{0}\\
+\mathbf{0}&(\mathbf{S})^{-1}_{2,n}&\cdots&\mathbf{0}\\
+\vdots&\vdots&\ddots&\vdots\\
+\mathbf{0}&\mathbf{0}&\cdots&(\mathbf{S})^{-1}_{k,n}
+\end{pmatrix}\begin{pmatrix}
+\mathbf{S}_{1,n}&\mathbf{S}_{12,n}&\cdots&\mathbf{S}_{1k,n}\\
+\mathbf{S}_{21,n}&\mathbf{S}_{2,n}&\cdots&\mathbf{S}_{2k,n}\\
+\vdots&\vdots&\ddots&\vdots\\
+\mathbf{S}_{k1,n}&\mathbf{S}_{k2,n}&\cdots&\mathbf{S}_{k,n}
+\end{pmatrix}\\
+&=\begin{pmatrix}
+\mathbf{I}_{p_1}&(\mathbf{S})^{-1}_{1,n}\mathbf{S}_{12,n}&\cdots&(\mathbf{S})^{-1}_{1,n}\mathbf{S}_{1k,n}\\
+(\mathbf{S})^{-1}_{2,n}\mathbf{S}_{21,n}&\mathbf{I}_{p_2}&\cdots&(\mathbf{S})^{-1}_{2,n}\mathbf{S}_{2k,n}\\
+\vdots&\vdots&\ddots&\vdots\\
+(\mathbf{S})^{-1}_{k,n}\mathbf{S}_{k1,n}&(\mathbf{S})^{-1}_{k,n}\mathbf{S}_{k2,n}&\cdots&\mathbf{I}_{p_k}
+\end{pmatrix}.
+\end{align*}
+De donde se concluye que $tr((\mathbf{S}_D)^{-1}\mathbf{S}_n)=tr(\mathbf{I}_{p_1})+tr(\mathbf{I}_{p_2})+\cdots+\mathbf{I}_{p_k}=p$. De esta forma, se tiene que:
+\begin{equation*}
+2\ln\lambda=n\ln|\mathbf{S}_D|-n\ln|\mathbf{S}_n|.
+\end{equation*}
+Ahora, la distribución de $2\ln\lambda$ es $\chi^2_{v_1-v_0}$, donde $v_1=p(p+1)/2$ como se ha visto anteriormente; mientras que $v_0$ corresponde al número de parámetros que se debe estimar bajo $H_0$, entonces $v_0$ corresponde a la suma del número de parámetros diferentes que contienen las matrices $\mathbf{\Sigma}_1$, $\cdots$, $\mathbf{\Sigma}_k$, esto es, $v_0=\frac{p_1(p_1+1)}{2}+\cdots+\frac{p_k(p_k+1)}{2}$. En conclusión, se rechaza la independencia entre los $k$ grupos de variables si el valor de la estadística de prueba $2\ln\lambda$ es mayor al percentil $\chi^2_{v,1-\alpha}$.\index{Regla de decisión!normal multivariante!independencia}
+\begin{Eje}
+Tomamos los datos MUNDODES de \citeasnoun{Pena}, y usaremos las variables \textbf{Tasa Nat}: Razón de natalidad por 1000 habitantes, \textbf{Tasa Mort}: Razón de mortalidad por 1000 habitantes, \textbf{Mort. Inf}: mortalidad infantil (por debajo de un año), \textbf{Esp. Hom}: Esperanza de vida en hombres y \textbf{Esp. Muj}: Esperanza de vida en mujeres, y nos centramos en los datos correspondientes a los países suramericanos que se muestran en la Tabla 6.4.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|ccccc|}\hline
+&Tasa Nat&Tasa Mort&Mort. Inf&Esp. Hom&Esp. Muj\\\hline
+1&     20.7  &     8.4  &   25.7 & 65.5 & 72.7\\
+2&      46.6    &  18.0  &  51.0&  51.0  &55.4\\
+3&      28.6    &   7.9   &  63.0 & 62.3  &67.6\\
+4&      23.4   &    5.8   &  17.1 & 68.1 & 75.1\\
+5&      27.4   &    6.1 &    40.0 & 63.4 & 69.2\\
+6&      32.9   &    7.4  &   63.0 & 63.4 & 67.6\\
+7&      28.3   &    7.3  &   56.0 & 60.4&  66.1\\
+8&      34.8  &     6.6  &   42.0 & 64.4 & 68.5\\
+9&      32.9    &   8.3  &  59.9 & 56.8 & 66.5\\
+10&     18.0   &    9.6  &   31.0 & 68.4 & 74.9\\
+12&     23.2  &     7.9  &   43.2 & 63.7&  71.8\\
+13&     17.5  &     6.4  &   35.3 & 54.2&  72.1\\
+14&     20.1  &     5.4  &   36.3 & 60.9&  62.3\\
+15&     19.3  &     10.4  &  63.8 & 56.7&  52.9\\\hline
+\end{tabular}
+\caption{\textsl{Indicadores de desarrollo de quince países.}}
+\end{table}
+
+Supongamos que se desea probar que la variable esperanza de vida es independiente de los indicadores de natalidad y mortalidad; para eso, el sistema de hipótesis apropiado es
+\begin{center}
+$H_0$:\ $\mathbf{\Sigma}=\begin{pmatrix}
+\mathbf{\Sigma}_1&\mathbf{0}\\
+\mathbf{0}&\mathbf{\Sigma}_2
+\end{pmatrix}$ \ \ \ \ vs.\ \ \ \ $H_1$:\ $\mathbf{\Sigma}$ es de otra forma.
+\end{center}
+Es decir, las cinco variables de estudio se dividen en 2 grupos, con $p_1=3$ y $p_2=2$. Los códigos de R para efectuar el procedimiento de esta prueba son los siguientes:
+\begin{verbatim}
+> Tasa.Nat<-c(20.7,46.6,28.6,23.4,27.4,32.9,28.3,34.8,32.9,18,27.5)
+> Tasa.Mort<-c(8.4,18,7.9,5.8,6.1,7.4,7.3,6.6,8.3,9.6,4.4)
+> Mort.Inf<-c(25.7,111,63,17.1,40,63,56,42,109.9,21.9,23.3)
+> Esp.H<-c(65.5,51,62.3,68.1,63.4,63.4,60.4,64.4,56.8,68.4,66.7)
+> Esp.M<-c(72.7,55.4,67.6,75.1,69.2,67.6,66.1,68.5,66.5,74.9,72.8)
+
+> X<-data.frame(cbind(Tasa.Nat,Tasa.Mort,Mort.Inf,Esp.H,Esp.M))
+> n<-dim(X)[1]
+> p1<-3
+> p2<-2
+> p<-p1+p2
+
+> S2_n<-var(X)*(n-1)/n
+> S2_d<-S2_n
+> S2_d[-(1:p1),1:p1]<-0
+> S2_d[1:p1,-(1:p1)]<-0
+> estadistica<-n*log(det(S2_d))-n*log(det(S2_n))
+> estadistica
+[1] 41.01620
+> v1<-p*(p+1)/2
+> v0<-p1*(p1+1)/2+p2*(p2+1)/2
+> qchisq(0.95,v1-v0)
+[1] 12.59159
+\end{verbatim}
+Como el valor de la estadística es mayor al percentil de la distribución, se concluye que los dos grupos de variables son dependientes.
+\end{Eje}
+
+\section{Ejercicios}
+\begin{enumerate}[6.1]
+
+\item Para los datos del Ejemplo 6.1.1
+    \begin{enumerate}[(a)]
+        \item Plantee un sistema de hipótesis para probar que el candidato B obtendrá la mitad de votos del candidato A.
+        \item Desarrolle la prueba de razón generalizada de verosimilitudes para este sistema. Debe encontrar la estadística de prueba, su distribución nula, y la fórmula para calcular el $p$ valor.
+        \item Aplique la prueba encontrada a los datos del Ejemplo 6.1.1.
+    \end{enumerate}
+
+\item Para conocer lo que harán los egresados del bachillerato en Bogotá justo después de su grado, se entrevistó a 1200 graduandos tanto en colegios públicos como en colegios privados, donde cada graduando entrevistado escogió una de las siguientes opciones
+    \begin{table}[!h]
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+       & Colegios privados & Colegios públicos &  \\\hline
+      Estudiar en una universidad & 210 & 306 &  \\
+      Estudiar una carrera técnica & 150 & 246&  \\
+      Trabajar & 90 & 198 & \\\hline
+      Total & 450 & 750 & 1200 \\
+      \hline
+    \end{tabular}
+    \end{table}
+    \begin{enumerate}[(a)]
+        \item ¿Se puede afirmar que la proyección hacia el futuro de los graduandos es la mismo en los colegios privados que públicos?
+        \item Si se cree que en los colegios públicos la mitad de los graduandos buscan trabajar, un tercio estudian una carrera técnica y el resto estudian una carrera profesional ¿los datos apoyan esta afirmación?
+        \item ¿Se puede afirmar que en los colegios privados, el porcentaje de estudiantes que estudian una carrera profesional y el porcentaje de estudiantes que estudian una carrera pública son iguales?
+    \end{enumerate}
+
+\item Verifique las expresiones (\ref{multi_MV1}) y (\ref{multi_MV2}) de los estimadores de máxima verosimilitud bajo distribuciones multinomiales en un problema de dos muestras.
+
+\item Verifique la expresión (\ref{p_i_MV}).
+
+\item Para el conjunto de datos de la Tabla 6.4,
+\begin{enumerate}[(a)]
+    \item Encuentre una estimación para el vector de medias, la matriz de varianzas y covarianzas y la matriz de correlaciones de las variables Esperanza de vida de hombre y Esperanza de vida de mujeres
+    \item Plantee un sistema para probar que las dos esperanzas de vida promedio son iguales, y decida si esta afirmación es verdadera.
+    \item Plantee un sistema para probar que las mujeres en promedio viven 5 años más que los hombres, y decida si esta afirmación es verdadera.
+    \item Plantee un sistema para probar que la esperanza de vida de los hombres es independiente de la esperanza de vida de las mujeres, y decida si esta afirmación es verdadera.
+\end{enumerate}
+
+\item Dada una muestra aleatoria $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ con distribución $N_p(\boldsymbol{\mu},\mathbf{\Sigma})$ con $\mathbf{\Sigma}$ conocida, desarrolle una regla de decisión para la hipótesis $C\boldsymbol{\mu}=\mathbf{v}$.
+
+
+\item Dada una muestra aleatoria $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ con distribución $N_4(\boldsymbol{\mu},\mathbf{\Sigma})$, escriba las siguientes hipótesis en forma de $C\boldsymbol{\mu}=\mathbf{v}$,
+\begin{enumerate}[(a)]
+    \item $H_0$: $\mu_1+\mu_3=\mu_2+\mu_4$,
+    \item $H_0$: $\mu_1=\mu_2$ y $\mu_3=\mu_4$
+    \item $H_0$: $\mu_1-\mu_2=\mu_3-\mu_4+5$
+    \item $H_0$: $\mu_1=\mu_2+\mu_3-1$ y $\mu_4=\mu_1+\mu_2$
+\end{enumerate}
+
+\item Dada una muestra aleatoria $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ con distribución $N_p(\boldsymbol{\mu},\mathbf{\Sigma})$,
+\begin{enumerate}[(a)]
+    \item Plantee un sistema de hipótesis para probar que las $p$ variables de estudio son independientes y tienen la misma varianza.
+    \item Escriba la forma de la estadística de prueba de la razón generalizada de verosimilitudes $2\ln\lambda$.
+    \item Encuentre la distribución de la estadística $2\ln\lambda$.
+\end{enumerate}
+
+
+\end{enumerate}
+
+\clearpage
+\newpage
+\phantom{xxx}
+\thispagestyle{empty} 

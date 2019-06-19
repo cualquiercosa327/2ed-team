@@ -1,0 +1,10 @@
+p.val<-function(x,y){
+nx<-length(x)
+ny<-length(y)
+if(var(x)/var(y)>=qf(0.5,nx-1,ny-1)){
+p.val<-2*(1-pf(var(x)/var(y),nx-1,ny-1))
+}
+if(var(x)/var(y)<qf(0.5,nx-1,ny-1)){
+p.val<-2*(pf(var(x)/var(y),nx-1,ny-1))}
+p.val
+}

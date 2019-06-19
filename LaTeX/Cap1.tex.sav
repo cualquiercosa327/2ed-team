@@ -1,0 +1,1849 @@
+\chapter[Estimación puntual]{\Huge {\textcolor{purpura}{\tit {Estimación puntual}}}}
+\section{Conceptos básicos}
+Muchos de los estudios estadísticos están enfocados en estudiar característica o características de una población objetiva, por ejemplo, una empresa productora puede estar interesado en conocer el gasto promedio semanal en alimentos de las familias de estrato socioeconómico bajo con el fin de diseñar una estrategia de mercadeo para promover la demanda en el mercado. Es claro que en la ciudad, hay una gran cantidad de familias de este perfil, y por consiguiente resulta prácticamente imposible saber el gasto promedio semanal de cada una de estas familias. En casos como este, la solución es inferir acerca de la característica de la población usando información obtenida de un subconjunto o una muestra de la población, y técnicas de esta rama constituyen la inferencia estadística. A continuación se presentan algunos conceptos básicos para poder estudiar la teoría de la inferencia estadística.
+\begin{Defi}
+Una muestra aleatoria de tamaño $n$ es un conjunto constituyente por $n$ variables aleatorias independientes e idénticamente distribuidas, $X_1$, $\cdots$,$X_n$.
+\end{Defi}
+
+Una muestra aleatoria es utilizada para lograr el objetivo de estimar un parámetro poblacional desconocido, y esto se logra usando una función o funciones de las variables aleatorias de la muestra, conocidas como estadísticas. La definición formal se enuncia a continuación.
+\begin{Defi}
+Una estadística es una función de variables aleatorias de una muestra aleatoria que no contiene parámetros desconocidos.
+\end{Defi}
+
+Algunas estadísticas comunes basadas en una muestra aleatoria $X_1$, $\cdots$m $X_n$ son:
+\begin{itemize}
+\item El promedio muestral o la media muestral, definido como $\bar{X}=\sum_{i=1}^nX_i/n$.
+\item Las varianzas muestrales, definida como $S^2_{n}=\sum_{i=1}^n(X_i-\bar{X})^2/n$ y $S^2_{n-1}=\sum_{i=1}^n(X_i-\bar{X})^2/(n-1)$.
+\item Mínimo y máximo de la muestra, definidos como $X_{(1)}=\min\{X_1,\cdots,X_n\}$ y $X_{(n)}=\max\{X_1,\cdots,X_n\}$. Nótese que en general la estadística $X_{(1)}$, al igual que $X_{(n)}$, no es ninguna de las variables $X_1$, $\cdots$, $X_n$. Considere un experimento aleatorio con $\Omega=\{a,b,c\}$ y se definen dos variables aleatorias $X_1$ y $X_2$ sobre $\Omega$ con $X_1(a)=X_1(b)=1$, $X_1(c)=2$ y $X_2(a)=0$, $X_2(b)=X_2(c)=2$. Si denotamos al mínimo de $X_1$ y $X_2$ como $Y$, se puede ver que $Y(a)=0$, $Y(b)=1$ y $Y(c)=2$, y claramente $Y$ no es ninguna de las variables $X_1$ y $X_2$. De esta forma si la función de densidad de donde proviene la muestra es $f_X$, la función de densidad de $X_{(1)}$ y la de $X_{(n)}$ no corresponden a $f_X$.
+    Veamos
+    \begin{align*}
+    P(X_{(1)}>x)&=P(X_1>x,\cdots,X_n>x)\\
+    &=P(X_1>x)\cdots P(X_n>x)\\
+    &=(1-F_{X_1}(x))\cdots (1-F_{X_n}(x))\\
+    &=(1-F_X(x))^n
+    \end{align*}
+    donde $F_X$ denota la función de distribución común de la muestra. Por otro lado, $P(X_{(1)}>x)=1-F_{X_{(1)}}(x)$, de esta forma, tenemos que
+    \begin{equation*}
+        F_{X_{(1)}}(x)=1-(1-F_X(x))^n,
+    \end{equation*}
+    y podemos hallar la función de densidad para encontrar la función de densidad de $X_{(1)}$ como
+    \begin{equation}
+        f_{X_{(1)}}(x)=nf_X(x)(1-F_X(x))^{n-1}.
+    \end{equation}
+    Usando lo anterior, podemos encontrar que la función de densidad de $X_{(1)}$ en una muestra con distribución exponencial de media $\theta$, ésta corresponde a
+    \begin{equation*}
+        f_{X_{(1)}}(x)=\frac{n}{\theta}e^{-nx/\theta}I_{(0,\infty)}(x).
+    \end{equation*}
+    Usando un razonamiento análogo, se puede ver que para la estadística máximo $X_{(n)}$, se tiene que
+    \begin{equation}\label{F_max}
+        F_{X_{(n)}}(x)=F_X(x)^n
+    \end{equation}
+    y
+    \begin{equation}\label{f_max}
+        f_{X_{(n)}}(x)=nf_X(x)F_X(x)^{n-1}.
+    \end{equation}
+\end{itemize}
+
+Una vez definido el concepto de estadística, podemos definir lo que es un estimador. Aunque en muchos contextos, lo que se desea estimar es el parámetro de una distribución, $\theta$, en algunos casos, lo que nos interesa es una función del parámetro $g(\theta)$. Por ejemplo, suponga que en la línea de atención al cliente de una empresa, para describir el tiempo de espera para ser atendido por un asesor se emplea una distribución $Exp(\theta)$. En este caso, $\theta$ describe el tiempo de espera promedio que es el parámetro de interés; otra cantidad que puede resultar interesante es por ejemplo, la probabilidad de que un cliente tenga que esperar menos de 5 minutos antes de ser atendida, la cual es $1-e^{-5/\theta}$, que es una función del parámetro $\theta$. Por esta razón, a continuación se presenta la definición general para un estimador de $g(\theta)$.
+
+\begin{Defi}
+Una estadística $T$ cuyos valores son utilizados para estimar una función del parámetro $g(\theta)$ es un estimador de $g(\theta)$ y las realizaciones del estimador se llaman estimaciones y se denotan por $t$.
+\end{Defi}
+Nótese que un estimador es una función de variables aleatorias, de tal manera, que cuando las variables aleatorias se cambian de valor, el estimador también. Por lo tanto, cuando la muestra aleatoria cambia, el valor que toma el estimador, es decir, la estimación también cambia. Por lo tanto, un mismo estimador puede producir diferentes estimaciones si se cambia la muestra aleatoria. Y de lo anterior, debe quedar claro que un estimador es aleatorio, mientras que una estimación es un número, puesto que es la realización numérica del estimador. En la literatura estadística, se acostumbra denotar a los estimadores con letras mayúsculas, y a las estimaciones, minúsculas. De esta forma, las realizaciones de $\bar{X}$ se denotan como $\bar{x}$, las de $S^2_n$ como $s^2_n$ y análogamente para cualquier otro estimador.
+
+Pongamos un ejemplo, suponga que se desea conocer la cantidad promedio de dinero que se gasta semanalmente una familia de estrato 2 en la compra de arroz. Un estadístico A seleccionó una muestra de 20 hogares, y utilizó como estimador el promedio muestral y tuvo como resultado $\bar{x}=5300$ pesos; ahora, otro estadístico B seleccionó una muestra de 30 personas, y utilizó el mismo estimador, es decir, $\bar{X}$ y tuvo como resultado $\bar{x}=4700$. En este caso, los dos usaron el mismo estimador, sin embargo, las dos estimaciones que obtuvieron no son iguales.
+
+\section{Estimaciones puntuales}
+El tópico de estimación puntual consiste en encontrar estimadores para estimar un cierto parámetro $\theta$ o una función de este $g(\theta)$. Dada la definición de estimador, es claro que cualquier estadística puede ser un estimador, y por consiguiente cada persona puede usar cualquier estadística para estimar según su antojo.
+
+Toma el ejemplo de estimar el gasto promedio semanal en alimentos de familias de estrato socioeconómico bajo, si la muestra aleatoria es de tamaño 10, y los valores numéricos (en miles de pesos) son: 50, 62, 53, 65, 70, 64, 60, 58, 62 y 65, una forma razonable de estimar es tomar el promedio muestral $\bar{X}$ como estimador del promedio poblacional, y arroja como resultado $\bar{x}=60900$ pesos, y parece ser una estimación aceptable; pero este no es la única forma de estimar, podemos definir otras estadísticas, por ejemplo: $\sum_{i=1}^nX_i$, $(X_{(N)}+X_{(1)})/2$, u otras estadísticas no tan lógicos como $\exp\{X_1+\cdots+X_n\}$, $\sum_{i=1}^nX_i^2$ o cualquier otra estadística que se nos viene a la mente. Sin embargo, en la literatura estadística existen, por lo menos, dos métodos estándares que nos ayudan a construir estimadores: el método de máxima verosimilitud y el método de momentos que se estudiará a continuación. Los estudiaremos a continuación.
+
+\subsection{Método de máxima verosimilitud}
+Suponga que se desea estimar $g(\theta)$ basada en una muestra observada $x_1$, $\cdots$, $x_n$. La idea del método de máxima verosimilitud se basa en encontrar el valor de $g(\theta)$ que maximiza la probabilidad de observar la muestra $x_1$, $\cdots$, $x_n$. Esto es, el valor de $g(\theta)$ que hace más creíble a la muestra observada, y de allí viene el nombre de máxima verosimilitud.
+
+Introducimos este método con un ejemplo muy sencillo, suponga que la alcaldía local está interesado en conocer el número promedio de homicidios mensuales ocurridos en la localidad de Usaquén de Bogotá. Dadas las características de esta variable de estudio, se puede pensar que ésta sigue una distribución Poisson con el parámetro desconocido $\theta$. Como $\theta$ es la esperanza de la distribución Poisson, entonces lo que interesa a la alcaldía es conocer el valor de $\theta$. Además, suponga que durante los últimos tres meses, el número de homicidio fue:  11, 9 y 7 respectivamente.
+
+En la anterior situación, $\theta$ es el parámetro del modelo probabilístico que rige en la población, donde solo están disponibles las realizaciones de tres variables, que al suponer que el tiempo no es un factor importante, constituyen una muestra aleatoria de tamaño 3, y los denotamos por $X_1$, $X_2$, $X_3$. Ahora podemos hacer la siguiente pregunta: ¿cuál es la probabilidad de que la muestra aleatoria tenga como realización los valores 11, 9 y 7? Es decir, ¿cuál es la probabilidad de observar lo que realmente sucedió? Es claro que esta probabilidad depende del parámetro desconocido $\theta$. Tenemos
+
+Si $\theta=6$, entonces
+\begin{equation*}
+P(X_1=11,X_2=9,X_3=7)=\frac{e^{-6}6^{11}}{11!}\frac{e^{-6}6^9}{9!}\frac{e^{-6}6^7}{7!}=2.1\times10^{-4}.
+\end{equation*}
+
+Si $\theta=8$, entonces
+\begin{equation*}
+P(X_1=11,X_2=9,X_3=7)=\frac{e^{-8}8^{11}}{11!}\frac{e^{-8}8^9}{9!}\frac{e^{-8}8^7}{7!}=1.3\times10^{-3}.
+\end{equation*}
+
+Si calculamos esta misma probabilidad para otros valores de $\theta$, podemos obtener la Tabla 2.1, donde se observa que la probabilidad es más grande cuando $\theta=9$.\footnote{El parámetro $\theta$ puede tomar cualquier valor positivo, no necesariamente entero, aquí se consideró solo algunos valores para $\theta$ para introducir el método de máxima verosimilitud, más no es un procedimiento riguroso.} Ahora, como ya se observó los valores 11, 9 y 7, es natural pensar que la probabilidad de asociada a estos valores fuera grande, y esto nos conduce a que el valor más plausible para $\theta$ debe ser 9.
+
+\begin{table}
+\begin{tabular}{ccccccc}\hline
+$\theta$&5&6&7&8&9&10\\\hline
+Pr&$3.1\times10^{-5}$&$2.1\times10^{-4}$&$6.8\times10^{-4}$&$1.3\times10^{-3}$&$1.5\times10^{-3}$&$1.3\times10^{-3}$\\\hline
+\end{tabular}
+\caption{Probabilidad de observar una muestra 11,9,7 provenientes de una distribución $P(\theta)$ para diferentes valores de $\theta$.}
+\end{table}
+
+El anterior razonamiento induce el método de máxima verosimilitud, para estudiar este método, primero se da la siguiente definición.
+\begin{Defi}
+Dadas $n$ variables aleatorias $X_1$, $\cdots$, $X_n$, la función de verosimilitud se define como la función de densidad conjunta de las $n$ variables, y se denota por $L(x_1,\cdots,x_n,\theta)$.
+\end{Defi}
+
+Aunque en este texto, se trabaja solamente muestras aleatorias, la definición de la función de verosimilitud presentada anteriormente es válida en cualquier conjunto de variables aleatorias. En particular, cuando las $n$ variables conforman una muestra aleatoria, la función de verosimilitud queda expresado como
+\begin{equation*}
+L(x_1,\cdots,x_n,\theta)=f(x_1,\theta)\cdots f(x_n,\theta)=\prod_{i=1}^nf(x_i,\theta)
+\end{equation*}
+
+donde $f$ es la función de densidad común para las $n$ variables. También nótese que cuando solo se dispone de una variable aleatoria $X$, la función de verosimilitud es simplemente la función de densidad de $X$, esto es, $f_X(x)$.
+
+Dada la definición de la función de verosimilitud, el método de máxima verosimilitud para un parámetro $\theta$ consiste en encontrar el valor de $\theta$ que maximice esta función, lo denotaremos por $\hat{\theta}_{MV}$. Cuando la función de verosimilitud es una función continua de $\theta$ y además derivable, entonces podemos usar la primera y la segunda derivada para encontrar el estimador de máxima verosimilitud. Lo ilustramos con el siguiente ejemplo:
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución $P(\theta)$, el estimador de máxima verosimilitud de $\theta$ es el promedio muestral $\overline{X}$. Para verificar esta afirmación, se calcula primero la función de verosimilitud:
+\begin{align*}
+L(x_1,\cdots,x_n,\theta)&=f(x_1,\theta)\cdots f(x_n,\theta)\\
+                        &=\frac{e^{-\theta}\theta^{x_1}}{x_1!}I_{\{0,1,\cdots\}}(x_1)\cdots\frac{e^{-\theta}\theta^{x_n}}{x_1!}I_{\{0,1,\cdots\}}(x_n)\\
+                        &=\frac{e^{-n\theta}\theta^{\sum_{i=1}^nx_i}}{\prod_{i=1}^nx_i!}\prod_{i=1}^nI_{\{0,1,\cdots\}}(x_i)
+\end{align*}
+Obsérvese que encontrar el valor de $\theta$ para maximizar la anterior expresión de $L(x_1,\cdots,x_n,\theta)$ es equivalente a maximizar $e^{-n\theta}\theta^{\sum_{i=1}^nx_i}$, pues ésta es la parte que depende de $\theta$. Ahora, encontrar el valor que maximiza una función es equivalente a encontrar el valor que maximiza el logaritmo natural de esta función, pues la función logarítmico es estrictamente creciente. Por lo tanto, basta encontrar el valor de $\theta$ que maximiza
+\begin{equation*}
+L'(\theta)=\ln(e^{-n\theta}\theta^{\sum_{i=1}^nx_i})=-n\theta+\sum_{i=1}^nx_i\ln\theta
+\end{equation*}
+
+En la distribución $P(\theta)$, el espacio paramétrico es $(0,\infty)$, y la función $L'(\theta)$ es función derivable, entonces la forma de hallar el máximo de la función será resolver la ecuación $\frac{\partial L'(\theta)}{\partial\theta}=0$. En este caso, la solución es $\theta=\sum x_i/n$. Ahora se calcula la segunda derivada de $L'(\theta)$ evaluado en la anterior solución, tenemos que
+\begin{equation*}
+\left.\frac{\partial^2L'(\theta)}{\partial\theta^2}\right|_{\theta=\sum x_i/n}=\left.\frac{-\sum x_i}{\theta^2}\right|_{\theta=\sum x_i/n}= \frac{-n^2}{\sum x_i}
+\end{equation*}
+
+las observaciones $x_i$ provienen de distribuciones tipo Poisson, lo cual garantiza que toman valores no negativos, de donde concluimos que la anterior expresión es negativo, lo cual verifica que la solución hallada $\theta=\sum x_i/n$ es efectivamente el máximo.
+
+En conclusión, el estimador de máxima verosimilitud del parámetro $\theta$ de una distribución Poisson es el promedio muestral $\bar{X}$, y lo anterior también concuerda con el razonamiento, pues $\theta$ es el valor esperado o el promedio poblacional, y es lógico estimar el promedio poblacional con el promedio muestral.
+\end{Eje}
+
+Veamos una aplicación del anterior estimador.
+
+\begin{Eje}
+Suponga que una organización internacional de derechos humanos necesita conocer el número de muertes violentos que ocurren mensualmente en una determinada ciudad, y para eso se seleccionó 15 de los 63 barrios donde los resultados son 1, 1, 5, 5, 2, 3, 3, 6, 4, 3, 2, 3, 2, 3 y 4. Si denotamos el número de muertes violentos mensuales en un barrio de la ciudad por $X$, entonces $X$ toma valor en $\{0,1,\cdots\}$, por consiguiente, una distribución apropiada para $X$ puede ser la distribución $Poisson(\theta)$. Y por el anterior ejemplo, tenemos que la estimación de máxima verosimilitud para $\theta$ es el promedio muestral, esto es, $\hat{\theta}_{MV}=\bar{x}= 3.13$.
+
+Aparte de estimar el parámetro $\theta$ que puede ser interpretado como el número promedio de muertes violentos mensuales que ocurren en un barrio de la ciudad, podemos estimar otras cantidades que permiten a la organización tener una mejor idea acerca de la ciudad. Por ejemplo, ¿cuál es la probabilidad de que en un barrio no ocurra ninguna muerte violenta durante un mes? Usando propiedades de la distribución Poisson, tenemos que esta probabilidad es igual a $P(X=0)=e^{-\theta}$. Dado que ya se obtuvo una estimación para $\theta$, podemos utilizarlo para estimar $e^{-\theta}$ como $e^{-3.1}=0.045$. Más aún, podemos afirmar que esta estimación es de máxima verosimilitud (la teoría se verá más adelante).
+
+No solo podemos hacer inferencia al nivel de los barrios sino, también al nivel de la ciudad. Dado que ésta está compuesta por 63 barrios, entonces el número de muertes violentes mensuales en la ciudad es la suma de los 63 barrios. Si denotamos con $Y_i$ el número de muertes violentos mensuales en el $i$-ésimo barrio, entonces $Y=\sum_{i=1}^{63}Y_i$ denota el número de muertes violentos en la ciudad. Y usando el Resultado 1.1.9, podemos ver que $Y\sim P(63\theta)$, por lo tanto, el número promedio mensual de muertes violentos es $63\theta$, y una estimación de ésta será $63\times3.13\approx197$. Y podemos usar esta estimación para estimar cantidades como probabilidad de que en un mes en la ciudad ocurra menos de 100 muertes violentas u otras probabilidades de interés.
+\end{Eje}
+
+En muestras provenientes de distribuciones como $Exp(\theta)$ o $Ber(\theta)$, el procedimiento para encontrar el estimador $\hat{\theta}_{MV}$ es similar al ejemplo anterior y se puede ver fácilmente que $\hat{\theta}_{MV}=\bar{X}$, de nuevo se encuentra que el estimador de máxima verosimilitud del promedio poblacional es el promedio muestral en estas dos distribuciones.
+
+\begin{Eje}
+Suponga que una empresa de EPS para mascotas que cuenta con sedes en diferentes ciudades en Colombia tiene vendedores que hace visita a clientes potenciales, estos son, los hogares que tienen mascota, para ofrecer los productos. Es claro que para fijar metas de venta, el gerente de la empresa debe conocer el rendimiento de los vendedores y así fijar un número de visitas que éstos deben realizar con el fin de lograr la meta de venta. En este caso, el gerente necesita conocer cuál es la probabilidad de que un vendedor logra obtener una venta exitosa en una visita.
+
+Para economizar los recursos, el gerente hace seguimiento a 18 visitas, y en cada visita denota el éxito con 1 y fracaso con 0, de esta forma la muestra observada está constituida por 18 números de la forma 0 y 1, y por el contexto del problema, podemos identificar la distribución Bernoulli, y así estimar la probabilidad de éxito en cada ensayo usando $\bar{X}$, que en este caso corresponde al número de éxitos dividido por el número total de visitas. Así que si en las 18 visitas registradas el número de ventas exitosas es 3, la probabilidad estimada de que un vendedor de esta empresa logre una venta exitosa en una visita será $\hat{p}_{MV}=3/18\approx0.167$.
+
+Ahora, suponga que un vendedor en un día promedio realiza 5 visitas, y el gerente está interesado en conocer qué tan probable es que en las 5 visitas el vendedor logre por lo menos una venta exitosa. Si denotamos el número de ventas exitosas en las 5 visitas por $X$, podemos calcular esta probabilidad como
+\begin{align*}
+P(X>1)=1-P(X=0)=1-(1-p)^5.
+\end{align*}
+Para encontrar una estimación de esta probabilidad, podemos pensar en usar la estimación de máxima verosimilitud de $p$ encontrada anteriormente, de esta forma, tenemos que una estimación de $P(X_1)$ será $1-(1-0.167)^5=0.598$. Análogamente, también podemos estimar la probabilidad de vender un seguro en las cinco visitas. En este caso, esta probabilidad está dada por $5p(1-p)^4$, que puede ser estimada como $5*0.167*(1-0.167)^4=0.402$.
+
+La pregunta interesante es ¿se puede afirmar que estas dos últimas estimaciones siguen siendo de máxima verosimilitud? Esta pregunta la responderemos más adelante.
+\end{Eje}
+
+\begin{Eje}
+En muchas aerolínea, se puede comprar tiquetes por medio de llamadas telefónicas atendidas por operadores de la aerolínea. Si un cliente debe esperar mucho tiempo en la línea para ser atendida, es más probable que el cliente desiste, y la aerolínea perdería un cliente potencial. Por lo tanto la aerolínea desea conocer el rendimiento de los operadores que atienden estas llamadas.
+Para eso, se observa aleatoriamente 20 llamadas y se registró el tiempo transcurrido antes de que fueron atendidas por un operador, estos tiempos en minutos son 0.13, 0.06, 0.50, 0.41, 1.44, 0.60, 0.22, 1.08, 0.78, 0.92, 2.73, 0.83, 0.19, 0.21, 1.75, 0.79, 0.02, 0.05, 2.30 y 1.03. Dado el contexto, se desea estimar el tiempo promedio que debe estar un cliente antes de ser atendido, es decir, el promedio poblacional. Para eso, necesitamos, en primer lugar, suponer una distribución adecuada para los datos. Los datos a la mano son del tipo continuo, además solo toma valores positivos, de donde podemos proponer una distribución exponencial, gamma o una distribución normal \footnote{Aunque una distribución normal toma valores en todos los números reales, pero se concentra alrededor de la media, por lo tanto, una muestra de valores positivos también pueden provenir de la distribución normal.}.
+
+Una forma de verificar la distribución de los datos es observar el histograma, el cual está dada en la Figura 2.1. donde podemos ver que la forma de las barras se asemejan a la función de densidad de una distribución exponencial. Otra forma de ver la distribución de los datos es usando las gráficas de QQ plot, y los presentamos en la Figura 2.2 para la distribución exponencial y la distribución normal \footnote{La inversa de la función de distribución de la distribución Gamma es difícil de hallar y por consiguiente no es posible encontrar el QQ plot para verificar que un conjunto de datos provienen de una distribución Gamma.}. Podemos ver que una vez más, la distribución exponencial parece ser apropiada para los datos. Entonces el problema se convierte en estimar el parámetro $\theta$ de una distribución $Exp(\theta)$, puesto que la esperanza de la distribución es $\theta$. Y como se observó anteriormente, $\hat{\theta}_{MV}=\bar{X}$, podemos tener que la estimación de máxima verosimilitud de $\theta$ es $\bar{x}=0.8$ minuto.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Hist_ejemplo224.eps}
+\caption{Histograma de los datos del Ejemplo 2.2.4.}
+\end{figure}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Ejemplo2.2.4.eps}
+\caption{QQ plot para verificar la distribución de los datos del Ejemplo 2.2.4.}
+\end{figure}
+
+Ahora suponga que los directivos de la aerolínea ha observado que si un cliente tiene que esperar más de 2 minutos, con toda seguridad cuelga la llamada; el 30\% de los clientes que tienen que esperar entre 1 minuto y medio y 2 minutos cuelgan la llamada y ningún cliente cuelga antes del minuto y medio. Entonces podemos estimar el porcentaje de clientes que cuelgan antes de ser atendidos, esto es, clientes potenciales que la aerolínea pierde. Para eso, debe estimar el porcentaje de llamadas que necesitan más de 2 minutos para ser atendidas, ésta se puede expresar como $P(X>2)$ donde $X$ denota el tiempo de espera de una llamada y $X\sim Exp(\theta)$. Entonces debe estimar $P(X>2)=e^{-2/\theta}$, el cual es una función de $\theta$, y como ya se ha encontrado una estimación de $\theta$ dada por $\hat{\theta}_{MV}=0.8$, podemos simplemente estimar $P(X>2)$ como $e^{-2/0.8}=0.08$, esto es, se estima que el 8\% de llamadas necesitan más de 2 minutos para ser atendidas, y por consiguiente estos 8\% de clientes cuelgan antes de ser atendidos. Ahora, para estimar el porcentaje de llamadas que necesitan entre 1 minuto y medio y 2 minutos para ser atendidas como $e^{-1.5/0.8}-e^{-2/0.8}=0.07$, es decir 7\% de llamadas requieren entre 1.5 y 2 minutos para ser atendidas, y por consiguiente $7\%\times 0.3=0.021=2.1\%$ de clientes cuelgan la llamada antes de ser atendida, y sumando los 8\% hallado anteriormente, podemos afirmar que se estima que la aerolínea pierde el 10.1\% de los clientes potenciales por no ser atendidos oportunamente. Más adelante, se verá que esta estimación sigue siendo de máxima verosimilitud.
+\end{Eje}
+
+Las distribuciones consideradas anteriormente tienen solo un parámetro desconocido, para distribuciones que tienen dos parámetros desconocidos, el procedimiento es levemente distinto como lo ilustra el siguiente ejemplo con la distribución normal.
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución $N(\mu,\sigma^2)$, el estimador de máxima verosimilitud del vector de parámetros $\btheta=(\mu,\sigma^2)'$ es $(\bar{X},S_n^2)'$. Tenemos las siguientes expresiones para la función de verosimilitud:
+\begin{align*}
+L(\btheta,x_1,\cdots,x_n)&=\frac{1}{\sqrt{\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x_1-\mu)^2\right\}\cdots\frac{1}{\sqrt{\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x_n-\mu)^2\right\}\\
+                         &=(\pi\sigma^2)^{-n/2}\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\mu)^2\right\}
+\end{align*}
+Para facilitar la maximización de $L$, se calcula $\ln(L)$:
+\begin{equation*}
+\ln(L)=-\frac{n}{2}\ln(\pi)-\frac{n}{2}\ln(\sigma^2)-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\mu)^2.
+\end{equation*}
+
+Ahora para obtener valores de $\mu$ y $\sigma^2$ que maximicen a $\ln(L)$, se procede a resolver las dos siguientes ecuaciones:
+
+\begin{equation}\label{norm1}
+\frac{\partial\ln(L)}{\partial\mu}=0\end{equation} y
+\begin{equation}\label{norm2}\frac{\partial\ln(L)}{\partial\sigma^2}=0\end{equation}
+Resolviendo la ecuación (\ref{norm1}), se obtiene la solución de $\mu=\bar{x}$ y resolviendo (\ref{norm2}), se obtiene la solución de $\sigma^2=\sum(x_i-\mu)^2/n$, donde al reemplazar $\mu=\bar{x}$, se tiene que $\sigma^2=\sum(x_i-\bar{x})^2/n=s^2_n$.
+
+Ahora debemos verificar que las anteriores soluciones halladas efectivamente maximicen la función $\ln(L)$, dado que esta función tiene dos argumentos, es necesario hacer uso de la matriz Hessiana. La matriz se calcula de la siguiente manera:
+\begin{align*}
+H(\ln(L))&=\begin{bmatrix}
+\dfrac{\partial^2\ln(L)}{\partial\mu^2}&\dfrac{\partial^2\ln(L)}{\partial\mu\partial\sigma^2}\\
+\dfrac{\partial^2\ln(L)}{\partial\sigma^2\partial\mu}&\dfrac{\partial^2\ln(L)}{\partial(\sigma^2)^2}
+\end{bmatrix}\\
+&=\begin{bmatrix}
+\dfrac{-n}{\sigma^2}&\dfrac{n\mu-\sum x_i}{\sigma^4}\\
+\dfrac{n\mu-\sum x_i}{\sigma^4}&\dfrac{n}{2\sigma^4}-\dfrac{\sum(x_i-\mu)^2}{\sigma^6}
+\end{bmatrix}.
+\end{align*}
+Ahora reemplazamos las soluciones halladas $\mu=\bar{x}$ y $\sigma^2=s^2_n$, se tiene que la matriz Hessiana es:
+\begin{equation*}
+H=\begin{bmatrix}
+\dfrac{-n^2}{\sum(x_i-\bar{x})^2}&0\\
+0&\dfrac{-n^3}{2(\sum(x_i-\bar{x})^2)^2}
+\end{bmatrix}.
+\end{equation*}
+
+Obsérvese que la matriz Hessiana es una matriz diagonal con valores negativas en la diagonal, lo cual demuestra que es definida negativa, con eso se concluye que las soluciones halladas efectivamente maximizan la función $\ln(L)$. En conclusión los estimadores de máxima verosimilitud del vector de parámetros $\btheta=(\mu,\sigma^2)'$ es $(\bar{X},S_n^2)'$.
+\end{Eje}
+
+A continuación, se presenta una aplicación del anterior ejemplo.
+
+\begin{Eje}
+Suponga que una fábrica de vidrios tiene una línea de producción de láminas de vidrio templado de grosor de 3 cm, para controlar la calidad de los vidrios producidos por esta línea, se selecciona 12 láminas para inspección. Estas 12 láminas midieron (en cm)  3.56, 3.36, 2.99, 2.71, 3.31, 3.68, 2.78, 2.95, 2.82, 3.45, 3.42 y 3.15. Estos datos son, aparentemente continuos, y podemos pensar que una distribución normal puede ser apropiado para los datos. Podemos, en primer lugar, observar la forma del histograma de estos datos presentado la Figura 2.3, donde aparentemente no se observa una forma similar a la función de densidad de una distribución normal.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{histograma_vidrios.eps}
+\caption{Histograma de los datos del Ejemplo 2.2.5.}
+\end{figure}
+
+Sin embargo, como el número de datos es relativamente pequeño, el histograma puede no reflejar la distribución verdadera de los datos, y por esta razón, usamos la gráfica de QQ plot para ver qué tan adecuado es la distribución normal. El comando en \verb"R" está dado a continuación
+
+\begin{verbatim}
+    > vidrio<-c(3.56, 3.36, 2.99, 2.71, 3.31,3.68, 2.78, 2.95,
+    2.82, 3.45, 3.42 ,3.15)
+    > qqnorm(vidrio,main="QQ plot para distribución normal",xlab=
+    "Cuantiles teoricos",ylab="Cuantiles muestrales")
+    > qqline(vidrio)
+\end{verbatim}
+
+
+Esta gráfica se muestra en la Figura 2.4 donde podemos ver que una distribución normal parece ser apropiada. Por lo tanto, usando el anterior ejemplo, podemos estimar el grosor promedio de las láminas de esta línea como $\hat{\mu}_{MV}=\bar{x}=3.18\ cm$ y la varianza estimada en este caso es $\hat{\sigma}^2_{MV}=s^2_n=0.097\ cm^2$. Sin embargo, es difícil dar interpretación práctica a la varianza puesto que la unidad de ésta es la unidad de los datos al cuadrado, por esta razón en la práctica se usa con más frencuencia $\sigma$ como la medida de dispersión, en este caso, tenemos que $\hat{\sigma}=\sqrt{0.097\ cm^2}=0.31\ cm$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{qq_normal_ejemplo.eps}
+\caption{QQ plot para verificar la distribución normal de los datos del Ejemplo 2.2.5.}
+\end{figure}
+
+Otra cantidad interesante que se quiere conocer es $\sigma/\mu$, que puede ser visto como una medida de dispersión poblacional que está libre de las unidades de medición y por consiguiente es útil en la práctica para comparar dos poblaciones. Esta cantidad se puede ver como una función del vector de parámetros $(\mu,\sigma^2)$, y por consiguiente, puede ser estimada por $\dfrac{\sqrt{S_n^2}}{\bar{X}}$ que en este ejemplo da como resultado 9.7\%.
+
+Ahora, suponga que las láminas de grosor entre 2.8 cm y 3.2 cm son vendidos al mercado, las de grosor menor de 2.8 cm son desechados y las de grosor mayor de 3.2 son usados como materia prima para futuras producciones. Usando las estimaciones de $\mu$ y $\sigma$ podemos estimar las proporciones de láminas que serán vendidas, desechadas y usadas como materia prima. Si denotamos el grosor de una lámina como $X$, tenemos que la proporciones de láminas que serán vendidas es igual a
+\begin{align*}
+P(2.8<X<3.2)&=P(\dfrac{2.8-\mu}{\sigma}<\dfrac{X-3.18}{0.31}<\dfrac{3.2-\mu}{\sigma})\\
+&=\Phi\left(\dfrac{3.2-\mu}{\sigma}\right)-\Phi\left(\dfrac{2.8-\mu}{\sigma}\right).
+\end{align*}
+Usando $\hat{\mu}_{MV}=3.18$ y $\hat{\sigma}=0.31$, podemos estimar la proporción de láminas que serán vendidas como $\Phi\left(\dfrac{3.2-3.18}{0.31}\right)-\Phi\left(\dfrac{2.8-3.18}{0.31}\right)$ el cual es igual a 0.42, es decir, se estima que solo el 42\% de las láminas producidas serán vendidas.
+
+Análogamente, se puede encontrar que el 11\% serán desechadas y el 47\% serán usadas como materia prima. Es claro que según los datos muestrales y las estimaciones obtenidas de estos, el uso de esta línea de producción no parece ser muy rentable, puesto que menos que la mitad de las láminas producidas pueden ser vendidas. Para aumentar la proporción de láminas que son aptos para la venta, la fábrica debe mejor la línea de producción con la ayuda de los expertos para
+\begin{itemize}
+    \item disminuir el grosor promedio de las láminas, puesto que en la muestra se observó un promedio de 3.18 cm, y se podrá pensar que el grosor real de las láminas es superior al valor especificado de 3 cm. Suponga que después de una mejora de la línea de producción, el promedio muestral fuera $\bar{x}=3.05$ y $\hat{\sigma}$ se mantiene igual, se puede ver que en este caso, la proporción estimada de láminas para venta se aumentará a 48\%.
+    \item estabilizar las láminas en término del grosor, de esta forma, la estimación de $\sigma$ será más pequeña y la proporción de láminas para venta se incrementará. Suponga que después de una mejora de la línea de producción, $\hat{\sigma}=0.2\ cm$ y $\hat{\mu}$ se mantiene igual, se puede ver que la proporción estimada de láminas para venta se aumentará a 51\%.
+\end{itemize}
+Finalmente, si se puede lograr que $\mu$ sea más cercano a 3 cm y al mismo disminuir el valor de $\sigma$, la proporción de láminas para venta será aún mayor, y la línea de producción será más rentable.
+\end{Eje}
+
+En el anterior ejemplo, el estimador de máxima verosimilitud de $\mu$ es $\bar{X}$, y esto es válido aún cuando la varianza poblacional $\sigma^2$ es conocida; por otro lado, cuando $\mu$ es conocido, el estimador de máxima verosimilitud de $\sigma^2$ ya no es $S^2_n$ sino $\sum_{i=1}^n(X_i-\mu)^2/n$, esto es, se mide la dispersión tomando las diferencia entre cada variable con la media poblacional $\mu$ (Ejercicio XXXXXX).
+
+El problema de maximizar una función puede, en algunos casos, resultar complicado, y peor aun, puede no encontrar solución explícita, un ejemplo de estos es la distribución gamma cuando ambos parámetros son desconocidos. Para estos casos, es necesario usar métodos numéricos para encontrar el máximo de la función de verosimilitud.
+
+Ahora, para las distribuciones con dos parámetros como normal o gamma, cuando uno de los dos parámetros es fijo conocido, entonces solo habrá necesidad de estimar el otro parámetro y el procedimiento es similar al presentado anteriormente, y lo ilustramos en el siguiente ejemplo.
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución Gamma con parámetro de forma $k$ conocido y parámetro de escala $\theta$ desconocido, se tiene que el estimador de máxima verosimilitud de $\theta$ es $\dfrac{\sum_{i=1}^nX_i}{nk}$. Para la verificación, primero calculamos $\ln(L)$ que es la función que se necesita maximizar:
+\begin{align*}
+\ln(L)&=\ln\left(\dfrac{\prod x_i^{k-1}e^{-\sum x_i/\theta}}{\theta^{nk}\Gamma(k)^n}\right)\\
+      &=(k-1)\sum\ln(x_i)-\sum x_i/\theta-nk\ln\theta-n\ln(\Gamma(k))\\
+\end{align*}
+cuya primera derivada parcial con respecto a $\theta$ está dada por:
+\begin{equation*}
+\frac{\partial\ln(L)}{\partial\theta}=\frac{\sum x_i}{\theta^2}-\frac{nk}{\theta},
+\end{equation*}
+
+el cual al igualar a 0, se obtiene la solución de $\theta=\dfrac{\sum x_i}{nk}$. Ahora, al calcular la segunda derivada de $\ln(L)$ y evaluar en la anterior solución, se tiene que
+\begin{equation*}
+\frac{\partial^2\ln(L)}{\partial\theta^2}=\frac{-nk}{\theta^2}<0,
+\end{equation*}
+
+con lo cual se concluye que el estimador de máxima verosimilitud de $\theta$ es $\dfrac{\sum X_i}{nk}$.
+\end{Eje}
+
+Teniendo en cuenta que la distribución exponencial es un caso particular de la distribución Gamma cuando $k=1$, entonces del anterior ejemplo se puede concluir que el estimador de máxima verosimilitud del parámetro $\theta$ de una distribución exponencial es $\bar{X}=\dfrac{\sum X_i}{n}$, estimador que también se puede obtener maximizando directamente la función de verosimilitud.
+
+Cuando la función de verosimilitud no es función continua o derivable del parámetro $\theta$, el problema de maximizar no se puede llevar a cabo haciendo el uso de la derivada de la manera habitual, los dos siguientes ejemplos ilustran tales situaciones.
+\begin{Eje}
+En situaciones donde el característica de interés es el tamaño de una población $N$, puede ser por ejemplo, la cantidad de cierto tipo de animales en un determinado lugar (puede ser un bosque). Una forma de determinar $N$ es en primer lugar identificar $R$ de los $N$ individuos ($R<N$), en el caso de los animales, puede ser conveniente capturar $R$ de ellos y marcarlos de alguna forma. Después de eso, se espera que los $R$ individuos se mezclen bien con los otros $N-R$, y se seleccionan aleatoriamente $n$ individuos ($n<N$), y se cuenta cuántos de los $R$ individuos fueron seleccionados. Para ver cómo este procedimiento nos puede ayudar a encontrar el valor de $N$, primero identifiquemos el contexto en término de las distribuciones probabilísticas.
+
+Sea $X$ la variable aleatoria que denota el número de los $R$ individuos que fueron seleccionados en la muestra de tamaño $n$, entonces podemos ver que $X\sim Hg(n,R,N)$ donde $n$ y $R$ son conocidos, y se quiere encontrar el estimador de máxima verosimilitud de $N$. En este caso la función de verosimilitud es la misma función de densidad de la variable $X$, esto es:
+\begin{equation*}
+L(N,x)=\frac{\binom{R}{x}\binom{N-R}{n-x}}{\binom{N}{n}}I_{\{0,1,\cdots,n\}}(x).
+\end{equation*}
+
+En esta función, el argumento $N$ toma valores discretos y no se puede derivar $L$ con respecto a $N$ para hallar el máximo. La forma de encontrar el valor de $N$ que maximiza a $L$ es encontrar para qué valores de $N$, la función $L$ es creciente y para qué valores de $N$ es decreciente. Para lograr este fin, se despeja el valor de $N$ en $L(N)/L(N-1)>1$, como sigue:
+\begin{equation*}
+\begin{gathered}
+\dfrac{L(N)}{L(N-1)}=\dfrac{\binom{N-R}{n-x}\binom{N-1}{n}}{\binom{N}{n}\binom{N-R-1}{n-x}}>1\\
+\dfrac{(N-R)!(N-1)!(N-n)!(N-R-1-n+x)!}{(N-R-1)!N!(N-n-1)!(N-R-n+x)!}>1\\
+(N-R)(N-n)>N(N-R-n+x)\\
+Rn/x>N.\\
+\end{gathered}
+\end{equation*}
+Análogamente, se obtiene que $L(N)/L(N-1)<1$ cuando $N>Rn/x$. Lo anterior indica que la función $L$ es creciente para valores de $N$ menores que $Rn/x$ y decreciente para valores mayores que $Rn/x$. Pero no podemos afirmar que $Rn/X$ es el estimador de máxima verosimilitud para $L$ puesto que esta cociente puede no ser entero, y en este caso la estimación no ubicaría dentro del espacio paramétrico de $N$. Lo que sí se puede afirmar es que el estimador de máxima verosimilitud de $N$ es $[Rn/X]$ o $[Rn/X]+1$ donde $[\cdot]$ es la función parte entera. Shao (2003) afirma que $\hat{N}_{MV}=[Rn/X]$. Esto es verdadero puesto que hemos encontrado anteriormente que $L(N)<L(N-1)$ si $N>Rn/x$, entonces podemos concluir que como $[Rn/x]+1>Rn/x$, entonces
+\begin{align*}
+L([Rn/x]+1)<L([Rn/x]).
+\end{align*}
+
+Y podemos afirmar que el estimador de máxima verosimilitud de $N$ es $[Rn/X]$.
+
+Otra aplicación interesante de la distribución hipergeométrica es el caso donde se conoce el tamaño poblacional $N$, y se desea estimar el número de individuos que tienen cierta característica basada en una muestra de tamaño $n$, por ejemplo, se conoce que en un estanque hay $N$ peces, y se sabe que una parte de ellas están infectados por un tipo de parásito, y quiere saber cuántos peces tienen dicho parásito basado en la observación de una muestra de tamaño $n$. En estos casos, estamos interesados en estimar $R$ con $N$ y $n$ conocidos. Un razonamiento análogo al caso de estimar $N$ conduce al siguiente estimador de $R$, (para más detalles, consulte \citeasnoun{Zhang1})
+\begin{equation*}
+\hat{R}_{MV}=\begin{cases}
+\dfrac{x(N+1)}{n}-1\ \text{ó}\ \dfrac{x(N+1)}{n}\ \ \ \ \ \ \text{si $\dfrac{x(N+1)}{n}$ es entero}\\
+[\dfrac{x(N+1)}{n}]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \text{si $\dfrac{x(N+1)}{n}$ no es entero}
+\end{cases}
+\end{equation*}
+
+Retomando el problema de estimar el tamaño de un subgrupo considerado en el Capítulo 1, donde se supone que en una ciudad existen 2396 empresas que pueden clasificar en empresas grandes, medianas o pequeñas según el número de empleados. Si en una muestra aleatoria simple sin reemplazos de tamaño 200 se encuentran 28 empresas grandes, para tener una estimación del número total de empresas grandes en la ciudad, calculamos en primer lugar $28*(2396+1)/200=335.58$, este no es entero, de donde concluimos que la estimación de máxima verosimilitud del número de empresas grandes en la ciudad es de 335.
+\end{Eje}
+
+Finalmente, consideramos las distribuciones donde los valores que toma la variable aleatoria $X$ depende del parámetro $\theta$, por ejemplo, las distribuciones del tipo uniforme. Para este tipo de distribuciones, el procedimiento para encontrar $\hat{\theta}_{MV}$ en general se puede resumir en los siguientes pasos:
+\begin{enumerate}[(1)]
+\item Calcular la función de verosimilitud, sin omitir las funciones indicadoras, pues éstas depende de $\theta$.
+\item Encontrar el rango de valores de $\theta$ donde la función de verosimilitud no toma el valor 0. Generalmente este rango depende del máximo y/o el mínimo de la muestra: $x_{(n)}$ y $x_{(1)}$.
+\item Dentro del rango encontrado en el paso anterior, mediante empleo de derivadas o simplemente observación directa, buscar el valor de $\theta$ que maximice la función de verosimilitud.
+\end{enumerate}
+Ilustramos el anterior procedimiento en el siguiente ejemplo.
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una población con distribución uniforme continua sobre el intervalo $[0,\theta]$, se quiere encontrar el estimador de máxima verosimilitud del parámetro $\theta$. En primer lugar, obsérvese que en la función de verosimilitud $L$ existe un término de la función indicadora que depende de $\theta$, puesto que $L(\theta)=\theta^{-n}\prod_{i=1}^nI_{[0,\theta]}(x_i)$.
+
+Tenemos que
+\begin{equation*}
+L\neq0\Leftrightarrow0\leq x_i\leq\theta\ \text{para todo } i=1,\cdots,n\ \Leftrightarrow \theta\geq x_{(n)}
+\end{equation*}
+donde $x_{(n)}=\max\{x_1,\cdots,x_n\}$. Entonces se concluye que el rango de valores de $\theta$ para que la función de verosimilitud sea diferente de 0 es $[x_{(n)},\infty)$. Ahora, observe que dentro de este rango, $L=\theta^{-n}$, que es una función decreciente de $\theta$, entonces para valores pequeños de $\theta$, $L$ toma valores grandes. Pero el valor más pequeño que puede tomar $\theta$ dentro del rango $[x_{(n)},\infty)$ es $x_{(n)}$, entonces se concluye que $\hat{\theta}_{MV}=X_{(n)}$.
+\end{Eje}
+Ahora, retomando situaciones donde la cantidad que se quiere estimar es una función del parámetro, $g(\theta)$. Textos como \citeasnoun{Mood} establecen que el estimador de máxima verosimilitud de $g(\theta)$ es simplemente $g(\hat{\theta}_{MV})$ siempre y cuando $g$ es una función uno a uno.
+
+Otra forma de ver esto es mediante la reparametrización de la función $L(\theta)$. Por ejemplo, suponga que se desea estimar $\lambda=e^{-\theta}$ en una muestra proveniente de una distribución $P(\theta)$. Podemos escribir la función de verosimilitud en término de $\lambda$ como
+\begin{equation*}
+L(\lambda)=\dfrac{\lambda^n(-n\ln\lambda)^{\sum_{i=1}^nx_i}}{\prod_{i=1}^nx_i}\prod_{i=1}^nI_{\{0,1,\cdots\}}(x_i),
+\end{equation*}
+
+de donde
+\begin{equation*}
+\frac{\partial\ln L(\lambda)}{\partial\lambda}=\frac{n}{\lambda}+\frac{\sum_{i=1}^nx_i}{\ln\lambda}\frac{1}{\lambda},
+\end{equation*}
+
+igualando la anterior expresión a 0 y resolviendo para $\lambda$, se tiene que $\hat{\lambda}_{MV}=e^{-\bar{X}}$. Ahora recordando que $\hat{\theta}_{MV}=\bar{X}$, lo cual coincide con la conclusión dada anteriormente.
+
+Aunque lo planteado es válido para el caso cuando la función $g$ es una función uno a uno, existe el siguiente resultado que establece la invarianza del estimador de máxima verosimilitud para cualquier función $g$.
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una población con distribución $f(x,\btheta)$ donde $\btheta$ es el vector de parámetros, y suponga que $T=T(X_1,\cdots,X_n)$ es el estimador de máxima verosimilitud de $\btheta$, y $g$ es una función del vector de parámetros, entonces el estimador de máxima verosimilitud de $g(\btheta)$ es la estadística $g(T)$.
+\end{Res}
+\begin{proof}
+Ver Casella\&Berger Pg. 172, 321
+\end{proof}
+
+Dado el anterior resultado, podemos ver que todas las estimaciones de los Ejemplos 2.2.2, 2.2.3, 2.2.4 y 2.2.6 son estimaciones de máxima verosimilitud.
+
+Otra situación interesante es cuando se dispone de dos muestras aleatorias independientes, esto es, cualquier conjunto de variables de la primera muestra es independiente de cualquier conjunto de variables de la segunda, y el objetivo es estimar los parámetros concernientes a las dos muestras.
+
+Consideramos, en primer lugar, dos muestras provenientes de distribuciones normales.
+
+Suponga que se tienen dos muestras aleatorias independientes $X_1$, $\ldots$, $X_{n_X}$ y $Y_1$, $\ldots$, $Y_{N_Y}$ provenientes de $N(\mu_X,\sigma^2_{X})$ y $N(\mu_Y,\sigma^2_Y)$, respectivamente. Y se desean estimar alguno o algunos de los parámetros $\mu_X$, $\mu_Y$, $\sigma^2_X$ y $\sigma^2_Y$. En primer lugar, calculamos la función de verosimilitud, ésta está dada por
+\begin{equation*}
+L=(2\pi\sigma^2_X)^{-n_X/2}(2\pi\sigma^2_Y)^{-n_Y/2}\exp\left\{-\frac{1}{2\sigma^2_X}\sum_{i=1}^{n_X}(x_i-\mu_X)^2-\frac{1}{2\sigma^2_Y}\sum_{j=1}^{n_Y}(y_j-\mu_Y)^2\right\}
+\end{equation*}
+
+En el caso de que las dos muestras provenientes de la misma distribución, esto es, si $\mu_X=\mu_Y=\mu$ y $\sigma^2_X=\sigma^2_Y=\sigma^2$, entonces el proceso de la estimación de máxima verosimilitud de $\mu$ y $\sigma^2$ se llevan a cabo, simplemente, usando conjuntamente las variables de las dos muestras. Y tenemos que
+\begin{equation}\label{MV_mu_comun1}
+\hat{\mu}_{MV}=\dfrac{\sum_{i=1}^{n_X}X_i+\sum_{j=1}^{n_Y}Y_j}{n_X+n_Y},
+\end{equation}
+y
+\begin{equation*}
+\hat{\sigma}^2_{MV}=\dfrac{\sum_{i=1}^{n_X}(X_i-\hat{\mu}_{MV})^2+\sum_{j=1}^{n_Y}(Y_j-\hat{\mu}_{MV})^2}{n_X+n_Y}.
+\end{equation*}
+\begin{Eje}
+Retomamos el Ejemplo 2.2.6, donde se disponía una muestra de 12 láminas, ahora suponga que se selecciona una nueva muestra de 10 láminas de la misma línea de producción con grosor 3.56, 3.17, 2.98, 2.95, 3.03, 2.87, 3.58, 3.73, 2.83 y 3.43. Dado que las dos muestras son productos de una misma línea de producción, entonces podemos afirmar que las dos muestras provienen de una misma distribución normal $N(\mu,\sigma^2)$, y podemos estimar el grosor promedio de esta línea como 3.2 cm y la desviación estándar como 0.31 cm.
+\end{Eje}
+
+Otra situación que puede surgir en la práctica es cuando las dos muestras provienen de distribuciones con la misma esperanza, pero diferentes varianzas, esto es, $\mu_X=\mu_Y=\mu$ y $\sigma^2_X\neq\sigma^2_Y$. Supongamos, en primer lugar, que $\sigma^2_X$ y $\sigma^2_Y$ son conocidas, y tenemos que la función de verosimilitud está dada por
+\begin{equation*}
+L(\mu)=(2\pi\sigma^2_X)^{-n_X/2}(2\pi\sigma^2_Y)^{-n_Y/2}\exp\left\{-\frac{1}{2\sigma^2_X}\sum_{i=1}^{n_X}(x_i-\mu)^2-\frac{1}{2\sigma^2_Y}\sum_{j=1}^{n_Y}(y_j-\mu)^2\right\}
+\end{equation*}
+de donde
+\begin{equation*}
+\dfrac{\partial\ln L(\mu)}{\partial\mu}=\frac{\sum_{i=1}^{n_X}(x_i-\mu)}{\sigma^2_X}+\frac{\sum_{j=1}^{n_Y}(y_j-\mu)}{\sigma^2_Y}.
+\end{equation*}
+Igualando la anterior derivada a cero y despejando $\mu$, se encuentra que la solución está dada por
+$\mu=\dfrac{\sigma^2_Yn_X\bar{x}+\sigma^2_Xn_Y\bar{y}}{n_X\sigma^2_Y+n_Y\sigma^2_X}$. Ahora, es claro que
+\begin{equation*}
+\dfrac{\partial^2\ln L(\mu)}{\partial\mu^2}=-\dfrac{n_X}{\sigma^2_X}-\frac{n_Y}{\sigma^2_Y}<0,
+\end{equation*}
+
+y en conclusión, se tiene que
+\begin{align}\label{MV_mu_comun}
+\hat{\mu}_{MV}&=\dfrac{\sigma^2_Yn_X\bar{X}+\sigma^2_Xn_Y\bar{Y}}{n_X\sigma^2_Y+n_Y\sigma^2_X}\notag\\
+&=\dfrac{n_X\bar{X}+n_Y\bar{Y}\frac{\sigma^2_X}{\sigma^2_Y}}{n_X+n_Y\frac{\sigma^2_X}{\sigma^2_Y}}.
+\end{align}
+Nótese que la anterior expresión se asemeja a un promedio ponderado, donde entre más grande sea la varianza poblacional de la segunda población $\sigma^2_Y$, menos peso tiene las variables de la muestra correspondiente. Esto es muy natural, puesto que en una distribución normal, una varianza grande indica que los valores de la distribución tienden a tomar valores muy alejados a la media. Entonces, si $\sigma^2_X/\sigma^2_Y<1$, los valores de las variables $Y_1$, $\cdots$, $Y_{n_Y}$ tienden a estar más lejos de $\mu$ que las variables $X_1$, $\cdots$, $X_{n_X}$, lo cual las hacen menos confiables, y por esta razón se les asigna un peso menor. Cuando $\sigma^2_X=\sigma^2_Y$, la anterior estimación de $\mu$ se reduce a (\ref{MV_mu_comun1}).
+
+\begin{Eje}
+Considera la fábrica vidrios del Ejemplo 2.2.6, y suponga que hay, en total, dos líneas de producción de láminas de vidrio templado de 3 cm, y además por ajuste inapropiado de temperatura, la línea A tiene una desviación estándar del 0.6 cm, mucho mayor que la línea B cuya desviación estándar es del 0.3 cm. Si se desea estimar el grosor promedio de las láminas de vidrio del grosor nominal del 3 cm, se debe seleccionar una muestra de las láminas de la línea A, y una muestra de la línea B. Suponga que el grosor de 10 láminas de cada línea corresponde a 3.80, 2.81, 2.98, 2.97, 3.69, 2.77, 3.08, 2.98, 2.37, 3.00 y 2.87, 3.48, 2.65, 3.38, 2.75, 2.99, 2.81, 2.54, 2.84, 2.79, respectivamente, entonces asignando un peso mayor a las observaciones de la línea B según la teoría expuesta anteriormente, se tiene que $\hat{\mu}_{MV}=2.955$ cm.
+\end{Eje}
+
+Finalmente, consideramos el caso donde se supone que las dos varianzas poblacionales coinciden, $\sigma^2_X=\sigma^2_Y=\sigma^2$ y $\mu_X\neq\mu_Y$. En este caso, tenemos que los estimadores de máxima verosimilitud de $\mu_X$, $\mu_Y$ y $\sigma^2$ son $\bar{X}$, $\bar{Y}$ Y $[\sum_{i=1}^{n_X}(X_i-\bar{X})^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2]/(n_X+n_Y)$, respectivamente (Ejercicio 16), esto es, las observaciones de las dos muestras se utilizan separadamente para estimar las medias poblacionales, mientras que la varianza se estima usando las muestras conjuntamente con la misma ponderación. En general, cuando no se puede asumir que $\sigma^2_X=\sigma^2_Y$, los estimadores de máxima verosimilitud de $\mu_X$ y $\mu_Y$ siguen siendo $\bar{X}$ y $\bar{Y}$, respectivamente.
+
+\begin{Eje}
+Suponga que se desea comparar dos institutos de capacitación en término de calificación obtenida por sus respectivos alumnos. Las calificaciones (sobre 100 puntos) para 15 alumnos del centro A es: 75, 87, 83, 73, 74, 88, 88, 74, 64, 92, 73, 87, 91, 83 y 84; y para 13 alumnos del centro B es: 64, 85, 72, 64, 74, 93, 70, 79, 79, 75, 66, 83 y 74. Dado que el objetivo es comparar los dos institutos, no se puede asumir la igualdad entre las dos medias poblacionales, de esta forma, las dos medias poblacionales se estiman mediante las medias muestrales dadas por $\hat{\mu}_A=81$ y $\hat{\mu}_B=75$. Observamos que la estimación para el promedio poblacional del centro A es superior a la del centro B, en capítulo 3 y 4 se estudiará herramientas que nos permite concluir si esta diferencia es significativa o puede considerarse como insignificante dado que las estimaciones no se pueden tratar como si fueran los valores verdaderos de los parámetros.
+\end{Eje}
+
+En algunas situaciones, se desea comparar dos poblaciones en término de la dispersión tal como lo muestra el siguiente ejemplo.
+
+\begin{Eje}
+Suponga que se desea estudiar el precio por metro cuadrado de viviendas en el centro del capital de los países Colombia y Ecuador. La información disponible para el caso de Colombia basada en 80 viviendas es: $\bar{x}=700$ (miles de pesos colombianos) y $s_{x,n}=95$ (miles de pesos colombianos); y para el caso ecuatoriano basado en 50 viviendas es: $\bar{y}=1023$ (bolívares venezolanos) y $s_{y,m}=300$ (bolívares venezolanos).
+
+Dados los anteriores datos, no se puede comparar la dispersión de los dos países usando directamente las desviaciones estándares, puesto que éstas tienen unidades diferentes. Una alternativa es calcular los respectivos coeficientes de variación dados por $\rho_x=95/700=13.57\%$ y $\rho_y=300/1023=29.32\%$. Estos coeficientes de variación están libres de unidad de los datos originales y pueden ser usados directamente para comparar la dispersión. Y podemos concluir que el precio de la vivienda del centro del capital de país vecino es mucho más inestable que el caso colombiano.
+\end{Eje}
+
+\subsection{Método de los momentos}
+Otro método común para encontrar estimadores de un parámetro es el método de los momentos, para estudiar este método, primero introducimos algunas definiciones útiles.
+\begin{Defi}
+Dada una variable aleatoria $X$, se define el $k$-ésimo momento de $X$ como $\mu_k=E(X^k)$.
+\end{Defi}
+
+La anterior definición es al nivel poblacional, cuando se dispone de una muestra aleatoria, se definen los momentos muestrales como sigue.
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$, se define el $k$-ésimo momento muestral como $M_k=\sum_{i=1}^nX_i^k/n$.
+\end{Defi}
+Nótese que dada una muestra aleatoria, los momentos muestrales son variables aleatorias, más aun, son estadísticas. Y podemos utilizarlos para estimar los respectivos momentos poblacionales. Ahora, si logramos escribir a los parámetros desconocidos en término de los momentos poblacionales, podemos obtener fácilmente estimadores de los parámetros simplemente reemplazando los momentos poblacionales por los muestrales. Los estimadores obtenidos de esta manera se llaman estimadores de momentos, se denotará por $\hat{\theta}_{mom}$. En particular, tenemos el siguiente resultado que es válido en muestras provenientes de cualquier distribución.
+
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con esperanza común $\mu$ y varianza común $\sigma^2$, se tiene que $\hat{\mu}_{mom}=\bar{X}$ y $\hat{\sigma^2}_{mom}=S^2_n$.
+\end{Res}
+\begin{proof}
+En primer lugar, nótese que la esperanza $\mu$ es simplemente el primer momento poblacional, es decir, $\mu=\mu_1$, el cual se estima con el primer momento muestral $M_1$, entonces se tiene que $\hat{\mu}_{mom}=M_1=\bar{X}$.
+
+Ahora, la varianza poblacional $\sigma^2$ se puede escribir en término de los dos primeros momentos poblacionales, $\sigma^2=\mu_2-(\mu_1)^2$, que se estimará con $M_2-(M_1)^2$, esto es: $\frac{1}{n}\sum_{i=1}^nX_i^2-\bar{X}^2$, y con un poco de operación algebraica, se puede ver que ésta es $S^2_n=\frac{1}{n}\sum_{i=1}^nX_i^2-\bar{X}^2$. En conclusión, $\hat{\sigma^2}_{mom}=S^2_n$.
+\end{proof}
+
+Una aplicación inmediata del anterior resultado es en una muestra proveniente de una distribución normal donde los parámetros $\mu$ y $\sigma^2$ corresponden a la esperanza y la varianza de la distribución.
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución $N(\mu,\sigma^2)$, el estimador de momentos de $\mu$ y $\sigma^2$ es simplemente la media y la varianza muestral: $\bar{X}$ y $S^2_n=\sum(X_i-\bar{X})^2/n$. Nótese que en este caso, los estimadores de momentos coincide con los de máxima verosimilitud.
+\end{Eje}
+
+Otra utilidad del Resultado 2.2.2 es la siguiente forma para encontrar un estimador de momentos.
+\begin{enumerate}[(a)]
+\item Cuando hay que estimar un sólo parámetro $\theta$, escribir a $\theta$ en término de la media poblacional $\mu$: $\theta=g(\mu)$, y al estimar $\mu$ con la media muestral: $\bar{X}$, se obtiene un estimar de momentos para $\theta$. Esto es, $\hat{\theta}_{mom}=g(M_1)$.\footnote{Este método es válido siempre y cuando se puede escribir al parámetro en término de la media poblacional. En caso donde esto no es posible, por ejemplo en distribuciones donde no existe la media poblacional o ésta no depende del parámetro, se debe recurrir a momentos poblacionales superiores.} (También se puede escribir $\theta$ en término de la varianza poblacional $\sigma^2$, y al estimar $\sigma^2$ con $S^2_n$, se tiene un estimador de momentos de $\theta$.)
+\item Cuando hay que estimar dos parámetros $\theta_1$ y $\theta_2$, escribir a cada uno de ellos en término de la media y la varianza poblacional $\theta_1=g_1(\mu,\sigma^2)$ y $\theta_2=g_2(\mu,\sigma^2)$, y al estimar $\mu$ y $\sigma^2$ con la media muestral $\bar{X}$ y la varianza muestral $S^2_n$, se obtiene un estimar de momentos para $\theta_1$ y $\theta_2$. Esto es, $\hat{\theta}_{1,mom}=g_1(\bar{X},S^2_n)$ y $\hat{\theta}_{2,mom}=g_2(\bar{X},S^2_n)$.
+\end{enumerate}
+
+\textbf{Nota}: La parte (a) nos ilustra que el estimador de momentos al igual que el estimador de máxima verosimilitud, puede no ser único. Un ejemplo es cuando la muestra aleatoria proviene de la distribución $P(\lambda)$, se sabe que $\lambda=E(X)$, entonces un estimador de momentos de $\lambda$ es, naturalmente, $\bar{X}$; pero también se sabe que $\lambda=Var(X)$, de esta manera, se tiene otro estimador de $\lambda$ que es $S^2_n$.
+
+De esta forma, para los datos del Ejemplo 2.2.2, podemos tener dos estimaciones de momentos para el número promedio de muertes violentos por ciudad: $\bar{x}=3.13$, la cual coincide con la estimación de máxima verosimilitud, y la otra estimación de momentos corresponde a $s^2_n=1.98$, que es muy diferente a la estimación obtenida usando $\bar{x}$. La pregunta natural ahora es ¿cuál de las dos estimaciones es mejor? es decir, cuál valor se acerca más al valor verdadero de $\lambda$. No podemos responder esta pregunta directamenta, puesto que no conocemos el valor de $\lambda$. En la siguiente sección, se introduce conceptos que nos permiten evaluar la calidad de los estimadores. A pesar de que hasta ahora no tenemos herramientas para escoger entre las dos estimaciones, un simple ejercicio de simulación nos permite escoger de forma empírico. Se simula, en primer lugar, muestras provenientes de una distribución $P(5)$ y $P(15)$ con tamaño de muestra $n=5,\cdots,300$, y en cada muestra simulada, se calcula las dos estimaciones de momentos $\bar{x}$ y $s^2_n$, y se observa cuál es más cercano al valor verdadero del parámetro. Los resultados se visualizan en la gráfica superior de la Figura 2.5, donde la línea negra horizontal denota el valor verdadero del parámetro $\lambda$. El comando en \verb"R" de estas simulaciones es como sigue
+
+\begin{verbatim}
+> set.seed(123)
+> n<-5:300
+> est.mean<-rep(NA,length(n))
+> est.var<-rep(NA,length(n))
+> for(i in 1:length(n)){
++ x<-rpois(n[i],5)
++ est.mean[i]<-mean(x)
++ est.var[i]<-var(x)*(n[i]-1)/n[i]
++ }
+>
+> est1.mean<-rep(NA,length(n))
+> est1.var<-rep(NA,length(n))
+> for(i in 1:length(n)){
++ y<-rpois(n[i],15)
++ est1.mean[i]<-mean(y)
++ est1.var[i]<-var(y)*(n[i]-1)/n[i]
++ }
+>
+>
+> par(mfrow=c(2,1))
+> plot(n,est.var,xlab="n",ylab="Estimación",main="Población P(5)",
+type="l",col="blue",ylim=c(2,9))
+> abline(5,0)
+> lines(n,est.mean,col="red")
+> legend(200,9.2,c("Media","Varianza"),lty=c(1,1),col=c("red","blue"),box.col=0)
+>
+> plot(n,est1.var,xlab="n",ylab="Estimación",main="Población P(15)",
+type="l",col="blue")
+> abline(15,0)
+> lines(n,est1.mean,col="red")
+> legend(200,45,c("Media","Varianza"),lty=c(1,1),col=c("red","blue"),box.col=0)
+\end{verbatim}
+
+Se puede ver claramente, de la Figura 2.5, que la media $\bar{X}$ comparado con $S^2_n$ estima mejor el parámetro de la distribución, puesto que las estimaciones de $\bar{X}$ parecen estar más cercanas del valor de $\lambda$ en ambas gráficas. Y por consiguiente, podemos intuir que para los datos del Ejemplo 2.2.2, la estimación $\bar{x}=3.13$ debe ser más cercano al valor verdadero de $\lambda$. En la siguiente sección, se discutirá métodos formales acerca de escogencia entre estimadores, y se verá que el estimador $\bar{X}$ tiene mejores propiedades que $S^2_n$.
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.7]{estimadores_Poisson.eps}
+\caption{Comparación entre la media y la varianza muestral como estimador de $\lambda$ en muestras provenientes de dos distribuciones Poisson.}
+\end{figure}
+
+En los siguientes ejemplos, se ilustra la forma general de encontrar estimadores de momentos para distribuciones con dos parámetros desconocidos.
+
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución gamma con parámetro de forma $k$ y parámetro de escala $\theta$, entonces la media y la varianza poblacional están dadas por $\mu=k\theta$ y $\sigma^2=k\theta^2$, de donde podemos expresar $k$ y $\theta$ en término de $\mu$ y $\sigma^2$ como $k=\frac{\mu^2}{\sigma^2}$ y $\theta=\frac{\sigma^2}{\mu}$. Por lo tanto, los estimadores de momentos serán 
+\begin{equation}\label{k_gamma}
+\hat{k}_{mom}=\dfrac{\bar{X}^2}{S^2_n}
+\end{equation}
+
+y 
+\begin{equation}\label{theta_gamma}
+\hat{\theta}_{mom}=\dfrac{S^2_n}{\bar{X}}
+\end{equation}
+.
+
+Como una aplicación de lo anterior, suponga que un instituto técnico enfrenta problemas financieros y plantea un aumento en el costo de las matrículas. Es claro que ante un aumento del valor de matrícula, los estudiantes que no tengan la capacidad de pago pueden retirar del instituto representando una pérdida económica para éste. Por lo anterior es necesario que el instituto conozca el nivel de ingreso de los estudiantes con el fin de decidir sobre el aumento de las matrículas que no cause la deserción estudiantil y a la vez pueda representar una ganancia económica para el instituto. 
+
+Con el fin de conocer el nivel de ingreso de los estudiantes, el instituto planeó una encuesta donde 127 estudiantes del instituto suministraron el valor de sus ingresos mensuales. Es usual pensar que una distribución Gamma puede ser apropiada para variables como "ingreso" puesto que en primer lugar, esta variable toma valores positivos, y en segundo lugar, es altamente no simétrico, ya que para la mayoría de la población la variable ingreso toma valores intermedios o bajos, pero existe una minoría de la población que tiene ingresos bastantes altos. Para observar el comportamiento del ingreso en los 127 datos muestrales, observamos el histograma presentado en la Figura 2.6 donde se puede ver estas características reflejas, y finalmente asumimos la distribución Gamma como la distribución poblacional.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{ejemplo_gamma.eps}
+\caption{Histograma de los datos del Ejemplo 2.2.15.}
+\end{figure}
+
+Para estimar los parámetros de la distribución Gamma, calculamos los valores de las estadísticas $\bar{X}$ y $S_n$, éstas son \$878399.5 pesos y \$308803.8 pesos, y usando éstas calculamos los parámetros estimados usando (\ref{k_gamma}) y (\ref{theta_gamma}), y tenemos que $\hat{k}=8.09$ y $\hat{\theta}=108560$. Para visualizar el ajuste de la distribución $Gamma(8.09,108560)$ a los datos, graficamos la función de densidad de esta distribución usando los siguientes códigos en \verb"R" y la gráfica resultante se muestra en la Figura 2.7 donde podemos ver que la función de densidad se asemeja bastante al histograma de los datos presentado anteriormente.
+\begin{verbatim}
+> gama.densidad<-function(x){
++ fx<-dgamma(x,shape=k,scale=the)
++ }
+> plot(gama.densidad,0,max(x))  ## donde x contiene los 127 datos muestrales 
+\end{verbatim}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{ejemplo_gamma1.eps}
+\caption{Función de densidad de la distribución Gamma estimada de los datos del Ejemplo 2.2.15.}
+\end{figure}
+
+Ahora, suponga que el instituto conoce que con el aumento que tiene en mente, los estudiantes con ingreso superior a \$1500000 pesos no tendrá dificultad para pagar el costo de la nueva matrícula, 
+
+\end{Eje}
+
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución $Beta(a,b)$, entonces la esperanza y la varianza de la distribución poblacional están dadas por
+\begin{equation}\label{mu_beta}
+\mu=\frac{a}{a+b}
+\end{equation}
+y
+\begin{equation*}
+\sigma^2=\frac{ab}{(a+b+1)(a+b)^2}
+\end{equation*}
+Para encontrar los estimadores de momentos de $a$ y $b$ se debe escribir a estos en términos de $\mu$ y $\sigma^2$. Para eso tenemos que
+\begin{align*}
+\sigma^2&=\mu\frac{b}{(a+b-1)(a+b)}\\
+&=\mu(1-\mu)\frac{1}{a+b-1}
+\end{align*}
+
+De donde
+\begin{equation*}
+a+b=\frac{\mu(1-\mu)}{\sigma^2}-1
+\end{equation*}
+
+Reemplazando lo anterior en (\ref{mu_beta}) tenemos que
+\begin{equation*}
+a=\mu(a+b)=\frac{\mu^2(1-\mu)}{\sigma^2}-\mu
+\end{equation*}
+y
+\begin{equation*}
+b=\frac{\mu(1-\mu)}{\sigma^2}-1-a=(1-\mu)\left(\frac{\mu(1-\mu)}{\sigma^2}-1\right)
+\end{equation*}
+
+Y utilizando los principios del método de los momentos de estimar $\mu$ y $\sigma^2$ con $\bar{X}$ y $S^2_n$, tenemos los siguientes estimadores de momentos de $a$ y $b$
+\begin{equation*}
+\hat{a}_{mom}=\frac{\bar{X}^2(1-\bar{X})}{S^2_n}-\bar{X}
+\end{equation*}
+
+y
+\begin{equation*}
+b=(1-\bar{X})\left(\frac{\bar{X}(1-\bar{X})}{S^2_n}-1\right)
+\end{equation*}
+
+Como una aplicación de la distribución Beta, suponga que una almacén de cadena de ropa femenina investiga acerca de las prendas que son devueltas por los clientes después de la venta. En el caso de que se observe un gran porcentaje de devoluciones, los directivos de la almacén estudiarán las causas que puede ser mala calidad de las prendas por parte del proveedor, precios muy altos comparado con productos de la misma categoría o inclusive vendedores muy hábiles pueden disuadir a los clientes aún cuando no quieren realizar la compra y éstos pueden arrepentir posteriormente y efectuar la devolución de la compra.
+
+Con el fin de llevar a cabo la investigación, los directivos disponen de porcentaje de prendas devueltas en un mes para diferentes sucursales, estos datos son:  0.7\%, 0.14\%, 19.7\%, 0.1\%, 12.4\%, 1.1\%, 0.5\%, 18.9\%, 5.0\%, 0.3\%, 0.6\%, 5.4\%, 6.7\% y 0.9\%
+\begin{verbatim}
+> x<-c(0.7, 1.4, 19.7, 0.1, 12.4, 1.1, 0.5, 18.9, 5.0, 0.3, 0.6, 5.4, 6.7, 0.9)/100
+> n<-length(x)
+> va<-var(x)*(n-1)/n
+> bar<-mean(x)
+> a<-bar^2*(1-bar)/va-bar
+> a
+[1] 0.02579638
+> b<-(1-bar)*(bar*(1-bar)/va-1)
+> b
+[1] 0.4642298
+\end{verbatim}
+
+De lo anterior, tenemos las estimaciones de 0.03 y 0.46 para los parámetros de la distribución Beta. Podemos visualizar la forma de la función de densidad Beta con estos parámetros y ver que tenga aspectos similares con el histograma de los datos. Lo anterior se puede llevar a cabo usando los siguientes códigos.
+\begin{verbatim}
+> beta.densidad<-function(x){
++ fx<-dbeta(x,a,b)
++ }
+>
+> par(mfrow=c(2,1))
+> hist(x,breaks=20,main="(a)")
+> plot(beta.densidad,0,1,main="(b)")
+\end{verbatim}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.7]{ejemplo_beta.eps}
+\caption{Histograma de los datos (a) y la función de densidad estimada (b) de los datos del Ejemplo 2.2.16.}
+\end{figure}
+
+Y como se puede observar en la Figura 2.8, la función de densidad de la distribución $Beta(0.03,0.46)$ parece ser apropiada para los datos observados. Ahora, si se quiere estimar el porcentaje promedio de prendas devueltas, esto es la esperanza de la distribución poblacional, podemos utilizar simplemente $\bar{x}=0.052=5.2\%$, o equivalentemente la expresión (\ref{mu_beta}) dada por $\hat{a}/(\hat{a}+\hat{b})=0.052=5.2\%$.
+
+
+
+
+\end{Eje}
+
+En los ejemplos anteriores, se vio que en la distribución normal, los estimadores de momentos coinciden con los de máxima verosimilitud, situación que también ocurre en la distribución Poisson, exponencial y Bernoulli\footnote{En general, el estimador de momentos no es único, por ejemplo en la distribución Poisson, el estimador de momentos $\bar{X}$ coincide con el obtenido con el método de máxima verosimilitud, pero puede haber otros estimadores de momentos diferentes que $\bar{X}$}. Sin embargo, en muestras provenientes de algunas distribuciones del tipo uniforme, el estimador de momentos puede no coincidir con el estimador de máxima verosimilitud, como lo ilustra el siguiente ejemplo.
+
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución uniforme continua sobre $(0,\theta)$. Para encontrar el estimador de momentos de $\theta$, se tiene en cuenta que $\mu=\theta/2$, de donde $\theta=2\mu$, entonces se concluye que $\hat{\theta}_{mom}=2\bar{X}$, el cual es diferente que el estimador de máxima verosimilitud dada por $\hat{\theta}_{MV}=X_{(n)}$. En la siguiente sección, se estudiará cuál de estos dos estimadores es mejor. Sin embargo, podemos realizar un pequeño estudio simulación: se simulan muestras de tamaño 5, $\cdots$, 300 de las distribuciones $Unif(0,3)$ y $Unif(0,5)$, en cada muestra simulada se calculan el estimador de momentos y de máxima verosimilitud. Estas simulaciones se pueden llevar a cabo modificando levemente los códigos en \verb"R" presentados en la página 90 . Las estimaciones resultantes de observan en la Figura 2.6, donde la línea negra horizontal denota el valor verdadero del parámetro. Podemos ver que con el estimador de máxima verosimilitud siempre se obtuvo valores más cercanos al parámetro sin importar el tamaño muestral, aunque las estimaciones de máxima verosimilitud parecen estar por debajo del $\theta$ verdadero, situación que no sucede con las estimaciones de momentos. Este hecho se confirmará en la siguiente sección mediante desarrollos teóricos.
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{estimadores1_uniforme.eps}
+\caption{Comparación entre el estimador de máxima verosimilitud y el de momentos en muestras provenientes de distribuciones $Unif(0,3)$ y $Unif(0,5)$.}
+\end{figure}
+\end{Eje}
+
+Análogo al método de máxima verosimilitud, en el método de los momentos también podemos garantizar la invarianza del estimador obtenido para cualquier función del parámetro $g(\theta)$. Suponga que el tiempo de llegada de un bus a cierta estación contada desde las ocho de la mañana puede sigue una distribución $Unif(0,\theta)$, con esta distribución, estamos suponiendo que el tiempo de llegada tomar valor en cualquier intervalo de longitud fijo de $(0,\theta)$ con la misma probabilidad. Se ha visto en el ejemplo anterior que $\hat{\theta}_{mom}=2\bar{X}$, y si la cantidad que se desea estimar es la probabilidad de que el bus llegue en menos de un minuto, entonces estamos interesados en estimar $p=1/\theta$, y $p$ puede ser escrito en función del primer moXmento, puesto que $p=1/(2\mu)$, de esta forma, aplicando los principios del método de los momentos, se tiene que $\hat{p}_{mom}=1/(2\bar{X})$.
+
+Para concluir el método de los momentos, damos dos ejemplos interesantes acerca de la distribución uniforme.
+
+\begin{Eje}
+Suponga que una muestra aleatoria $X_1$, $\cdots$, $X_n$ proviene de la distribución $U[-\theta,\theta]$, en este caso la esperanza es 0, y no depende del parámetro $\theta$, por lo tanto, no hay forma de escribir a $\theta$ en función de la esperanza. Pero podemos recurrir a la varianza de la distribución uniforme, notando que la varianza es $\theta^2/3$, de donde se tiene que $\theta=\sqrt{3\sigma^2}$, (la solución $\theta=-\sqrt{3\sigma^2}$ claramente no puede ser el parámetro de la distribución, puesto que $\theta$ debe ser positivo), en conclusión un estimador de momentos de $\theta$ es $\sqrt{3S^2_n}$. Por otro lado, se puede ver que el estimador de máxima verosimilitud de $\theta$ está dado por $\max\{-X_{(1)},X_{(n)}\}$ (Ejercicio XXXXXX).
+
+En la Figura 2.7, se observa resultados de muestras de tamaño 5, $\cdots$, 300 simulados de una distribución $Unif[-3,3]$ y en cada muestra simulada se calculan el estimador de momentos y de máxima verosimilitud. Podemos observar que en muestras pequeñas los resultados obtenidos con el estimador de máxima verosimilitud casi siempre están por debajo del parámetro causando el problema de subestimación, a medida que las muestras se hacen grandes el método de máxima verosimilitud parece funcionar mejor; por otro lado, aunque los valores obtenidos con el método de los momentos no parecen tener el problema de subestimación que sí lo tiene el de máxima verosimilitud, los valores obtenidos con el método de los momentos son muy dispersos, y hay muestras donde la estimación puede estar realmente lejos del parámetro.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{estimadores_uniforme.eps}
+\caption{Comparación entre el estimador de máxima verosimilitud y el de momentos en muestras provenientes de la distribución $Unif(-3,3)$.}
+\end{figure}
+\end{Eje}
+
+En el anterior ejemplo se vio que en algunas ocasiones en el método de los momentos puede no ser útil evaluar el primer momento sino usando el segundo momento (o equivalentemente la varianza de la distribución poblacional). En el siguiente ejemplo, ilustramos un caso donde el procedimiento estándar del método de los momentos arroja dos soluciones y se debe tener en cuenta el espacio paramétrico de los parámetros de interés para escoger la solución apropiada.
+
+\begin{Eje}
+Suponga que una muestra aleatoria $X_1$, $\cdots$, $X_n$ proviene de la distribución $U[\theta_1,\theta_2]$, donde $\theta_1$ y $\theta_2$ son desconocidos. Para estimar estos parámetros vía el método de los momentos, necesitamos escribirlos en término de la media $\mu$ y la varianza $\sigma^2$. Usando el Resultado 1.1.11, tenemos que
+\begin{equation*}
+\begin{cases}
+\mu=\dfrac{\theta_1+\theta_2}{2}\\
+\sigma^2=\dfrac{(\theta_2-\theta_1)^2}{12},
+\end{cases}
+\end{equation*}
+de donde tenemos dos soluciones para $\theta_1$ y $\theta_2$, estas son $\begin{cases}
+\theta_1=\mu-\sqrt{3}\sigma\\
+\theta_2=\mu+\sqrt{3}\sigma
+\end{cases}$
+ó $\begin{cases}
+\theta_1=\mu+\sqrt{3}\sigma\\
+\theta_2=\mu-\sqrt{3}\sigma
+\end{cases}.$
+Nótese que en la segunda solución $\theta_1>\theta_2$, no cumple con el supuesto de una distribución $U[\theta_1,\theta_2]$, y por consiguiente, usaremos la primera solución, y los estimadores de momentos de $\theta_1$ y $\theta_2$ serán $\bar{X}-\sqrt{3}S_n$ y $\bar{X}+\sqrt{3}S_n$, respectivamente. Se puede ver fácilmente que los estimadores de máxima verosimilitud de $\theta_1$ y $\theta_2$ son $X_{(1)}$ y $X_{(2)}$. (Ejercicio XXXX)
+\end{Eje}
+
+
+
+
+\section{Propiedades de estimadores puntuales}
+En la anterior sección, se observó que para estimar un parámetro $\theta$, el método de máxima verosimilitud y el de momentos pueden conducir a estimadores diferentes, más aun,  se puede crear muchos otros tipos de estimadores para $\theta$, pues un estimador es simplemente una estadística que es usada para estimar. Por ejemplo dada una muestra aleatoria $X_1$, $\cdots$, $X_{20}$ con media poblacional $\mu$ desconocido, un estimar razonable para $\mu$ es la media muestral $\bar{X}$, sin embargo, alguien puede querer usar la estadística $\sum X_i$ para estimar $\mu$, otro puede preferir algo como $\exp\{\sum X_i\}$, otra persona puede inventar su propio estimador, entonces ¿cómo se puede escoger el mejor estimador entre un conjunto de estimadores? ¿qué aspectos, propiedades se debe tener en cuenta para esa escogencia? El objetivo de este capítulo es introducir conceptos que contestan estas preguntas.
+\subsection{Error cuadrático medio}
+Consideramos la siguiente situación hipotética. Suponga que para estimar un parámetro $\theta$, se disponen de tres estimadores $T_1$, $T_2$ y $T_3$, y además suponga que las respectivas estimaciones en 7 muestras observadas de la población son los valores dados en la Tabla 2.2.
+\begin{table}
+\centering
+\begin{tabular}{cccc}\hline
+Muestra&$T_1$&$T_2$&$T_3$\\\hline
+1&4.1&5.5&5.1\\
+2&4.3&5.6&5.0\\
+3&5.6&5.4&4.8\\
+4&5.3&5.5&4.9\\
+5&4.5&5.4&5.2\\
+6&4.7&5.6&5.0\\
+7&5.7&5.5&4.9\\\hline
+promedio&4.88&5.5&4.99\\
+desviación&0.64&0.08&0.13\\\hline
+\end{tabular}\caption{Valores de tres estimadores en 7 muestras diferentes.}
+\end{table}
+
+Y además suponga que el valor verdadero de $\theta$ es 5, ¿cuál estimador es mejor dadas las anteriores estimaciones? Para responder esta pregunta, observamos lo siguiente con respecto a los tres estimadores
+\begin{itemize}
+      \item Los valores que toma $T_1$ en promedio están cercas del 5, pero estos están muy alejados entre sí, es decir, tienen una dispersión grande. Esta dispersión grande es una propiedad indeseada del estimador, pues generalmente en la práctica, tenemos solo una muestra, una dispersión grande entre los valores de $T_1$ implica que hay mayor probabilidad de que $T_1$ toma un valor alejado del parámetro en una muestra.
+      \item Los valores que toma $T_2$ están alrededor del 5.5, muy por encima del valor verdadero de $\theta$, 5, esta situación se llama la sobreestimación. Por otro lado, en término de la dispersión, se observa que los valores están altamente concentrados.
+      \item Los valores que toma $T_3$, en primer lugar, están alrededor del 5, además de tener una dispersión pequeña. Lo anterior indica que en todas las muestras, el valor de $T_3$ está cercano del valor de $\theta$. Y podemos concluir que el mejor estimador de los tres es el $T_3$.
+\end{itemize}
+
+La anterior situación nos ilustra que un buen estimador $T$ debe tener dos propiedades
+\begin{enumerate}
+    \item Los valores que toma $T$ en promedio debe ser cercano al parámetro $\theta$. Teniendo en cuenta que la esperanza de una variable puede ser interpretado como un promedio ponderado de todos los valores que toma la variable, podemos concluir que $T$ debe cumplir con $E(T)=\theta$,
+    \item La varianza de $T$ debe ser pequeña.
+\end{enumerate}
+
+Ahora damos la siguiente definición que describe la propiedad 1.
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución con parámetro desconocido $\theta$, y sea $T$ un estimador de $\theta$, se define el sesgo de $T$ como $B_T=E(T)-\theta$.
+
+Cuando $B_T=0$ o equivalentemente $E(T)=\theta$, se dice que el estimador $T$ es insesgado para $\theta$. Cuando $B_T>0$ o equivalentemente $E(T)>\theta$, se dice que $T$ sobreesima a $\theta$, es decir, en promedio la estimación obtenida usando $T$ es mayor que $\theta$. Análogamente se dice que $T$ subestima a $\theta$ cuando $B_T<0$.
+\end{Defi}
+
+Dada la anterior definición, en primera instancia, se necesita estimadores con sesgo pequeño, y si es posible, insesgados. Adicionalmente, se espera que un buen estimador tenga varianza pequeña. De esta forma, si entre dos estimadores $T_1$ y $T_2$, $T_1$ tiene sesgo y varianza ambos menores que $T_2$, podemos concluir fácilmente que $T_1$ es mejor que $T_2$. Pero cuando $T_1$ tiene sesgo menor, pero varianza mayor que $T_2$, no es fácil determinar cuál es mejor. En este caso, podemos usar el siguiente criterio que combina tanto al sesgo como a la varianza de un estimador.
+
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución con parámetro desconocido $\theta$, y sea $T$ un estimador de $\theta$, se define el error cuadrático medio de $T$ como $ECM_T=E(T-\theta)^2$.
+\end{Defi}
+
+Nótese que en la anterior definición, cuando un estimador $T$ es insesgado para $\theta$, se tiene que $ECM_T=E(T-E(T))^2$, esto es, el error cuadrático medio es la varianza del estimador $T$.
+
+Más aun, el criterio del error cuadrático medio combina al sesgo y la varianza, tenemos que
+\begin{align*}
+ECM_T&=E[T-E(T)+E(T)-\theta]^2\\
+     &=E[(T-E(T))^2+2(T-E(T))(E(T)-\theta)+(E(T)-\theta)^2]\\
+     &=E[(T-E(T))^2]+2(E(T)-\theta)\underbrace{E[T-E(T)]}_{\text{igual a 0}}+(E(T)-\theta)^2\\
+     &=Var(T)+B_T^2
+\end{align*}
+Entonces un buen estimador debe tener el error cuadrático medio pequeño, y para los estimadores insesgados, se necesita que la varianza sea pequeña.
+
+Ahora, al principio del capítulo, afirmaba que es natural estimar la media poblacional $\mu$ con la media muestral $\bar{X}$, ¿qué tan buena es esta idea? El siguiente resultado nos permite examinar el comportamiento de $\bar{X}$ como estimador de $\mu$.
+
+\begin{Res}
+Sea una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución con media $\mu$ y varianza $\sigma^2$, entonces
+\begin{enumerate}
+    \item si se considera a $\bar{X}$ como el estimador de $\mu$, se tiene que $\bar{X}$ es insesgado para $\mu$, es decir, $E(\bar{X})=\mu$ y además $Var(\bar{X})=\sigma^2/n$.
+    \item si se considera a $S^2_n$ y $S^2_{n-1}$ como estimadores de $\sigma^2$, se tiene que $S^2_n$ es sesgado para $\sigma^2$ donde el sesgo es $-\dfrac{\sigma^2}{n}$; y $S^2_{n-1}$ es insesgado para $\sigma^2$.
+\end{enumerate}
+
+\end{Res}
+\begin{proof}
+La demostración de la parte 1 es trivial, y se deja como ejercicio. Para ver la parte 2, tenemos que
+\begin{align*}
+E(S^2_n)&=\dfrac{1}{n}E\left(\sum_{i=1}^n(X_i-\bar{X})^2\right)\\
+&=\dfrac{1}{n}E\left(\sum_{i=1}^nX_i^2-n\bar{X}^2\right)\\
+&=\dfrac{1}{n}\left\{\sum_{i=1}^n\left[Var(X_i)+(E(X_i))^2\right]-nE(\bar{X})^2\right\}\\
+&=\dfrac{1}{n}\left\{n\sigma^2+n\mu^2-n\left[\dfrac{\sigma^2}{n}+\mu^2\right]\right\}\\
+&=\dfrac{n-1}{n}\sigma^2,
+\end{align*}
+de donde se concluye que $S^2_n$ es sesgado para $\sigma^2$ con sesgo $-\dfrac{\sigma^2}{n}$. Con respecto a $S^2_{n-1}$, al observar que \begin{equation*}
+S^2_{n-1}=\dfrac{n}{n-1}S^2_n,
+\end{equation*}
+se tiene que $E(S^2_{n-1})=\sigma^2$ y por consiguiente es insesgado para $\sigma^2$.
+\end{proof}
+
+Nótese en primer lugar que en el anterior resultado, no se ha especificado la distribución de probabilidad en la población, entonces podemos aplicarlo para muestras que provienen de cualquier distribución de probabilidad. En particular, en muestras provenientes de la distribución $Exp(\theta)$, $P(\theta)$, $Bernoulli(\theta)$, $N(\theta,\sigma^2)$, el estimador de máxima verosimilitud coincide con el de momentos $\bar{X}$, usando el anterior resultado, podemos concluir que $\bar{X}$ es insesgado para el parámetro $\theta$ en cualquier de estas cuatro distribuciones.
+
+Por otro lado, podemos ver que $\bar{X}$, en primer lugar, es un estimador insesgado para $\mu$; en segundo lugar observe que $Var(\bar{X})$ es inversamente proporcional al tamaño muestral $n$, es decir, a medida que la muestra crece, las estimaciones son más concentrados alrededor de $\mu$. En la Figura 2.7, se muestra un estudio de simulación donde se simuló muestras de tamaños 1, $\cdots$, 300, provenientes de distribución normal y exponencial, y en cada muestra se calcula el promedio muestral. Se observa que entre más grande sea el valor de $n$, más concentrado están las estimaciones alrededor de la media poblacional $\mu=5$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{graf1.eps}
+\caption{Relación entre la estimación de $\mu$ y el tamaño muestral $n$.}
+\end{figure}
+Otra observación interesante es que en el contexto del resultado anterior, la variable $X_1$, vista como un estimador de $\mu$ también es insesgado, puesto que por definición de $\mu$, se tiene que $E(X_1)=\mu$; la misma conclusión se tiene para $X_i$ para $i=2,\cdots,n$. Es decir, el estimador insesgado para un parámetro puede no ser único \footnote{De hecho, si tomamos cualquier subconjunto de la muestra aleatoria, el promedio muestral de este subconjunto será un estimador insesgados para $\mu$}. Pero la varianza de $X_i$ con $i=1,\cdots,n$ es $\sigma^2$, que es mayor que $Var(\bar{X})$, de donde se concluye que estos no son tan buenos estimadores como $\bar{X}$.
+
+Ahora, revisamos los estimadores $S^2_n$ y $S^2_{n-1}$ como estimadores de $\sigma^2$. Aunque $S^2_n$ resulta ser sesgado para $\sigma^2$ , el sesgo se hace pequeño cuando el tamaño muestral crece, más aun,
+\begin{equation*}
+\lim_{n\rightarrow\infty}B_{S^2_n}=\lim_{n\rightarrow\infty}-\dfrac{\sigma^2}{n}=0.
+\end{equation*}
+Estimadores sesgados que cumplen la propiedad $\lim_{n\rightarrow\infty}B_{S^2_n}=0$ son llamados asintóticamente insesgados. Para ilustrar los estimadores $S^2_n$ y $S^2_{n-1}$ en término de estimación, podemos simular muestras provenientes de una distribución normal con tamaños de muestral $n=2,20,30,50,300,$ y en cada muestra calculamos los dos estimadores. El comando utilizado en \verb"R" es
+
+\begin{verbatim}
+>  set.seed(1)
+>  n<-c(2,10,30, 50,100, 300, 1000,5000)
+>  var1<-rep(NA,length(n))
+>  var2<-rep(NA,length(n))
+>  for(k in 1:length(n))
++   {
++   data<-rnorm(n[k],5,9)
++   var1[k]<-var(data)
++   var2[k]<-(n[k]-1)*var(data)/n[k]
++   }
+>   plot(var1,type="b", col=4,ylim=c(min(var2),130),xlab="Tamaño de muestra", ylab="Estimación de la varianza", xaxt="n")
+>   lines(var2,type="b", col=2, pch=2)
+>   abline(h=81)
+>   axis(1, 1:length(n), n)
+>   legend(3,120,c("Insesgado","Sesgado"), col=c(4,2), lty=c(1,1),pch=c(1,2))
+\end{verbatim}
+
+Y como resultado, obtenemos la Figura 2.8, donde podemos observar que las estimaciones del estimador sesgado $S^2_n$ siempre son inferiores que los del estimador insesgado $S^2_{n-1}$ y en segundo lugar la diferencia entre los dos estimadores se hace cada vez más pequeña y los valores de ambos estimadores se acercan al parámetro poblacional a mediad que el tamaño muestral crece. Por otro lado, aunque $S^2_n$ subestima la varianza poblacional, en la gráfica podemos observar que en la muestra simulada del tamaño 300, 1000 y 5000, las estimaciones de $S^2_n$ estuvieron por encima de la varianza poblacional, esto no es ninguna contradicción, ya que el concepto de un sesgo negativo, o equivalentemente la subestimación de un estimador indica que promediando todos los valores del estimador, da un valor inferior al parámetro, mas no indica que todos los valores del estimadores son inferiores que el parámetro.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{est1.eps}
+\caption{\emph{Ilustración de las estimaciones de $S^2_n$ y $S^2_{n-1}$ como estimadores de $\sigma^2$}}
+\end{figure}
+
+Finalmente, de la parte 2 del Resultado 2.3.1, también se puede concluir que los estimadores obtenidos mediante el método de máxima verosimilitud o el de momentos pueden ser sesgados, puesto que una muestra proveniente de la distribución normal, se ha visto que cuando $\mu$ es desconocido, $\hat{\sigma^2}_{MV}=\hat{\sigma^2}_{mom}=S^2_n$, y ésta es sesgada para $\sigma^2$. Sin embargo, en la demostración del Resultado 2.3.1, se vio que en algunos casos, una pequeña modificación al estimador de máxima verosimilitud o el de momentos puede corregir el sesgo y obtener un estimador insesgado.
+
+El Resultado 2.3.1 es válida para muestras provenientes de cualquier distribución, sin embargo, cuando la muestra proviene de una distribución normal, existe el siguiente resultado que nos permite ver que $S^2_n$ es sesgado para $\sigma^2$. Lo presentamos pues ésta es de gran utilidad para la teoría desarrollada en los capítulos siguientes.
+
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de $N(\mu,\sigma^2)$, y sea $Y=\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{\sigma^2}$, entonces se tiene que $Y\sim\chi^2_{n-1}$.
+\end{Res}
+\begin{proof}
+En primer lugar, consideramos la variable $\sum_{i=1}^n(X_i-\mu)^2$, tenemos
+\begin{align*}
+\sum_{i=1}^n(X_i-\mu)^2&=\sum_{i=1}^n(X_i-\bar{X}+\bar{X}-\mu)^2\\
+                       &=\sum_{i=1}^n(X_i-\bar{X})^2+2(\bar{X}-\mu)\underbrace{\sum_{i=1}^n(X_i-\bar{X})}_{=0}+n(\bar{X}-\mu)^2\\
+                       &=\sum_{i=1}^n(X_i-\bar{X})^2+n(\bar{X}-\mu)^2
+\end{align*}
+Dividiendo $\sigma^2$ en ambos lados, se tiene que \begin{equation*}
+\underbrace{\sum_{i=1}^n\dfrac{(X_i-\mu)^2}{\sigma^2}}_{A}=\underbrace{\sum_{i=1}^n\dfrac{(X_i-\bar{X})^2}{\sigma^2}}_{Y}+\underbrace{\dfrac{n(\bar{X}-\mu)^2}{\sigma^2}}_{B}.
+\end{equation*}
+Si podemos suponer que las variables $S^2_n$ y $\bar{X}$ son independientes, podemos concluir que $\sum_{i=1}^n\dfrac{(X_i-\bar{X})^2}{\sigma^2}$ y $\dfrac{n(\bar{X}-\mu)^2}{\sigma^2}$ también son independientes. Entonces existe la siguiente relación entre las funciones generadora de momentos de las variables $A$, $Y$ y $B$: $m_A(t)=m_Y(t)m_B(t)$, de donde se obtiene que
+\begin{equation}\label{Gene}
+m_Y(t)=m_A(t)/m_B(t).
+\end{equation}
+Ahora, $\dfrac{X_i-\mu}{\sigma}$ son variables con distribución normal estándar para $i=1,\cdots,n$, entonces $\sum_{i=1}^n\dfrac{(X_i-\mu)^2}{\sigma^2}$ tiene distribución $\chi^2_{n}$ con función generadora de momentos $(1-2t)^{-n/2}$. Por el otro lado $\bar{X}\sim N(\mu,\sigma^2/n)$, entonces $\dfrac{\sqrt{n}(\bar{X}-\mu)}{\sigma}\sim N(0,1)$, de donde se tiene que $\dfrac{n(\bar{X}-\mu)^2}{\sigma^2}\sim\chi^2_1$ cuya función generadora de momentos es $(1-2t)^{-1/2}$. Reemplazando lo anterior en (\ref{Gene}), se tiene que $m_Y(t)=(1-2t)^{-(n-1)/2}$, lo cual indica que $Y\sim\chi^2_{n-1}$.
+\end{proof}
+
+Para completar la demostración del anterior resultado, es necesitar probar la independencia entre $\bar{X}$ y $S^2_n$. Tenemos el siguiente resultado.
+\begin{Res}
+Dada $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de $N(\mu,\sigma^2)$, se tiene que $\bar{X}$ y $S^2_n$ son independientes,
+\end{Res}
+\begin{proof}
+La demostración de este resultado es toma de \citeasnoun{Casella}. Se probará que $\bar{X}$ y $\sum_{i=1}^n(X_i-\bar{X})^2$ son independientes. Tenemos
+\begin{align*}
+\sum_{i=1}^n(X_i-\bar{X})^2&=(X_1-\bar{X})^2+\sum_{i=2}^n(X_i-\bar{X})^2\\
+&=\left[\sum_{i=1}^n(X_i-\bar{X})-\sum_{i=2}^n(X_i-\bar{X})\right]^2+\sum_{i=2}^n(X_i-\bar{X})^2\\
+&=\left[\sum_{i=2}^n(X_i-\bar{X})\right]^2+\sum_{i=2}^n(X_i-\bar{X})^2.
+\end{align*}
+De lo anterior, se observa que $\sum_{i=1}^n(X_i-\bar{X})^2$ puede verse como una función de las variables $X_2-\bar{X}$, $\cdots$, $X_n-\bar{X}$, por lo tanto, basta ver que estas variables son independientes de $\bar{X}$. Sin embargo, las variables $X_1$, $\cdots$, $X_n$ tienen distribución $N(\mu,\sigma^2)$, y la presencia de estos dos parámetros complican un poco los cálculos, por lo que se trabajará con las variables estandarizadas, $Z_1$, $\cdots$, $Z_n$, donde el promedio está dada por
+\begin{align*}
+\bar{Z}&=\dfrac{1}{n}\sum_{i=1}^nZ_i\\
+&=\dfrac{1}{n}\sum_{i=1}^n\dfrac{X_i-\mu}{\sigma}\\
+&=\dfrac{1}{n\sigma}\sum_{i=1}^nX_i-\dfrac{\mu}{\sigma}\\
+&=\dfrac{\bar{X}}{\sigma}-\dfrac{\mu}{\sigma},
+\end{align*}
+además $Z_i-\bar{Z}=\dfrac{X_i-\bar{X}}{\sigma}$ para todo $i=2,\cdots,n$. Por lo tanto, para ver que las variables $X_2-\bar{X}$, $\cdots$, $X_n-\bar{X}$ son independientes de $\bar{X}$, basta ver que $Z_2-\bar{Z}$, $\cdots$, $Z_n-\bar{Z}$ son independientes de $\bar{Z}$.
+
+Para esto, utilizamos la función de densidad conjunta de las variables $Z_1$, $\cdots$, $Z_n$ dada por
+\begin{equation*}
+f(z_1,\cdots,z_n)=(2\pi)^{-n/2}\exp\left\{-\frac{1}{2}\sum_{i=1}^nz_i^2\right\},
+\end{equation*}
+Ahora, se define la transformación $Y_1=\bar{Z}$, y $Y_i=Z_i-\bar{Z}$ para $i=2,\cdots,n$, con jacobiano igual a $n^{-1}$. Podemos ver que $Z_1=Y_1-\sum_{i=2}^nY_i$ y $Z_i=Y_i+\bar{Y}$ para $i=2,\cdots,n$. Usando el teorema de transformación, se tiene que la función de densidad conjunta de $Y_1$, $\cdots$, $Y_n$ está dada por
+\begin{align*}
+f(y_1,\cdots,y_n)&=n(2\pi)^{-n/2}\exp\left\{-\dfrac{1}{2}(y_1-\sum_{i=2}^ny_i)^2\right\}\exp\left\{-\dfrac{1}{2}\sum_{i=2}^n(y_i+\bar{y})^2\right\}\\
+&=n(2\pi)^{-n/2}\exp\left\{-\dfrac{n}{2}y_1^2\right\}\exp\left\{\sum_{i=2}^ny_i^2+\left[\sum_{i=2}^ny_i\right]^2\right\},
+\end{align*}
+la cual es producto entre dos funciones, una que depende solo de $y_1$ y la otra de $y_i$ con $i=2,\cdots,n$ (ver el teorema 4.6.11 de \citeasnoun{Casella}). Entonces podemos concluir que $Y_2$, $\cdots$, $Y_n$ y $Y_1$ son independientes y el resultado queda demostrado.
+
+Existen otra forma de probar esta independencia utilizando el denominado teorema de Basu, sin embargo, no hemos introducido algunos conceptos necesarios para este teorema, por esta razón, será presentado más adelante.
+\end{proof}
+
+Usando el Resultado 2.3.2 y propiedades de la distribución $\chi^2$, se tiene que $E(\sum_{i=1}^n\dfrac{(X_i-\bar{X})^2}{\sigma^2})=n-1$, de donde \begin{equation}\label{varianza}
+E(S^2_n)=E\left(\dfrac{\sum_{i=1}^n(X_i-\bar{X})^2}{n}\right)=\dfrac{n-1}{n}\sigma^2.
+\end{equation}
+Es decir, el estimador $S^2_n$ es sesgado para $\sigma^2$, mientras que $S^2_{n-1}$ es insesgado para $\sigma^2$.
+
+Ahora, en muestras aleatorias provenientes de una distribución exponencial, Poisson o normal, el estimador de máxima verosimilitud es igual al estimador de momentos, pero no siempre es así, como ocurre en muestras provenientes de distribuciones uniformes continuas. Considera una muestra proveniente de $Unif[0,\theta]$, el estimador de máxima verosimilitud de $\theta$ es $\hat{\theta}_{MV}=X_{(n)}$ y el de momentos está dado por $\hat{\theta}_{mom}=2\bar{X}$. Para saber cuál de estos dos estimadores es mejor, comparamos los dos estimadores en término del sesgo y la varianza en el siguiente ejemplo.
+\begin{Eje}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de una distribución uniforme continua sobre $[0,\theta]$, el estimador de máxima verosimilitud de $\theta$ es $\hat{\theta}_{MV}=X_{n}$ y el estimador de momentos es $\hat{\theta}_{mom}=2\bar{X}$. Primero revisamos el desempeño de los estimadores en término del sesgo, es decir, calcularemos la esperanza de ambos estimadores. Para calcular $E(X_{(n)})$ es necesario conocer la función de densidad de probabilidad o la función de distribución de $X_{n}$. Para eso, usamos la propiedad (\ref{F_max}), de donde para $x\in[0,\theta]$ tenemos:
+\begin{equation*}
+F_{X_{(n)}}(x)=\frac{x^n}{\theta^n}.
+\end{equation*}
+Dada la función de distribución de $X_{(n)}$, podemos obtener la función de densidad dada por
+\begin{equation*}
+f_{X_{(n)}}(x)=\frac{nx^{n-1}}{\theta^n}I_{[0,\theta]}(x).
+\end{equation*}
+
+Ahora calculamos $E(X_{(n)})$ como
+\begin{equation}\label{uniforme_MV}
+E(X_{(n)})=\int_{0}^\theta\frac{nx^{n-1}}{\theta^n}dx=\frac{n}{n+1}\theta.
+\end{equation}
+
+Lo anterior concluye que $X_{(n)}$ como estimador de $\theta$, es sesgado. Más aun, subestima a $\theta$, hecho que se había observado en la Figura 2.5. También nótese que en la expresión (\ref{uniforme_MV}), cuando el tamaño de la muestra $n\rightarrow\infty$, el sesgo tiende a cero, esto es, $X_{(n)}$ es un estimador asintóticamente insesgado. Ahora, miramos cómo es el sesgo del estimador de momentos, tenemos
+\begin{equation*}
+E(2\bar{X})=2E(\bar{X})=2\frac{\theta}{2}=\theta,
+\end{equation*}
+
+pues la esperanza de $\bar{X}$ es igual a la esperanza de la distribución (ver Resultado 2.3.1). En conclusión, el estimador $2\bar{X}$ es insesgado para $\theta$. En el término del sesgo, el estimador $2\bar{X}$ es mejor que $X_{(n)}$, aunque cuando $n$ es grande, los dos son muy similares. Ahora miramos cuál es mejor en término de la varianza. Tenemos
+\begin{align*}
+Var(X_{(n)})&=E(X_{(n)})^2-(EX_{(n)})^2\\
+&=\int_{0}^\theta \frac{nx^{n+1}}{\theta^n}dx-\left(\frac{n\theta}{n+1}\right)^2\\
+&=\frac{n\theta^2}{n+2}-\frac{n^2\theta^2}{(n+1)^2}\\
+&=\frac{n\theta^2}{(n+2)(n+1)^2}.
+\end{align*}
+Por el otro lado,
+\begin{equation*}
+Var(2\bar{X})=4Var(\bar{X})=4\frac{\theta^2}{12n}=\frac{\theta^2}{3n}.
+\end{equation*}
+
+Algunas operaciones algebraicas indica que $Var(X_{(n)})$ es mucho más pequeña que la de $2\bar{X}$, y este aspecto ventajoso de $X_{(n)}$ puede recompensar con su sesgo que de todas formas es despreciable para valores grandes de $n$. Por lo tanto, se recomienda usar $X_{(n)}$ para estimar $\theta$. Nótese que la anterior observación con respecto a la varianza también es reflejada en la Figura 2.5.
+\end{Eje}
+
+Hasta este punto, hemos concluido que en muchas situaciones, se prefiere, en primera instancia a los estimadores insesgados, (o por lo menos asintóticamente insesgados) y entre ellos, aquel que tiene menor varianza. Una pregunta interesante que surge ahora es si se dispone de una estimador insesgado para una función del parámetro $g(\theta)$, cómo podemos modificarlo para que sigue siendo insesgado, pero con varianza menor. Para eso necesitamos el concepto de suficiencia de un estimador.
+
+\subsection{Suficiencia}
+
+El concepto de la suficiencia de un estimador está ligado con la idea de reducción de datos. Una muestra aleatoria provee información acerca del parámetro desconocido que se desea estimar, pero esta información está contenida en un conjunto de variables aleatorias, si hay una manera de encontrar una función de estas variables, que contiene la misma cantidad de información para el propósito de estimación, se lograría la reducción de datos. Una variable que logra esta reducción y que además es usado para estimar el parámetro es un estimador suficiente para el parámetro. Siguiendo a esta idea, es natural pensar que toda la información contenida en la muestra $X_1$, $\cdots$, $X_n$ está contenida en el estimador suficiente ($T$), entonces una vez conocido el valor que toma $T$, la muestra ya no provee ninguna información acerca del parámetro.
+
+La definición rigurosa de un estimador suficiente se presenta a continuación.
+
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad $f(x_i,\theta)$, y sea $T=T(X_1,\cdots,X_n)$ un estimador de $\theta$, se dice que $T$ es suficiente para $\theta$ si la distribución condicional de $X$ dado valores de $T$ no depende de $\theta$
+\end{Defi}
+En algunos textos, establecen que un estimador $T$ es suficiente para $\theta$ si $P(X_1=x_1,\cdots,X_n=x_n|T=t)$ no depende de $\theta$, la cual no es de todo riguroso, puesto que cuando las variables $X_i$ con $i=1,\cdots,n$ son continuas, la anterior probabilidad condicional (cuando está bien definida) siempre es igual a cero, que no depende de $\theta$; por el otro lado, también el estimador $T$ como función de las variables de la muestra también puede ser continua, entonces $P(T=t)=0$ y no se puede definir la esperanza condicional. Claro que cuando las variables $X_i$ y $T$ son discretas, podemos usar esta definición sin problema e ilustramos el forma de verificar que un estimador sea suficiente en el siguiente ejemplo.
+
+\begin{Eje}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución $P(\lambda)$, se ha visto que el estimador de máxima verosimilitud y de momentos de $\lambda$ está dada por $\bar{X}$. Además éste es insesgado para $\theta$ por el Resultado 2.3.1. Ahora veamos que también es un estimador suficiente para $\lambda$. Como la distribución Poisson es discreta, entonces para verificar la suficiencia de $\bar{X}$ podemos verificar que $P(X_1=x_1,\cdots,X_n=x_n|\bar{X}=x)$ no depende de $\lambda$, tenemos:
+\begin{align*}
+&\ \ \ \ P(X_1=x_1,\cdots,X_n=x_n|\bar{X}=x)\\
+&=\frac{P(X_1=x_1,\cdots,X_n=x_n,\bar{X}=x)}{P(\bar{X}=x)}\\
+&=\frac{P(X_1=x_1,\cdots,X_n=x_n,\sum_{i=1}^nX_i=nx)}{P(\sum_{i=1}^nX_i=nx)}\\
+&=\frac{P(X_1=x_1,\cdots,X_{n-1}=x_{n-1},X_n=nx-\sum_{i=1}^{n-1}x_i)}{P(\sum_{i=1}^nX_i=nx)}\\
+&=\frac{P(X_1=x_1)\cdots P(X_{n-1}=x_{n-1})P(X_n=nx-\sum_{i=1}^{n-1}x_i)}{P(\sum_{i=1}^nX_i=nx)}\\
+&=\dfrac{\dfrac{e^{-n\lambda}\lambda^{x_1}\cdots\lambda^{x_{n-1}}\lambda^{nx-\sum_{i=1}^{n-1}x_i}}{x_1!\cdots x_{n-1}!(nx-\sum_{i=1}^{n-1}x_i)!}}{\dfrac{e^{-n\lambda}(n\lambda)^{nx}}{(nx)!}}\\
+&=\frac{(nx)!}{n^{nx}x_1!\cdots x_{n-1}!(nx-\sum_{i=1}^{n-1}x_i)!},
+\end{align*}
+claramente la anterior probabilidad condicional no depende de $\lambda$, de donde se concluye que $\bar{X}$ es suficiente para $\lambda$. Utilizando un razonamiento completamente análogo, se puede ver que $\sum_{i=1}^nX_i$ también es suficiente para $\theta$.
+\end{Eje}
+
+Ahora, como se vio en el anterior ejemplo, utilizar la definición para demostrar que un estimador es suficiente puede resultar un poco tedioso, pues el cómputo de una probabilidad condicional, en general, no es sencillo. El siguiente teorema, conocido como el criterio de factorización de Fisher-Neyman, es útil para verificar que un estimador es suficiente para el parámetro desconocido.
+
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad $f(x_i,\theta)$, y sea $T=T(X_1,\cdots,X_n)$ un estimador de $\theta$, entonces $T$ es suficiente para $\theta$, si y solo si, se puede factorizar la función de verosimilitud $L(\theta,x_1,\cdots,x_n)$ como
+\begin{equation*}
+L(\theta,x_1,\cdots,x_n)=g(t(x_1,\cdots,x_n),\theta)h(x_1,\cdots,x_n)
+\end{equation*}
+\end{Res}
+\begin{proof}
+Se hará la prueba para cuando las variables $X_1$, $\cdots$, $X_n$ y $T$ son discretas, la demostración es como sigue:
+
+$(\Leftarrow)$ Primero supongamos que se tiene la factorización $L(\theta,x_1,\cdots,x_n)=g(t(x_1,\cdots,x_n),\theta)h(x_1,\cdots,x_n)$, y veamos que $T$ es suficiente para $\theta$, es decir, veamos que $P(X_1=x_1,\cdots,X_n=x_n|T=t)$ no depende de $\theta$. En primer lugar, si $t\neq T(x_1,\cdots,x_n)$ entonces la probabilidad vale 0 y por consiguiente no depende de $\theta$. Ahora si $t=T(x_1,\cdots,x_n)$, tenemos:
+    \begin{align*}
+    P(X_1=x_1,\cdots,X_n=x_n|T=t)&=\frac{P(X_1=x_1,\cdots,X_n=x_n,T=t)}{P(T=t)}\\
+    &=\dfrac{P(X_1=x_1,\cdots,X_n=x_n)}{P(T=t)}\\
+    &=\dfrac{g(t(x_1,\cdots,x_n),\theta)h(x_1,\cdots,x_n)}{P(T=t)}
+    \end{align*}
+
+Al definir $A$ como el conjunto de valores de $x_1$, $\cdots$, $x_n$ que son enviados al valor $t$ mediante la variable $T$, tenemos que
+    \begin{align*}
+    P(X_1=x_1,\cdots,X_n=x_n|T=t)&=\dfrac{g(t(x_1,\cdots,x_n),\theta)h(x_1,\cdots,x_n)}{\sum_{A}P(X_1=x_1,\cdots,X_n=x_n)}\\
+    &=\dfrac{g(t(x_1,\cdots,x_n),\theta)h(x_1,\cdots,x_n)}{\sum_{A}g(t(x_1,\cdots,x_n),\theta)h(x_1,\cdots,x_n)}\\
+    &=\dfrac{g(t,\theta)h(x_1,\cdots,x_n)}{\sum_{A}g(t,\theta)h(x_1,\cdots,x_n)}\\
+    &=\dfrac{h(x_1,\cdots,x_n)}{\sum_{A}h(x_1,\cdots,x_n)},
+    \end{align*}
+el cual no depende del valor $\theta$.
+
+
+$(\Rightarrow)$ Ahora supongamos que $T$ es suficiente para $\theta$, veamos que se tiene la factorización $L(\theta,x_1,\cdots,x_n)=g(t(x_1,\cdots,x_n),\theta)h(x_1,\cdots,x_n)$ para algunas funciones $g$ y $h$. Tenemos que
+    \begin{align*}
+    &\ \ \ \ L(\theta,x_1,\cdots,x_n)\\
+    &=P(X_1=x_1,\cdots,X_n=x_n)\\
+    &=P(X_1=x_1,\cdots,X_n=x_n,T=t(x_1,\cdots,x_n))\\
+    &=\underbrace{P(T=t(x_1,\cdots,x_n))}_{g}\underbrace{P(X_1=x_1,\cdots,X_n=x_n|T=t(x_1,\cdots,x_n))}_{h},
+    \end{align*}
+
+la primera probabilidad no depende de $\theta$ por la suficiencia de $T$, y la segunda probabilidad depende de $t(x_1,\cdots,x_n)$ y de $\theta$, y hemos logrado obtener la factorización de $L(\theta,x_1,\cdots,x_n)$.
+
+La prueba para cuando $X_1$, $\cdots$, $X_n$ y $T$ son continuas es más complicado, el lector puede consultarlo en \citeasnoun[pg.20]{Lehmann}.
+\end{proof}
+Ahora, retomamos el Ejemplo 2.3.2. utilizando el criterio de factorización para ilustrar la utilidad del resultado. Tenemos:
+\begin{align*}
+L(\lambda,x_1,\cdots,x_n)&=\frac{e^{-n\lambda}\lambda^{\sum_{i=1}^nx_i}}{\prod_{i=1}^nx_i!}\prod_{i=1}^nI_{\{0,1,\cdots\}}(x_i)\\
+&=\underbrace{e^{-n\lambda}\lambda^{n\bar{x}}}_{g(\bar{x},\lambda)}\underbrace{\frac{\prod_{i=1}^nI_{\{0,1,\cdots\}}(x_i)}{\prod_{i=1}^nx_i!}}_{h(x_1,\cdots,x_n)},
+\end{align*}
+con la anterior expresión se logra escribir la función de verosimilitud en forma del Resultado 2.3.4., de donde se concluye que $\bar{X}$ es suficiente para $\lambda$. Nótese que la anterior factorización no es única, pues también se tiene que:
+\begin{equation*}
+L(\lambda,x_1,\cdots,x_n)=\underbrace{e^{-n\lambda}\lambda^{\sum x_i}}_{g(\sum x_i,\lambda)}\underbrace{\frac{\prod_{i=1}^nI_{\{0,1,\cdots\}}(x_i)}{\prod_{i=1}^nx_i!}}_{h(x_1,\cdots,x_n)},
+\end{equation*}
+de donde se concluye que también $\sum_{i=1}^nX_i$ es suficiente para $\lambda$.
+
+Utilizando este criterio, se puede verificar fácilmente que en muestras provenientes de las distribuciones $Exp(\theta)$, $Bernoulli(\theta)$, $N(\theta,\sigma^2)$ con $\sigma^2$ conocida, las estadísticas $\bar{X}$ y $\sum_{i=1}^nX_i$ son suficientes para $\theta$.
+
+El criterio de factorización presentado en el Resultado 2.3.4. cubre solamente a las distribuciones con un parámetro desconocido, también existe la versión general para distribuciones con más de un parámetro. Dado que en mayoría de los casos, no se trabaja con distribuciones con más de dos parámetros, se presenta únicamente la versión para distribuciones con dos parámetros.
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad $f(x_i,\theta_1,\theta_2)$, y sea $T_1=T_1(X_1,\cdots,X_n)$ y $T_2=T_2(X_1,\cdots,X_n)$ son estimadores de $\theta_1$ y $\theta_2$, entonces $T_1$ y $T_2$ son suficientes para $\theta_1$ y $\theta_2$, si y solo si, se puede factorizar la función de verosimilitud $L(\theta,x_1,\cdots,x_n)$ como
+\begin{equation*}
+L(\theta,x_1,\cdots,x_n)=g(t_1(x_1,\cdots,x_n),\theta_1,t_2(x_1,\cdots,x_n),\theta_2)h(x_1,\cdots,x_n)
+\end{equation*}
+
+\end{Res}
+La utilidad del resultado se ilustra en el siguiente ejemplo.
+\begin{Eje}
+La distribución Beta se usa generalmente para modelar probabilidades y la función de densidad de probabilidad está dada por:
+\begin{equation*}
+f(x)=\dfrac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}I_{(0,1)}(x).
+\end{equation*}
+
+Dada una muestra aleatoria de tamaño $n$, la función de verosimilitud está dada por
+\begin{align*}
+L(\alpha,\beta)&=\dfrac{\Gamma(\alpha+\beta)^n}{\Gamma(\alpha)^n\Gamma(\beta)^n}\prod_{i=1}^nx_i^{\alpha-1}\prod_{i=1}^n(1-x_i)^{\beta-1}\prod_{i=1}^nI_{(0,1)}(x_i)\\
+&=\underbrace{\dfrac{\Gamma(\alpha+\beta)^n}{\Gamma(\alpha)^n\Gamma(\beta)^n}\left(\prod_{i=1}^nx_i\right)^{\alpha-1}\left(\prod_{i=1}^n(1-x_i)\right)^{\beta-1}}_{g(t_1,t_2,\alpha,\beta)}\underbrace{\prod_{i=1}^nI_{(0,1)}(x_i)}_{h(x_1,\cdots,x_n)}.
+\end{align*}
+Y podemos concluir que las estadísticas $\prod_{i=1}^nX_i$ y $\prod_{i=1}^n(1-X_i)$ son suficientes para $\alpha$ y $\beta$.
+\end{Eje}
+
+Para las distribuciones pertenecientes a la familia exponencial, siempre podemos encontrar estadísticas suficientes para el parámetro, el resultado se da a continuación.
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución $f(x,\theta)$ perteneciente a la familia exponencial, es decir,
+\begin{equation*}
+f(x,\theta)=h(x)c(\theta)\exp\{d(\theta)T(x)\},
+\end{equation*}
+
+entonces la estadística $\sum_{i=1}^nT(X_i)$ es una estadística suficiente para $\theta$.
+\end{Res}
+
+\begin{proof}
+El resultado es trivial usando el criterio de factorización de Fisher-Neyman. Por (\ref{exponencial_muestra}), tenemos que la función de verosimilitud de una muestra aleatoria con función de densidad perteneciente a la familia exponencial está dada por
+\begin{equation*}
+L(\theta,x_1,\cdots,x_n)=c(\theta)^n\left[\prod_{i=1}^nh(x_i)\right]\exp\left\{d(\theta)\sum_{i=1}^nT(x_i)\right\}.
+\end{equation*}
+Al tomar $\sum_{i=1}^nT(X_i)$ como la estadística $T$ y $c(\theta)^n\exp\left\{d(\theta)\sum_{i=1}^nT(x_i)\right\}$ como la función $g(t(x_1,\cdots,x_n),\theta)$, y el restante como $h(x_1,\cdots,x_n)$, se tiene que $\sum_{i=1}^nT(X_i)$ es suficiente para $\theta$.
+\end{proof}
+
+
+Para ilustrar la utilidad del resultado, consideramos una muestra proveniente de la distribución $Ber(p)$, esta distribución pertenece a la familia exponencial, puesto que
+\begin{align*}
+f(x,p)&=p^x(1-p)^{1-x}I_{\{0,1\}}(x)\\
+&=(\frac{p}{1-p})^xI_{\{0,1\}}(x)\\
+&=(1-p)I_{\{0,1\}}(x)\exp\left\{x\ln\frac{p}{1-p}\right\},
+\end{align*}
+entonces $T(x)=x$, y por el anterior resultado, se tiene que $\sum_{i=1}^nT(X_i)=\sum_{i=1}^nX_i$ es una estadística suficiente para $p$. Teniendo en cuenta que una estadística suficiente resume toda la información contenida en una muestra acerca de un parámetro $\theta$, lo anterior nos indica que en un conjunto de observaciones del tipo 0 y 1 provenientes de $Ber(p)$, para el efecto de estimación de $p$, basta con observar la suma de las observaciones, de esta forma podemos reducir un gran volumen de datos en solo un dato, y la estimación obtenida de $p$ no se ve afectado \footnote{Vea el Ejemplo 2.2.3. donde la estimación de $p$ se llevó a cabo usando solamente la suma de las observaciones.}.
+
+Por otro lado, como la presentación de una función de densidad de la familia exponencial no es única, entonces podemos encontrar diferentes estadísticas suficientes para un mismo parámetro. En efecto, la densidad de la distribución $Ber(p)$ también puede escribir como:
+\begin{equation*}
+f(x,p)=(1-p)I_{\{0,1\}}(x)\exp\left\{\frac{x}{n}\left[n\ln\frac{p}{1-p}\right]\right\},
+\end{equation*}
+
+de esta manera, $T(x)=x/n$, así también se probó que $\bar{X}=\sum_{i=1}^nX_i/n$ es una estadística suficiente para $p$.
+
+Ahora, en distribuciones biparamétricas también podemos encontrar fácilmente estadísticas suficientes si éstas pertenecen a la familia exponencial. El siguiente resultado es el análogo al Resultado 2.3.6. para distribuciones biparamétricas.
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución $f(x_i,\theta_1,\theta_2)$ perteneciente a la familia exponencial biparamétrica de la forma
+\begin{equation*}
+f(x_i,\theta_1,\theta_2)=c(\btheta)h(x)\exp\{d(\btheta)'T(x)\},
+\end{equation*}
+
+donde $\btheta=(\theta_1,\theta_2)$, $d(\btheta)=(d_1(\btheta),d_2(\btheta))'$ y $T(x)=(T_1(x),T_2(x))'$, entonces las estadística $\sum_{i=1}^nT_1(X_i)$ y $\sum_{i=1}^nT_2(X_i)$ son estadísticas suficientes para $\theta_1$ y $\theta_2$.
+\end{Res}
+\begin{proof}
+La prueba es análogo al caso para distribuciones uniparamétricas, usando el criterio de factorización de Fisher-Neyman. Tenemos que la función de verosimilitud está dada por
+\begin{align*}
+&\ \ \ \ \ L(\theta_1,\theta_2,x_1,\cdots,x_n)\\
+&=c(\btheta)^n\left\{\prod_{i=1}^nh(x_i)\right\}\exp\left\{d(\btheta)'\sum_{i=1}^nT(x_i)\right\}\\
+&=c(\theta_1,\theta_2)^n\left\{\prod_{i=1}^nh(x_i)\right\}\exp\left\{(d_1(\btheta),d_2(\btheta))'\sum_{i=1}^n\begin{pmatrix}T_1(x_i)\\T_2(x_i)\end{pmatrix}\right\}\\
+&=\underbrace{\left\{\prod_{i=1}^nh(x_i)\right\}}_{h(x_1,\cdots,x_n)}\underbrace{c(\theta_1,\theta_2)^n\exp\left\{d_1(\btheta)\sum_{i=1}^nT_1(x_i)+d_2(\btheta)\sum_{i=1}^nT_2(x_i)\right\}}_{g(t_1,\theta_1,t_2,\theta_2)},
+\end{align*}
+de esta forma, tenemos que $\sum_{i=1}^nT_1(X_i)$ y $\sum_{i=1}^nT_2(X_i)$ son suficientes para $\theta_1$ y $\theta_2$.
+\end{proof}
+
+Ilustramos la aplicación del resultado en el siguiente ejemplo.
+\begin{Eje}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución $N(\mu,\sigma^2)$, el anterior resultado servirá para encontrar estadísticas suficientes para $\mu$ y $\sigma^2$. La función de densidad pertenece a la familia exponencial biparamétrica pues se puede escribir de la forma
+\begin{equation*}
+f(x,\mu,\sigma^2)=\exp\left\{\left(\frac{\mu}{\sigma^2},-\frac{1}{2\sigma^2}\right)\begin{pmatrix}
+x\\x^2
+\end{pmatrix}\right\}\exp\left\{-\frac{\mu^2}{2\sigma^2}\right\}(2\pi\sigma^2)^{-1/2},
+\end{equation*}
+entonces $T_1(x)=x$ y $T_2(x)=x^2$, entonces el resultado anterior indica que las estadísticas $\sum_{i=1}^nX_i$ y $\sum_{i=1}^nX_i^2$ son suficientes y completas para $\mu$ y $\sigma^2$.
+\end{Eje}
+
+Volviendo al tópico de la evaluación de la calidad de un estimador, una inquietud que había surgido al tener en cuenta que un buen estimador debe ser insesgado con varianza pequeña es dado un estimador insesgado, cómo construir otro insesgado con varianza menor. El siguiente teorema de Rao-Blackwell \footnote{El teorema fue establecido por estadístico hindú Calyampudi Radhakrishna Rao y americano David Blackwell} afirma que al combinar un estimador insesgado con una estadística suficiente, se puede lograr un estimador insesgado con una varianza menor.
+\begin{Res}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria con función de densidad $f(x_i,\theta)$, si $T_1$ es un estimador insesgado para una función de $\theta$, $g(\theta)$, y $T_2$ es suficiente para $\theta$, entonces el estimador $T=E(T_1|T_2)$ es insesgado para $g(\theta)$ y tiene varianza menor que $T_1$.
+\end{Res}
+\begin{proof}
+En primer lugar $E(T)=E(E(T_1|T_2))=E(T_1)=g(\theta)$. Ahora, en término de varianza, tenemos
+\begin{align*}
+Var(T_1)&=Var(E(T_1|T_2))+E(Var(T_1|T_2))\\
+&=Var(T)+E(Var(T_1|T_2))\\
+&\geq Var(T)
+\end{align*}
+\end{proof}
+
+La importancia de este teorema radica en que para estimar una función de un parámetro desconocido $g(\theta)$ si tenemos un estimador insesgado $T_1$ podemos, con base en este, construir un mejor estimador que $T_1$, siempre y cuando se dispone de un estimador suficiente para $\theta$.
+
+Para un mejor entendimiento del teorema revisamos, en primer lugar, el concepto de la esperanza condicional. Lo más importante que hay que aclarar que la expresión $E(T_1|T_2)$ en el resultado anterior no es una constante, sino una variable aleatoria. Para ilustrar esto, considere el siguiente ejemplo:
+\begin{Eje}
+Dadas variables aleatorias $X$ e $Y$ con función de densidad de probabilidad conjunta dada por:
+\begin{equation*}
+f(x,y)=\begin{cases}
+e^{-y}\ \ \ \text{si}\ 0<x<y\\
+0\ \ \ \ \ \text{en otro caso}
+\end{cases},
+\end{equation*}
+
+Para calcular $E(X|Y)$ primero recordamos que ésta es una función con dominio igual al rango de $Y$ y a cada valor $y$ lo envía a la esperanza $E(X|Y=y)$. Entonces dado $y$, para calcular $E(X|Y=y)$, primero se calcula la función de densidad condicional $f_{X|Y}(x|y)=f(x,y)/f_Y(y)$, en nuestro caso,
+\begin{equation*}
+f_{X|Y}(x|y)=\begin{cases}
+y^{-1}\ \ \ \ \text{si}\ 0<x<y\\
+0\ \ \ \ \ \ \text{en otro caso}
+\end{cases},
+\end{equation*}
+
+de donde para un valor particular que toma la variable $Y$, se puede calcular $E(X|Y=y)$ como
+\begin{equation*}
+E(X|Y=y)=\int_{-\infty}^\infty xf_{X|Y}(x|y)dx,
+\end{equation*}
+
+nótese que la anterior esperanza condicional es un número, función de $y$. En nuestra caso, tenemos que $E(X|Y=y)=y/2$. Entonces $E(X|Y)$ envía cada valor $y$ a $y/2$, es decir $E(X|Y)=Y/2$, la cual claramente es una variable aleatoria.
+\end{Eje}
+En general, calcular una esperanza condicional $E(X|Y)$ puede implicar cálculos tediosos, pero en algunos casos puede ser trivial como lo indica el siguiente resultado.
+\begin{Res}
+Si $X$ e $Y$ son variables aleatorias, y $X$ puede escribir como una función de $Y$, entonces $E(X|Y)=X$.
+\end{Res}
+
+Aclarado el concepto de la esperanza condicional, volvemos al teorema de Rao Blackwell, en la demostración no se utilizó el hecho de que $T_2$ sea una estadística suficiente, por lo tanto, podemos intuir que al condicionar $T_1$ en cualquier otra estadística, digamos $S$, también se puede mejorar la calidad del estimador, en el término de que $Var(T_1|S)$ será menor que $Var(T_1)$. Lo anterior es cierto, pero puede suceder que $T_1|S$ dependa del parámetro $\theta$ y deja de ser un estimador (Vea \citeasnoun[Ejemplo 7.3.18, pg. 343]{Casella} para un ejemplo donde $T_1|S$ depende de $\theta$.). Por esta razón, se necesita que el condicionamiento sea sobre una estadística suficiente para garantizar que la resultante esperanza condicional no dependa del parámetro y pueda ser usado como un estimador.
+
+\subsection{Estimadores UMVUE}
+
+El teorema de Rao Blackwell plantea la posibilidad de un proceso continuo de construcción de estimadores insesgados con varianzas cada vez menores, entonces la inquietud que surge ahora es si podemos construir estimadores de varianza cada vez menor o podemos encontrar un estimador insesgado $T$ de tal forma que ya no existe ningún otro estimador insesgado con varianza menor que $Var(T)$. Si existe alguna cota inferior para la varianza de los estimadores, y se encuentra un estimador insesgado $T$ con varianza igual a esta cota, se podrá concluir que no habrá otro estimador insesgado con varianza más pequeño que ésta, y se podrá afirmar que $T$ es la mejor de todos los estimadores insesgados. Esta cota existe efectivamente y se denomina la cota de Cramer Rao, y no solo es la cota inferior para la varianza de los estimadores insesgados, sino también puede ser cota inferior para la varianza de todos los estimadores. Para estudiar la cota de Cramer Rao, introducimos algunos conceptos preliminares.
+
+
+\begin{Defi}
+Dada $X$ una variable aleatoria con función de densidad $f(x,\theta)$, donde $\theta$ es el parámetro de la distribución, y además existe $\dfrac{\partial}{\partial\theta}\ln{f(x,\theta)}$, entonces se define la información contenida en $X$ acerca de $\theta$ como
+\begin{equation*}
+I_X(\theta)=E\left\{\left[\frac{\partial}{\partial\theta}\ln{f(X,\theta)}\right]^2\right\}.
+\end{equation*}
+
+\end{Defi}
+Nótese que en la anterior definición, $f(X,\theta)$ no es la función de densidad $f(x,\theta)$, sino la variable $X$ transformada a través de la función $f$, es decir, $f(X,\theta)$ es una variable aleatoria, y por consiguiente, tiene sentido calcular la esperanza. Ahora en algunas situaciones, existe una definición equivalente que mide esta cantidad de información, y puede resultar más fácil el cálculo.
+\begin{Res}
+En la anterior definición, si además existe $\dfrac{\partial^2}{\partial\theta^2}\ln{f(x,\theta)}$, entonces se tiene que
+\begin{equation*}
+I_X(\theta)=-E\left\{\dfrac{\partial^2}{\partial\theta^2}\ln{f(X,\theta)}\right\}.
+\end{equation*}
+
+\end{Res}
+\begin{proof}
+Tenemos:
+\begin{align*}
+-E\left\{\dfrac{\partial^2}{\partial\theta^2}\ln{f(X,\theta)}\right\}&=-E\left\{\frac{\partial}{\partial\theta}\left[\frac{1}{f(X,\theta)}\frac{\partial f(X,\theta)}{\partial\theta}\right]\right\}\\
+&=-E\left\{-\frac{1}{f^2(X,\theta)}\left[\frac{\partial f(X,\theta)}{\partial\theta}\right]^2+\frac{1}{f(X,\theta)}\frac{\partial^2f(X,\theta)}{\partial\theta^2}\right\}\\
+&=E\left\{\frac{1}{f^2(X,\theta)}\left[\frac{\partial f(X,\theta)}{\partial\theta}\right]^2\right\}-E\left\{\frac{1}{f(X,\theta)}\frac{\partial^2f(X,\theta)}{\partial\theta^2}\right\},
+\end{align*}
+La última esperanza vale cero, puesto que si $X$ es una variable continua,
+\begin{align*}
+E\left\{\frac{1}{f(X,\theta)}\frac{\partial^2f(X,\theta)}{\partial\theta^2}\right\}&=\int_{\mathbb{R}}\frac{1}{f(x,\theta)}\frac{\partial^2f(x,\theta)}{\partial\theta^2}f(x,\theta)dx\\
+&=\int_{\mathbb{R}}\frac{\partial^2f(x,\theta)}{\partial\theta^2}dx\\
+&=\frac{\partial^2}{\partial\theta^2}\int_{\mathbb{R}}f(x,\theta)dx\\
+&=\frac{\partial^2}{\partial\theta^2}(1)=0.
+\end{align*}
+Y si $X$ es discreta, suponga que los valores que toma son $x_1,x_2\cdots$, entonces,
+\begin{align*}
+E\left\{\frac{1}{f(X,\theta)}\frac{\partial^2f(X,\theta)}{\partial\theta^2}\right\}&=\sum_{i}\frac{1}{f(x_i,\theta)}\frac{\partial^2f(x_i,\theta)}{\partial\theta^2}P(X=x_i)\\
+&=\sum_{i}\frac{\partial^2f(x_i,\theta)}{\partial\theta^2}\\
+&=\frac{\partial^2}{\partial\theta^2}\sum_{i}f(x_i,\theta)\\
+&=\frac{\partial^2}{\partial\theta^2}(1)=0.
+\end{align*}
+
+En conclusión,
+\begin{equation*}
+-E\left\{\dfrac{\partial^2}{\partial\theta^2}\ln{f(X,\theta)}\right\}=E\left\{\frac{1}{f^2(X,\theta)}\left[\frac{\partial f(X,\theta)}{\partial\theta}\right]^2\right\}.
+\end{equation*}
+
+Ahora,
+\begin{align*}
+I_X(\theta)&=E\left\{\left[\frac{\partial}{\partial\theta}\ln{f(X,\theta)}\right]^2\right\}\\
+&=E\left\{\left[\frac{1}{f(X,\theta)}\frac{\partial f(X,\theta)}{\partial\theta}\right]^2\right\}\\
+&=E\left\{\frac{1}{f^2(X,\theta)}\left[\frac{\partial f(X,\theta)}{\partial\theta}\right]^2\right\}\\
+&=-E\left\{\dfrac{\partial^2}{\partial\theta^2}\ln{f(X,\theta)}\right\},
+\end{align*}
+y el resultado queda demostrado.
+\end{proof}
+
+Las anteriores definiciones introducen la información contenida en una variable, sin embargo, cuando tenemos disponible una muestra aleatoria, es necesario definir la información contenida en una muestra aleatoria acerca de algún parámetro.
+\begin{Defi}
+Dada $X_1$, $\cdots$, $X_n$ variables aleatorias con función de densidad $f(x_i,\theta)$, donde $\theta$ es el parámetro de la distribución, y además existe $\dfrac{\partial}{\partial\theta}\ln{\prod_{i=1}^nf(x_i,\theta)}$, entonces se define la información contenida en la muestra aleatoria acerca de $\theta$ como
+\begin{equation*}
+I_{X_1,\cdots,X_n}(\theta)=E\left\{\left[\frac{\partial}{\partial\theta}\ln{\prod_{i=1}^nf(X_i,\theta)}\right]^2\right\}.
+\end{equation*}
+
+\end{Defi}
+Recordemos que en una muestra aleatoria, las variables tienen la misma distribución de probabilidad, además son independiente, entonces es natural pensar que cada variable debe aportar la misma cantidad de información, es decir, la información contenida en una muestra de tamaño $n$ debe ser igual a $n$ veces la información contenida en cualquier variable de la muestra. El siguiente resultado confirma esta intuición.
+\begin{Res}
+Dada $X_1$, $\cdots$, $X_n$ una muestra aleatoria, entonces
+\begin{equation*}
+I_{X_1,\cdots,X_n}(\theta)=nI_X(\theta),
+\end{equation*}
+
+donde $I_X(\theta)=I_{X_i}(\theta)$, con $i=1,\cdots,n$. Es decir, en una muestra aleatoria, cada variable aporta la misma cantidad de información, y la cantidad total de información en la muestra es la suma de la información en cada variable.
+\end{Res}
+\begin{proof}
+\begin{align*}
+I_{X_1,\cdots,X_n}(\theta)&=E\left\{\left[\frac{\partial}{\partial\theta}\ln{\prod_{i=1}^nf(X_i,\theta)}\right]^2\right\}\\
+                          &=E\left\{\left[\sum_{i=1}^n\frac{\partial}{\partial\theta}\ln{f(X_i,\theta)}\right]^2\right\}\\
+                          &=E\left\{\sum_{i=1}^n\left[\frac{\partial}{\partial\theta}\ln{f(X_i,\theta)}\right]^2\right\}+\\
+                          &\ \ \ \ \ \ \ \ \ \ \ \ \underbrace{E\left\{\sum_{\substack{i,j=1\\i\neq j}}^n\left[\frac{\partial}{\partial\theta}\ln{f(X_i,\theta)}\frac{\partial}{\partial\theta}\ln{f(X_j,\theta)}\right]\right\}}_{=0,\ \text{por la independencia entre}\ X_i\ \text{y}\ X_j}\\
+                          &=\sum_{i=1}^nE\left\{\left[\frac{\partial}{\partial\theta}\ln{f(X_i,\theta)}\right]^2\right\}\\
+                          &=\sum_{i=1}^nI_X(\theta)=nI_X(\theta).
+\end{align*}
+\end{proof}
+Ilustramos el cálculo de la información contenida en una muestra en el siguiente ejemplo, y posteriormente presentamos cómo este concepto resulta útil en la definición de la cota de Cramer Rao.
+\begin{Eje}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de la distribución $N(\mu,\sigma^2)$, la información contenida en la muestra acerca de $\mu$ es $n/\sigma^2$. Para verificar esta afirmación, calculamos la información acerca de $\mu$ en una variable $X$ con distribución $N(\mu,\sigma^2)$. Tenemos:
+\begin{align*}
+I_X(\mu)&=-E\left\{\dfrac{\partial^2}{\partial\mu^2}\ln{f(X,\theta)}\right\}\\
+        &=-E\left\{\dfrac{\partial^2}{\partial\mu^2}\left[-\frac{1}{2}\ln2\pi\sigma^2-\frac{1}{2\sigma^2}(X-\mu)^2\right]\right\}\\
+        &=-E\left\{\frac{\partial}{\partial\mu}\left[\frac{X-\mu}{\sigma^2}\right]\right\}\\
+        &=-E\left\{-\frac{1}{\sigma^2}\right\}\\
+        &=\frac{1}{\sigma^2}.
+\end{align*}
+Ahora, usando el Resultado 2.3.4, se tiene que $I_{X_1,\cdots,X_n}(\mu)=n/\sigma^2$.
+
+Nótese que esta información, en primer lugar, depende del tamaño $n$ de manera que entre más grande sea la muestra, hay mayor información acerca de $\mu$; en segundo lugar, entre más pequeña sea la varianza $\sigma^2$, la cantidad de información acerca de $\mu$ también incrementa, esto es natural, puesto que si $\sigma^2$ es pequeña, los datos de la muestra están muy concentrados alrededor de $\mu$, entonces estos datos aportan más información que otros datos con más dispersión.
+\end{Eje}
+
+Cuando se introdujo el concepto de una estadística suficiente, su interpretación es que contiene toda la información de la muestra acerca de algún parámetros, esta información se puede entender como la información de Fisher, y el siguiente resultado provee la respectiva sustentación.
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad $f(x_i,\theta)$, y sea $T$ un estimador suficiente para $\theta$, entonces la información contenida en $T$ acerca de $\theta$ es la misma información contenida en la muestra aleatoria acerca de $\theta$
+\end{Res}
+\begin{proof}
+Lo que probaremos es $I_{T}(\theta)=I_{X_1,\cdots,X_n}(\theta)$.
+Tenemos, en primer lugar,
+\begin{align*}
+f(X_1,\cdots,X_n|T)&=\dfrac{f(X_1,\cdots,X_n,T)}{f(T)}\\
+&=\dfrac{g(T,\theta)h(X_1,\cdots,X_n)}{f(T)}\ \ \ \text{usando el criterio de factorización},
+\end{align*}
+de donde tenemos que
+\begin{equation*}
+f(T)=\dfrac{g(T,\theta)h(X_1,\cdots,X_n)}{f(X_1,\cdots,X_n|T)}.
+\end{equation*}
+
+Ahora usando la función de densidad de $T$ calculamos la información contenida en $T$ como
+\begin{align*}
+I_T(\theta)&=E\left\{\left[\frac{\partial}{\partial\theta}\ln{f(T)}\right]^2\right\}\\
+&=E\left\{\left[\frac{\partial}{\partial\theta}\ln{\dfrac{g(T,\theta)h(X_1,\cdots,X_n)}{f(X_1,\cdots,X_n|T)}}\right]^2\right\}\\
+&=E\left\{\left[\frac{\partial}{\partial\theta}\left(\ln{g(T,\theta)}+\ln{h(X_1,\cdots,X_n)}-\ln{f(X_1,\cdots,X_n|T)}\right)\right]^2\right\}\\
+&=E\left\{\left[\frac{\partial}{\partial\theta}\ln{g(T,\theta)}\right]^2\right\},\\
+\end{align*}
+pues $h(X_1,\cdots,X_n)$ no depende de $\theta$, y tampoco $f(X_1,\cdots,X_n|T)$ por la definición de suficiencia de $T$.
+
+Ahora, calculamos la información contenida en la muestra acerca de $\theta$, tenemos
+\begin{align*}
+I_{X_1,\cdots,X_n}(\theta)&=E\left\{\left[\frac{\partial}{\partial\theta}\ln{f(X_1,\cdots,X_n)}\right]^2\right\}\\
+&=E\left\{\left[\frac{\partial}{\partial\theta}\ln{g(T,\theta)h(X_1,\cdots,X_n)}\right]^2\right\}\\
+&=E\left\{\left[\frac{\partial}{\partial\theta}(\ln{g(T,\theta)}-\ln{h(X_1,\cdots,X_n)})\right]^2\right\}\\
+&=E\left\{\left[\frac{\partial}{\partial\theta}\ln{g(T,\theta)}\right]^2\right\}.
+\end{align*}
+Y podemos concluir que $I_T(\theta)=I_{X_1,\cdots,X_n}(\theta)$ de donde se concluye que la información contenida en $T$ con respecto a $\theta$ es la misma información contenida en la muestra $X_1,\cdots,X_n$.
+\end{proof}
+
+
+Ahora, como se mencionaba anteriormente, el concepto de información de Fisher permite encontrar una cota inferior para la varianza de los estimadores, este se enuncia en la famosa desigualdad de Cramer Rao, y se presenta a continuación:
+\begin{Res}
+Dada $X_1$, $\cdots$, $X_n$ variables aleatorias con distribución de probabilidad $f(x_i,\theta)$, y $T$ es un estimador para $g(\theta)$, si
+\begin{equation}\label{Regular}
+\frac{\partial}{\partial\theta}E(T)=\int\frac{\partial}{\partial\theta}t(x_1,\cdots,x_n)f(x_1,\cdots,x_n)dx_1\cdots dx_n
+\end{equation}
+y $Var(T)<\infty$, entones
+\begin{equation*}
+Var(T)\geq\dfrac{(\frac{\partial}{\partial\theta}E(T))^2}{I_{X_1,\cdots,X_n}(\theta)}.
+\end{equation*}
+
+Y $\dfrac{(\frac{\partial}{\partial\theta}E(T))^2}{I_{X_1,\cdots,X_n}(\theta)}$ es llamado la cota de Cramer Rao.
+\end{Res}
+\begin{proof}
+La demostración del resultado se basa en el hecho de que el coeficiente de correlación entre dos variables es siempre menor o igual a 1. Entonces para las variables $T$ y $\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta)$, se tiene que
+\begin{equation*}
+1\geq Corr(T,\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta))=\frac{Cov(T,\frac{\partial}{\partial\theta}\ln\prod_{i=1}^n f(X_i,\theta))}{\sqrt{Var(T)Var(\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta))}},
+\end{equation*}
+
+el cual es equivalente a
+\begin{equation*}
+1\geq\frac{Cov(T,\frac{\partial}{\partial\theta}\ln\prod_{i=1}^n f(X_i,\theta))^2}{Var(T)Var(\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta))}
+\end{equation*}
+
+de donde se tiene
+\begin{equation}\label{coef}
+Var(T)\geq\frac{Cov(T,\frac{\partial}{\partial\theta}\ln\prod_{i=1}^n f(X_i,\theta))^2}{Var(\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta))}.
+\end{equation}
+Ahora
+\begin{align*}
+Var(\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta))&=E\left\{\left[\frac{\partial}{\partial\theta}\ln\prod_{i=1}^n f(X_i,\theta)\right]^2\right\}-\underbrace{\left(E\left[\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta)\right]\right)^2}_{=0}\\
+&=E\left\{\left[\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta)\right]^2\right\}\\
+&=I_{X_1,\cdots,X_n}(\theta),
+\end{align*}
+puesto que
+\begin{align*}
+E\left[\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta)\right]&=\sum_{i=1}^n\int_{\mathbb{R}}\frac{\partial}{\partial\theta}\ln f(x_i,\theta)f(x_i,\theta)dx_i\\
+&=\sum_{i=1}^n\int_{\mathbb{R}}\frac{1}{f(x_i,\theta)}\frac{\partial f(x_i,\theta)}{\partial\theta}f(x_i,\theta)dx_i\\
+&=\sum_{i=1}^n\frac{\partial}{\partial\theta}\int_{\mathbb{R}}f(x_i,\theta)dx_i\\
+&=\sum_{i=1}^n\frac{\partial}{\partial\theta}(1)=0,
+\end{align*}
+si las variables $X_1$, $\cdots$, $X_n$ son continuas. Cuando son discretas, se tiene análogamente.
+
+Por otro lado,
+\begin{align*}
+&\ \ \ Cov(T,\frac{\partial}{\partial\theta}\ln\prod_{i=1}^n f(X_i,\theta))\\
+&=E\left[T\frac{\partial}{\partial\theta}\ln\prod_{i=1}^n f(X_i,\theta)\right]\hspace{2.7cm}\text{pues $E(\frac{\partial}{\partial\theta}\ln\prod_{i=1}^n f(X_i,\theta))=0$}\\
+&=\int_{\mathbb{R}^n}t(x_1,\cdots,x_n)\frac{\partial\ln f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)}{\partial\theta}f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)dx_1\cdots dx_n\\
+&=\int_{\mathbb{R}^n}t(x_1,\cdots,x_n)\frac{\partial}{\partial\theta}f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)dx_1\cdots dx_n\\
+&=\frac{\partial}{\partial\theta}\int_{\mathbb{R}^n}t(x_1,\cdots,x_n)f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)dx_1\cdots dx_n\\
+&=\frac{\partial}{\partial\theta}E(T).
+\end{align*}
+Reemplazando las anteriores expresiones en (\ref{coef}), se tiene el resultado.
+\end{proof}
+
+La condición en (\ref{Regular}) es parte de las condiciones denominadas condiciones de regularidad, y se debe garantizar que esta condición se cumple para tener la validez de la desigualdad de Cramer Rao. Para las distribuciones pertenecientes a la familia exponencial, esta condición siempre se tiene, sin embargo, para distribuciones donde el rango de la variable depende del parámetro como la distribución uniforme, la desigualdad de Cramer Rao puede no ser cierto. El lector puede consultar \citeasnoun[Ejemplo 7.3.13, pg.339]{Casella} para ver un ejemplo donde ocurre esta situación.
+
+Ahora, la cota de Cramer Rao dada en el anterior resultado no asume muchas condiciones como la independencia acerca de las variables, y tampoco características especiales del estimador $T$. Sin embargo, la mayor utilidad de la cota de Cramer Rao se da cuando las variables constituyen una muestra aleatoria y el estimador $T$ sea insesgado para $g(\theta)$. En este caso $\frac{\partial}{\partial\theta}E(T)=\frac{\partial}{\partial g(\theta)}\theta=g'(\theta)$ y la desigualdad se convierte en
+\begin{equation*}
+Var(T)\geq\dfrac{g'(\theta)}{nI_{X}(\theta)}.
+\end{equation*}
+
+Y en el caso cuando lo que se desea estimar es simplemente el parámetro de la distribución $\theta$, $g(\theta)=\theta$, y la desigualdad se convierte en
+\begin{equation}\label{Cramer}
+Var(T)\geq\dfrac{1}{nI_{X}(\theta)}.
+\end{equation}
+
+Ahora, si un estimador insesgado $T$ tiene varianza igual a la cota de Cramer Rao, entonces cualquier otro estimador insesgado necesariamente tendrá varianza más grande que $T$, es decir, $T$ será el mejor entre todos los estimadores insesgados, y existe un nombre especial para estos estimadores que se presenta en la siguiente definición.
+\begin{Defi}
+Dada $X_1$, $\cdots$, $X_n$ una muestra aleatoria con función de densidad $f(x_i,\theta)$, y $T$ un estimador insesgado para $\theta$, si $Var(T)\leq Var(T^*)$ para todo $\theta$ para cualquier otro estimador $T^*$ insesgado de $\theta$, entonces se dice que $T$ es un estimador insesgado de varianza uniformemente mínima, UMVUE \footnote{Por su sigla en inglés \textit{Uniformly minimum variance unbiased estimator}.}.
+\end{Defi}
+Con respecto a estimadores UMVUE, tenemos varios comentarios.
+\begin{itemize}
+\item Como lo mencionado anteriormente, cuando un estimador insesgado tiene varianza igual a la cota de Cramer Rao, entonces este es un UMVUE, pero no necesariamente sucede lo contrario, o por lo menos, en la literatura estadística no hay un resultado que lo establezca. Es decir, un UMVUE no necesariamente tiene varianza igual a la cota de Cramer Rao.
+\item Una forma para verificar que un estimador sea UMVUE es ver que la varianza es igual a la cota de Cramer Rao, además hay que ver que es un estimador insesgado. En otras palabras, un estimador sesgado que tenga varianza igual a la cota de Cramer Rao no es UMVUE.
+\item Un estimador UMVUE tiene la varianza más pequeña entre todos los estimadores insesgados, pero puede existir un estimador sesgado $T^*$ con varianza aún más pequeña. En este caso, se debe escoger entre el UMVUE y $T^*$, pues puede suceder que la ganancia en la varianza sea considerable y que $T^*$ sea asintóticamente insesgado y de esta forma, corregir el seso aumentando el tamaño de muestra $n$.
+\end{itemize}
+
+Consideramos un ejemplo para ilustrar los estimadores UMVUE, en la sección anterior se mencionaba que en una muestra proveniente de la distribución $P(\theta)$, existen dos estimadores de momentos $\bar{X}$ y $S^2_n$, que mediante estudios de simulación, se vio que $\bar{X}$ es mejor que $S^2_n$, la razón teórica es que $\bar{X}$ es UMVUE para $\theta$, lo mostramos en el siguiente ejemplo.
+\begin{Eje}
+Dada $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución $P(\theta)$, el estimador $\bar{X}$ como estimador de $\theta$ es UMVUE. En primer lugar, se vio en el Resultado 2.3.1. $\bar{X}$ siempre es insesgado para el promedio poblacional, el cual en la distribución Poisson es igual al parámetro $\theta$. Entonces tenemos que $\bar{X}$ es insesgado para $\theta$. Resta verificar que la varianza de $\bar{X}$ es mínima entre todos los estimadores insesgados. Para eso, podemos calcular la cota de Cramer Rao, y ver que ésta es igual a $Var(\bar{X})$.
+
+Por el Resultado 2.3.1, $Var(\bar{X})=\sigma^2/n$ donde $\sigma^2$ es la varianza de la distribución de probabilidad, que en este ejemplo es la distribución $P(\theta)$ cuya varianza es $\theta$. En conclusión
+\begin{equation*}
+Var(\bar{X})=\frac{\theta}{n}.
+\end{equation*}
+
+Ahora calculamos la cota de Cramer Rao, tenemos
+\begin{align*}
+I_{X_1,\cdots,X_n}(\theta)&=nI_{X}(\theta)\\
+&=-nE\left\{\frac{\partial^2}{\partial\theta^2}\ln f(X,\theta)\right\}\\
+&=-nE\left\{\frac{\partial^2}{\partial\theta^2}\left[-\theta+X\ln\theta-\ln X!\right]\right\}\\
+&=-nE\left\{\frac{\partial}{\partial\theta}\left[-1+\frac{X}{\theta}\right]\right\}\\
+&=-nE\left\{-\frac{X}{\theta^2}\right\}\\
+&=\frac{n}{\theta},
+\end{align*}
+de donde se concluye que la cota de Cramer Rao es $\theta/n$, que es igual a la varianza de $\bar{X}$. En conclusión, $\bar{X}$ es UMVUE para $\theta$.
+
+Por otro lado, de nuevo usando el Resultado 2.3.1, el otro estimador de momentos $S^2_n$ es insesgado para la varianza poblacional que en una distribución Poisson también corresponde al parámetro $\theta$. Este insesgamiento se puede corroborar con la Figura 2.5 donde muestran las estimaciones obtenidas usando $\bar{X}$ y $S^2_n$ en muestras de distribución Poisson, donde es claro que las estimaciones de $S^2_n$ estuvieron siempre alrededor del valor de $\theta$, sin embargo como $\bar{X}$ es UMVUE, siempre será mejor que $S^2_n$ como estimador de $\theta$.
+\end{Eje}
+
+Como se vio en el anterior ejemplo, para ver que la varianza de un estimador sea igual a la cota de Cramer Rao, se necesita calcular la información de Fisher contenida en la muestra, y esto puede ser tedioso. Sin embargo, existe un resultado, que requiere tal vez menos operaciones algebraicas, que nos permite saber cuándo un estimador tiene la varianza igual a la cota de Cramer Rao.
+\begin{Res}
+Dada $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución de probabilidad $f(x_i,\theta)$, y $T=T(X_1,\cdots,X_n)$ un estimador de $g(\theta)$. Si se tiene la siguiente factorización
+\begin{equation*}
+\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(x_i,\theta)=K(\theta)(t(x_1,\cdots,x_n)-g(\theta)),
+\end{equation*}
+
+entonces la varianza de $T$ es igual a la cota de Cramer Rao.
+\end{Res}
+\begin{proof}
+La condición
+\begin{equation*}
+\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(x_i,\theta)=K(\theta)(t(x_1,\cdots,x_n)-g(\theta))
+\end{equation*}
+
+es equivalente a
+\begin{equation*}
+\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(x_i,\theta)=\alpha t(x_1,\cdots,x_n)+\beta
+\end{equation*}
+
+para algunos constantes $\alpha$ y $\beta$ que no depende de la muestra aleatoria, sino únicamente del parámetro $\theta$. Y en consecuencia, tenemos que
+\begin{equation*}
+\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta)=\alpha T+\beta.
+\end{equation*}
+
+Ahora recordando propiedades del coeficiente de correlación, tenemos que
+\begin{equation*}
+Corr(T,\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(X_i,\theta))=1,
+\end{equation*}
+
+y retomando la demostración del Teorema 2.3.12, tenemos que la varianza de $T$ es igual a la cota de Cramer Rao.
+
+\end{proof}
+Ahora, volvemos al Ejemplo 2.3.7 para ilustrar la utilidad del anterior resultado. Tenemos:
+\begin{align*}
+\frac{\partial}{\partial\theta}\ln\prod_{i=1}^nf(x_i,\theta)&=\frac{\partial}{\partial\theta}\ln\left\{\frac{e^{-n\theta}\theta^{\sum x_i}}{\prod x_i!}\prod I_{\{0,1,\cdots\}}(x_i)\right\}\\
+&=\frac{\partial}{\partial\theta}\left\{-n\theta+\sum_{i=1}^nx_i\ln\theta\right\}\\
+&=-n+\frac{\sum_{i=1}^nx_i}{\theta}\\
+&=\frac{-n\theta+n\bar{x}}{\theta}\\
+&=\frac{n}{\theta}(\bar{x}-\theta),
+\end{align*}
+la anterior expresión es de la forma $K(\theta)(t(x_1,\cdots,x_n)-\theta)$ donde $K(\theta)=n/\theta$ y $t(x_1,\cdots,x_n)=\bar{x}$. Así se concluye que el estimador $\bar{X}$ tiene varianza igual a la cota de Cramer Rao, teniendo en cuenta que es también insesgado para $\theta$, se puede concluir que $\bar{X}$ es UMVUE para $\theta$.
+
+Finalmente, resaltamos el procedimiento para comprobar que un estimador sea UMVUE, primero se debe demostrar que el estimador es insesgado y luego comprobar que la varianza del estimador es igual a la cota de Cramer Rao. Para este último hay dos formas de hacerlo: (1) usar directamente la definición, en este caso debe calcular la varianza del estimador y también calcular la cota de Cramer Rao; (2) usar el Resultado 2.3.13, en este caso no es necesario el cálculo de la varianza del estimador, ni la cota de Cramer Rao.
+
+\subsection{Completez}
+
+Otro concepto útil en la construcción de un buen estimador es el concepto de la completez. Este concepto, a diferencia de los conceptos como el sesgo, varianza o suficiencia, el concepto de completez carece de una interpretación clara y de fácil entendimiento, pero resulta ser muy útil, como se verá más adelante, este concepto nos permite encontrar los estimadores UMVUE.
+
+\begin{Defi}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad $f(x_i,\theta)$, y $T$ una estadística, se dice que $T$ es completo para $\theta$, si para cualquier función $g(\cdot)$, el hecho de $E(g(T))=0$ para todo $\theta$, implica que $g(T)=0$.
+\end{Defi}
+En algunos casos, no es muy complicado demostrar que un estimador es completo, como lo ilustra el siguiente ejemplo.
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución $Ber(p)$, entonces el estimador $\sum_{i=1}^nX_i$ es un estimador completo para $p$. Para ver eso, tomamos una función $g(\cdot)$ cualquiera, y supongamos que $E(g(\sum_{i=1}^nX_i))=0$, y veamos que $g(\sum_{i=1}^nX_i)=0$. Recordando que la distribución de $\sum_{i=1}^nX_i$ tiene distribución $Bin(n,p)$, tenemos:
+\begin{align*}
+0&=E(g(\sum_{i=1}^nX_i))\\
+&=\sum_{i=0}^ng(i)\binom{n}{i}p^i(1-p)^{n-i}\\
+&=(1-p)^n\sum_{i=0}^n\binom{n}{i}g(i)(\frac{p}{1-p})^i,
+\end{align*}
+de donde se tiene que $\sum_{i=0}^n\binom{n}{i}g(i)(\frac{p}{1-p})^i=0$, nótese que el lado izquierdo de la igualdad es un polinomio en $\frac{p}{1-p}$ de grado $n$. Recordando que un polinomio es igual a 0 si cada coeficiente del polinomio es 0, entonces se puede concluir que $\binom{n}{i}g(i)=0$ para todo $i=0,\cdots,n$, de donde se tiene que $g(i)=0$ para $i=0,\cdots,n$. Ahora la estadística $\sum_{i=1}^nX_i$ toma valores 0, $\cdots$, $n$, de donde se concluye finalmente que $g(\sum_{i=1}^nX_i)=0$.
+\end{Eje}
+En el anterior ejemplo, la muestra aleatoria proviene de una distribución discreta, cuando se trata de una distribución continua, la forma de proceder es diferente, como se ilustra en el siguiente ejemplo.
+\begin{Eje}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución uniforme sobre $[0,\theta]$, el estimador por el método de máxima verosimilitud es $X_{(n)}$ el máximo de la muestra, veamos que este estimador es completa. Para cualquier función $g$, tenemos
+\begin{align*}
+0&=E(g(X_{(n)}))\\
+&=\int_{0}^{\theta}g(x)\frac{nx^{n-1}}{\theta^n}dx,
+\end{align*}
+utilizando el teorema fundamental de cálculo, se tiene que
+\begin{equation*}
+0=\frac{ng(\theta)}{\theta}
+\end{equation*}
+
+para todo $\theta>0$, es decir, $g(\theta)=0$ para todo $\theta>0$, y como la estadística $X_{(n)}$ toma valores positivos, entonces $g(X_{(n)})=0$.
+\end{Eje}
+
+Para distribuciones pertenecientes a la familia exponencial, es muy fácil encontrar una estadística completa. Para distribuciones en la familia exponencial uniparamétrica tenemos el siguiente resultado.
+
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución $f(x,\theta)$ perteneciente a la familia exponencial, es decir,
+\begin{equation*}
+f(x,\theta)=h(x)c(\theta)\exp\{d(\theta)T(x)\},
+\end{equation*}
+
+entonces la estadística $\sum_{i=1}^nT(X_i)$ es una estadística completa para $\theta$.
+\end{Res}
+
+La versión equivalente para distribuciones en la familia exponencial biparamétrica se da a continuación.
+
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución $f(x_i,\theta_1,\theta_2)$ perteneciente a la familia exponencial biparamétrica de la forma
+\begin{equation*}
+f(x_i,\theta_1,\theta_2)=c(\btheta)h(x)\exp\{d(\btheta)'T(x)\},
+\end{equation*}
+
+donde $\btheta=(\theta_1,\theta_2)$, $d(\btheta)=(d_1(\btheta),d_2(\btheta))'$ y $T(x)=(T_1(x),T_2(x))'$, entonces las estadística $\sum_{i=1}^nT_1(X_i)$ y $\sum_{i=1}^nT_2(X_i)$ son estadísticas completas para $\theta_1$ y $\theta_2$.
+\end{Res}
+
+Los dos anteriores resultados, en conjunto con los resultados 2.3.7 y 2.3.8, nos permiten encontrar fácilmente estadísticas que sean a la vez suficientes y completas para distribuciones pertenecientes a la familia exponencial.
+
+Una utilidad de las estadísticas completas es que, anteriormente se había visto que para un parámetro puede haber más de un estimador insesgado, pero cuando el estimador insesgado es función se combina con completez, sí se tiene la unicidad, como lo ilustra el siguiente resultado.
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ una muestra aleatoria con parámetro $\theta$, si $T$ es una estadística completa, $g_1(T)$ y $g_2(T)$ son estimadores insesgados de $\theta$, entonces $g_1(T)=g_2(T)$.
+\end{Res}
+\begin{proof}
+Por hipótesis, se tiene que $E(g_1(T))=E(g_2(T))=0$, de donde, $E((g_1-g_2)(T))=0$, por definición de estimador completo, se sigue que $(g_1-g_2)(T)=0$, es decir, $g_1(T)=g_2(T)$.
+\end{proof}
+
+En la demostración del Resultado 2.3.3, se mencionó el teorema de Basu, este teorema necesita los conceptos de suficiencia y completez de una estadística y también el concepto de estadística auxiliar, esto es, estadística cuya distribución no depende del parámetro de la distribución. Dado este concepto, presentamos a continuación el teorema de Basu.
+
+\begin{Res}
+Si $T$ es una estadística suficiente y completa, entonces $T(X)$ es independiente de toda estadística auxiliar.
+\end{Res}
+\begin{proof}
+La demostración para el caso discreto se encuentra en \citeasnoun[pg. 287]{Casella}.
+\end{proof}
+
+El Resultado 2.3.3 puede ser fácilmente demostrado usando el teorema de Basú, puesto que en primer lugar, en una muestra proveniente de la distribución $N(\mu,\sigma^2)$, $\bar{X}$ es una estadística suficiente y completa para $\mu$. Por otro lado, $\dfrac{\sum(X_i-\bar{X})^2}{\sigma^2}\sim\chi^2_{n-1}$, de donde podemos tener que la distribución de $S^2_n$ no depende de $\mu$, al igual que la distribución de $S^2_{n-1}$, de esta forma, podemos concluir que $\bar{X}$ y $S^2_{n}$ (o $S^2_{n-1}$) son independientes.
+
+Las mayores importancias de las propiedades de suficiencia y completez, a parte de ser propiedades deseables para los estimadores, es que nos permite construir estimadores UMVUE, como lo ilustra el siguiente resultado.
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con parámetro $\theta$, si $T_1$ es un estimador insesgado para una función del parámetro $g(\theta)$ y $T_2$ es suficiente y completo para $\theta$, entonces se tiene que $E(T_1|T_2)$ es el único estimador UMVUE para $g(\theta)$.
+\end{Res}
+
+El anterior resultado nos brinda una herramienta poderosa para encontrar estimadores UMVUE, que consiste en los siguientes pasos:
+\begin{enumerate}[(1)]
+\item Encontrar un estimador insesgado para $g(\theta)$, la función del parámetro $\theta$ que se desea estimar. Nótese que cuando $g(\theta)$ es el promedio poblacional, entonces un estimador insesgado es el promedio muestral.
+\item Encontrar un estimador suficiente y completo para $\theta$, que para distribuciones pertenecientes a la familia exponencial resulta bastante útil.
+\end{enumerate}
+
+Ahora aplicamos las anteriores herramientas a un problema de estimación.
+
+\begin{Eje}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución $P(\theta)$, se quiere encontrar el estimador UMVUE para $\theta$. Para eso, primero se debe encontrar un estimador insesgado para $\theta$, que es $\bar{X}$ por ser $\theta$ el promedio poblacional. En segundo lugar, la distribución Poisson pertenece a la familia exponencial con $T(x)=x$, entonces los Resultado 2.3.6 y 2.3.15 establecen que $\sum_{i=1}^nX_i$ es una estadística suficiente y completa para $\theta$. De esta manera el estimador UMVUE es $E(\bar{X}|\sum_{i=1}^nX_i)=\bar{X}$.
+\end{Eje}
+
+Para distribuciones con dos parámetros, existe la siguiente generalización,
+
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ una muestra aleatoria con parámetro $\btheta=(\theta_1,\theta_2)$, si $T_1$, $T_2$ son estimadores insesgados para $\theta_1$, $\theta_2$, y $S_1$, $S_2$ son suficientes y completos para $\theta_1$, $\theta_2$, entonces se tiene que $E(T_1,T_2|S_1,S_2)$ son UMVUE para $\theta_1$ y $\theta_2$, además se tiene la unicidad.
+\end{Res}
+
+\begin{Eje}
+Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución $N(\mu,\sigma^2)$, en el ejemplo 2.3.9, se vio que estimadores suficientes y completos para $\mu$ y $\sigma^2$ son $\sum_{i=1}^nX_i$ y $\sum_{i=1}^nX_i^2$, y también se vio anteriormente que $\bar{X}$ es insesgado para $\mu$ y $S^2_{n-1}$ insesgado para $\sigma^2$, entonces el resultado anterior indica que las estadísticas $E(\bar{X},S^2_{n-1}|\sum_{i=1}^nX_i,\sum_{i=1}^nX_i^2)$ son UMVUE único para $\mu$ y $\sigma^2$. Para calcular la esperanza condicional, se tiene en cuenta que en primer lugar $\bar{X}$ es función de $\sum_{i=1}^nX_i$ y $S^2_{n-1}=(\sum_{i=1}^nX_i^2-n\bar{X}^2)/(n-1)$ es función de $\sum_{i=1}^nX_i$ y $\sum_{i=1}^nX_i^2$, entonces se tiene que los UMVUE para $\mu$ y $\sigma^2$ son $\bar{X}$ y $S^2_{n-1}$.
+\end{Eje}
+
+Hasta este punto del libro, se ha expuesto varios aspectos que se debe tener en cuenta al momento de escoger un estimador, más aún, al momento de escoger uno de varios posibles estimadores. Y al momento de realizar comparaciones, es necesario calcular la esperanza y la varianza de los estimadores, y estos cálculos pueden ser muy difíciles cuando los estimadores toman formas complicadas, por ejemplo, cuando se trata de una muestra proveniente de $Unif[\theta_1,\theta_2]$ se vio anteriormente que los estimadores de momentos de los parámetros son $\bar{X}-\sqrt{3}S_n$ y $\bar{X}+\sqrt{3}S_n$, respectivamente, mientras que los estimadores de momentos son las estadísticas de orden $X_{(1)}$ y $X_{(n)}$, respectivamente. Para tener una idea en este caso cuál método arrojó mejores estimadores, deberíamos calcular el sesgo y la varianzas de estos estimadores, pero es claro que no es nada trivial calcular estas cantidades para los estimadores de momentos. En casos como lo anterior, no tenemos otra alternativa que utilizar las simulaciones.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{uniforme2.eps}
+\caption{\emph{Comparación empírico entre los estimadores de máxima verosimilitud y de momentos en una muestra proveniente de $Unif(\theta_1,\theta_2)$}}
+\end{figure}
+
+El lector puede notar que la teoría expuesta anteriormente es válida para cuando se quiere estimar una función del parámetro $g(\theta)$. Sin embargo, poco se ha discutido acerca de la evaluación de estos estimadores. La razón es que, en primer lugar, en general no es fácil determinar el sesgo de estos estimadores. Por ejemplo, considera el Ejemplo 2.2.3, donde en un conjunto de ensayos del tipo Bernoulli, el parámetro de interés es la probabilidad de éxito $p$ que se estima mediante $\bar{X}$, pero si la cantidad que se desea estimar se cambiar a $3p(1-p)^4$, aunque es fácil encontrar el estimador de máxima verosimilitud $3\bar{X}(1-\bar{X})^4$, no es fácil determinar si este es insesgado para $3p(1-p)^4$, y por consiguiente tampoco se puede determinar si este es el estimador UMVUE para $3p(1-p)^4$. Lo anterior indica que en general no se puede establecer que para cualquier función $g$, si $T$ es un estimador insesgado para $\theta$, entonces $g(T)$ es insesgado para $g(\theta)$, esto es, no se tiene en general que $E(g(T))=g(\theta)$ suponiendo que $E(T)=\theta$.
+
+Es claro que cuando la función $g$ es una función lineal, esto es $g(\theta)=a\theta+b$, para constantes $a$ y $b$, entonces $E(g(T))=E(aT+b)=aE(T)+b$ y si $T$ es insesgado para $\theta$, $g(T)$ también lo es para $g(\theta)$. Cuando $g$ toma otras formas, podemos calcular $E(g(T))$ e inclusive $Var(g(T))$ de manera aproximada usando el método de Delta dado a continuación.
+
+\begin{Res}
+Dado $T$ un estimador de $\theta$, y $g$ una función, entonces se tiene que
+\begin{equation*}
+E(g(T))\approx g(\theta)+g'(\theta)E(T-\theta)
+\end{equation*}
+y
+\begin{equation*}
+Var(g(T))\approx (g'(\theta))^2Var(T)
+\end{equation*}
+De esta forma, se tiene que cuando $T$ es insesgado para $\theta$, $E(g(T))\approx g(\theta)$.
+\end{Res}
+
+\begin{proof}
+Para cada valor $t$ que toma el estimador $T$, se hará uso de la expansión de Taylor de primer orden para $g(t)$ alrededor del punto $t=\theta$, tenemos que $g(t)\approx g(\theta)+g'\theta(t-\theta)$. De esta forma, se tiene que $g(T)\approx g(\theta)+g'(\theta)(T-\theta)$. Tomando la esperanza, se tiene que $E(g(T))\approx g(\theta)+g'(\theta) E(T-\theta)$. Es claro que cuando $T$ es insesgado para $\theta$, $E(g(T))\approx g(\theta)$.
+
+Por otro lado, tomando varianza en $g(T)\approx g(\theta)+g'(\theta)(T-\theta)$, se tiene que
+\begin{align*}
+Var(g(T))&\approx (g'(\theta))^2Var(T-\theta)\\
+&=(g'(\theta))^2Var(T)
+\end{align*}
+\end{proof}
+
+Del anterior resultado, se puede concluir que $g(T)$ es un estimador \emph{aproximadamente} insesgado para $g(\theta)$. Pero no podemos saber qué tan bueno (o qué tan malo) resulta esta aproximación, y tampoco saber, en general, si con el posible aumento del tamaño muestral, se puede hacer que $E(g(T))$ se acerque más a $g(\theta)$. Sin embargo, mediante el uso de simulaciones, podemos hacernos una idea de la bondad de esta aproximación con diferentes funciones $g$ para diferentes tamaños muestrales $n$.
+
+Suponga que en una muestra proveniente de la distribución exponencial con parámetro $\theta=1$, se desea estimar $p_1=P(X<1)$ y $p_2=P(1<X<2)$. Estas dos probabilidades se pueden expresar como funciones del parámetro como $p_1=e^{-1/\theta}$ y $p_2=e^{-1/\theta}-e^{-2/\theta}$, respectivamente. Y los estimadores de máxima verosimilitud de $p_1$ y $p_2$ son $T_1=e^{-1/\bar{X}}$ y $T_2=e^{-1/\bar{X}}-e^{-2/\bar{X}}$ respectivamente, para estudiar el sesgo de $T_1$ y $T_2$ como estimadores de $p_1$ y $p_2$. Se simuló 1000 muestras de tamaño 5, 10, 30, 50, 100, 500 de una distribución $Exp(1)$ y $Exp(5)$, y en cada muestra simulada se calculan los valores que toman $T_1$ y $T_2$. Y para cada $n$ fijo se calcula el promedio de los 1000 valores de $T_1$ y $T_2$, éstos se pueden tomar como estimaciones de $E(T_1)$ y $E(T_2)$. Y por consiguiente, restando $p_1$ y $p_2$ a estas estimaciones, se pueden obtener estimaciones del sesgo de $T_1$ y $T_2$. En la Figura 2.9, se muestran el comportamiento de estos dos estimadores en término del sesgo. Podemos observar que en primer lugar, a medida que el tamaño muestral crece, el sesgo de ambos estimadores se acercan al valor 0, es decir, $T_1$ y $T_2$ parecen ser asintóticamente insesgados. Otro aspecto interesante es que la sobreestimación o la subestimación de los estimadores dependen del valor del parámetro $\theta$, pues cuando $\theta=1$, $T_2$ siempre tuvo un sesgo estimado negativo, pero al cambiar el valor de $\theta$ a 5, se encuentra que ahora su sesgo estimado es siempre positivo.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Delta_exponencial.eps}
+\caption{Sesgo estimado de los estimadores $T_1$ y $T_2$ para diferentes tamaños de muestra.}
+\end{figure}
+
+Repitamos la simulación para muestras provenientes de la distribución Bernoulli con parámetro $p$. Suponga que se desea estimar la varianza poblacional dado por $p(1-p)$, la probabilidad de obtener un éxito en cuatro ensayos dado por $4p(1-p)^3$ y la probabilidad de obtener más de un éxito en cuatro ensayos dado por $1-(1-p)^4$. Como el estimador de máxima verosimilitud de $p$ es $\bar{X}$, tenemos que los estimadores de máxima verosimilitud de estas tres cantidades que se desean estimar son $T_1=\bar{X}(1-\bar{X})$, $T_2=4\bar{X}(1-\bar{X})^3$ y $T_3=1-(1-\bar{X})^4$, respectivamente. Para estudiar el sesgo de estos tres estimadores, se simuló 1000 muestras de tamaño 5, 10, 30, 50, 100, 500 de una distribución $Ber(0.3)$ y $Ber(0.7)$, y en cada muestra simulada se calculan los valores que toman $T_1$, $T_2$ y $T_3$. Y se obtienen las estimaciones de los sesgos de los tres estimadores análogo al caso de la distribución exponencial. En la Figura 2.10, se muestran el comportamiento de estos dos estimadores en término del sesgo, y podemos observar comportamientos análogos al caso de la distribución exponencial, esto es, al incrementar $n$ los estimadores son asintóticamente insesgados, y la sobreestimación o la subestimación puede depender del valor del parámetro $p$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{Delta_binomial.eps}
+\caption{Sesgo estimado de los estimadores $T_1$, $T_2$ y $T_3$ para diferentes tamaños de muestra.}
+\end{figure}
+
+\subsection{Consistencia}
+
+El concepto de consistencia, al igual que el concepto del insesgamiento asintótico, es una propiedad asintótica, es decir, se considera el caso cuando el tamaño muestral $n\rightarrow\infty$. El concepto de insesgamiento asintótica establece que cuando el tamaño muestral es suficientemente grande, los valores que toma el estimador están alrededor de la cantidad que se desea estimar, $g(\theta)$. Mientras que el concepto de consistencia va un paso más allá, y estudia características del estimador visto como una variable aleatoria, más específicamente estudia la probabilidad de que el estimador esté cercano de $g(\theta)$. La definición de consistencia se da a continuación.
+\begin{Defi}
+Dada una muestra aleatoria con parámetro desconocido $\theta$, y $T$ un estimador de $g(\theta)$ para alguna función $g$, se dice que $T$ es un estimador consistente si $T$ converge en probabilidad a $g(\theta)$ ($T_n\overset{P}{\rightarrow}g(\theta)$), esto es, para todo $\varepsilon>0$, se tiene que
+\begin{equation*}
+\lim_{n\rightarrow\infty}P(|T-g(\theta)|>\varepsilon)=0.
+\end{equation*}
+\end{Defi}
+
+Como se había mencionado anteriormente, es natural estimar el promedio poblacional $\mu$ utilizando el promedio muestral $\bar{X}$, y en distribuciones como la Bernoulli, Poisson, exponencial y normal $\bar{X}$ es UMVUE para $\mu$, es decir, entre todos los estimadores insesgados, $\bar{X}$ tiene menor varianza, adicionalmente, el siguiente ley débil de los grandes números nos ilustra que además es un estimador consistente.
+
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con media común $\mu$ y $E(|X_i|)<\infty$ para todo $i$, y se define $\bar{X}_n=\sum_{i=1}^nX_i/n$, entonces $\bar{X}_n$ convergen en probabilidad a $\mu$.
+\end{Res}
+\begin{proof}
+Esta versión de la ley débil de los grandes números se conoce con el nombre de Khintchin, y no se requiere que la existencia de la varianza poblacional, cuando ésta existe, el resultado se puede mostrar fácilmente aplicando la desigualdad de Chebychev. En el caso general sin ningún supuesto acerca de la varianza poblacional, la prueba es más complicado, el lector interesado puede consultar \citeasnoun[pg.205]{Resnick}.
+\end{proof}
+
+Dado que el concepto de la convergencia está directamente relacionado con la convergencia en probabilidades, las propiedades deseables de esta convergencia nos permite obtener conclusiones interesantes acerca de la consistencia. Específicamente, se conoce en la teoría estadística que si $X_n\overset{P}{\rightarrow}a$ y $g$ es una función continua en $a$, entonces $g(X_n)\overset{P}{\rightarrow}g(a)$. De esta forma, no solo podemos afirmar que en una muestra del tipo Bernoulli, $\bar{X}$ es consistente para estimar la probabilidad de éxito $p$, sino también $\bar{X}(1-\bar{X})$ es consistente para la varianza poblacional $p(1-p)$, y los estimadores mencionados en el Ejemplo 2.2.3 también lo son (aunque no podemos afirmar lo mismo acerca de las propiedades de insesgamiento y varianza mínima).
+
+El concepto de la consistencia, por su definición, describe la propiedad de que a medida que el tamaño muestral crece, el estimador se hace cada vez más cerca al cantidad que se desea estimar $g(\theta)$. Este concepto está ligado, naturalmente, con la varianza estimador, pues entre más pequeña sea ésta, más concentrados están los valores que toma el estimador, y si adicionalmente el estimador es insesgado, los valores que toman el estimador deben estar muy cercanos a $g(\theta)$. El siguiente resultado confirmar esta relación entre los conceptos del insesgamiento, varianza pequeña y consistencia.
+
+\begin{Res}
+Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con parámetro desconocido $\theta$, si $T$ es un estimador asintóticamente insesgado y su $Var(T)\rightarrow0$ cuando $n\rightarrow\infty$, entonces $T$ es consistente.
+\end{Res}
+
+\begin{proof}
+Consideramos el error cuadrático medio de $T$, este se puede escribir en término del sesgo y la varianza de $T$ de la forma $ECM(T)=B_T^2+Var(T)$, dado el hipótesis del resultado, tenemos que
+\begin{equation*}
+\lim_{n\rightarrow\infty}ECM(T)=0.
+\end{equation*}
+Ahora,
+\begin{align*}
+\lim_{n\rightarrow\infty}P(|T-g(\theta)|>\varepsilon)
+&\leq\lim_{n\rightarrow\infty}\dfrac{1}{\varepsilon^2}E[(T-g(\theta))^2]\hspace{0.8cm}\text{Desigualdad de Chebychev}\\
+&=\lim_{n\rightarrow\infty}\dfrac{1}{\varepsilon^2}ECM(T)\\
+&=0
+\end{align*}
+y concluimos que $T$ es consistente.
+\end{proof}
+
+Nótese que usando el anterior resultado junto con el Resultado 2.3.1, es otra forma de probar que que en muestras provenientes de cualquier distribución, se tiene que $\bar{X}$ es un estimador consistente para $\mu$, aunque en este caso, se exige que la varianza poblacional sea finita para la prueba.
+
+Dado la anterior relación entre la consistencia y la varianza de un estimador, podemos establecer alguna relación entre los estimadores consistentes y los UMVUE. Cuando un estimador $T$ es insesgado para $g(\theta)$, podemos que la cota de Cramer Rao dada en (\ref{Cramer}), donde $I_X(\theta)$ es la información contenida en una variable, y por consiguiente no depende de $n$. De esta forma, si un estimador insesgado tiene varianza igual a la cota de Cramer-Rao, su varianza converge a 0 y por el Resultado 2.3.23, podemos afirmar que también es consistente. Pero si podemos afirmar la igualdad entre la cota de Cramer Rao y la varianza del estimador, tampoco podemos concluir la consistencia.
+
+Para finalizar el concepto de consistencia, el lector puede visualizar este concepto en la Figura 2.7 donde se observa claramente que cuando $n$ crece, los valores de $\bar{x}$ se acerca cada vez más a $\mu$.
+
+XXXXXXXXX Falta ejemplos y ejercicios de dos muestras
+
+
+
+%--------------------------------------------------------------------------------------------------------------
+
+Las siguientes deficiniciones matemáticas están adaptadas del libro de Teoría de estimación puntual de Lehman (Wiley, 1983).
+
+Insesgamiento: Sea $ T$ un estimador del parámetro de interés $ \theta \in \Theta$. Se dice que $ T$ es insesgado si y sólo si se cumple que
+
+$ E(T-\theta)=0$
+
+Consistencia: Sea $ T_n;n>1$ una secuencia de estimadores del parámetro de interés $ \theta \in \Theta$. Usualmente $ T_n$ está basado en las primeras $ n$ observaciones de una muestral $ X_1, X_2, \ldots$. Se dice que la secuencia $ T_n$ es consistente si y sólo si para todo $ \theta \in \Theta$ y para todo $ \varepsilon>0$ se cumple que
+
+$ Lim_{n\rightarrow \infty} P(|T_n-\theta|\geq \varepsilon)=0$
+
+Eficiencia: Sean $ T_1$ y $ T_2$ estimadores del parámetro de interés $ \theta \in \Theta$. Se dice que $ T_1$ domina a $ T_2$ si para todo $ \theta \in \Theta$
+
+$ E[(T_1-\theta)^2]\leq E[(T_1-\theta)^2] $
+
+Y se define la eficiencia relativa como
+
+$ e(T_1,T_2)=\frac{ E[(T_1-\theta)^2]}{ E[(T_2-\theta)^2]}$
+
+%--------------------------------------------------------------------------------------------------------------------
+
+Uno de los más reconocidos investigadores estadísticos del ámbito nacional, manifestaba la dificultad que significaba traducir la simbología matemática de los fundamentos de la teoría estadística, con su perfecto andamiaje, a la vida práctica. Él se refería a términos como la completitud de un estimador o incluso la misma suficiencia, como conceptos que si bien encajan perfectamente en la abstracción matemática, en la práctica no son nada fáciles de explicar.
+
+Por otro lado, Jhon D. Cook, uno de los estadísticos más leídos en el mundo, también manifestó a finales del año pasado que ha tenido grandes dificultades a la hora de explicar términos como sesgo, consistencia o suficiencia en una clase de estadística en pregrado y que su estrategia radica en construir pseudo-códigos computacionales para <<aterrizar>> la idea práctica de cada uno de estos conceptos. Y es que una de las formas más óptimas para que un estudiante asimile conceptos tan teóricos y a veces tan disímiles es el aprendizaje a través del código computacional. De esta manera, no sólo se está introduciendo al estudiante al mundo de la habilidad lógica matemática en una demostración sino que al mismo tiempo ese mismo estudiante puede reconocer fácilmente las propiedades de los estimadores que le ayudaran a decidir en la vida práctica. Y es que aunque la vieja regla de Hajek sigue teniendo vigencia -
+
+\begin{quote}
+Los estimadores con un sesgo considerable son pobres sin importar qué otras propiedades puedan tener.
+\end{quote}
+
+
+- ésta no resuelve nada en presencia de dos estimadores tales que uno es insesgado y el otro es levemente sesgado ¿cuál estimador debo escoger? Retomando a Cook, supóngase que se desean comparar dos estimadores de la varianza de una muestra aleatoria de variables con densidad Normal de media 5 y varianza 81; por ejemplo, el estimador de máxima verosimilitud
+
+$ \hat{\sigma}^2=\frac{1}{n}\sum_{i=1}^n(x_i-\bar{x})$
+
+Y el clásico estimador insesgado
+
+$ S^2=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})$
+
+Que algo quede muy claro. La muestra es una y sólo una... ¿cuál es el mejor estimador? En términos computacionales, y adaptando el ejercicio práctico de Cook, la siguiente gráfica muestra la propiedad de consistencia de los dos estimadores: Ambos conservan esta propiedad; es decir a medida que el tamaño de muestra crece, los valores de las estimaciones se acercan al verdadero valor 81 con una muy alta probabilidad. En estos términos los dos estimadores son igualmente aceptables.
+
+Por otro lado, la propiedad del insesgamiento está relacionada directamente con la esperanza matemática del estimador, en términos de su distribución de muestreo. La siguiente gráfica fue realizada de la siguiente manera: Para un tamaño de muestra fijo $ n=10$, se estima el parámetro de interés. Ahora, este ejercicio se realiza una vez, dos veces, tres veces, ..., muchas veces. En cada repetición se calcula el promedio de las estimaciones y se grafica (siempre manteniendo el tamaño de muestra fijo). Nótese que en un momento dado ambas líneas parecen converger a un valor. Por supuesto el estimador insesgado converge a 81, el verdadero valor, mientras que el sesgado converge a un valor inferior.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{est2.eps}
+\caption{\emph{blablabla}}
+\end{figure}
+
+\begin{verbatim}
+> # PROPIEDAD DE INSESGAMIENTO
+>
+>  N<-c(1,10,100,1000,10000,100000,1000000)
+>  n<-10
+>
+>  meanvar1<-rep(NA,length(N))
+>  meanvar2<-rep(NA,length(N))
+>
+>  for(k in 1:length(N))
++  {
++  var1<-rep(NA,N[k])
++  var2<-rep(NA,N[k])
++  for(l in 1:(N[k])){
++  data<-rnorm(n,5,9)
++  var1[l]<-var(data)
++  var2[l]<-(n-1)*var(data)/n
++  }
++  meanvar1[k]<-mean(var1)
++  meanvar2[k]<-mean(var2)
++  }
+>
+>  meanvar1
+[1] 78.75174 67.39362 88.84951 81.07334 81.07010 80.91384 81.01865
+>  meanvar2
+[1] 70.87657 60.65425 79.96456 72.96601 72.96309 72.82246 72.91679
+>
+>  plot(meanvar1,type="b", col=4,ylim=c(60,170),xlab="Número de repeticiones", ylab="Estimación de la varianza", xaxt="n")
+>  lines(meanvar2,type="b", col=2, pch=2)
+>  abline(h=81)
+>  axis(1, 1:length(N), N)
+>  legend(3,120,c("Insesgado","Sesgado"), col=c(4,2), lty=c(1,1),pch=c(1,2))
+>
+\end{verbatim}
+
+
+John Cook se pregunta si ésta es una prueba fehaciente de que el estimador insesgado resulta mejor que su competidor. Él afirma que aunque el promedio el estimador converja al verdadero valor 81, eso no significa que las estimaciones individuales sean buenas. Es posible que un estimador insesgado arroje estimaciones individuales ridículas pero en promedio converja al verdadero valor. Una vez más, el número de muestras seleccionadas en la vida real es uno y sólo uno. Así que esta propiedad no basta para escoger un estimador. Paso seguido, la eficiencia. En la siguiente gráfica se aprecia que el error cuadrático medio del estimador insesgado está alrededor de 1500, siendo más alto que el error cuadrático medio del estimador sesgado, que se encuentra alrededor de 1200. Las anteriores cantidades se pueden calcular teóricamente: para el estimador insesgado, resulta ser igual a 1458 y para el sesgado resulta ser 1246.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{est3.eps}
+\caption{\emph{blablabla}}
+\end{figure}
+
+\begin{verbatim}
+> # PROPIEDAD DE EFICIENCIA
+>
+>  N<-c(2,10,100,1000,10000,100000,1000000)
+>  n<-10
+>
+>  msevar1<-rep(NA,length(N))
+>  msevar2<-rep(NA,length(N))
+>
+>  for(k in 1:length(N))
++  {
++  var1<-rep(NA,N[k])
++  var2<-rep(NA,N[k])
++  for(l in 1:(N[k])){
++  data<-rnorm(n,5,9)
++  var1[l]<-var(data)
++  var2[l]<-(n-1)*var(data)/n
++  }
++  msevar1[k]<-var(var1)
++  msevar2[k]<-var(var2)+(mean(var1)-81)^2
++  }
+>
+> msevar1
+[1]  965.0842 1529.4889 1460.5530 1651.2588 1420.0702 1461.4549 1458.1439
+>  msevar2
+[1] 1194.755 1244.103 1183.322 1337.701 1150.396 1183.819 1181.098
+>
+>  plot(msevar1,type="b", col=4,ylim=c(1000,3100),xlab="Número de repeticiones", ylab="Eficiencia de las estimaciones", xaxt="n")
+>  lines(msevar2,type="b", col=2, pch=2)
+>  axis(1, 1:length(N), N)
+>  legend(3,2500,c("Insesgado","Sesgado"), col=c(4,2), lty=c(1,1),pch=c(1,2))
+
+\end{verbatim}
+
+\section{Ejercicios}
+En una muestra aleatoria $X_1$, $\cdots$, $X_n$ con función de densidad y de distribución $f_X$ y $F_X$, respectivamente, demuestre que la función de densidad y de distribución del máximo $X_{(n)}$ están dadas por (\ref{F_max}) y (\ref{f_max}).
+
+1. En efecto de la estimación, observar una muestra aleatoria $X_1$, $\cdots$, $X_n$ de tamaño $n$ proveniente de una distribución $Ber(p)$ equivale a observar el valor de la variables aleatoria $S=\sum X_i$ la cual tiene distribución $Bin(n,p)$, esto es $S$ es una estadística suficiente.
+\begin{enumerate}[(a)]
+     \item demuestre que en la muestra $X_1$, $\cdots$, $X_n$, $\hat{p}_{MV}=\bar{X}$,
+     \item demuestre que cuando se usa $S$ para estimar $p$, $\hat{p}_{MV}=S/n=\bar{X}$,
+     \item demuestre que $S$ es suficiente.
+\end{enumerate}
+
+5. Una almacén de ropas femeninas, después de la navidad, lanza la promoción del descuento de hasta 60\% en toda el almacén. El gerente desea conocer qué tan efectiva es la promoción, para eso, él tuvo en cuenta que en un determinado día entraron a la almacén 40 clientes, y 25 de ellos hicieron alguna compra. Cómo puede estimar la probabilidad de que
+\begin{enumerate}[(a)]
+    \item un cliente realice alguna compra.
+    \item ninguna venta exitosa en cinco clientes consecutivos.
+\end{enumerate}
+
+2. Considere una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución $N(\mu,\sigma^2)$, demuestre que
+\begin{enumerate}[(a)]
+     \item el estimador de máxima verosimilitud de $\mu$ siempre es $\bar{X}$ sin importar si $\sigma^2$ es conocida o no, esto es, demuestre que el estimador de máxima verosimilitud de $\mu$ cuando $\sigma^2=\sigma^2_0$ es $\bar{X}$
+     \item el estimador de máxima verosimilitud de $\sigma^2$ puede variar dependiendo si $\mu$ es conocida o no, esto es, demuestre que el estimador de máxima verosimilitud de $\sigma^2$ cuando $\mu=\mu_0$ es $\sum_{i=1}^n(X_i-\mu_0)^2/n$.
+\end{enumerate}
+
+3. El estimador de máxima verosimilitud puede no ser único, como lo ilustra esta situación: suponga que $X_1$, $\cdots$, $X_n$ constituyen una muestra aleatoria proveniente de la distribución uniforme continua sobre el intervalo $[\theta-0.5,\theta+0.5]$, demuestre que cualquier estadística $T$ con $X_{(n)}-0.5\leq T\leq X_{(1)}+0.5$ es un estimador de máxima verosimilitud de $\theta$.
+
+4. Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de distribución exponencial con media $\theta$,
+\begin{enumerate}[(a)]
+    \item encuentre el estimador de máxima verosimilitud de $\theta$.
+    \item encuentre el estimador de máxima verosimilitud de $P(X>1)$, donde $X$ tiene la misma distribución exponencial.
+    \item encuentre dos estimadores de momentos de $\theta$.
+    \item encuentre un estimador de momentos de $P(X<2)$, donde $X$ tiene la misma distribución exponencial.
+\end{enumerate}
+
+6. Se desea conocer el funcionamiento de un cierto dispositivo electrónico fabricado por una empresa, se selecciona 20 dispositivos terminados al final de la línea de producción, y los pone en funcionamiento, la vida útil de los dispositivos (en horas) fueron: 6, 23, 1, 38, 43, 149, 2, 32, 41, 23, 10, 47, 46, 111, 43, 30, 21, 3, 96 y 53.
+\begin{enumerate}[(a)]
+    \item Elabore una gráfica QQ plot para verificar si los datos provienen de una distribución exponencial.
+    \item ¿Cómo se puede obtener un estimativo de la vida útil del dispositivo electrónico basando en la muestra seleccionada?
+    \item ¿Cuál es la probabilidad estimada de que un dispositivo funcione por más de 55 horas?
+    \item Suponga que un cliente compra dos de esos dispositivos, y ambos se dañaron antes de las 30 horas, ¿cuál es la probabilidad de que esto ocurra?
+\end{enumerate}
+
+7. Suponga que una empresa de imprenta piensa adquirir un nuevo tipo de máquina de impresión para reemplazar la actual, para comparar los rendimientos de los dos tipos de máquinas, el ingeniero de la empresa mide el tiempo empleado para imprimir una hoja de determinadas características en ambos tipos de máquinas, en el Cuadro 1 se muestra los rendimientos de dos muestras.
+\begin{table}
+\centering
+\begin{tabular}{cc}\hline
+Máquina nueva&Máquina actual\\
+97, 83, 91&91, 64, 66, 84\\
+87, 85, 64&75, 57, 66, 76\\
+76, 86, 74&70, 75, 84, 91\\\hline
+\end{tabular}
+\caption{Tiempo de impresión de una hoja (medido en segundos) de dos tipos de máquinas de impresión.}
+\end{table}
+\begin{enumerate}[(a)]
+    \item Suponga que el tiempo empleado para imprimir una hoja sigue una distribución normal.
+     \begin{itemize}
+         \item En promedio cuánto tiempo demora cada tipo de máquina en imprimir una hoja?
+         \item ¿Cuál tipo de máquina tiene rendimientos más estables?
+     \end{itemize}
+    \item Ahora suponga que el tiempo empleado para imprimir una hoja sigue una distribución exponencial, ¿cómo puede responder las preguntas de la parte (a)?
+\end{enumerate}
+
+8. Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución $P(\theta)$, un estimador suficiente para $\theta$ es $T=\sum_{i=1}^nX_i$. Compruebe que $I_T(\theta)=I_{X_1,\cdots,X_n}(\theta)$ usando la definición.
+
+9. Se ha visto que en una muestra aleatoria proveniente de una distribución $P(\theta)$, el estimador de máxima verosimilitud y el estimador de momentos es el mismo: $\theta_{MV}=\theta_{mom}=\bar{X}$, ¿este estimador es $UMVUE$ para $\theta$?
+
+10. Dada $X\sim Bin(n,p)$, con $n$ conocido y $p$ desconocido
+\begin{enumerate}[(a)]
+    \item Encuentra el estimador de máxima verosimilitud de $p$.
+    \item Encuentra el estimador de momentos de $p$.
+    \item ¿Son iguales los dos estimadores hallados anteriormente? En caso afirmativo, comente sobre el desempeño del estimador. En caso negativo, ¿cuál estimador es mejor?
+\end{enumerate}
+
+11. Considera una muestra aleatoria $X_1$, $\cdots$, $X_n$ proveniente de una distribución Gamma con parámetro de forma $k$ fijo y parámetro de escala $\theta$ desconocido.
+\begin{enumerate}[(a)]
+    \item Calcular la información de Fisher contenida en la muestra aleatoria acerca del parámetro $\theta$.
+    \item Encuentra el estimador de máxima verosimilitud para $\theta$.
+    \item Encuentra el estimador de momentos para $\theta$.
+    \item ¿Son iguales los dos estimadores hallados anteriormente? En caso afirmativo, comente sobre el desempeño del estimador. En caso negativo, ¿cuál estimador es mejor?
+\end{enumerate}
+
+12. Sea $X_1$, $\cdots$, $X_n$ una muestra aleatoria proveniente de $N(\mu_0,\sigma^2)$ con $\mu_0$ conocido, se ha visto en el ejercicio 2 que ahora el estimador de máxima verosimilitud de $\sigma^2$ es $\dfrac{1}{n}\sum_{i=1}^n(X_i-\mu_0)^2$ mientras que cuando $\mu$ es desconocido el estimador de máxima verosimilitud de $\sigma^2$ es $\dfrac{1}{n}\sum_{i=1}^n(X_i-\bar{X})^2$. Compare los dos estimadores en término de sesgo y varianza y decida cuál es mejor. (\textit{Ayuda: usar $\sum_{i=1}^n\dfrac{(X_i-\bar{X})^2}{\sigma^2}\sim\chi^2_{n}$}).
+
+13. La función de densidad de la distribución Pareto con parámetro $\theta$ está dada por:
+\begin{equation*}
+f(x,\theta)=\theta c^{\theta}x^{-(\theta+1)},
+\end{equation*}
+
+para $x\geq c$, $c>0$ y $\theta>0$. Encuentra los estimadores de máxima verosimilitud y de momentos para el parámetro $\theta$.
+
+14. La función de densidad de la distribución Rayleigh está dada por.
+\begin{equation*}
+f(x,\theta)=\dfrac{x}{\theta^2}\exp\{-\dfrac{x^2}{2\theta^2}\},
+\end{equation*}
+
+para $x>0$ y $\theta>0$. Encuentra el estimador de máxima verosimilitud de $\theta$.
+
+15. La función de densidad de la distribución Weibull está dada por.
+\begin{equation*}
+f(x,\theta)=\theta cx^{c-1}\exp\{-\theta x^c\},
+\end{equation*}
+
+para $x\geq0$, $c>0$ y $\theta>0$. Encuentra el estimador de máxima verosimilitud de $\theta$.
+
+16. Sea $X_1$, $\cdots$, $X_{n_X}$ y $Y_1$, $\cdots$, $Y_{n_Y}$ dos muestras aleatorias independientes provenientes de una distribución $N(\mu_X,\sigma^2)$ y $N(\mu_Y, \sigma^2)$ respectivamente. Demuestre que el estimador de máxima verosimilitud de $\mu_X$, $\mu_Y$ y $\sigma^2$ es $\bar{X}$, $\bar{Y}$ y $[\sum_{i=1}^{n_X}(X_i-\bar{X}_2)^2+\sum_{j=1}^{n_Y}(Y_j-\bar{Y})^2]/(n_X+n_Y)$.
+
+17. Dada una muestra aleatoria proveniente de una distribución $Unif(-\theta,\theta)$, demuestre que el estimador de máxima verosimilitud de $\theta$ está dada por $\hat{\theta}_{MV}=\max\{-X_{(1)},X_{(n)}\}$.
+
+18. Dada una muestra aleatoria proveniente de una distribución con parámetro desconocido $\theta$, si $T$ es un estimador insesgado de $\theta$, y $g(\cdot)$ es una función, entonces en general no se tiene que $g(T)$ es un estimador insesgado para $g(\theta)$. Lo anterior se ilustra con la siguiente situación: $X$ es una variable aleatoria con distribución $Bin(n,p)$, demuestra que
+\begin{enumerate}[(a)]
+\item $X/n$ es un estimador insesgado para $p$.
+\item $(X/n)(1-X/n)$ no es un estimador insesgado para $p(1-p)$.
+\end{enumerate}
+
+19. En general, el estimador de máxima verosimilitud y el estimador de momentos para los parámetros en una distribución uniforme no son iguales. Considere $X_1$, $\cdots$, $X_n$ una muestra aleatoria con distribución $Unif[\theta_1,\theta_2]$, encuentra los estimadores de MV y de momentos de $\theta_1$ y $\theta_2$.
+
+20. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución Gamma con parámetro de forma $k$ y parámetro de escala $\theta$, encuentra una estadística suficiente y completa para el vector de parámetros $\theta=(k,\theta)'$.
+
+21. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución $Bin(n,p)$, encuentra el estimador UMVUE para $p$.
+
+22. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución $N(\mu,\sigma^2_0)$, donde $\sigma^2_0$ es conocido, encuentra el estimador UMVUE para $\mu$.
+
+23. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución $N(\mu_0,\sigma^2)$, donde $\mu_0$ es conocido, encuentra el estimador UMVUE para $\sigma^2$.
+
+24. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución Gamma con parámetro de forma $k$ conocido y parámetro de escala $\theta$ desconocido, encuentra el estimador UMVUE para $\theta$.
+
+25. Dada una muestra aleatoria $X_1$, $\cdots$, $X_n$ con distribución $U[\theta_1,\theta_2]$, demuestre que los estimadores de máxima verosimilitud de $\theta_1$ y $\theta_2$ son $X_{(1)}$ y $X_{(n)}$, respectivamente, y elabora un programa de simulación para comparar el desempeño de estos estimadores con los estimadores de momentos dado en el Ejemplo 2.2.18.
+
+26. Utilizando el criterio de factorización de Fisher Neyman, verificar que en muestras provenientes de las distribuciones $Exp(\theta)$, $Bernoulli(\theta)$, $N(\theta,\sigma^2)$ con $\sigma^2$ conocida, las estadísticas $\bar{X}$ y $\sum_{i=1}^nX_i$ son suficientes para $\theta$. 

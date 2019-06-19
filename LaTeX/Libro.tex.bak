@@ -1,0 +1,93 @@
+\documentclass[10pt,openright]{book}
+%----------------------Márgenes y tamaño del libro--------------------------------
+%\setlength\paperheight{240mm}
+%\setlength\paperwidth{165mm}
+%\setlength{\parindent}{0pt}
+\setlength\textheight{195mm}
+\setlength\textwidth{125mm}
+\setlength\headsep{6mm}
+\setlength\oddsidemargin{23mm}
+\setlength\evensidemargin{23mm}
+\setlength\voffset{-1mm}
+\setlength\hoffset{-1mm}
+\setlength\parskip{1.5mm}
+%--------------------------------------------------------------------------------
+\usepackage{fancyhdr}
+%
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\sffamily\thepage}
+\fancyhead[LO]{\sffamily\rightmark}
+\fancyhead[RE]{\sffamily\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+%
+\renewcommand{\familydefault}{\sfdefault}
+%
+\usepackage[latin1]{inputenc}
+\usepackage[spanish,activeacute,english]{babel}
+\usepackage[tight,spanish]{minitoc}
+\usepackage[reqno]{amsmath}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,amscd,enumerate}
+\usepackage[dviwindo]{graphicx}
+\usepackage{makeidx}
+\usepackage{color}
+\usepackage{html}
+\usepackage[full]{harvard}
+\makeindex
+\decimalpoint
+\begin{document}
+% --------------------------------------------------------------------------------
+\selectlanguage{spanish}
+\bibliographystyle{agsm}
+
+\numberwithin{equation}{section}
+\def\beps{\mbox{\boldmath$\varepsilon$}}
+\def\bbeta{\mbox{\boldmath$\beta$}}
+\def\btheta{\mbox{\boldmath$\theta$}}
+\def\bTheta{\mbox{\boldmath$\Theta$}}
+\def\bBeta{\mbox{\boldmath$\Beta$}}
+\def\bSigma{\mbox{\boldmath$\Sigma$}}
+\newtheorem{Res}{Resultado}
+\numberwithin{Res}{section}
+\newtheorem{Defi}{Definición}
+\numberwithin{Defi}{section}
+\newtheorem{Eje}{Ejemplo}
+\numberwithin{Eje}{section}
+
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\listtablename}{Índice de Tablas}
+\renewcommand{\contentsname}{Contenido}
+% --------------------------------------------------------------------------------
+\pagestyle{empty}
+\include{portada}
+\frontmatter
+\include{preface}
+\tableofcontents
+% --------------------------------------------------------------------------------
+\mainmatter
+\pagestyle{fancy}
+\include{Concepto}
+\include{Cap1}
+\include{Cap2}
+\include{Cap3}
+\include{Cap4}
+\include{Cap5}
+\appendix
+\include{misce}
+% --------------------------------------------------------------------------------
+\backmatter
+\nocite{*}
+\bibliography{LibroBib}
+% --------------------------------------------------------------------------------
+\clearpage
+\newpage
+\phantom{xxx}
+\thispagestyle{empty} 
+% --------------------------------------------------------------------------------
+\listoffigures
+\listoftables
+\printindex
+% --------------------------------------------------------------------------------
+\end{document}

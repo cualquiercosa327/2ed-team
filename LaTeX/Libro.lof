@@ -1,0 +1,146 @@
+\select@language {english}
+\select@language {spanish}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Pr\'ologo}{i}{chapter*.1}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Prefacio}{iii}{chapter*.2}
+\contentsline {xpart}{Inferencia estad\IeC {\'\i }stica univariada}{3}{part.1}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Conceptos preliminares}{3}{chapter.1}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces \textsl {Densidad de una distribuci\'on uniforme discreta sobre $\{1,\cdots ,5\}$}}}{7}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces \textsl {Histograma de los datos 3, 1, 3, 4, 2, 4, 2, 2, 1, 3.}}}{8}{figure.1.2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces \textsl {Histograma de valores simulados de una distribuci\'on uniforme}}}{9}{figure.1.3}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces \textsl {Jacob Bernoulli (1654-1705)}}}{9}{figure.1.4}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces \textsl {Funci\'on de densidad de una distribuci\'on $Bin(10,0.35)$.}}}{11}{figure.1.5}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces \textsl {Histograma de un conjunto de datos provenientes de $Bin(10,0.35)$.}}}{12}{figure.1.6}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces \textsl {Funci\'on de densidad de una distribuci\'on $Hg(6,10,15)$.}}}{14}{figure.1.7}
+\contentsline {figure}{\numberline {1.8}{\ignorespaces \textsl {Ilustraci\'on del problema de captura recaptura.}}}{15}{figure.1.8}
+\contentsline {figure}{\numberline {1.9}{\ignorespaces \textsl {Aproximaci\'on de la distribuci\'on hipergeom\'etrica mediante la binomial}}}{16}{figure.1.9}
+\contentsline {figure}{\numberline {1.10}{\ignorespaces \textsl {Sim\'eon-Denis Poisson (1781-1840)}}}{17}{figure.1.10}
+\contentsline {figure}{\numberline {1.11}{\ignorespaces \textsl {Funci\'on de densidad de una distribuci\'on $Pois(5)$.}}}{18}{figure.1.11}
+\contentsline {figure}{\numberline {1.12}{\ignorespaces \textsl {Histograma de un conjunto de datos provenientes de $Pois(5.5)$.}}}{19}{figure.1.12}
+\contentsline {figure}{\numberline {1.13}{\ignorespaces \textsl {Media y varianza de muestras de $Pois(5.5)$ y $Bin(20,0.25)$}}}{21}{figure.1.13}
+\contentsline {figure}{\numberline {1.14}{\ignorespaces \textsl {Aproximaci\'on de la distribuci\'on Poisson mediante la binomial}}}{22}{figure.1.14}
+\contentsline {figure}{\numberline {1.15}{\ignorespaces \textsl {Aproximaci\'on de la distribuci\'on Poisson mediante la binomial}}}{24}{figure.1.15}
+\contentsline {figure}{\numberline {1.16}{\ignorespaces \textsl {Histograma de valores simulados de una distribuci\'on uniforme}}}{26}{figure.1.16}
+\contentsline {figure}{\numberline {1.17}{\ignorespaces \textsl {Histogramas de datos simulados de la distribuci\'on $Exp(1)$}}}{27}{figure.1.17}
+\contentsline {figure}{\numberline {1.18}{\ignorespaces \textsl {Funciones de densidad de la distribuci\'on Gamma.}}}{28}{figure.1.18}
+\contentsline {figure}{\numberline {1.19}{\ignorespaces \textsl {Histograma de datos del tipo Gamma}}}{29}{figure.1.19}
+\contentsline {figure}{\numberline {1.20}{\ignorespaces \textsl {Estimaci\'on de $k$ y $\theta $ en una distribuci\'on Gamma}}}{31}{figure.1.20}
+\contentsline {figure}{\numberline {1.21}{\ignorespaces \textsl {Funci\'on de densidad de distribuciones $Exp(2)$, $Exp(3)$ y $Exp(5)$.}}}{33}{figure.1.21}
+\contentsline {figure}{\numberline {1.22}{\ignorespaces \textsl {Ernst Hjalmar Waloddi Weibull (1887-1979).}}}{34}{figure.1.22}
+\contentsline {figure}{\numberline {1.23}{\ignorespaces \textsl {Densidad de una distribuci\'on Weibull}}}{35}{figure.1.23}
+\contentsline {figure}{\numberline {1.24}{\ignorespaces \textsl {Carl Friedrich Gauss (1777-1855).}}}{36}{figure.1.24}
+\contentsline {figure}{\numberline {1.25}{\ignorespaces \textsl {Densidad de una distribuci\'on normal}}}{37}{figure.1.25}
+\contentsline {figure}{\numberline {1.26}{\ignorespaces \textsl {Histograma de datos provenientes de una distribuci\'on normal}}}{38}{figure.1.26}
+\contentsline {figure}{\numberline {1.27}{\ignorespaces \textsl {Distribuci\'on de la media en muestras de $Pois(3)$}}}{43}{figure.1.27}
+\contentsline {figure}{\numberline {1.28}{\ignorespaces \textsl {Distribuci\'on de la media en muestras de $Gamma(3,2)$}}}{43}{figure.1.28}
+\contentsline {figure}{\numberline {1.29}{\ignorespaces \textsl {Densidad de la distribuciones Ji-cuadrado}}}{44}{figure.1.29}
+\contentsline {figure}{\numberline {1.30}{\ignorespaces \textsl {William Sealy Gosset (1876-1937)}}}{46}{figure.1.30}
+\contentsline {figure}{\numberline {1.31}{\ignorespaces \textsl {Densidad de la distribuci\'on $N(0,1)$ y $t_2$}}}{47}{figure.1.31}
+\contentsline {figure}{\numberline {1.32}{\ignorespaces \textsl {Distintas funciones de densidad $t$-student no central.}}}{48}{figure.1.32}
+\contentsline {figure}{\numberline {1.33}{\ignorespaces \textsl {Ronald Aylmer Fisher (1890-1962)}}}{49}{figure.1.33}
+\contentsline {figure}{\numberline {1.34}{\ignorespaces \textsl {Densidad de la distribuci\'on $F$}}}{50}{figure.1.34}
+\contentsline {figure}{\numberline {1.35}{\ignorespaces \textsl {Funciones de densidad de algunas distribuciones Beta.}}}{51}{figure.1.35}
+\contentsline {figure}{\numberline {1.36}{\ignorespaces \textsl {Relaciones entre diferentes distribuciones.}}}{53}{figure.1.36}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Estimaci\'on puntual}{63}{chapter.2}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces \textsl {Histograma de los datos del Ejemplo 2.3.4.}}}{71}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces \textsl {QQ plot para verificar la distribuci\'on de los datos del Ejemplo 2.3.4.}}}{71}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces \textsl {Histograma de los datos del Ejemplo 2.3.6.}}}{74}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces \textsl {QQ plot para verificar la distribuci\'on de los datos del Ejemplo 2.3.6}}}{74}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces \textsl {Gr\'aficas de QQ plot para los datos del Ejemplo 2.3.12.}}}{82}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces \textsl {Media y la varianza muestral como estimador de $\lambda $ en Poisson}}}{86}{figure.2.6}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces \textsl {Histograma de los datos del Ejemplo 2.3.15.}}}{87}{figure.2.7}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces \textsl {Densidad estimada Gamma de los datos del Ejemplo 2.3.15}}}{88}{figure.2.8}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces \textsl {Histograma de los datos del Ejemplo 2.3.16.}}}{90}{figure.2.9}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces \textsl {QQ plot exponencial para datos del Ejemplo 2.3.16.}}}{91}{figure.2.10}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces \textsl {Datos y densidad estimada del Ejemplo 2.3.16}}}{92}{figure.2.11}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces \textsl {El estimador de MV y el de momentos en muestras uniforme}}}{93}{figure.2.12}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces \textsl {El estimador de MV y el de momentos en muestras uniforme}}}{95}{figure.2.13}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces \textsl {Relaci\'on entre la estimaci\'on de $\mu $ y el tama\~no muestral $n$.}}}{100}{figure.2.14}
+\contentsline {figure}{\numberline {2.15}{\ignorespaces \textsl {Estimaciones de $S^2_n$ y $S^2_{n-1}$ en muestras de $N(5,9^2)$}}}{101}{figure.2.15}
+\contentsline {figure}{\numberline {2.16}{\ignorespaces \textsl {El estimador de MV y el de momentos en muestras uniforme}}}{131}{figure.2.16}
+\contentsline {figure}{\numberline {2.17}{\ignorespaces \textsl {Sesgo estimado de diferentes estimadores}}}{134}{figure.2.17}
+\contentsline {figure}{\numberline {2.18}{\ignorespaces \textsl {Sesgo estimado de diferentes estimadores}}}{134}{figure.2.18}
+\contentsline {figure}{\numberline {2.19}{\ignorespaces \textsl {Esperanza simulada de los estimadores $S^2_n$ y $S^2_{n-1}$ con $n=10$.}}}{137}{figure.2.19}
+\contentsline {figure}{\numberline {2.20}{\ignorespaces \textsl {ECM simulado de los estimadores $S^2_n$ y $S^2_{n-1}$ con $n=10$.}}}{139}{figure.2.20}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Estimaci\'on por intervalo de confianza}{147}{chapter.3}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \textsl {Ilustraci\'on de los percentiles de una distribuci\'on normal est\'andar.}}}{152}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces \textsl {Funci\'on $1/\sqrt {n}$.}}}{158}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces \textsl {Longitud esperada $E(l)$ del intervalo (\ref {int_t})}}}{165}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces \textsl {Longitud esperada $E(l)$ del intervalo $t$ y normal}}}{168}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces \textsl {Probabilidad de cobertura de los intervalos normal y $t$}}}{169}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces \textsl {Longitud esperada de los intervalos (3.2.15) y (3.2.16)}}}{173}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces \textsl {Longitud esperada estimada de los intervalos (3.2.19) y (3.2.20)}}}{175}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces \textsl {Probabilidades de cobertura para los intervalos $IC(cv)$}}}{180}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces \textsl {Longitudes estimadas para los intervalo $IC(cv)$}}}{181}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces \textsl {Probabilidades de cobertura del intervalo gamma y $t$}}}{198}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces \textsl {Probabilidades de cobertura para el intervalo normal y gamma}}}{200}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces \textsl {Longitud esperada te\'orica del intervalo normal y el gamma}}}{201}{figure.3.12}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces \textsl {Longitud simulada del intervalo normal y el gamma}}}{202}{figure.3.13}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Pruebas de hip\'otesis}{209}{chapter.4}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \textsl {Regi\'on de rechazo de la regla de decisi\'on (a)}}}{215}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \textsl {Regi\'on de rechazo de la regla de decisi\'on (c)}}}{216}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \textsl {Regi\'on de rechazo y $p$ valor de la regla de decisi\'on (a)}}}{217}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \textsl {Funci\'on de potencia (\ref {Potencia_norm1})}}}{221}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \textsl {Funci\'on de potencia (\ref {Potencia_norm1})}}}{222}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \textsl {Regi\'on de rechazo y $p$ valor de la regla de decisi\'on (a)}}}{223}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \textsl {Regi\'on de rechazo de la regla del sistema (\ref {menor_mayor}) y (\ref {igua_mayor})}}}{226}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \textsl {Funci\'on de potencia (\ref {Potencia_norm2})}}}{227}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces \textsl {Funci\'on de potencia (\ref {Potencia_norm2})}}}{228}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces \textsl {Probabilidad de error tipo II para sistemas (\ref {menor_mayor}) y (\ref {igua_mayor})}}}{229}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces \textsl {Regi\'on de rechazo de la prueba $t$ a dos colas}}}{236}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces \textsl {Funci\'on de potencia (\ref {Potencia_t})}}}{239}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces \textsl {Funci\'on de potencia (\ref {Potencia_t})}}}{239}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces \textsl {$p$ valor para la hip\'otesis (\ref {sigma_igual_dif})}}}{245}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces \textsl {Funci\'on de potencia (\ref {potencia_sigma1})}}}{247}{figure.4.15}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces \textsl {Funci\'on de potencia (\ref {potencia_sigma2})}}}{249}{figure.4.16}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces \textsl {Funci\'on de potencia (\ref {potencia_sigma2})}}}{255}{figure.4.17}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces \textsl {Funci\'on de potencia (\ref {potencia_mux_muy})}}}{256}{figure.4.18}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces \textsl {$p$ valor para la hip\'otesis (\ref {sigX=sigY})}}}{261}{figure.4.19}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces \textsl {Funci\'on de potencia (\ref {potencia_sigX_sigY})}}}{263}{figure.4.20}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces \textsl {Funci\'on de potencia de pruebas para $\theta $ en $Exp(\theta )$}}}{292}{figure.4.21}
+\contentsline {figure}{\numberline {4.22}{\ignorespaces \textsl {$p$ valores aleatorios}}}{297}{figure.4.22}
+\contentsline {figure}{\numberline {4.23}{\ignorespaces \textsl {$p$ valores aleatorios}}}{298}{figure.4.23}
+\contentsline {xpart}{Inferencia estad\IeC {\'\i }stica multivariante}{309}{part.2}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Distribuciones multivariantes}{309}{chapter.5}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces \textsl {Densidad normal multivariante}}}{321}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces \textsl {Gr\'afica de contorno para la distribuci\'on normal bivariante}}}{323}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces \textsl {Histograma y gr\'afica de dispersi\'on de datos multivariantes}}}{324}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces \textsl {Gr\'aficas QQ plot para los datos de la Tabla 5.2.}}}{325}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces \textsl {Harold Hotelling (1895-1973)}.}}{333}{figure.5.5}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Inferencia multivariante}{337}{chapter.6}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces \textsl {Regi\'on de confianza $\mathfrak {S}_1(\boldsymbol {\mu })$ con $p=2$ y diferentes valores de $\mathbf {\Sigma }$.}}}{358}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces \textsl {Regi\'on de confianza $\mathfrak {S}_2(\boldsymbol {\mu })$ con $p=2$ y diferentes valores de $\mathbf {\Sigma }$.}}}{360}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces \textsl {Regi\'on de confianza $\mathfrak {S}_3(\boldsymbol {\mu })$ con $p=2$ y diferentes valores de $\mathbf {\Sigma }$.}}}{361}{figure.6.3}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Breve historia del desarrollo estad\IeC {\'\i }stico}{375}{appendix.A}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Herramientas de bondad de ajuste}{385}{appendix.B}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces \textsl {Funci\'on de distribuci\'on emp\IeC {\'\i }rica y percentil muestral}}}{386}{figure.B.1}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces \textsl {QQ plot exponencial con datos exponenciales}}}{388}{figure.B.2}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces \textsl {QQ plot exponencial con datos no exponenciales}}}{389}{figure.B.3}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces \textsl {QQ plot normal con datos normales}}}{390}{figure.B.4}
+\contentsline {figure}{\numberline {B.5}{\ignorespaces \textsl {QQ plot Weibull con datos Weibull}}}{393}{figure.B.5}
+\contentsline {figure}{\numberline {B.6}{\ignorespaces \textsl {QQ plot Weibull con datos no Weibull}}}{393}{figure.B.6}
+\contentsline {figure}{\numberline {B.7}{\ignorespaces \textsl {QQ plot Weibull con datos no Weibull}}}{394}{figure.B.7}
+\contentsline {figure}{\numberline {B.8}{\ignorespaces \textsl {Histograma de los datos de gasto mensual}}}{395}{figure.B.8}
+\contentsline {figure}{\numberline {B.9}{\ignorespaces \textsl {QQ plot Gamma para datos gasto mensual}}}{396}{figure.B.9}
+\contentsline {figure}{\numberline {B.10}{\ignorespaces \textsl {Histograma y densidad Gamma estimada de datos gasto mensual}}}{396}{figure.B.10}
+\contentsline {figure}{\numberline {B.11}{\ignorespaces \textsl {QQ plot Betas para datos del Ejemplo 2.3.16}}}{398}{figure.B.11}
+\contentsline {figure}{\numberline {B.12}{\ignorespaces \textsl {QQ plot Beta y normal para datos normales}}}{399}{figure.B.12}
+\contentsline {figure}{\numberline {B.13}{\ignorespaces \textsl {QQ plot normal bivariante}}}{400}{figure.B.13}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Transformaci\'on de Box-Cox}{407}{appendix.C}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces \textsl {Ilustraci\'on de la transformaci\'on logar\IeC {\'\i }tmica}}}{408}{figure.C.1}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Repaso matricial}{413}{appendix.D}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Inferencia en tablas de contingencia}{421}{appendix.E}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Tablas de percentiles de distribuciones}{425}{appendix.F}

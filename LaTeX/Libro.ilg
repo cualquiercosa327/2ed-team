@@ -1,0 +1,16 @@
+This is C:\Program Files (x86)\MiKTeX 2.8\miktex\bin\makeindex.exe, version 2.14 [02-Oct-2002] (kpathsea + Thai support).
+Scanning input file Libro.idx....
+!! Input index error (file = Libro.idx, line = 43):
+   -- Extra `!' at position 43 of first argument.
+!! Input index error (file = Libro.idx, line = 44):
+   -- Extra `!' at position 43 of first argument.
+!! Input index error (file = Libro.idx, line = 45):
+   -- Extra `!' at position 43 of first argument.
+
+!! Input index error (file = Libro.idx, line = 134):
+   -- Extra `!' at position 46 of first argument.
+done (381 entries accepted, 4 rejected).
+Sorting entries......done (3503 comparisons).
+Generating output file Libro.ind....done (379 lines written, 0 warnings).
+Output written in Libro.ind.
+Transcript written in Libro.ilg.

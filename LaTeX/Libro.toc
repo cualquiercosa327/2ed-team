@@ -1,0 +1,137 @@
+\select@language {english}
+\select@language {spanish}
+\contentsline {chapter}{Pr\'ologo}{i}{chapter*.1}
+\contentsline {chapter}{Prefacio}{iii}{chapter*.2}
+\contentsline {part}{I\hspace {1em}Inferencia estad\IeC {\'\i }stica univariada}{1}{part.1}
+\contentsline {xpart}{Inferencia estad\IeC {\'\i }stica univariada}{3}{part.1}
+\contentsline {chapter}{\numberline {1}Conceptos preliminares}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Variables aleatorias y distribuciones de probabilidad}{4}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Distribuciones discretas}{6}{subsection.1.1.1}
+\contentsline {subsubsection}{Distribuci\'on uniforme discreta }{6}{section*.4}
+\contentsline {subsubsection}{Distribuci\'on Bernoulli}{8}{section*.5}
+\contentsline {subsubsection}{Distribuci\'on binomial}{10}{section*.6}
+\contentsline {subsubsection}{Distribuci\'on hipergeom\'etrica}{13}{section*.7}
+\contentsline {subsubsection}{Distribuci\'on Poisson}{17}{section*.8}
+\contentsline {subsection}{\numberline {1.1.2}Distribuciones continuas}{24}{subsection.1.1.2}
+\contentsline {subsubsection}{Distribuci\'on Uniforme Continua}{24}{section*.9}
+\contentsline {subsubsection}{Distribuci\'on Gamma}{28}{section*.10}
+\contentsline {subsubsection}{Distribuci\'on exponencial}{32}{section*.11}
+\contentsline {subsubsection}{Distribuci\'on Weibull}{34}{section*.12}
+\contentsline {subsubsection}{Distribuci\'on normal}{36}{section*.13}
+\contentsline {subsubsection}{Distribuci\'on Ji-cuadrado}{42}{section*.14}
+\contentsline {subsubsection}{Distribuci\'on $t$-student}{45}{section*.15}
+\contentsline {subsubsection}{Distribuci\'on $t$-student no central}{47}{section*.16}
+\contentsline {subsubsection}{Distribuci\'on F}{49}{section*.17}
+\contentsline {subsubsection}{Distribuci\'on Beta}{51}{section*.18}
+\contentsline {subsubsection}{Relaciones de las distribuciones}{52}{section*.19}
+\contentsline {subsection}{\numberline {1.1.3}Percentiles}{54}{subsection.1.1.3}
+\contentsline {section}{\numberline {1.2}Familia exponencial}{56}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Familia exponencial uniparam\'etrica}{56}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Familia exponencial multi-param\'etrica}{58}{subsection.1.2.2}
+\contentsline {section}{\numberline {1.3}Ejercicios}{59}{section.1.3}
+\contentsline {chapter}{\numberline {2}Estimaci\'on puntual}{63}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introducci\'on}{63}{section.2.1}
+\contentsline {section}{\numberline {2.2}Conceptos b\'asicos}{64}{section.2.2}
+\contentsline {section}{\numberline {2.3}Estimaciones puntuales}{66}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}M\'etodo de m\'axima verosimilitud}{66}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}M\'etodo de los momentos}{83}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}M\'etodo de m\IeC {\'\i }nimos cuadrados}{95}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Propiedades de estimadores puntuales}{96}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Error cuadr\'atico medio}{96}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Suficiencia}{106}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Estimadores UMVUE}{113}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}Completez}{126}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {2.4.5}Consistencia}{133}{subsection.2.4.5}
+\contentsline {section}{\numberline {2.5}Comparaci\'on emp\IeC {\'\i }rica de algunas propiedades}{136}{section.2.5}
+\contentsline {section}{\numberline {2.6}Ejercicios}{140}{section.2.6}
+\contentsline {chapter}{\numberline {3}Estimaci\'on por intervalo de confianza}{147}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introducci\'on}{147}{section.3.1}
+\contentsline {section}{\numberline {3.2}Bajo normalidad}{149}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Problemas de una muestra}{150}{subsection.3.2.1}
+\contentsline {subsubsection}{Intervalos de confianza para la media $\mu $}{150}{section*.20}
+\contentsline {subsubsection}{Intervalos de confianza para la varianza $\sigma ^2$}{169}{section*.27}
+\contentsline {subsubsection}{Intervalos de confianza para el coeficiente de variaci\'on}{178}{section*.30}
+\contentsline {subsection}{\numberline {3.2.2}Problemas de dos muestras}{182}{subsection.3.2.2}
+\contentsline {subsubsection}{Intervalos de confianza para diferencia de medias}{182}{section*.31}
+\contentsline {subsubsection}{Intervalos de confianza para cociente de varianzas}{190}{section*.35}
+\contentsline {section}{\numberline {3.3}Bajo distribuciones diferentes a la normal}{193}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Intervalos de confianza con distribuci\'on exponencial}{195}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Intervalos de confianza con distribuci\'on Bernoulli}{201}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Intervalos de confianza con distribuci\'on Poisson}{204}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Ejercicios}{205}{section.3.4}
+\contentsline {chapter}{\numberline {4}Pruebas de hip\'otesis}{209}{chapter.4}
+\contentsline {section}{\numberline {4.1}Conceptos preliminares}{209}{section.4.1}
+\contentsline {section}{\numberline {4.2}Una muestra bajo normalidad}{211}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Pruebas de hip\'otesis para la media te\'orica}{211}{subsection.4.2.1}
+\contentsline {subsubsection}{$H_0:\ \mu =\mu _0$ vs. $H_1:\ \mu \not =\mu _0$ con $\sigma ^2$ conocida}{212}{section*.39}
+\contentsline {subsubsection}{$H_0:\ \mu \leq (=)\mu _0$ vs. $H_1:\ \mu >\mu _0$ con $\sigma ^2$ conocida}{224}{section*.44}
+\contentsline {subsubsection}{$H_0:\ \mu \geq (=)\mu _0$ vs. $H_1:\ \mu <\mu _0$ con $\sigma ^2$ conocida}{228}{section*.46}
+\contentsline {subsubsection}{$H_0:\ \mu =\mu _0$ vs. $H_1:\ \mu \not =\mu _0$ con $\sigma ^2$ desconocida}{234}{section*.48}
+\contentsline {subsubsection}{$H_0:\ \mu \leq (=)\mu _0$ vs. $H_1:\ \mu >\mu _0$ con $\sigma ^2$ desconocida}{240}{section*.51}
+\contentsline {subsubsection}{Dualidad entre $IC(\mu )$ y pruebas de hip\'otesis}{241}{section*.54}
+\contentsline {subsection}{\numberline {4.2.2}Pruebas de hip\'otesis acerca de la varianza te\'orica}{243}{subsection.4.2.2}
+\contentsline {subsubsection}{$H_0:\ \sigma ^2=\sigma ^2_0$ vs. $H_1:\ \sigma ^2\not =\sigma ^2_0.$ con $\mu $ conocido}{243}{section*.55}
+\contentsline {subsubsection}{$H_0:\ \sigma ^2\leq (=)\sigma ^2_0$ vs. $H_1:\ \sigma ^2>\sigma ^2_0.$ con $\mu $ conocido}{246}{section*.58}
+\contentsline {subsubsection}{$H_0:\ \sigma ^2\geq (=)\sigma ^2_0$ vs. $H_1:\ \sigma ^2<\sigma ^2_0.$ con $\mu $ conocido}{248}{section*.61}
+\contentsline {subsubsection}{$H_0:\ \sigma ^2=\sigma ^2_0$ vs. $H_1:\ \sigma ^2\not =\sigma ^2_0.$ con $\mu $ desconocido}{249}{section*.62}
+\contentsline {subsubsection}{$H_0:\ \sigma ^2\leq (=)\sigma ^2_0$ vs. $H_1:\ \sigma ^2>\sigma ^2_0.$ con $\mu $ desconocido}{250}{section*.63}
+\contentsline {subsubsection}{$H_0:\ \sigma ^2\geq (=)\sigma ^2_0$ vs. $H_1:\ \sigma ^2<\sigma ^2_0.$ con $\mu $ desconocido}{251}{section*.64}
+\contentsline {section}{\numberline {4.3}Dos muestras}{251}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Comparaci\'on entre dos medias}{251}{subsection.4.3.1}
+\contentsline {subsubsection}{$H_0:\ \mu ^2_X=\mu ^2_Y$ vs. $H_1:\ \mu ^2_X\not =\mu ^2_Y,$ con $\sigma ^2_X$ y $\sigma ^2_Y$ conocidas}{251}{section*.65}
+\contentsline {subsubsection}{$\sigma ^2_X$ y $\sigma ^2_Y$ son desconocidas, pero iguales.}{256}{section*.68}
+\contentsline {subsubsection}{$\sigma ^2_X$ y $\sigma ^2_Y$ son desconocidos y diferentes}{259}{section*.69}
+\contentsline {subsection}{\numberline {4.3.2}Comparaci\'on entre dos varianzas}{259}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}$k$ muestras}{264}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Igualdad de $k$ medias}{264}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Igualdad de varianzas}{268}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}Muestras provenientes de la distribuci\'on Ber\discretionary {-}{}{}nou\discretionary {-}{}{}lli y binomial}{270}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Una muestra}{270}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Dos muestras}{278}{subsection.4.5.2}
+\contentsline {section}{\numberline {4.6}Muestras provenientes de una distribuci\'on Poi\discretionary {-}{}{}sson}{282}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Una muestra}{282}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Dos muestras}{285}{subsection.4.6.2}
+\contentsline {section}{\numberline {4.7}Muestras provenientes de la distribuci\'on exponencial}{288}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Una muestra}{288}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.2}Dos muestras}{293}{subsection.4.7.2}
+\contentsline {section}{\numberline {4.8}Acerca del $p$-valor}{294}{section.4.8}
+\contentsline {subsection}{\numberline {4.8.1}Diversos puntos de vistas acerca del $p$-valor}{294}{subsection.4.8.1}
+\contentsline {subsection}{\numberline {4.8.2}$p$ valores aleatorios}{296}{subsection.4.8.2}
+\contentsline {subsubsection}{Nota bibliogr\'afica}{299}{section*.72}
+\contentsline {subsection}{\numberline {4.8.3}El $p$ valor no es una medida de soporte}{300}{subsection.4.8.3}
+\contentsline {subsection}{\numberline {4.8.4}Acerca de la igualdad en la hip\'otesis nula}{301}{subsection.4.8.4}
+\contentsline {section}{\numberline {4.9}Ejercicios}{303}{section.4.9}
+\contentsline {part}{II\hspace {1em}Inferencia estad\IeC {\'\i }stica multivariante}{307}{part.2}
+\contentsline {xpart}{Inferencia estad\IeC {\'\i }stica multivariante}{309}{part.2}
+\contentsline {chapter}{\numberline {5}Distribuciones multivariantes}{309}{chapter.5}
+\contentsline {section}{\numberline {5.1}Vectores aleatorios}{309}{section.5.1}
+\contentsline {section}{\numberline {5.2}Algunas distribuciones multivariantes}{319}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Distribuci\'on multinomial}{319}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Distribuci\'on normal multivariante}{320}{subsection.5.2.2}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }stica de la funci\'on de densidad de la distribuci\'on $N_p$}{326}{section*.73}
+\contentsline {subsubsection}{Momentos y funci\'on generadora de momentos de un vector aleatorio con distribuci\'on $N_p$}{326}{section*.74}
+\contentsline {subsection}{\numberline {5.2.3}Distribuci\'on Wishart}{331}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Distribuci\'on $T^2$ de Hotelling}{333}{subsection.5.2.4}
+\contentsline {section}{\numberline {5.3}Ejercicios}{334}{section.5.3}
+\contentsline {chapter}{\numberline {6}Inferencia multivariante}{337}{chapter.6}
+\contentsline {section}{\numberline {6.1}Inferencia en la distribuci\'on multinomial}{338}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Una muestra}{338}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Dos muestras}{343}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}$k$ muestras}{347}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}Inferencia en la distribuci\'on normal multivariante}{349}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Estimador de m\'axima verosimilitud}{349}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Propiedades de los estimadores de m\'axima verosimilitud}{354}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Regi\'on de confianza y pruebas de hip\'otesis para el vector de medias}{356}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}$\mathbf {\Sigma }$ conocida}{357}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}$\mathbf {\Sigma }$ desconocida}{360}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Inferencia para una combinaci\'on lineal de medias}{362}{section.6.4}
+\contentsline {section}{\numberline {6.5}Prueba de hip\'otesis para la matriz de varianzas y covarianzas}{365}{section.6.5}
+\contentsline {subsubsection}{Prueba de independencia de un conjunto de variables aleatorias}{367}{section*.75}
+\contentsline {subsubsection}{Prueba de independencia entre conjuntos de variables aleatorias}{369}{section*.76}
+\contentsline {section}{\numberline {6.6}Ejercicios}{372}{section.6.6}
+\contentsline {chapter}{\numberline {A}Breve historia del desarrollo estad\IeC {\'\i }stico}{375}{appendix.A}
+\contentsline {chapter}{\numberline {B}Herramientas de bondad de ajuste}{385}{appendix.B}
+\contentsline {chapter}{\numberline {C}Transformaci\'on de Box-Cox}{407}{appendix.C}
+\contentsline {chapter}{\numberline {D}Repaso matricial}{413}{appendix.D}
+\contentsline {chapter}{\numberline {E}Inferencia en tablas de contingencia}{421}{appendix.E}
+\contentsline {chapter}{\numberline {F}Tablas de percentiles de distribuciones}{425}{appendix.F}

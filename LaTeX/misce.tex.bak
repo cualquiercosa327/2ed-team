@@ -1,0 +1,1772 @@
+\chapter{Breve historia del desarrollo estadístico}
+
+
+\section*{1650-1700}
+
+En este periodo se encuentran los orígenes de la probabilidad y de la estadística mediante el tratamiento matemático del juego y el estudio sistemático de las cifras de mortalidad. Esta época es conocida como la era de la revolución científica  en donde grandes nombres como Galileo y Newton dieron algunas ideas de la probabilidad sin influenciar su desarrollo teórico.
+
+Antes de este periodo, hubo algunas contribuciones a la probabilidad, en tanto que Cardano (1501-76) dio algunas probabilidades asociadas al lanzamiento de los dados. Sin embargo, una masa crítica de investigadores y resultados fue alcanzada solamente después de las discusiones entre Pascal y Fermat.
+
+Las estadísticas poblacionales surgen mediante el trabajo de Graunt. William Petty (amigo de Graunt) creó el término Política Aritmética refiriéndose al estudio cuantitativo de la demografía y de la economía. Gregory King fue una importante figura de la siguiente generación. Sin embargo, la línea econométrica no surgió de la manera adecuada. De hecho, el economista más influyente del siglo XVIII, Adam Smith, escribió,  <<Yo no tengo ninguna esperanza en la política aritmética>>.
+
+Una nueva forma de matemáticas de seguros de vida es creada a partir del trabajo de Graunt por los matemáticos Halley, Hudde y de Witt. Mucho después, algunos probabilistas escribirían acerca de temas actuariales, entre ellos de Moivre, Simpson, Price, De Morgan, Gram, Thiele, Cantelli, Cramér y de Finneti. En el siglo XX algunos temas actuariales mas la motivación de G. J. Lidstonen, estimularon a E. T. Whittaker y A. C. Aitken en la contribución del desarrollo estadístico y el análisis numérico.
+
+En nuevas instituciones, además de las universidades tradicionales, se apuntalan estos desarrollos. En Paris y Londres se crean grupos privados de discusión, entre ellos el de Mersenne, desde donde se crean la Academia de Ciencias y la Sociedad Real de Londres (archivos). En Philosophical Transactions se publican muchas contribuciones a la probabilidad y a la estadística, incluyendo artículos escritos por Halley, de Moivre, Bayes, Pearson, Fisher, Jeffreys y Neyman. Las academias de Berlin y St. Petersburg se formaron poco después.
+
+\section*{Siglo XVIII}
+
+Hald (1990) llamó a la primera parte de esta época el gran salto (1708-1718), pues hubo contribuciones muy importantes en distintos temas de la probabilidad. Aunque las raíces de la probabilidad y de la estadística son muy distintas, en los comienzos del siglo XVIII se entendía que los dos temas estaban cercanamente relacionados.
+
+Jakob Bernoulli (Ars Conjectandi) y  Arnauld (Logique) sugieren una concepción de la probabilidad un poco más amplia que la asociada a los juegos, chances y oportunidades. La ley de los grandes números de Bernoulli establece una teoría que vincula la probabilidad con los datos.
+
+Montmort (\emph{Essay d'analyse sur les jeux de hazard} (1708)) y deMoivre (\emph{Doctrine of Chances} (1718)) son autores que producen nuevos resultados de la teoría de los juegos extendiendo el trabajo de Pascal y de Huygens.
+
+El artículo de Arbuthnot en 1710 (\emph{An Argument for Divine Providence, taken from the Constant Regularity Observed in the Births of Both Sexes}) usa una prueba de significación (la prueba del signo) para establecer que la probabilidad de nacimiento de un varón no es de un medio. Estos cálculos fueron refinados por Gravesande y por Nicolás Bernoulli. Aparte de haber sido una de las primeras aplicaciones de la probabilidad a las estadísticas sociales, el artículo de Arbuthnot ilustra una conexión cercana entre la teología y la probabilidad en la literatura de la época. El trabajo de John Craig establece otro ejemplo de esta situación.
+
+La consideración de la evaluación de riesgos, dramatizada por la Paradoja de San Petersburgo (formulada por Nicolás Bernoulli en 1713 y discutida por Gabriel Cramer) guió la teoría de la esperanza moral (o utilidad esperada) formulada por Daniel Ber\-nou\-lli (1737).
+
+La probabilidad se establece en la ciencia de la Física, mientras que en la astronomía muestra una influencia. La aplicación más duradera en la astronomía trata acerca de la combinación de observaciones. La teoría resultante de los errores es el ancestro más importante de la inferencia estadística moderna, particularmente en el campo de la teoría de estimación.
+
+Los más importantes astrónomos y matemáticos, incluidos Daniel Bernoulli, Bos\-co\-vich, Euler, Lambert, Mayer y Lagrange, trataron el problema de la combinación de observaciones astronómicas, <<para minimizar los errores surgidos de las imperfecciones de los instrumentos y de los órganos de los sentidos>>, en palabras de Thomas Simpson. Simpson introdujo la idea de postular una distribución para los errores. Se desarrollaron algunas pruebas de significación, la mayoría de ellas aplicadas en astronomía. Daniel Bernoulli, John Michell (1767) y Crossley calcularon las chances (odds) de que el sistema de Pléyades (siete cabrillas) fuera un sistema de estrellas y no un conglomerado aleatorio.
+
+Se realizan afirmaciones en forma de intervalo para el parámetro de la distribución Binomial (ancestros de los intervalos de confianza modernos). Estos fueron propuestos por Lagrange y por Laplace en la década de 1780.
+
+En 1770 Condorcet empieza una publicación acerca de matemáticas sociales, para la aplicación de la teoría de pro\-ba\-bi\-li\-dad en las decisiones de jurados y otras asambleas. Su trabajo tuvo una fuerte influencia en Laplace y Poisson. Otros autores franceses de este periodo son D´Alembert y Buffon; el primero es recordado por sus comentarios críticos en la teoría de probabilidad y el último por el experimento de la aguja.
+
+Un desarrollo importante en la teoría de la probabilidad fue el trabajo de  probabilidad condicional con aplicaciones a la probabilidad inversa o Inferencia Bayesiana propuesto por Bayes y Laplace.
+
+\section*{Siglo XIX}
+
+La característica fundamental son sus fuertes cambios anunciados y gestados en el pasado pero que se efectuarían, de hecho, en este siglo. Cambios en todos los ámbitos de la vida y el conocimiento. Revoluciones de todas las índoles tendrían su lugar. La ciencia y la economía se retroalimentarían, el término <<científico>>, acuñado en 1833 por William Whewell, sería parte fundamental del lenguaje de la época
+
+\section*{1800-1830}
+
+Este periodo se encuentra dominado por las figuras de Laplace y Gauss. Laplace estudió en su totalidad la probabilidad y la estadística; Gauss se enfocó solamente en la teoría de los errores.
+
+El trabajo en la teoría de los errores alcanzó un clímax con la introducción del método de los mínimos cuadrados que fue publicado por Legendre en 1805. Durante veinte años hubo tres razonamientos basados en la teoría de la probabilidad: el argumento bayesiano de Gauss (con una distribución a priori uniforme), el argumento de Laplace basado en el teorema central del límite y el argumento de Gauss que se basó en el teorema de Gauss-Markov. El trabajo de investigación continuó a través del siglo XIX con la ayuda y contribución de numerosos astrónomos y matemáticos; entre ellos Cauchy, Poisson, Fourier, Bessel, Encke, Chauvenet y Newcomb  (aparece la  distribución de Cauchy como un caso poco elegante de la teoría de los errores). Pearson, Fisher\footnote{\citeasnoun{Tea} afirma que algunos de los primeros artículos de R. A. Fisher son altamente matemáticos. El artículo del coeficiente de correlación, que K. Pearson publicó en \emph{Biometrika}, es denso con respecto a la notación matemática. Una página típica de esta teoría está llena de fórmulas, al menos en un 50\%. Sin embargo, hubo artículos en los que ninguna fórmula matemática aparecía entre líneas. Por ejemplo, en uno de ellos, se discuten las distintas formas en las que la teoría de Darwin, de adaptación aleatoria, se adecuaba a las estructuras anatómicas más adecuadas. En otro artículo, se especula sobre la evolución de la preferencia sexual. Fisher se unió al movimiento de la Eugenesia y en 1917 una editorial en \emph{Eugenics Review}, en donde hacía un llamado para la creación de una política nacional para incrementar la tasa de natalidad de las clases profesionales y entre los artistas más hábiles y desalentar los nacimientos entre las clases bajas.
+
+Su argumento era que las políticas gubernamentales que ayudaban a las personas pobres ayudaban a que estas clases procrearan y pasaran sus genes a la siguiente generación, mientras que las preo\-cu\-paciones de la clase media, en términos de seguridad económica, hacían que los matrimonios se postergaran y las familias no fueran grandes en número.} y Jeffreys aprenden la teoría de los errores desde la perspectiva de los astrónomos.
+
+Gauss encontró una segunda aplicación de los mínimos cuadrados en la geodesia. Los geodesistas hicieron importantes contribuciones a los mínimos cuadrados, particularmente desde la perspectiva computacional. Los epónimos, Gauss-Jordan y Cholesky, son puestos en honor a posteriores geodesistas. Helmert (la transformada de Helmert) fue un geodesista que contribuyó a la teoría de los errores. Nótese que el topógrafo Frank Yates contribuyó enormemente a la estadística siendo colega y sucesor de Fisher en Rothamsted.
+
+En Gran Bretaña se llevó a cabo el primer censo poblacional en 1801. Éste terminó la controversia acerca del tamaño de la población que empezó con Price, amigo de Bayes, quien argumentaba que la población había decrecido en el siglo XVIII. Numerosos escritores lanzaron estimaciones, incluyendo a Eden.
+
+William Playfair encontró nuevas formas de representación gráfica de los datos. Sin embargo, nadie le prestó atención. La teoría estadística que ganó terreno en los siguientes 150 años no tuvo en cuenta la idea de la graficación de los datos. Esta idea es reciente y se asocia con Tukey.
+
+Concluye la era de las academias y los mayores avances se dan en las universidades. El sistema de educación francesa fue transformado gracias a la revolución y el siglo XIX vio el surgimiento de la universidad alemana.
+
+
+\section*{1830-1860}
+
+Este periodo vio el surgimiento de de la sociedad estadística, la cual ha estado activa en la escena científica desde entonces, aunque el significado de la palabra <<Estadística>> ha cambiado desde el principio de la literatura filosófica de la probabilidad. En este periodo, también se dio la más glamorosa rama del análisis empírico de las series temporales, el llamado <<ciclo de las manchas solares>>.
+
+Desde 1830 han existido varias sociedades estadísticas, incluyendo la London (Ro\-yal) Statistical Society y la American Statistical Association (ahora la más grande del mundo). El International Statistical Institute fue fundado en 1885 aunque ha organizado congresos internacionales desde 1853. Las estadísticas estuvieron basadas en las poblaciones humanas y en Francia André-Michel Guerry mapeó una clase de estadísticas morales. Quetelet fue un catalizador en la formación de la London Society.
+
+Desde 1840, existe la literatura filosófica de probabilidad. La literatura inglesa empieza con la discusión de probabilidad de John Stuart Mill (1843). Este fue seguido por John Venn, W. Stanley Jevons y Karl Pearson. Hubo un traslape en la literatura de lógica y de probabilidad. De Morgan y Boole también aportaron exhaustivas y largas discusiones acerca de la probabilidad.
+
+En 1843, Schwabe observa que la actividad de las manchas solares (sunspot) era periódica, después de décadas de investigación, no sólo en la física solar sino en el magnetismo terrestre, meteorología e incluso economía, donde se examinaban las series para ver si su periodicidad coincidía con la de las manchas solares. Incluso antes de la manía o moda de las manchas solares hubo un interés intenso en la periodicidad en la meteorología, en el estudio de las mareas y otras ramas de la física observacional.
+
+Juntos, Laplace y Quetelet, habían analizado datos meteorológicos y Herschel había escrito un libro al respecto. Las técnicas en uso variaban desde las más simples, como la tabla de Buys Ballot, a formas más sofisticadas como el análisis armónico. Al final del siglo, el físico Arthur Schuster introdujo el periodograma. Sin embargo, por ese entonces, una forma rival del análisis de series temporales, basada en la correlación y promovida por Pearson, Yule, Hooker y otros, fue tomando forma.
+
+\section*{1860-1880}
+
+Dos importantes campos de aplicación se abrieron en este periodo. La probabilidad encontró una aplicación más profunda en la física, particularmente en la teoría de gases, naciendo así la mecánica estadística. Los problemas de la mecánica estadística estaban detrás del alcance de los avances de la probabilidad a comienzos del siglo XX. El estudio estadístico de la herencia, desarrollado dentro de la biometría, tuvo lugar. Al mismo tiempo, el mundo sufrió importantes cambios geográficos. Un trabajo importante en la teoría de la probabilidad venía desarrollándose en Rusia, mientras que el trabajo estadístico venía de Inglaterra.
+
+En 1860, James Clerk Maxwell usó la curva del error (distribución normal) en la teoría de los gases; parece que él estaba influenciado por Quetelet. Boltzmann y Gibbs desarrollaron la teoría de gases dentro de la mecánica estadística.
+
+Galton inaugura el estudio estadístico de la herencia, trabajo continuado en el siglo XX por Pearson y Fisher. La correlación fue una de las más distintivas contribuciones de la escuela inglesa.
+
+En contraste, la llamada <<dirección continental>> investigaba qué tan apropiado era el uso de los modelos para el tratamiento de las tasas de nacimientos y defunciones por considerar la estabilidad de las series sobre el tiempo.
+
+
+Hubo una mayor penetración de la estadística en la psicología y en la economía. Se tuvo en cuenta el trabajo de los políticos aritméticos de 1650. El trabajo de Jevons sobre números índice fue inspirado por la teoría de los errores. La investigación en series temporales económicas fue inspirada por el trabajo de lo meteorólogos acerca de la variación estacional de los ciclos solares y sus correlaciones en la tierra.
+
+\section*{1880-1900}
+
+En este periodo la escuela inglesa estadística tomó forma. Pearson fue el personaje dominante hasta que Fisher lo desplazó en la década de 1920.
+
+Galton introdujo la correlación y una teoría basada en el anterior concepto fue rápidamente desarrollada por Pearson, Edgeworth, Sheppard y Yule. La correlación fue la mayor salida desde el trabajo estadístico de Laplace y Gauss. Empezó a ser ampliamente aplicada en biología, psicología y ciencias sociales.
+
+En economía, Edgeworth siguió algunas ideas de Jevons sobre números índice. Sin embargo, en Inglaterra la economía estadística era más cercana al trabajo en estadísticas oficiales o periodismo financiero. En Italia, Vilfredo Pareto descubrió una regularidad estadística en la distribución del ingreso (distribución de Pareto).
+
+
+\section*{Siglo XX}
+
+El siglo XX se ha caracterizado por los avances de la tecnología, medicina y ciencia en general, fin de la esclavitud (al menos nominalmente), liberación de la mujer en la mayor parte de los países, como también por crisis y despotismos humanos, que causaron efectos tales como las guerras mundiales, el genocidio y el etnocidio, las políticas de exclusión social y la generalización del desempleo y de la pobreza. Como consecuencia, se profundizaron las inequidades en cuanto al desarrollo social, económico y tecnológico y en cuanto a la distribución de la riqueza y la calidad de vida entre los países y los habitantes de las distintas regiones del mundo. En los últimos años del siglo, especialmente a partir de 1989-1991 con el derrumbe de los regímenes colectivistas de Europa, comenzó el fenómeno llamado globalización o mundialización.
+
+
+\section*{1900-1920}
+En los años de la gran guerra (Primera Guerra Mundial, entre 1914 y 1918) la pro\-ba\-bi\-li\-dad y la estadística se esparcieron por todos lados. Durante la guerra, la investigación en probabilidad casi se detiene por causa de que la gente se enlistaba en los servicios armados. Pearson, Lévy y Wiener trabajaron en balística, Jeffreys en meteorología y Yule en administración.
+
+En 1900, David Hilbert propuso un conjunto de problemas para el siglo XX, de los cuales el sexto problema fue <<tratar... por medio de axiomas, aquellas ciencias físicas en las cuales las matemáticas juegan un papel importante; en primer lugar están la teoría de la probabilidad y la mecánica>>. La teoría de la medida, que jugaría un papel muy importante en la axiomatización de la probabilidad, fue creada por Borel y Lebesgue, entre otros.
+
+
+Desde diferentes campos surgieron contribuciones que eventualmente encontraron lugar en la teoría de los procesos estocásticos. En física, Einstein y Smoluchovski trabajaron en el movimiento browniano. Bachelier desarrolló un modelo similar aplicado a la especulación financiera; alternamente, Lundberg desarrolló una teoría de riesgo colectivo. La enfermedad de la malaria y la migración de los mosquitos fueron el foco principal de la investigación de Pearson que originó el problema de la caminata aleatoria. Ronald Ross y A. G.McKendrick, sin la referencia del anterior trabajo de Daniel Bernoulli, crearon modelos matemáticos de epidemias.
+
+Aunque Mendel no usó la probabilidad en su trabajo sobre genética (publicado en 1866), sus ideas fueron probabilizadas cuando Pearson, Yule y Fisher investigaron si los principios de la genética podrían racionalizar los hallazgos de los biometristas.
+
+Charles Spearman (1863-1945) impulsó la correlación y esta empezó a ser parte importante de la sicología. Entre las contribuciones a la estadística estuvieron la co\-rre\-la\-ción de rangos y el análisis factorial. Godfrey Thomson fue un crítico severo del análisis factorial de la inteligencia basado en el trabajo de Spearman. En la década de 1930, Louis L. Thurstone desarrolló el análisis factorial múltiple.
+
+En economía, especialmente en los Estados Unidos, los métodos cuantitativos empezaron a ser más prominentes. Las figuras más importantes fueron Warren Persons, Irving Fisher, Wesley Mitchell y H. L. Moore. La mayoría de su trabajo se clasificaría en el análisis de series de tiempo.
+
+Las aplicaciones industriales en probabilidad empezaron con el trabajo de Erlang sobre congestión de sistemas telefónicos, el ancestro de la teoría de colas.
+
+Los desarrollos institucionales incluyen, en 1911, la creación del Departamento de Estadísticas Aplicadas en UCL encabezado por Pearson. Yule podría ser llamado <<el primer estadístico moderno>>.
+
+\section*{1920-1930}
+
+La mayoría de las personas que dominaron la probabilidad y la estadística tuvieron un impacto temprano. De ellos, el individuo que tuvo un mayor impacto fue Fisher en estadística. El alemán era el idioma tradicional en la literatura científica de la época. Sin embargo, Fisher escribía en inglés, pues creía que la época de escritura en alemán había terminado con Gauss. Los avances en probabilidad incluyeron refinamientos del teorema central del límite (Lindeberg hizo una muy importante contribución) y de la ley fuerte de los grandes números junto con nuevos resultados que incluían la ley del algoritmo dominado. Hubo contribuciones de la mayoría de los países del continente europeo; por ejemplo, Mazurkiewicz de Polonia y en 1935, Turing quien repitió el trabajo de Lindeberg sin saber de su publicación.
+
+Los fundamentos de la probabilidad recibieron mucha atención y ciertas posiciones encontraron expresiones clásicas: la interpretación lógica de la probabilidad (grado de creencia razonable) fue propuesta por los filósofos de Cambridge, W. E. Johnson, J. M. Keynes y C. D. Broad, y presentada a una audiencia científica por Jeffreys; el punto de vista frecuentista fue desarrollado por von Mises.
+
+En estadística, R. A. Fisher generó nuevas ideas sobre estimación y prueba de hipótesis  y su trabajo de diseño experimental movió este tópico desde los linderos hasta el centro de la estadística. Sus métodos estadísticos para investigadores (1925) constituyeron el libro más influyente del siglo XX. W. A. Shewhart (ASQ) fue el pionero del control de calidad, que se convirtió en una aplicación muy importante de la estadística en la industria.
+
+\section*{1930-1940}
+
+En contra de una economía en recession y de una política desastrosa, hubo importantes desarrollos en probabilidad, teoría estadística y sus aplicaciones. En la Unión Soviética, a los matemáticos les iba mejor que a los economistas o a los genetistas y pudieron salir de su país y publicar en revistas internacionales. De esta manera, Kolmogorov y Khinchin publicaron en Alemania, donde precisamente los judíos fueron expulsados de la academia desde 1934.
+
+En probabilidad, los principales desarrollos fueron la axiomatización de la probabilidad por Kolmogorov y el desarrollo de la teoría de los procesos estocásticos por él y por Khinchin. Su trabajo es usualmente visto como el comienzo de la probabilidad moderna.
+
+En los fundamentos de la probabilidad, Bruno de Finetti y Frank Ramsey (1903-1930) (St. Andrews, N.-E. Sahlin) trabajaron en la probabilidad subjetiva. Ramsey empezó con el criticismo de la escuela de lógica de Cambridge, en particular Keynes.  Una superestructura estadística no se dio sino años después, Jeffreys dio un tratamiento completo a la estadística fundamentado en su noción lógica de la probabilidad, aunque la forma prevaleciente era la clásica. \emph{Biometrika} detuvo la publicación de la investigación biológica y se enfocó en la estadística teórica. El Instituto de Estadística Matemática fue fundado en 1930 y su revista, \emph{The Annals of Mathematical Statistics}, apareció en 1933. El primer laboratorio de estadística en los Estados Unidos fue creado en Iowa por Snedecor en 1933. Snedecor fue fuertemente influenciado por Fisher.
+
+En el campo de la inferencia estadística, el mayor desarrollo fue la teoría del prueba de hipótesis de Neyman-Pearson. El análisis multivariado se convirtió en una material identificable, formado por contribuciones como la distribución Wishart (1928), los componentes principales de Harold Hotelling (1933) y la correlación canónica (1936) y el análisis discriminante de Fisher (1936).
+
+Las aplicaciones de las matemáticas y estadísticas a la economía se juntaron en el movimiento econométrico. Entre los líderes de la década de 1930 estuvieron  Jan Tinbergen y Ragnar Frisch. Los econometristas que ganaron el premio Nobel en economía son Engle, Granger, Haavelmo, Heckman, Klein y McFadden.
+
+\section*{1940-1950}
+
+Entre los millones de muertos de la Segunda Guerra Mundial se contaron algunos matemáticos y estadísticos. Doeblin es el más famoso de los finados, y uno de los libros de Neyman está dedicado a la memoria de diez colegas y amigos. Esta guerra incentivó el estudio de la probabilidad y la estadística. Al final de la guerra, muchas personas se encontraron trabajando como estadísticos, hubo nuevas aplicaciones y la importancia de esta material fue más ampliamente reconocida.
+
+Las persecuciones nazis y la Segunda Guerra Mundial empujaron la migración de muchos estadísticos a los Estados Unidos. Algunas de las más importantes figuras de la probabilidad en la postguerra en Estados Unidos son: Feller, M. Kac (MGP), Wald, G. E. P. Box (MGP), W. G. Cochran (ASA) (MGP), W. Hoeffding (MGP), H. O. Hartley (MGP), F. J.Anscombe (Obit. p. 17) (MGP), Z. W. Birnbaum (MGP) y O. Kempthorne (MGP).
+
+Los métodos no-paramétricos empezaron a ser sistemáticamente estudiados, usando técnicas de la teoría de la inferencia estadística; E. J. G. Pitman fue un pionero importante. Las pruebas estadísticas para la prueba de hipótesis vinieron de no-estadísticos como Spearman (rangos) o Wilcoxon (prueba de Wilcoxon). El repertorio conocido de las pruebas del signo, pruebas de permutación y la prueba de Kolmogorov-Smirnov se expandió rápidamente en el medio.
+
+El análisis moderno de series de tiempos vino de la unión de la teoría de los procesos estocásticos, la teoría de la predicción y la teoría de la inferencia estadística. Uno de los principales pioneros de esta década fue M. S. Bartlett. En la década de 1950 Tukey fue una figura importante. En la década de 1960, Kalman (filtro de Kalman) y los sistemas de ingeniería hicieron importantes contribuciones y en la década de 1970, los métodos de G. E. P. Box y G. M. Jenkins (Box-Jenkins) fueron adoptados en la economía y los negocios.
+
+\section*{1950-1980}
+
+Este es un periodo de expansión hacia más países, más gente, más departamentos, más libros, más revistas. Los computadores empiezan a tener un gran impacto.
+
+Los departamentos existentes de estadística se expanden. Nuevas instituciones son creadas, entre ellas el Laboratorio Estadístico en Cambridge  en 1947 y el Departamento de Estadística en Harvard en 1958.
+
+El alcance de la teoría de la probabilidad se incrementa con el nacimiento de nuevos subcampos como la teoría de colas y la teoría de la renovación. El libro de Feller, \emph{Introduction to Probability Theory} hizo un impacto muy grande en el mundo de habla inglesa, pues promovió el estudio de tópicos más avanzados como las cadenas de Markov.
+
+En materia estadística hubo un renacimiento Bayesiano. En Estados Unidos, la teoría de decisión Bayesiana reflejó la influencia de la teoría de la decisión de Wald. W. Edwards Deming continúo el trabajo de Shewhart en control de calidad y fue muy efectivo a la hora de adoptar estos métodos en la industria. Laplace y Quetelet vieron el trabajo de los censos como posibles aplicaciones de la probabilidad pero el uso de la teoría estadística para recopilación de información oficial llegó sólo después de las actividades de Morris Hansen en la oficina de censos de Estados Unidos.
+
+\section*{1980-Presente (los efectos del computador)}
+
+Este periodo describe el efecto impactante de los ordenadores en el desarrollo de métodos estadísticos desde su advenimiento, en la década de 1950 y el dramático cambio en la historia de la probabilidad y la estadística en las recientes décadas. Al final del siglo XIX, las máquinas mecánicas calculadoras proveyeron el material para la investigación de Pearson y Fisher y la construcción de sus tablas estadísticas. Con la disponibilidad de los computadores, las viejas actividades tomaron menos tiempo y nuevas actividades fueron posibles.
+
+Las tablas estadísticas de números aleatorios fueron mucho más fáciles de producir y luego desaparecieron, pues su función fue sometida a los paquetes estadísticos.
+
+Una gran masa de datos, más grande que en épocas pasadas, puede ser analizada.
+El Data mining exhaustivo es posible.
+
+Modelos y métodos más complejos pueden ser usados. Los nuevos métodos se han diseñado con la idea de la implementación computacional. Por ejemplo, la familia de los modelos lineales generalizados vinculada al programa GLIM.
+
+En el siglo XX, cuando Student (1908) escribió sobre la media normal y Yule (1926) escribió sobre las correlaciones sin sentido, se usaron experimentos basados en muestras y en la década de 1920 se comenzó producir tablas de números aleatorios. Esto cambió con la introducción de los métodos asistidos por el computador para la generación de números pseudo-aleatorios; más aún, los métodos de Monte-Carlo (introducidos por von Neumann y Ulam) fueron posibles.
+
+Desde 1980 los métodos de Monte Carlo han sido estudiados y usados directamente en el análisis de datos. En la inferencia clásica, el bootstrap ha sido prominente.
+
+
+\chapter{Herramientas de bondad de ajuste}
+
+En este apéndice discutiremos herramientas estadísticas que nos pueden dar una idea acerca de qué distribución probabilística puede ser apropiada para un conjunto de datos observados, es decir, qué tan bien se ajusta una distribución teórica a los datos, de allí el nombre de <<bondad de ajuste>>. Entre estas herramientas se encuentran herramientas gráficas como el QQ plot y pruebas estadísticas de uso común.
+
+\section*{Gráficas QQ plot\index{Gráficas QQ plot}}
+
+La gráfica QQ plot es una gráfica muy sencilla y útil que compara la similitud entre los percentiles de una distribución probabilística y los percentiles muestrales de un conjunto de datos\footnote{El nombre de QQ plot viene del inglés \emph{Quantile-Quantile plot}.}. La idea de esta gráfica consiste en que si la distribución teórica ajusta bien a los datos, entonces los percentiles teóricos deben ser similares a los percentiles muestrales.
+
+Para ilustrar el método, consideramos un conjunto de datos $x_1$, $\cdots$, $x_n$. Aunque no sabemos qué distribución es la que mejor se ajusta a estos datos, podemos calcular la función de distribución empírica $\hat{F}_n(x)$ dada por
+\begin{equation}\label{F_empirica}
+\hat{F}_n(x)=\frac{\text{Número de datos que es menor ó igual a $x$}}{n}
+\end{equation}
+
+De esta forma, la función de distribución empírica de un conjunto de datos será una función escalonada tal como en la Figura B.1, donde los valores $x_{(1)}$, $\cdots$, $x_{(n)}$ son los datos ordenados. En caso de que los datos muestrales provienen de una variable continua, podemos volver continua a la función $\hat{F}_n(x)$ uniendo los puntos medios de cada segmento, en la Figura B.1, ésta es la función con línea discontinua. Y al recordar que la definición de un percentil en una distribución continua, tenemos que el dato $x_{(j)}$ es el percentil muestral de probabilidad aproximada igual $\left(\frac{j-1}{n}+\frac{j}{n}\right)/2=\frac{j-0.5}{n}$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[bb=0 0 1455 1057, scale=0.24]{distribucion_empir.jpg}
+\caption[\textsl{Función de distribución empírica y percentil muestral}]{\textsl{Función de distribución empírica y percentil muestral.}}
+\end{figure}
+
+Dado lo anterior, si una distribución teórica es adecuada para los datos, entonces $x_{(j)}$ debe ser similar al percentil teórico $\frac{j-0.5}{n}$, esto es, $x_{(j)}\approx F^{-1}\left(\frac{j-0.5}{n}\right)$ donde $F$ denota la función de distribución de la distribución teórica. De esta forma, la gráfica QQ plot consiste en graficar los puntos $(F^{-1}\left(\frac{j-0.5}{n}\right),x_{(j)})$ para todo $j=1,\cdots,n$.
+
+Ahora, en la mayoría de las distribuciones, la función $F$ y $F^{-1}$ depende del parámetro de la distribución, y este parámetro no es conocido, y por consiguiente no hay forma de calcular exactamente $F^{-1}\left(\frac{j-0.5}{n}\right)$. Una forma de solucionar esto es tratar de encontrar una relación entre los datos ordenados y la parte de $F^{-1}\left(\frac{j-0.5}{n}\right)$ que no involucre a los parámetros desconocidos, y mirar si en la gráfica aparece tal relación. A continuación, ilustramos el cómputo y aplicación de esta gráfica para di\-fe\-ren\-tes distribuciones.
+
+\subsection*{QQ plot para una distribución exponencial\index{Gráficas QQ plot!distribución exponencial}}
+
+Suponga que tenemos un conjunto de datos positivos que son realizaciones de una variable continua, y nos interesa saber si la distribución exponencial puede ser apro\-pia\-da para estos datos utilizando la gráfica QQ plot. Para eso recordamos que la función de distribución de una distribución exponencial está dada por $F_X(x)=1-e^{-x/\theta}$ para $x>0$, de donde tenemos que la inversa de $F$ está dada por $F^{-1}(x)=-\theta\ln(1-x)$, y de esta forma, $x_{(j)}$ debe ser similar a $-\theta\ln\left(1-\frac{j-0.5}{n}\right)$, lo cual es equivalente a que debe haber una relación lineal entre $x_{(j)}$ y $-\ln\left(1-\frac{j-0.5}{n}\right)$. Por lo tanto, en la práctica, se grafican los puntos $\left(-\ln\left(1-\frac{j-0.5}{n}\right),x_{(j)}\right)$ para $j=1,\cdots,n$ y se observa si hay una tendencia lineal. En caso afirmativo, se puede concluir que la distribución exponencial es apropiada para los datos. Además, podemos estimar el parámetro $\theta$ como la pendiente de la recta (sin intercepto) que mejor se ajusta a los puntos $\left(-\ln\left(1-\frac{j-0.5}{n}\right),x_{(j)}\right)$ para $j=1,\cdots,n$.
+
+Para mostrar la efetividad de esta gráfica para identificar una distribución exponencial, simulamos dos conjuntos de datos de la distribución $Exp(0.2)$ de tamaño 10 y 50. En cada conjunto de datos se grafica el QQ plot junto con la recta sin intercepto que mejor se ajusta a estos puntos. Este procedimiento se lleva a cabo con los siguiente códigos, donde adicionalmente se calcula la estimación de $\theta$ según el método descrito anteriormente. Y los resultados se muestran en la Figura B.2.
+
+\begin{verbatim}
+> qq.exp<-function(y){
++ y<-sort(y)
++ n<-length(y)
++ j<-c(1:n)
++ percen<--log(1-(j-0.5)/n)
++ plot(percen,y,xlab="",ylab="",main="QQ plot exponencial")
++ }
+>
+> qq.exp.line<-function(y){
++ y<-sort(y)
++ n<-length(y)
++ j<-c(1:n)
++ percen<--log(1-(j-0.5)/n)
++ abline(0,1/lm(percen ~ y-1)$coef)
++ return(1/lm(percen ~ y-1)$coef)
++ }
+>
+> set.seed(1234)
+> x1<-rexp(10,5)
+> x2<-rexp(50,5)
+> par(mfrow=c(1,2))
+> qq.exp(x1)
+> qq.exp.line(x1)
+        y
+0.1663394
+> qq.exp(x2)
+> qq.exp.line(x2)
+        y
+0.2251790
+\end{verbatim}
+
+\newpage
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{qq_exp.eps}
+\caption[\textsl{QQ plot exponencial con datos exponenciales}]{\textsl{Gráfica QQ para verificar la distribución exponencial para dos conjuntos de datos generados de $Exp(0.2)$ con $n=10$ y $n=50$.}}
+\end{figure}
+
+En ambos conjuntos de datos, la gráfica muestra la tendencia de una línea recta, indicando que los percentiles muestrales son parecidos a los percentiles teóricos, y por consiguiente, la distribución exponencial puede ser apropiada para los datos. Además podemos ver que la estimación de $\theta$ cuando $n=50$ es de 0.225, que es muy similar a la estimación de máxima verosimilitud $\bar{x}=0.224$.
+
+Ahora, también podemos simular datos de otras distribuciones, y ver qué tan buena es la gráfica QQ para detectar distribuciones que es no exponencial. Simulamos 40 datos de las distribuciones $Unif(3,5)$, $Gamma(3,0.2)$ y $N(10,4)$, y en cada uno de estos conjuntos vemos el ajuste de una distribucion exponencial usando QQ plot. La gráfica resultante se muestra en la Figura B.3, donde podemos ver que se pueden detectar fácilmente las distribuciones que no corresponden a la distribución exponencial.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{qq_potencia.eps}
+\caption[\textsl{QQ plot exponencial con datos no exponenciales}]{\textsl{Gráfica QQ para verificar la distribución exponencial para tres conjuntos de datos generados de $Unif(3,5)$, $Gamma(3,0.2)$ y $N(10,4)$ con $n=40$.}}
+\end{figure}
+
+
+\subsection*{QQ plot para una distribución normal\index{Gráficas QQ plot!distribución normal}}
+
+Ahora, discutimos sobre el QQ plot para ver si una distribución normal puede ser apropiada para los datos. La idea sigue consistiendo en comparar a $x_{(j)}$ que el percentil muestral $\frac{j-0.5}{n}$ con el percentil teórico $\frac{j-0.5}{n}$ de una distribución normal. Ahora, la distribución normal también tiene dos parámetros $\mu$ y $\sigma$ excepto en la distribución normal estándar donde $\mu=0$ y $\sigma=1$. Entonces la idea es estandarizar las observaciones $x_1$, $\cdots$, $x_n$ y comparar los datos estandarizados con los percentil de la distribución normal estándar. Si la distribución normal es apropiada para estos datos, entonces los datos estandarizados deben ser aproximadamente iguales a los percentiles teóricos. Por tanto, entonces en la práctica graficamos una diagrama de dispersión de los puntos $(z_{\frac{j-0.5}{n}},z_{(j)})$ para $j=1,\cdots,n$, donde $z_{\frac{j-0.5}{n}}$ es el percentil $\frac{j-0.5}{n}$ de la distribución normal estándar, y $z_{(j)}$ es el dato $x_{(n)}$ estandarizado, y la nube de puntos debe estar alrededor de una línea recta de 45° de inclinación.
+
+Para ver la efectividad de este método, simulamos dos conjuntos de datos de la distribución $N(5,4)$ con $n=10$ y $n=50$, y en cada muestra se grafica el anterior QQ plot. Utilizamos los siguientes códigos, y la gráfica resultante se muestra en la Figura B.4, donde podemos ver que los percentiles muestrales son muy parecidos a los percentiles teóricos y por consiguiente, llegamos a la conclusión correcta de que la distribución normal es apropiada para los datos.
+
+\begin{verbatim}
+> set.seed(123)
+> n1<-10
+> n2<-50
+> x1<-rnorm(n1,5,2)
+> z1<-(x1-mean(x1))/sd(x1)
+>
+> j1<-c(1:n1)
+> percen1<-(j1-0.5)/n1
+>
+> x2<-rnorm(n2,5,2)
+> z2<-(x2-mean(x2))/sd(x2)
+>
+> j2<-c(1:n2)
+> percen2<-(j2-0.5)/n2
+>
+> par(mfrow=c(1,2))
+> plot(qnorm(percen1),sort(z1))
+> abline(0,1)
+> plot(qnorm(percen2),sort(z2))
+> abline(0,1)
+\end{verbatim}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{qq_norm1.eps}
+\caption[\textsl{QQ plot normal con datos normales}]{\textsl{Gráfica QQ para verificar la distribución normal para dos conjuntos de datos generados de $N(5,4)$ con $n=10$ y $n=50$.}}
+\end{figure}
+
+En \textsf{R}, la gráfica QQ plot se realiza directamente sobre los datos $x_1$, $\cdots$, $x_n$ sin necesidad de estandarizar. La gráfica se produce con la funciones \verb"qqnorm" y \verb"qqline". El lector puede ejecutar el comando para los objetos \verb"x1" y \verb"x2" creados anteriormente, y ver que se producen gráficas muy similares a las de la Figura B.4.
+\begin{verbatim}
+> par(mfrow=c(1,2))
+> qqnorm(x1)
+> qqline(x1)
+> qqnorm(x2)
+> qqline(x2)
+\end{verbatim}
+
+\subsection*{QQ plot para una distribución Weibull\index{Gráficas QQ plot!distribución Weibull}}
+
+La distribución Weibull es común en la práctica para modelar el tiempo transcurrido hasta el suceso de algún evento, y en estas prácticas, podemos utilizar la gráfica QQ plot para ver la validez de suponer esta distribución para un conjunto de datos. Para desarrollar esta gráfica es necesario conocer la función de distribución de la distribucion Weibull, la cual podemos obtener fácilmente de la función de densidad dada en (\ref{densidad_weibull}). Ésta está dada por
+\begin{equation*}
+F_X(x)=1-\exp\left\{-\frac{x^k}{\theta^k}\right\}
+\end{equation*}
+para $x>0$, y podemos obtener la inversa de $F$ dada por
+\begin{equation*}
+F^{-1}(x)=\theta\left[-\ln(1-x)\right]^{1/k}
+\end{equation*}
+
+De esta forma, los datos ordenados $x_{(j)}$ deben ser parecidos al percentil teórico $F^{-1}(\frac{j-0.5}{n})=\theta\left[-\ln\left(1-\frac{j-0.5}{n}\right)\right]^{1/k}$. Y por consiguiente,
+\begin{equation*}
+\ln x_{(j)}\approx\ln\left\{\theta\left[-\ln\left(1-\frac{j-0.5}{n}\right)\right]^{1/k}\right\}=\ln\theta+\frac{1}{k}\ln\left[-\ln\left(1-\frac{j-0.5}{n}\right)\right]
+\end{equation*}
+
+Es decir, si graficamos los puntos $\left(\ln\left[-\ln\left(1-\frac{j-0.5}{n}\right)\right],\ln x_{(j)}\right)$, la nube de puntos debe ser de forma lineal donde el intercepto es cercano a $\ln\theta$ y la pendiente $1/k$. Entonces en la práctica se grafica el diagrama de dispersión de estos puntos, y el intercepto y la pendiente de la línea que mejor se ajusta a estos puntos provee estimaciones de los parámetros $k$ y $\theta$.
+
+Para verificar la efectividad de esta gráfica, simulamos dos conjuntos de datos de la distribución $Weibull(2,10)$ con $n=15$ y $n=50$, y para cada conjunto de datos, graficamos el QQ plot utilizando la función \verb"qq.wei" descrita a continuacion.
+
+\begin{verbatim}
+> qq.wei<-function(y){
++ y<-sort(y)
++ n<-length(y)
++ j<-c(1:n)
++ percen<-log(-log(1-(j-0.5)/n))
++
++ inte<-lm(log(y)~percen)$coef[1]
++ pend<-lm(log(y)~percen)$coef[2]
++ plot(percen,log(y),xlab="",ylab="",main="QQ plot Weibull")
++ abline(inte,pend)
++ thet<-exp(inte)
++ k<-1/pend
++ list("theta"=thet, "k"=k)
++ }
+
+> set.seed(1234)
+
+> x1<-rweibull(15,shape=2,scale=10)
+> x2<-rweibull(50,shape=2,scale=10)
+
+> par(mfrow=c(1,2))
+> qq.wei(x1)
+$theta
+(Intercept)
+   9.831436
+$k
+  percen
+2.538407
+
+> qq.wei(x2)
+$theta
+(Intercept)
+   10.97860
+$k
+  percen
+2.293684
+\end{verbatim}
+
+La gráfica resultante se encuentra en la Figura B.5, donde podemos ver que los puntos están alrededor de la recta, aunque en el conjunto de 15 datos, el ajuste no parece del todo apropiado. Por otro lado, también observamos que las estimaciones de $k$ y $\theta$ obtenidas con la función \verb"qq.wei" son cercanas a los valores verdaderos $k=2$ y $\theta=10$.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{qq_weibull.eps}
+\caption[\textsl{QQ plot Weibull con datos Weibull}]{\textsl{Gráfica QQ para verificar la distribución Weibull para dos conjuntos de datos generados de $Weibull(2,10)$ con $n=15$ y $n=50$.}}
+\end{figure}
+
+Ahora miramos qué tan buena es esta gráfica para identificar datos que provienen de una distribución diferente de Weibull. Simulamos conjuntos de datos de las distribuciones $Unif(3,5)$, $Gamma(3,0.2)$ y $N(10,4)$ con $n=10$, y gráficas del QQ plot para cada uno de estos datos. Las gráficas resultantes se encuentran en la Figura B.6 donde vemos que no se muestra ningún mal ajuste de estas distribuciones. Aumentamos el tamaño muestral a $n=50$ (ver Figura B.7); sin embargo, en el caso de la distribución uniforme y normal el QQ plot tampoco fue capaz de descubrir que los datos no provienen de una distribución Weibull.
+
+Para los datos simulados de una distribución normal, podemos ver que los puntos tienen una forma curva, que no se puede aproximar por una recta, y de donde podemos identificar que la distribución Weibull no es apropiada para los datos.
+
+El hecho de que la gráfica QQ no sea capaz de identificar algunas distribuciones diferentes de la Weibull, es sin duda una falla de la gráfica QQ plot para el caso de la distribución Weibull; sin embargo, las Figuras C.6 y C.7 son obtenidas a partir de algunos datos simulados, y no podemos garantizar que esta QQ plot funcione mal en todos los casos.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{qq_weibull1.eps}
+\caption[\textsl{QQ plot Weibull con datos no Weibull}]{\textsl{Gráfica QQ para verificar la distribución Weibull para tres conjuntos de datos generados de $Unif(3,5)$, $Gamma(3,0.2)$ y $N(10,4)$ con $n=10$.}}
+\end{figure}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{qq_weibull2.eps}
+\caption[\textsl{QQ plot Weibull con datos no Weibull}]{\textsl{Gráfica QQ para verificar la distribución Weibull para tres conjuntos de datos generados de $Unif(3,5)$, $Gamma(3,0.2)$ y $N(10,4)$ con $n=50$.}}
+\end{figure}
+
+\subsection*{QQ plot para una distribución Gamma pos-estimación\index{Gráficas QQ plot!distribución Gamma}}
+
+Cuando tenemos un conjunto de datos $x_1$, $\cdots$, $x_n$ que son positivos, altamente no simétricos y que parecen ser realizaciones de una variable continua, y pensamos ajustarles una distribución Gamma, lo ideal es poder hacer una gráfica QQ plot para ver si esta distribución puede ser apropiada para los datos, y en caso afirmativo, llevar a cabo procedimientos de inferencia acerca de los parámetros y/o otras cantidades de interés. Sin embargo, es muy difícil hallar la inversa de la función de distribución de la distribución Gamma, pues ésta es de una forma bastante complicada.
+
+Sin embargo, podemos, mediante otras herramientas como el histograma, suponer la distribución Gamma para los datos, y al suponer la distribución Gamma, podemos utilizar los datos para estimar el parámetro de forma $k$ y el parámetro de escala $\theta$. Y podemos ver qué tan aproximados son los datos $x_{(j)}$ con el percentil teórico $\hat{F}^{-1}(\frac{j-0.5}{n})$ donde $\hat{F}$ denota la función de distribución $Gamma(\hat{k},\hat{\theta})$. Es decir, se mira el ajuste de la distribución Gamma con los parámetros estimados (de allí, el nombre de pos-estimación) a los datos. Si la distribución Gamma es apropiada para los datos, y además la estimación de $k$ y $\theta$ era buena, entonces se espera que $x_{(j)}\approx\hat{F}^{-1}(\frac{j-0.5}{n})$, y la nube de puntos se debe aproximar a una recta sin intercepto de 45°.
+
+Ilustramos el anterior procedimiento con los datos en una encuesta a hogares bogotanos del estrato 3 que corresponden al gasto semanal en alimentación. La muestra está conformada por 389 hogares, y el histograma de los datos está dado en la Figura B.8 donde tenemos una no simetría muy marcada.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{apen_gamma_gasto.eps}
+\caption[\textsl{Histograma de los datos de gasto mensual}]{\textsl{Histograma de los datos de gasto mensual en alimentación de 389 hogares bogotanos del estrato 3.}}
+\end{figure}
+
+\newpage
+
+Si consideramos ajustar una distribución Gamma a los datos, primero estimamos los parámetros $k$ y $\theta$ vía el método de los momentos. Estas estimaciones son $\hat{k}=1.89$, $\hat{\theta}=278111.2$, y podemos utilizar la gráfica QQ para ver si la distribución $Gamma(1.89,278111.2)$ se ajusta bien a los datos. Podemos utilizar el siguiente código en \textsf{R} para obtener la gráfica QQ.
+
+\begin{verbatim}
+> ## en y contiene los 389 datos
+> n<-length(y)
+> plot(qgamma((c(1:n)-0.5)/n,shape=1.89,scale=278111.2),sort(y),
++ xlab="Percentiles muestrales", ylab="percentiles teóricos")
+> abline(0,1)
+\end{verbatim}
+
+La gráfica resultante se encuentra en la Figura B.9, donde observamos que la mayoría de los percentiles muestrales son cercanos a los percentiles teóricos, indicando que la distribución Gamma es apropiada para estos datos. En el Ejemplo 2.3.15, también se discutió otra forma para ver el ajuste de la distribución de los datos que consiste en trazar la función de densidad sobre el histograma de los datos. Aquí también podemos optar por este enfoque, la gráfica se encuentra en la Figura B.10, donde vemos el buen ajuste de la distribución $Gamma(1.89,278111.2)$ a los datos.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{apen_gamma_gasto1.eps}
+\caption[\textsl{QQ plot Gamma para datos gasto mensual}]{\textsl{Gráfica QQ plot para ver el ajuste de la distribución $Gamma(1.89,278111.2)$ a los datos de gasto mensual en alimentación de 389 hogares bogotanos del estrato 3.}}
+\end{figure}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.4]{apen_gamma_gasto2.eps}
+\caption[\textsl{Histograma y densidad Gamma estimada de datos gasto mensual}]{\textsl{Histograma y función de densidad $Gamma(1.89,278111.2)$ de los datos de gasto mensual en alimentación de 389 hogares bogotanos del estrato 3.}}
+\end{figure}
+
+
+\subsection*{QQ plot para una distribución Beta pos-estimación\index{Gráficas QQ plot!distribución Beta}}
+
+La gráfica QQ para verificar si una distribución Beta puede ser apropiada para un conjunto de valores entre 0 y 1 se puede obtener de manera análoga al caso de una distribución Gamma. Es decir, primero estimamos los parámetros $a$ y $b$ de la distribución Beta usando los estimadores expuestos en el Ejemplo 2.3.16, y posteriormente comparamos los percentiles muestrales $x_{(j)}$ con los percentiles teóricos de la distribución $Beta(\hat{a},\hat{b})$. Y si la distribución Beta es apropiada para los datos, y las estimaciones de $a$ y $b$ fueron buenas, entonces los percentiles muestrales deben ser aproximadamente iguales a los percentiles teóricos.
+
+Ilustramos el anterior procedimiento para los datos del Ejemplo 2.3.16. El siguiente código calcula $\hat{a}$ y $\hat{b}$, además de graficar el QQ plot. Las estimaciones fueron $\hat{a}=0.5447$ y $\hat{b}=9.8$. Y el ajuste de la distribución $Beta(0.5447,9.8)$ se puede observar en la Figura B.11, donde se puede observar un mejor ajuste que con la distribución exponencial (ver Figura 2.10 del Ejemplo 2.3.16).
+
+\begin{verbatim}
+> x<-c(0.7, 1.4, 19.7, 0.1, 12.4, 1.1, 0.5, 18.9, 5.0, 0.3,
++ 0.6, 5.4, 6.7, 0.9)/100
+> n<-length(x)
+> va<-var(x)*(n-1)/n
+> bar<-mean(x)
+> a<-bar^2*(1-bar)/va-bar
+> b<-(1-bar)*(bar*(1-bar)/va-1)
+> plot(qbeta((c(1:n)-0.5)/n,a,b),sort(x),xlab="Percentiles
++ muestrales", ylab="percentiles teóricos")
+> abline(0,1)
+\end{verbatim}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{apen_beta.eps}
+\caption[\textsl{QQ plot Betas para datos del Ejemplo 2.3.16}]{\textsl{Gráfica QQ plot para verificar el ajuste de la distribución Beta a los datos del Ejemplo 2.3.16.}}
+\end{figure}
+
+Ahora, aunque la distribución Beta se caracteriza en que las realizaciones oscilan entre 0 y 1, esto no implica que cada vez que se trate de datos entre 0 y 1, ne\-ce\-sa\-ria\-mente se haga referencia a la distribución Beta, puesto que una distribución normal con media 0.5 y una varianza pequeña también puede producir valores entre 0 y 1. A continuación simulamos 30 datos de la distribución $N(0.5,0.3^2)$ y graficamos el QQ plot para la distribución Beta y otro para verificar la distribución normal. El código utilizado se encuentra a continuación, y podemos ver la gráfica resultante en la Figura B.12, donde claramente con el QQ plot para la distribución Beta no se logra un buen ajuste comparado con el QQ plot para la distribución normal.
+
+\begin{verbatim}
+> set.seed(12345678)
+> x<-rnorm(30,0.5,0.3)
+> n<-length(x)
+> va<-var(x)*(n-1)/n
+>  bar<-mean(x)
+>  a<-bar^2*(1-bar)/va-bar
+>  b<-(1-bar)*(bar*(1-bar)/va-1)
+>  par(mfrow=c(1,2))
+>  plot(qbeta((c(1:n)-0.5)/n,a,b),sort(x),xlab="Percentiles
++  muestrales", ylab="percentiles teóricos",main="QQ plot Beta")
+>  abline(0,1)
+>  qqnorm(x)
+>  qqline(x)
+\end{verbatim}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.6]{apen_beta_norm.eps}
+\caption[\textsl{QQ plot Beta y normal para datos normales}]{\textsl{Gráfica QQ plot para verificar la distribución Beta y la distribución normal a 30 datos simulados de la distribución $N(0.5,0.3^2)$.}}
+\end{figure}
+
+\subsection*{QQ plot para Normal multivariante\index{Gráficas QQ plot!distribución normal multivariante}}
+
+Ahora supongamos que tenemos observaciones de $p$ variables continuas sobre $n$ individuos $\mathbf{x}_1$, $\cdots$, $\mathbf{x}_n$, y estamos interesados en saber si es apropiado ajustarles una distribución normal $p$ variante. Para ello, podemos razonar de la siguiente forma, si los vectores observados son realizaciones de una muestra de vectores aleatorios $\mathbf{X}_1$, $\cdots$, $\mathbf{X}_n$ con distribución $N_p(\boldsymbol{\mu},\mathbf{\Sigma})$, entonces por la propiedad 6 del Resultado 5.2.4, la distancia de Mahalanobis entre $\mathbf{X}_j$ y $\boldsymbol{\mu}$ dada por $(\mathbf{X}_j-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\mathbf{X}_j-\boldsymbol{\mu})$ tiene distribución $\chi^2_p$ para todo $j=1,\cdots,n$. Al reemplazar $\boldsymbol{\mu}$ por su estimador $\bar{\mathbf{X}}$, y $\mathbf{\Sigma}$ por $\mathbf{S}_{n-1}$, podemos suponer que la distribución de $(\mathbf{X}_j-\bar{\mathbf{X}})'\mathbf{S}_{n-1}^{-1}(\mathbf{X}_j-\bar{\mathbf{X}})$ todavía no se aleja mucho de $\chi^2_p$ para todo $j=1,\cdots,n$. Entonces en la práctica con los datos observados podemos pensar que las distancias
+\begin{equation*}
+d_{j}^2=(\mathbf{x}_j-\bar{\mathbf{x}})'\mathbf{S}_{n-1}^{-1}(\mathbf{x}_j-\bar{\mathbf{x}})
+\end{equation*}
+
+son realizaciones de una variable $\chi^2_p$. Por lo tanto podemos graficar el QQ plot para el conjunto de distancias $d_{1}^2$, $\cdots$, $d_{n}^2$, es decir, creamos las distancias ordenadas $d_{(1)}^2$, $\cdots$, $d_{(n)}^2$, y las comparamos con los percentiles $\chi^2_{p,\frac{j-0.5}{n}}$ con $j=1,\cdots,n$. Si la distribución normal multivariante es apropiada para los datos, entonces $d_{(j)}^2\approx\chi^2_{p,\frac{j-0.5}{n}}$, y la nube de puntos debe estar cercana a una recta de 45° sin intercepto. Esta grafica se conoce también como el plot Ji-cuadrado.
+
+Aplicamos esta herramienta gráfica a los datos de la Tabla 6.3 que corresponden a nivel de colesterol de 20 pacientes antes y después de un tratamiento. Para verificar que los datos pueden ser modelados por una distribución normal bivariante, utilizamos la función \verb"chi.plot" de la siguiente forma
+
+\begin{verbatim}
+> chi.plot<-function(x){
++ x<-data.frame(x)
++ n<-dim(x)[1]
++ p<-dim(x)[2]
++ d2<-rep(NA,n)
++ bar<-mean(x)
++ S<-var(x)
++ for(i in 1:n){
++ d2[i]<-mahalanobis(x[i,],bar,S)
++ }
++ j<-c(1:n)
++ percen<-qchisq((j-0.5)/n,p)
++ plot(percen,sort(d2),main="plot Ji-cuadrado")
++ abline(0,1)
++ }
+>
+> ante<-c(230,245,220,250, 260,250,220,300,310,290,260,240,210,220,
++ 250,245,274,230,285,275)
+> desp<-c(210,230,215,220,240,220,210,260,280,270,230,235,200,200,
++ 210,230,250,210,260,230)
+> X<-data.frame(cbind(ante,desp))
+> chi.plot(X)
+\end{verbatim}
+
+La gráfica resultante se encuentra en la Figura B.13, donde podemos ver que excepto por los dos últimos puntos, los datos parece que pueden ser bien descritos por la distribución normal bivariante.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.5]{chi_plot.eps}
+\caption[\textsl{QQ plot normal bivariante}]{\textsl{Gráfica QQ plot para verificar la distribución normal bivariante para los datos de la Tabla 6.3.}}
+\end{figure}
+
+\section*{Pruebas de bondad de ajuste\index{Prueba de bondad de ajuste}}
+
+En este apartado consideramos varias pruebas estadísticas de uso común para verificar si cierta distribución puede ser apropiada para describir un conjunto de datos.
+
+\subsection*{Prueba de normalidad de Shapiro-Wilk\index{Prueba de bondad de ajuste!Shapiro-Wilk}}
+
+\citeasnoun{Shapiro} propusieron una prueba estadística para verificar que la distribución normal describe bien a un conjunto de datos $x_1$, $\cdots$, $x_n$. El sistema de hipótesis de interés es
+
+\begin{center}
+$H_0$:\ \text{La distribución normal es adecuada para los datos }
+\end{center}
+\begin{center}
+vs.
+\end{center}
+\begin{center}
+$H_1$:\ \text{La distribución normal no es adecuada para los datos }
+\end{center}
+
+Para este sistema, la estadística de prueba se define como
+\begin{equation*}
+W=\frac{\left(\sum_{i=1}^na_ix_{(i)}\right)^2}{\sum_{i=1}^n(x_i-\bar{x})^2}.
+\end{equation*}
+
+donde la constante $a$ se define como
+\begin{equation*}
+(a_1,\cdots,a_n)=\frac{\mathbf{m}'\mathbf{V}^{-1}}{\mathbf{m}'\mathbf{V}^{-1}\mathbf{V}^{-1}\mathbf{m}}^{1/2}
+\end{equation*}
+
+donde los componentes de $\mathbf{m}$: $m_1$, $\cdots$, $m_n$ son las esperanzas de las estadísticas de una muestra aleatoria con distribución normal estándar\footnote{Para calcular estas esperanzas, se debe calcular la función de densidad de las estadísticas de orden. El lector puede consultar \citeasnoun[p. 27]{Mayorga}.} y $\mathbf{V}$ es la matriz de varianzas y covarianzas de las $n$ estadísticas de orden.
+
+Para completar la regla de decisión, se necesita la distribución nula de $W$, que en este caso es muy complicado hallarla, y por consiguiente se halla la distribución nula asintótica de $W$. En \citeasnoun{Shapiro} se encuentran los percentiles de la distribución nula de $W$ con diferentes valores de $n$ que son obtenidos simulando repetidamente muestras de la distribución normal. Y en la práctica se rechaza $H_0$ para valores pequeños\footnote{\citeasnoun{Shapiro} mostraron que el valor máximo de $W$ es 1, entonces en la práctica un valor cercano de $W$ a 1 indica que la distribución normal es adecuada para los datos.} de $W$.
+
+En \textsf{R}, la prueba de Shapiro y Wilk se lleva a cabo usando la función \verb"shapiro.test". Ilustramos el uso de ésta con los datos de grosor de láminas de vidrios del Ejemplo 2.3.6. El código es como sigue
+\begin{verbatim}
+> vidrio<-c(3.56, 3.36, 2.99, 2.71, 3.31,3.68, 2.78, 2.95, 2.82,
++ 3.45, 3.42 ,3.15)
+> shapiro.test(vidrio)
+
+        Shapiro-Wilk normality test
+
+data:  vidrio
+W = 0.942, p-value = 0.5249
+\end{verbatim}
+
+Tenemos que para este conjunto de datos, la estadística $W$ tomó el valor de 0.942, lo cual es muy cercano al valor máximo 1, indicando que la distribución normal puede ser apropiada para los datos. Observando el $p$-valor, éste conduce a la misma decisión.
+
+En la literatura estadística, existen numerosas pruebas estadísticas para verificar la normalidad de los datos, entre las más conocidas, la prueba de Anderson Darling, que es una prueba no paramétrica, y la prueba de Jarque Bera, que utiliza las propiedades acerca del tercer y cuarto momentos de una distribución normal.
+
+\subsection*{Prueba de Kolmogorov Smirnov\index{Prueba de bondad de ajuste!Kolmogorov-Smirnov}}
+
+La prueba de Kolmogorov Smirnov es una prueba que sirve para evaluar el ajuste de cualquier distribución a un conjunto de datos, y consiste en comparar la función de distribución de la distribución en referencia con la función de distribución empírica de los datos dada en (\ref{F_empirica}). El sistema de hipótesis está dado por
+
+\begin{center}
+$H_0$:\ \text{La distribución $F$ es adecuada para los datos }
+\end{center}
+\begin{center}
+vs.
+\end{center}
+\begin{center}
+$H_1$:\ \text{La distribución $F$ no es adecuada para los datos }
+\end{center}
+
+Y la estadística de prueba mide la diferencia máxima entre $F(x)$ y la distribución empírica $\hat{F}_n(x)$ y se define como
+\begin{equation*}
+D=\sup_x|F(x)-\hat{F}_n(x)|
+\end{equation*}
+
+Dada la definición de $D$, se rechaza $H_0$ para valores grandes de $D$. Sin embargo, el desarrollo de la distribución nula de esta estadística no es fácil, y aquí no haremos los desarrollos teóricos. En la práctica calculamos el valor de la estadística $D$ y lo comparamos con los percentiles provistos por \citeasnoun{Miller} y podemos tomar una decisión sobre el sistema de hipótesis de interés.
+
+En \textsf{R} esta prueba de hipótesis se lleva a cabo usando la función \verb"ks.test", donde debemos especificar la distribución de referencia $F$ con opciones como \verb"pgamma", \verb"pnorm", pero teniendo en cuenta que se debe especificar los valores de los posibles parámetros de la distribución de referencia. En la mayoría de los casos, en la práctica, desconocemos los valores de los parámetros, y por consiguiente primero estimamos los parámetros usando los datos, y luego miramos si la distribución objetiva con estos parámetros estimados se ajusta bien a los datos o no.
+
+Consideramos la aplicación de esta prueba a varios ejemplos considerados en el libro. Primero tomamos los datos del Ejemplo 2.3.6. Como la distribución de referencia es la distribución normal, entonces primero estimamos los pa\-rá\-me\-tros $\mu$ y $\sigma$, y luego miramos si la distribución normal con estos parámetros es apropiada para los datos. El código utilizado es como sigue:
+
+\begin{verbatim}
+> vidrio<-c(3.56, 3.36, 2.99, 2.71, 3.31,3.68, 2.78, 2.95, 2.82,
++ 3.45, 3.42 ,3.15)
+> mu=mean(vidrio)
+> sd=sd(vidrio)
+> mu
+[1] 3.181667
+> sd
+[1] 0.3267702
+> ks.test(vidrio,"pnorm",mu,sd)
+
+        One-sample Kolmogorov-Smirnov test
+
+data:  vidrio
+D = 0.1527, p-value = 0.9029
+alternative hypothesis: two-sided
+\end{verbatim}
+
+Podemos ver que el valor de la estadística $D$ es pequeño, y por consiguiente la distribución $N(3.18,0.33^2)$ es adecuada para describir los datos.
+
+Ahora consideramos los datos del Ejemplo 2.3.16 que corresponden a porcentajes, y en este ejemplo se creyó que la distribución Beta es apropiada para los datos. Utilizando el siguiente código, podemos ver que esta afirmación parece ser correcta.
+
+\begin{verbatim}
+> x<-c(0.7, 1.4, 19.7, 0.1, 12.4, 1.1, 0.5, 18.9, 5.0, 0.3,
++ 0.6, 5.4, 6.7, 0.9)/100
+> n<-length(x)
+> va<-var(x)*(n-1)/n
+> bar<-mean(x)
+> a<-bar^2*(1-bar)/va-bar
+> a
+[1] 0.5447021
+> b<-(1-bar)*(bar*(1-bar)/va-1)
+> b
+[1] 9.80242
+>  ks.test(x,"pbeta",a,b)
+
+        One-sample Kolmogorov-Smirnov test
+
+data:  x
+D = 0.2105, p-value = 0.4988
+alternative hypothesis: two-sided
+\end{verbatim}
+
+
+También podemos utilizar \verb"ks.test" para ver el ajuste de una distribución discreta como la distribución Poisson. Utilizamos los datos del Ejemplo 2.3.2 para ilustrar este caso. Tenemos el siguiente código.
+
+\begin{verbatim}
+> x<-c(1, 1, 5, 5, 2, 3, 3, 6, 4, 3, 2, 3, 2, 3 ,4)
+> mean(x)
+[1] 3.133333
+> ks.test(x,"ppois",mean(x))
+
+        One-sample Kolmogorov-Smirnov test
+
+data:  x
+D = 0.2841, p-value = 0.1776
+alternative hypothesis: two-sided
+\end{verbatim}
+
+Con respecto a la anterior salida de \textsf{R}, podemos ver en primer lugar que la distribución $Pois(3.13)$ parece ser apropiada para los datos. Sin embargo, nos dice que debido a la presencia de datos empatados, no fue posible calcular el $p$-valor exacto. En este caso el valor de $p$-valor 0.1776 fue calculado usando la distribución asintótica de $D$, y por consiguiente puede no ser tan confiable en muestras pequeñas.
+
+\subsection*{Prueba de Mardia\index{Prueba de bondad de ajuste!Mardia}}
+
+En una distribución normal, el coeficiente de simetría debe ser 0 y el curtosis debe ser 3, así que comparar estas cantidades con las estimaciones muestrales del coeficiente de simetría y curtosis también puede ser un criterio para ver si la distribución normal es apropiada para los datos. La prueba de normalidad multivariante de Mardia sigue este mismo razonamiento. \citeasnoun{Mardia} define el coeficiente de simetría y curtosis multivariado de un vector aleatorio $\mathbf{X}$ de dimensión $p$ con media $\boldsymbol{\mu}$ y la matriz de varianzas y covarianzas $\mathbf{\Sigma}$ como
+\begin{equation*}
+\boldsymbol{\beta}_{1p}=E\left\{\left[(\mathbf{X}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\mathbf{X}-\boldsymbol{\mu})\right]^3\right\}
+\end{equation*}
+
+y
+\begin{equation*}
+\boldsymbol{\beta}_{2p}=E\left\{\left[(\mathbf{X}-\boldsymbol{\mu})'\mathbf{\Sigma}^{-1}(\mathbf{X}-\boldsymbol{\mu})\right]^2\right\}.
+\end{equation*}
+
+Cuando la distribución de $\mathbf{X}$ es normal, debe suceder que $\boldsymbol{\beta}_{1p}=0$ y $\boldsymbol{\beta}_{2p}=p(p+2)$.
+
+En una muestra observada de vectores aleatorios de tamaño $n$, se puede estimar $\boldsymbol{\beta}_{1p}$ y $\boldsymbol{\beta}_{2p}$ con $b_{1p}$ y $b_{2p}$ definidos como
+\begin{equation*}
+b_{1p}=\frac{1}{n^2}\sum_{i=1}^n\sum_{j=1}^n\left[(\mathbf{x}_i-\bar{\mathbf{x}})'\mathbf{S}_{n}^{-1}(\mathbf{x}_j-\bar{\mathbf{x}})\right]^3
+\end{equation*}
+
+y
+\begin{equation*}
+b_{2p}=\frac{1}{n}\sum_{i=1}^n\left[(\mathbf{x}_i-\bar{\mathbf{x}})'\mathbf{S}_{n}^{-1}(\mathbf{x}_i-\bar{\mathbf{x}})\right]^2
+\end{equation*}
+
+Definidas $b_{1p}$ y $b_{2p}$ de esta forma, podemos ver que valores grandes de $b_{1p}$ indican que el coeficiente de simetría teórico podría ser diferente de 0 y valores grandes de $b_{2p}$ indican que el curtosis teórico puede ser diferente de $p(p+1)$.
+
+El sistema de hipótesis de interés es
+\begin{center}
+$H_0$:\ \text{La distribución normal multivariante es adecuada para los datos }
+\end{center}
+\begin{center}
+vs.
+\end{center}
+\begin{center}
+$H_1$:\ \text{La distribución normal multivariante no es adecuada para los datos }
+\end{center}
+
+\citeasnoun{Mardia} demostró que bajo $H_0$, $B_1=\frac{nb_{1p}}{6}\sim\chi^2_v$ con $v=p(p+1)(p+2)/6$ y $B_2=\frac{b_{2p}-p(p+2)}{\sqrt{8p(p+2)/n}}\sim N(0,1)$. De esta forma, podemos afirmar que el coeficiente de simetría teórico es significativamente diferente de 0 si $B_1>\chi^2_{v,1-\alpha}$ y que el curtosis es significativamente diferente de $p(p+1)$ si $|B_2|>z_{1-\alpha/2}$. Y los $p$-valores se pueden calcular como $1-F_{\chi^2_{v}}(B_1)$ y $2(1-\Phi(|B_2|))$, respectivamente.
+
+Aplicamos el anterior procedimiento a los datos de la Tabla 6.3 mediante la función \verb"mardia" descrita a continuación.
+
+\begin{verbatim}
+> mardia<-function(x){
++ x<-data.frame(x)
++ n<-dim(x)[1]
++ p<-dim(x)[2]
++ bar<-mean(x)
++ S<-matrix(var(x)*(n-1)/n,2,2)
++ b1.ma<-matrix(NA,n,n)
++ b2.ma<-rep(NA,n)
++ for(i in 1:n){
++ for(j in 1:n){
++ b1.ma[i,j]<-(sum((x[i,]-bar)*(solve(S)%*%t(x[j,]-bar))))^3
++ }
++ b2.ma[i]<-(sum((x[i,]-bar)*(solve(S)%*%t(x[i,]-bar))))^2
++ }
++ b1<-sum(b1.ma)/(n^2)
++ b2<-sum(b2.ma)/n
++ B1<-n*b1/6
++ B2<-(b2-p*(p+2))/(sqrt(8*p*(p+2)/n))
++ v<-p*(p+1)*(p+2)/6
++ p.val1<-pchisq(B1,v,lower.tail=F)
++ p.val2<-2*pnorm(abs(B2),lower.tail=F)
++ list("B1"=B1,"pval1"=p.val1,"B2"=B2,"pval2"=p.val2)
++
++ }
+>
+> ante<-c(230,245,220,250, 260,250,220,300,310,290,260,240,210,220,
++ 250,245,274,230,285,275)
+> desp<-c(210,230,215,220,240,220,210,260,280,270,230,235,200,200,
++ 210,230,250,210,260,230)
+> x<-data.frame(cbind(ante,desp))
+>
+> mardia(x)
+$B1
+[1] 2.260101
+
+$pval1
+[1] 0.6880424
+
+$B2
+[1] -1.060516
+
+$pval2
+[1] 0.2889099
+\end{verbatim}
+
+Podemos ver que ambos $p$-valores son grandes comparados con el nivel de significación, de donde podemos concluir que se puede asumir que el coeficiente de simetría es 0 y la curtosis es $p(p+1)$, y por consiguiente se acepta la distribución normal bivariante como una distribución apropiada para los datos.
+
+Cabe resaltar que con que uno de los dos $p$-valores sea muy pequeño, ya se tiene un indicio de que la distribución normal no es adecuada para los datos, sea que los datos son no simétricos o tienen una curtosis muy grande o muy pequeña.
+
+
+\chapter{Transformación de Box-Cox\index{Transformación!Box-Cox}}
+
+En muchas técnicas de análisis estadístico de datos, se asume que un conjunto de datos proviene de una distribución normal con esperanza y varianza constante. Sin embargo, cuando enfrentamos datos que son altamente no simétricos\footnote{Como las variables ingreso, gasto de personas o familias.} o con varianzas no constantes, este supuesto ya no es válido y los resultados de análisis pueden dejar de ser válidos.
+
+\section*{Definición de la transformación Box-Cox}
+
+\citeasnoun{BoxCox} introdujeron una familia de transformaciones que puede inducir la distribución normal a un conjunto de datos. Suponga que el conjunto de datos se denota por $x_1$, $\cdots$, $x_n$, entonces podemos crear un nuevo conjunto de datos $x^{(\lambda)}$ definidos por
+\begin{equation}\label{Box_Cox}
+x^{(\lambda)}=
+\begin{cases}
+\dfrac{x^\lambda-1}{\lambda}&\text{si $\lambda\neq0$}\\
+\ln x&\text{si $\lambda=0$}
+\end{cases}
+\end{equation}
+
+La anterior transformación es válida solo para los datos positivos, pues la función logaritmo solo se define para estos valores. Sin embargo, si se presenta alguno o algunos datos negativos, podemos primero sumar una constante a todos los datos para garantizar que sean todos positivos. Por esta razón, asumimos sin pérdida de generalidad que todos los datos son positivos y aplicamos la transformación (\ref{Box_Cox}).
+
+\section*{Casos particulares de la transformación Box-Cox}
+
+La transformación (\ref{Box_Cox}) es toda una familia de transformaciones según cambia el valor de $\lambda$, y por consiguiente, muchas transformaciones comunes en la práctica son simplemente casos particulares de la transformación Box Cox. A continuación presentamos algunas de ellas.
+
+\subsection*{Transformación logarítmica\index{Transformación!logarítmica}}
+
+La transformación logarítmica es una de las transformaciones más comunes en el área de la estadística llamada series de tiempo, que estudia la evolución de datos medidos a través del tiempo. La teoría básica de series de tiempo requiere que la variación de los datos no cambie a través del tiempo; sin embargo, algunos de estos datos presentan una varianza no constante. Un ejemplo típico son los datos de pasajeros que se pueden consultar con el comando \verb"AirPassengers" en \textsf{R}. Estos datos registran un número total de pasajeros en aerolíneas internacionales, medidos mensualmente entre 1949 y 1960. Podemos visualizar estos datos en la parte (a) de la Figura C. 1, donde se observa que la variación de los datos cambia a través del tiempo de forma regular y creciente. En la parte (b) de la misma gráfica, observamos los datos transformados mediante la función logarítmica, podemos ver claramente que la varianza se logra estabilizar con esta transformación.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.45,width=11cm,height=6.5cm]{Pasajeros.eps}
+\caption[\textsl{Ilustración de la transformación logarítmica}]{\textsl{Datos del número total de pasajeros antes y después de aplicar la transformación logarítmica.}}
+\end{figure}
+
+\subsection*{Transformación raíz cuadrada\index{Transformación!raíz cuadrada}}
+
+En (\ref{Box_Cox}), cuando $\lambda=0.5$ tenemos el caso equivalente a una transformación raíz cuadrada. Esta transformación es común para datos que son enteros y que corresponden a conteo, pues en primer lugar, los datos de conteo son vistos como realización de una variable discreta y por consiguiente no es apropiado considerar una distribución normal, mientras que al tomar la raíz cuadrada, los datos transformados ya no son enteros, y por ende pueden verse como una realización de una variable continua.
+
+En la página de la Universidad de Delaware de los Estados Unidos\footnote{http://udel.edu/~mcdonald/stattransform.html}, se muestra un conjunto de datos que describen el número de un tipo de peces en los ríos de Maryland. Estos datos son 38, 1, 13, 2, 13, 20, 50, 9, 28, 6, 4 y 43. Es claro que no es apropiado ver a estos datos como realizaciones de una distribución normal. Al tomar la raíz cuadrada de estos datos, se convierten en 6.16, 1.00, 3.61, 1.41, 3.61, 4.47, 7.07, 3.00, 5.29, 2.45, 2.00 y 6.56. Podemos aplicar la prueba de Shapiro Wilk y la prueba de Kolmogorov Smirnov para ver el efecto de la transformación para lograr la normalidad. Los resultados se muestran en la Tabla C.1., donde podemos observar con la prueba de Shapiro Wilk, que la estadística $W$ es mayor para los datos transformados, indicando que hay mayor evidencia de los datos acerca de la distribución normal. Por otro lado, la estadística $D$ de Kolmogorov Smirnov es menor para los datos transformados, indicando que en este caso, la función de distribución empírica es más cercana a la función de distribución normal.
+
+\begin{table}[!htb]
+\centering
+\begin{tabular}{|c|c|cc|}\hline
+Prueba&Datos&Estadística&$p$-valor\\\hline
+Shapiro Wilk&Datos originales&$W=0.8874$&0.1091\\
+&Datos transformados&$W=0.9507$&0.6479\\\hline
+Kolmogorov Smirnov&Datos originales&$D=0.2198$&0.6077\\
+&Datos transformados&$D=0.138$& 0.9763\\\hline
+\end{tabular}
+\caption[\textsl{Pruebas de normalidad con tranformación raíz cuadrática}]{\textsl{Prueba de Shapiro Wilk y Kolmogorov Smirnov aplicadas a un conjunto de datos de conteo y datos transformados mediante la transformación raíz cuadrática.}}
+\end{table}
+
+\section*{Estimación de máxima verosimilitud de $\lambda$}
+
+Es claro que la transformación de Box Cox depende del valor de $\lambda$, entonces una pregunta natural es ¿teniendo un conjunto de datos, cuál es el valor de $\lambda$ que se debe utilizar? Una forma de responder esta pregunta es utilizando la estimación de máxima verosimilitud, es decir, al la función de verosimilitud de los datos originales $x_1$, $\cdots$, $x_n$ como función de $\lambda$ y se busca el valor de $\lambda$ que maximiza esta función. Utilizando el teorema de transformación, tenemos que
+
+\begin{align*}
+L(x_1,\cdots,x_n,\lambda)=\prod_{i=1}^nf_{X_i}(x_i,\lambda)&=\prod_{i=1}^nf_{X_i^{(\lambda)}}(x_i^{(\lambda)})\left|\frac{\partial x_i^{(\lambda)}}{\partial x_i}\right|\\
+&=\prod_{i=1}^n\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(x_i^{(\lambda)}-\mu)^2\right\}x_i ^{\lambda-1}\\
+&=(2\pi\sigma^2)^{-n/2}\prod_{i=1}^nx_i ^{\lambda-1}\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i^{(\lambda)}-\mu)^2\right\}
+\end{align*}
+
+Tomando la función logaritmo, tenemos que
+\begin{align*}
+\ln L&=-\frac{n}{2}\ln(2\pi\sigma^2)+(\lambda-1)\sum_{i=1}^n\ln x_i-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i^{(\lambda)}-\mu)^2\\
+&=-\frac{n}{2}\ln(2\pi\sigma^2)+(\lambda-1)\sum_{i=1}^n\ln x_i-\frac{1}{2\sigma^2}\sum_{i=1}^n\left(\frac{x_i^\lambda-1}{\lambda}-\mu\right)^2
+\end{align*}
+
+Se debe tener en cuenta que esta función depende de $\mu$, $\sigma^2$ y $\lambda$. Entonces primero reemplazamos $\mu$ y $\sigma^2$ por su estimación de máxima verosimilitud dadas por
+\begin{equation*}
+\hat{\mu}=\frac{1}{n}\sum_{i=1}^nx_i^{(\lambda)}=\frac{1}{n}\sum_{i=1}^n\frac{x_i^\lambda-1}{\lambda}
+\end{equation*}
+
+y
+\begin{equation*}
+\hat{\sigma}^2=\frac{1}{n}\sum_{i=1}^n\left(x_i^{(\lambda)}-\hat{\mu}\right)^2=
+\frac{1}{n}\sum_{i=1}^n\left(\frac{x_i^\lambda-1}{\lambda}-\frac{1}{n}\sum_{i=1}^n\frac{x_i^\lambda-1}{\lambda}\right)^2.
+\end{equation*}
+
+Y tenemos que
+\begin{equation*}
+\ln L(\hat{\mu},\hat{\sigma}^2)=-\frac{n}{2}\ln(2\pi)-\frac{n}{2}\ln\sigma^2+(\lambda-1)\sum_{i=1}^n\ln x_i-\frac{n}{2}
+\end{equation*}
+
+De esta forma, la estimación de máxima verosimilitud de $\lambda$ consiste en aquel valor de $\lambda$ que maximiza la expresión
+\begin{align*}
+&\ \ \ \ -\frac{n}{2}\ln\hat{\sigma}^2+(\lambda-1)\sum_{i=1}^n\ln x_i\\
+&=-\frac{n}{2}\ln\left(\frac{1}{n}\sum_{i=1}^n\left(\frac{x_i^\lambda-1}{\lambda}-\frac{1}{n}\sum_{i=1}^n\frac{x_i^\lambda-1}{\lambda}\right)^2\right)+(\lambda-1)\sum_{i=1}^n\ln x_i
+\end{align*}
+
+Dado un conjunto de datos, la siguiente función \verb"box.cox" calcula el valor de $\lambda$ entre 0 y 100 que maximiza la anterior expresión, y una vez encontrada $\hat{\lambda}_{MV}$, transforma los datos de acuerdo a (\ref{Box_Cox}).
+
+\begin{verbatim}
+> box.cox<-function(x){
++ if(prod(x<=0)!=0){
++ y<-x-min(x)+1e-10
++ }
++ if(prod(x<=0)==0){y<-x}
++ n<-length(y)
++
++       L<-function(y,lambda){
++       if(lambda==0){
++       y.lam<-log(y) }
++       if(lambda!=0){
++       y.lam<-(y^lambda-1)/lambda  }
++
++       mu<-mean(y.lam)
++       sigma2<-var(y.lam)*(n-1)/n
++       L.lam<-(lambda-1)*sum(log(y))-log(sigma2)*n/2
++
++       list("L.lam"=L.lam,"xtrans"=y.lam)
++       }
++
++ lam<-seq(0,100,0.01)
++ L.val<-rep(NA,length(lam))
++ for(i in 1:length(lam)){
++ L.val[i]<-L(y,lam[i])$L.lam
++ }
++ lam.MV=lam[which(L.val==max(L.val))]
++ datos.tranf<-L(y,lam.MV)$xtrans
++ list("lambda"=lam.MV,"xtrans"=datos.tranf)
++ }
+\end{verbatim}
+
+Para ilustrar el uso de la anterior función, simulamos un conjunto de datos de la distribución $Gamma(2,0.2)$ que presenta un alto grado de asimetría. El código utilizado es
+\begin{verbatim}
+> set.seed(12345)
+> a<-rgamma(50,2,5)
+> transf<-box.cox(a)
+> transf$lambda
+[1] 0.32
+> datos.trans<-transf$xtrans
+> shapiro.test(a)
+Shapiro-Wilk normality test
+
+data:  a
+W = 0.9184, p-value = 0.002064
+
+> shapiro.test(datos.trans)
+
+        Shapiro-Wilk normality test
+
+data:  datos.trans
+W = 0.9828, p-value = 0.6729
+
+> ks.test(a,"pnorm",mean(a),sd(a))
+
+        One-sample Kolmogorov-Smirnov test
+
+data:  a
+D = 0.1592, p-value = 0.1422
+alternative hypothesis: two-sided
+
+
+> ks.test(datos.trans,"pnorm",mean(datos.trans),sd(datos.trans))
+
+        One-sample Kolmogorov-Smirnov test
+
+data:  datos.trans
+D = 0.0808, p-value = 0.8738
+alternative hypothesis: two-sided
+\end{verbatim}
+
+Podemos ver que la estimación de máxima verosimilitud de $\lambda$ está dada por 0.32, y también podemos ver que con la transformación (\ref{Box_Cox}) con $\lambda=0.32$, los datos transformados adquieren características de una distribución normal.
+
+\chapter{Repaso matricial}
+En este parte, repasamos algunos de los conceptos acerca de matrices y vectores que se han utilizado en este libro.
+
+\section*{Matriz y vector\index{Matriz}\index{Vector}}
+Una matriz es simplemente un arreglo bidimensional de números que son las entradas de la matriz, estas dos dimensiones se conocen como filas y columnas. Por ejemplo, la matriz
+\begin{equation*}
+\mathbf{A}=\begin{bmatrix}
+1&2&0\\
+2&-1&-5
+\end{bmatrix}
+\end{equation*}
+
+Esta matriz tiene 6 entradas, que se organizan en dos filas (cada una de 3 elementos) y 3 columnas (cada una de 2 elementos), y decimos que la dimensión de la matriz $\mathbf{A}$ es de $2\times3$. El número de filas y de columnas no son necesariamente iguales; en caso de que sean, se dice que la matriz es cuadrada. Por ejemplo
+\begin{equation*}
+\mathbf{B}=\begin{bmatrix}
+1&2&0\\
+2&-1&-5\\
+0&7&3
+\end{bmatrix}
+\end{equation*}
+
+es una matriz cuadrada de dimensión $3\times3$. Una matriz cuadrada muy particular es la matriz identidad $\mathbf{I}$ cuyos elementos en la diagonal son 1 y los elementos fuera de la diagonal son 0.
+
+Un caso particular de las matrices son los vectores. Cuando el número de filas de una matriz es 1, la matriz es un vector fila, y su dimensión será de $1\times q$, donde $q$ denota el número de columnas. Cuando el número de columnas de una matriz es 1, la matriz es un vector columna, y su dimensión será de $p\times 1$ donde $p$ denota el número de filas. Así, un vector fila es de la forma $\mathbf{x}=[3,4,-6]$ y un vector columna
+\begin{equation*}
+\mathbf{y}=\begin{bmatrix}
+1\\
+2\\
+0\end{bmatrix}
+\end{equation*}
+
+Con respecto a las matrices y los vectores, hay muchas propiedades y para su estudio detallado se necesita bastante tiempo, aquí solo hacemos repaso de las más básicas, además de las mencionadas a lo largo del texto.
+
+\section*{Suma y producto entre matrices}
+
+La suma entre dos matrices $\mathbf{A}$ y $\mathbf{B}$ sólo es posible si las dos matrices tienen la misma dimensión, en este caso, la matriz $\mathbf{A}+\mathbf{B}$ tiene la misma dimensión y cada elemento de $\mathbf{A}+\mathbf{B}$ es la suma de los correspondientes elementos de $\mathbf{A}$ y $\mathbf{B}$, respectivamente. De esta forma
+\begin{equation*}
+\begin{bmatrix}
+1&2&0\\
+2&-1&-5
+\end{bmatrix}+\begin{bmatrix}
+2&0&-1\\
+-2&-4&2
+\end{bmatrix}=\begin{bmatrix}
+3&2&-1\\
+0&-5&-3
+\end{bmatrix}
+\end{equation*}
+
+Como los vectores son caso particular de las matrices, entonces también la suma de vectores se rige por la anterior regla y solo podemos sumar vectores filas de la misma dimensión o vectores columnas de la misma dimensión. Y las reglas comutativas y asociativas son válidas para suma de matrices.
+
+Dados dos vectores $\mathbf{x}$ y $\mathbf{y}$ con el mismo número de entradas, se define el producto punto como la suma de los productos de sus componentes. De esta forma
+\begin{equation*}
+\begin{bmatrix}
+1&2&0\end{bmatrix}
+\begin{bmatrix}
+3\\
+1\\
+-1\end{bmatrix}=1*3+2*1+0*(-1)=5
+\end{equation*}
+
+El producto entre dos matrices $\mathbf{A}$ y $\mathbf{B}$ dado por $\mathbf{A}\mathbf{B}$ sólo es posible cuando el número de columnas de la matriz $\mathbf{A}$ es igual que el número de filas de $\mathbf{B}$. En este caso, el elemento en la fila $i$ y columna $j$ de $\mathbf{A}\mathbf{B}$ será el producto punto entre la fila $i$ de la matriz $\mathbf{A}$ y la columna $j$ de la matriz $\mathbf{B}$. Por ejemplo
+\begin{equation*}
+\begin{bmatrix}
+1&2&0\\
+2&-1&-5
+\end{bmatrix}
+\begin{bmatrix}
+4&2&0&2\\
+2&-1&-5&0\\
+-2&1&3&-2
+\end{bmatrix}=\begin{bmatrix}
+8&0&-10&2\\
+16&0&-10&14
+\end{bmatrix}
+\end{equation*}
+
+Las reglas asociativas y distributivas son válidas para producto entre dos matrices, pero la ley comutativa en general no es válida, es decir, $\mathbf{A}\mathbf{B}\neq\mathbf{B}\mathbf{A}$.
+
+\section*{Transpuesta de una matriz}
+
+El operador transpuesto transforma una matriz de dimensión $p\times q$ a una matriz $q\times p$ invirtiendo las filas y las columnas, es decir, la fila $i$ de la matriz original será la columna $i$ de la matriz transformada. Se acostumbra denotar la transpuesta de una matriz $\mathbf{A}$ con $\mathbf{A}^t$ o $\mathbf{A}'$, por ejemplo, si \begin{equation*}
+\mathbf{A}=\begin{bmatrix}
+1&2&0\\
+2&-1&-5
+\end{bmatrix}
+\end{equation*}
+
+entonces
+\begin{equation*}
+\mathbf{A}'=\begin{bmatrix}
+1&2\\
+2&-1\\
+0&-5
+\end{bmatrix}
+\end{equation*}
+
+Dada la definición de vector, podemos ver que la transpuesta de un vector fila es un vector columna, y viceversa. Con respecto a la operadora transpuesta, tenemos las siguientes propiedades
+\begin{itemize}
+  \item $(\mathbf{A}')'=\mathbf{A}$
+  \item $(\mathbf{A}+\mathbf{B})'=\mathbf{A}'+\mathbf{B}'$
+  \item $(\mathbf{A}\mathbf{B})'=\mathbf{B}'\mathbf{A}'$
+\end{itemize}
+
+Hay una clase muy importante de matrices que se define en términos de la ope\-ra\-dora transpuesta, decimos que una matriz $\mathbf{A}$ es simétrica si $\mathbf{A}=\mathbf{A}'$.
+
+\section*{Determinante}
+El determinante es una propiedad asociada únicamente a las matrices diagonales, y se puede definir de muchas formas. Una forma es definirlo en términos de los \emph{menores} de la matriz, y de forma recursiva, es decir, se define el determinante de una matriz de dimensión $1\times1$, y luego se define el determinante de una matriz de $n\times n$ en términos del determinante de matrices de $(n-1)\times(n-1)$. De esta forma, la definición del determinante se da en dos partes
+\begin{itemize}
+  \item El determinante de una matriz de dimensión $1\times1$, $\mathbf{A}=[a]$ es simplemente la entrada $a$.
+  \item Para una matriz cuadrada $\mathbf{A}$ de dimensión $n\times n$ se define el menor del elemento $a_{ij}$ (el elemento en la fila $i$ y columna $j$ de $\mathbf{A}$) $m_{ij}$ como el determinante de la matriz obtenida después de eliminar la fila $i$ y la columna $j$. Y el determinante de $\mathbf{A}$ denotada como $|\mathbf{A}|$ se calcula como
+      \begin{equation*}
+      |\mathbf{A}|=\sum_{j=1}^na_{ij}(-1)^{i+j}m_{ij}
+      \end{equation*}
+      para cualquier fila $i$.
+\end{itemize}
+\newpage
+Y tenemos las siguientes propiedades básicas acerca del determinante
+\begin{itemize}
+  \item $|\mathbf{A}\mathbf{B}|=|\mathbf{A}||\mathbf{B}|$
+  \item $|\mathbf{A}'|=|\mathbf{A}|$
+  \item $|c\mathbf{A}|=c^n|\mathbf{A}|$ para toda constante $c$
+\end{itemize}
+
+\section*{Inversa}
+
+Una matriz cuadrada $\mathbf{A}$ tiene matriz inversa o equivalente $\mathbf{A}$ es invertible si existe una matriz cuadrada de la misma dimensión denotada por $\mathbf{A}^{-1}$ que satisface $\mathbf{A}\mathbf{A}^{-1}=\mathbf{A}^{-1}\mathbf{A}=\mathbf{I}$, donde $\mathbf{I}$ es la matriz identidad. Si una matriz $\mathbf{A}$ cuya transpuesta es igual a su inversa, entonces decimos que $\mathbf{A}$ es una matriz ortogonal, es decir, $\mathbf{A}\mathbf{A}'=\mathbf{I}$.
+
+Tenemos las siguientes propiedades básicas acerca de una matriz inversa
+\begin{itemize}
+  \item $(\mathbf{A}^{-1})^{-1}=\mathbf{A}$
+  \item $(\mathbf{A}\mathbf{B})^{-1}=\mathbf{B}^{-1}\mathbf{A}^{-1}$ cuando las inversas existen
+  \item $(\mathbf{A}')^{-1}=(\mathbf{A}^{-1})'$
+  \item $\mathbf{A}$ es invertible si y solo si su determinante es diferente de 0
+  \item $|\mathbf{A}|^{-1}=|\mathbf{A}^{-1}|$
+\end{itemize}
+
+\section*{Traza}
+
+La traza también se define para las matrices cuadradas, y se calcula simplemente como la suma de los elementos en la diagonal de la matriz cuadrada, y denotamos la traza de la matriz $\mathbf{A}$ como $tr(\mathbf{A})$.
+
+Algunas propiedades con respecto a la traza son
+\begin{itemize}
+  \item $tr(\mathbf{A}+\mathbf{B})=tr(\mathbf{A})+tr(\mathbf{B})$
+  \item $tr(c\mathbf{A})=ctr(\mathbf{A})$ para toda constante $c$
+  \item $tr(\mathbf{A})=tr(\mathbf{A}')$
+  \item $tr(\mathbf{A}\mathbf{B})=tr(\mathbf{B}\mathbf{A})$
+\end{itemize}
+
+\section*{Valores y vectores propios}
+
+Dada una matriz cuadrada $\mathbf{A}$, si $\mathbf{v}$ es un vector diferente del vector $\mathbf{0}$ que satisface
+$\mathbf{A}\mathbf{v}=\lambda\mathbf{v}$ para alguna constante $\lambda$, entonces decimos que $\mathbf{v}$ es un vector propio de $\mathbf{A}$ y $\lambda$ es el valor propio asociado a $\mathbf{v}$. Los valores y vectores propios juegan un papel muy importante en la teoría con respecto a las matrices, ya que muchas de las anteriores propiedades se relacionan con estos conceptos. Tenemos las siguientes propiedades
+\begin{itemize}
+  \item El determinante de una matriz es el producto de todos sus valores propios, de allí, vemos que una matriz es invertible si y solo si 0 no es un valor propio.
+  \item La traza de una matriz es la suma de todos sus valores propios.
+  \item Si $\lambda$ es un valor propio de una matriz invertible $\mathbf{A}$, entonces $1/\lambda$ es un valor propio de $\mathbf{A}^{-1}$.
+\end{itemize}
+
+\section*{Formas cuadráticas y matices semidefinidas}
+
+En términos no muy complicados, una forma cuadrática se refiere al producto matricial de la forma $\mathbf{x}'\mathbf{A}\mathbf{x}$ donde $\mathbf{x}$ es un vector columna de dimensión $n$ y $\mathbf{A}$ es una matriz cuadrada de dimensión $n\times n$. Dadas las dimensiones de $\mathbf{x}$ y $\mathbf{A}$, podemos ver que una forma cuadrática da como resultado un escalar.
+
+Usando la definición de forma cuadrática, se definen matrices semidefinidas positivas y semidefinidas negativas. Decimos que $\mathbf{A}$ es semidefinida positiva si para todo vector $\mathbf{x}$ se tiene que $\mathbf{x}'\mathbf{A}\mathbf{x}\geq0$, y es semidefinida negativa si para todo vector $\mathbf{x}$ se tiene que $\mathbf{x}'\mathbf{A}\mathbf{x}\leq0$.
+
+En la práctica es difícil verificar que una matriz es semidefinida positiva o semidefinida negativa usando directamente la definición. Como una alternativa, podemos utilizar los valores propios. Si los valores propios de una matriz son todos no negativos, entonces la matriz es semidefinida positiva; mientras que si los valores propios de una matriz son todos no positivos, entonces la matriz es semidefinida negativa.
+
+\section*{Descomposición espectral y raíz cuadrada de una matriz}
+
+Dada una matriz cuadrada simétrica semidefinida positiva $\mathbf{A}$, se define la raíz cuadrada de $\mathbf{A}$ como $\mathbf{A}^{1/2}$ que satisface $\mathbf{A}^{1/2}\mathbf{A}^{1/2}=\mathbf{A}$. Cuando la matriz $\mathbf{A}$ es una matriz diagonal, entonces la raíz cuadrada de $\mathbf{A}$ se obtiene simplemente calculando la raíz de cada elemento en la diagonal. Por ejemplo
+\begin{equation*}
+\begin{bmatrix}
+4&0\\
+0&9
+\end{bmatrix}^{1/2}=\begin{bmatrix}
+2&0\\
+0&3
+\end{bmatrix}
+\end{equation*}
+
+Sin embargo, en general los elementos de $\mathbf{A}^{1/2}$ no corresponden a la raíz de los elementos de $\mathbf{A}$. Su cálculo requiere de un resultado de descomposición llamada la descomposición espectral. La descomposición espectral afirma que para una matriz simétrica $\mathbf{A}$ se puede descomponer de la forma $\mathbf{A}=\mathbf{Q}\mathbf{D}\mathbf{Q}'$ donde $\mathbf{D}$ es una matriz diagonal que contiene los valores propios de $\mathbf{A}$ y $\mathbf{Q}$ es una matriz ortogonal que contiene los vectores propios de $\mathbf{A}$. De esta forma, tenemos que
+\begin{equation*}
+\mathbf{A}=\mathbf{Q}\mathbf{D}\mathbf{Q}'=\mathbf{A}=\mathbf{Q}\mathbf{D}^{1/2}\mathbf{D}^{1/2}\mathbf{Q}'=
+\underbrace{\left(\mathbf{Q}\mathbf{D}^{1/2}\mathbf{Q}'\right)}_{\mathbf{A}^{1/2}}\underbrace{\left(\mathbf{Q}\mathbf{D}^{1/2}\mathbf{Q}'\right)}_{\mathbf{A}^{1/2}}
+\end{equation*}
+
+De donde calculamos la raíz cuadrada de $\mathbf{A}$ como $\mathbf{A}^{1/2}=\mathbf{Q}\mathbf{D}^{1/2}\mathbf{Q}'$.
+
+\section*{Matriz particionada}
+
+Cuando tenemos una matriz $\mathbf{A}$, podemos agrupar u organizar los elementos de $\mathbf{A}$ de tal forma que $\mathbf{A}$ puede ser visto como una matriz cuyos elementos son a la vez matrices. Si $\mathbf{A}$ es de dimensión $p\times q$, entonces para $p_1<p$ y $q_1<q$, podemos tener la siguiente partición para $\mathbf{A}$,
+\begin{equation*}
+\mathbf{A}=\begin{bmatrix}
+a_{11}&\cdots&a_{1,q_1}&|&a_{1,q_1+1}&\cdots&a_{1q}\\
+\vdots&\ddots&\vdots&|&\vdots&\ddots&\vdots\\
+a_{p_1,1}&\cdots&a_{p_1,q_1}&|&a_{p_1,q_1+1}&\cdots&a_{p_1,q}\\
+--&--&--&--&--&--&--\\
+a_{p_1+1,1}&\cdots&a_{p_1+1,q_1}&|&a_{p_1+1,q_1+1}&\cdots&a_{p_1+1,q}\\
+\vdots&\ddots&\vdots&|&\vdots&\ddots&\vdots\\
+a_{p1}&\cdots&a_{p,q_1}&|&a_{p,q1+1}&\cdots&a_{pq}
+\end{bmatrix}=
+\begin{bmatrix}
+\mathbf{A}_{11}&\mathbf{A}_{12}\\
+\mathbf{A}_{21}&\mathbf{A}_{22}
+\end{bmatrix}
+\end{equation*}
+
+donde $\mathbf{A}_{11}$, $\mathbf{A}_{12}$, $\mathbf{A}_{21}$ y $\mathbf{A}_{22}$ son matrices de dimensión $p_1\times q_1$, $p_1\times(q-q_1)$, $(p-p_1)\times q_1$ y $(p-p_1)\times(q-q_1)$, respectivamente.
+
+Los resultados concernientes a las matrices particionadas que fueron utilizados en este libro hacen referencia a la partición de una matriz cuadrada e invertible. Suponga que $\mathbf{A}$ es una matriz $p\times p$ invertible y simétrica, y se tiene la siguiente partición para $\mathbf{A}$
+\begin{equation*}
+\mathbf{A}=\begin{bmatrix}
+\mathbf{A}_{11}&\mathbf{A}_{12}\\
+\mathbf{A}_{21}&\mathbf{A}_{22}
+\end{bmatrix}
+\end{equation*}
+
+donde $\mathbf{A}_{11}$, $\mathbf{A}_{12}$, $\mathbf{A}_{21}$ y $\mathbf{A}_{22}$ son matrices de dimensión $k\times k$, $k\times(p-k)$, $(p-k)\times k$ y $(p-k)\times(p-k)$, respectivamente, para algún $k<p$, además $\mathbf{A}_{11}$ y $\mathbf{A}_{22}$ son matrices invertibles. Entonces tenemos que
+\begin{equation*}
+|\mathbf{A}|=|\mathbf{A}_{11}||\mathbf{A}_{22}-\mathbf{A}_{21}\mathbf{A}_{11}^{-1}\mathbf{A}_12|=
+      |\mathbf{A}_{22}||\mathbf{A}_{11}-\mathbf{A}_{12}\mathbf{A}_{22}^{-1}\mathbf{A}_{21}|
+\end{equation*}
+
+\begin{equation*}
+\mathbf{A}^{-1}=\begin{pmatrix}
+\mathbf{B}^{-1}&-\mathbf{B}^{-1}\mathbf{A}_{12}\mathbf{A}_{22}^{-1}\\
+-\mathbf{A}_{22}^{-1}\mathbf{A}_{21}\mathbf{B}^{-1}&\mathbf{A}_{22}^{-1}+\mathbf{A}_{22}^{-1}\mathbf{A}_{21}\mathbf{B}^{-1}\mathbf{A}_{12}\mathbf{A}_{22}^{-1}
+\end{pmatrix}\  \text{donde}\_\mathbf{B}=\mathbf{A}_{11}-\mathbf{A}_{12}\mathbf{A}_{22}^{-1}\mathbf{A}_{21}.
+\end{equation*}
+
+
+\section*{Derivadas matriciales}
+
+Cuando queremos derivar una cantidad escalar con respecto a un vector, esto puede verse simplemente como el gradiente de una función vectorial, por ejemplo, si deseamos derivar un producto punto entre dos vectores $\mathbf{a}$ y $\mathbf{x}$ con respecto a $\mathbf{x}$, entonces tenemos que
+\begin{equation*}
+\dfrac{\partial\mathbf{a}'\mathbf{x}}{\partial\mathbf{x}}=\dfrac{\partial\sum_{i=1}^na_ix_i}{\partial(x_1,\cdots,x_n)}=(a_1,\cdots,a_n)=\mathbf{a}
+\end{equation*}
+
+De manera análoga, podemos ver que si $\mathbf{A}$ es una matriz cuadrada y $\mathbf{x}$ un vector columna, entonces
+\begin{equation*}
+\dfrac{\partial\mathbf{A}\mathbf{x}}{\partial\mathbf{x}}=\mathbf{A}'
+\end{equation*}
+
+y
+\begin{equation*}
+\dfrac{\partial\mathbf{x}'\mathbf{A}\mathbf{x}}{\partial\mathbf{x}}=2\mathbf{A}\mathbf{x}
+\end{equation*}
+
+Por otro lado, también podemos derivar una cantidad escalar con respecto a una matriz $\mathbf{A}$ de tamaño $p\times q$. En este caso, la derivada resulta ser una matriz de $q\times p$ donde los elementos corresponden a la derivada de la escalar con respecto a los elementos de $\mathbf{A}'$. Por ejemplo
+\begin{align*}
+\dfrac{\partial\mathbf{x}'\mathbf{A}\mathbf{y}}{\partial\mathbf{A}}&=\dfrac{\partial\sum_{i=1}^n\sum_{j=1}^nx_iy_ja_{ij}}{\partial\mathbf{A}}\\
+&=\begin{bmatrix}
+\dfrac{\partial\sum_{i=1}^n\sum_{j=1}^nx_iy_ja_{ij}}{\partial a_{11}}&\cdots&\dfrac{\partial\sum_{i=1}^n\sum_{j=1}^nx_iy_ja_{ij}}{\partial a_{n1}}\\
+\vdots&\ddots&\vdots\\
+\dfrac{\partial\sum_{i=1}^n\sum_{j=1}^nx_iy_ja_{ij}}{\partial a_{1n}}&\cdots&\dfrac{\partial\sum_{i=1}^n\sum_{j=1}^nx_iy_ja_{ij}}{\partial a_{nn}}
+\end{bmatrix}\\
+&=\begin{bmatrix}
+x_1y_1&\cdots&x_ny_1\\
+\vdots&\ddots&\vdots\\
+x_1y_n&\cdots&x_ny_n
+\end{bmatrix}\\
+&=\mathbf{y}\mathbf{x}'
+\end{align*}
+
+De forma análoga, también se puede ver
+\begin{equation*}
+\dfrac{\partial\mathbf{x}'\mathbf{A}'\mathbf{A}\mathbf{y}}{\partial\mathbf{A}}=\left(\mathbf{x}\mathbf{y}'+\mathbf{y}\mathbf{x}'\right)\mathbf{A}'
+\end{equation*}
+
+Y tenemos las dos siguientes identidades que fueron utilizadas en la sección 6.2.1. Si $\mathbf{A}$ es simétrica, entonces
+\begin{equation*}
+\dfrac{\partial|\mathbf{A}|}{\partial\mathbf{A}}=|\mathbf{A}|\left(2\mathbf{A}^{-1}-diag(\mathbf{A}^{-1})\right)
+\end{equation*}
+
+\begin{equation*}
+\dfrac{\partial tr(\mathbf{A}\mathbf{B}')}{\partial\mathbf{A}}=\mathbf{B}+\mathbf{B}'-diag(\mathbf{B})
+\end{equation*}
+
+Ahora suponga que queremos derivar un vector $\mathbf{y}$ de dimensión $n$ con respecto a otro vector $\mathbf{x}$ de la misma dimensión, esta derivada es una matriz de dimensión $n\times n$, y está dada por
+\begin{equation*}
+\dfrac{\partial\mathbf{y}}{\partial\mathbf{x}}=
+\begin{bmatrix}
+\dfrac{\partial y_1}{\partial x_1}&\cdots&\dfrac{\partial y_n}{\partial x_1}\\
+\vdots&\ddots&\vdots\\
+\dfrac{\partial y_1}{\partial x_n}&\cdots&\dfrac{\partial y_n}{\partial x_n}\\
+\end{bmatrix}
+\end{equation*}
+
+De donde podemos ver que $\dfrac{\partial\mathbf{A}\mathbf{x}}{\partial\mathbf{x}}=\mathbf{A}'$.
+
+
+\chapter{Inferencia en tablas de contingencia\index{Tablas de contingencia}}
+
+La tabla de contingencia se refiere a una presentación de datos correspondientes a dos variables cualitativas, cada una de 2 categorías. Por ejemplo, los datos considerados en la Tabla 4.7, donde se recolecta la información de 124 solicitantes de empleo en una fábrica de placas metálicas acerca de la raza y el resultado de la solicitud de empleo.
+
+Para estudiar si existe una asociación significativa entre el resultado de la solicitud y la raza del solicitante, suponga que los datos en general se pueden organizar como
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|cc|c|}\hline
+Raza&Admitido&Rechazado&Total\\\hline
+Blanca&41&39&80\\
+Negra&14&30&44\\\hline
+Total&55&69&124\\\hline
+\end{tabular}\caption{\textsl{Los datos de la discriminación racial del Ejemplo 4.5.5.}}
+\end{table}
+
+En términos genéricos , se tiene lo siguiente:
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|cc|c|}\hline
+&\multicolumn{2}{|c|}{Variable 2}&\\
+Variable1&Categoría A&Categoría B&Total\\\hline
+Categoría 1&$a$&$b$&$a+b$\\
+Categoría 2&$c$&$d$&$c+d$\\\hline
+Total&$a+c$&$b+d$&$n$\\\hline
+\end{tabular}\caption{\textsl{Tabla de contingencia $2\times2$}}
+\end{table}
+
+Fisher\index{Prueba!exacta de Fisher} desarrolló una prueba estadística para ver si las dos variables son in\-de\-pen\-dien\-tes bajo el supuesto de que los totales por filas $a+b$, $c+d$ y los totales por columnas $a+c$, $b+d$ son fijados de antemano. Y en este caso, la probabilidad de observar los datos de la Tabla E.2 se puede calcular mediante la distribución hipergeométrica como
+\begin{equation*}
+p=\binom{a+b}{a}\binom{c+d}{c}\left/\binom{n}{a+c}\right.
+\end{equation*}
+
+Si la hipótesis nula de interés es que las dos variables son independientes, entonces se puede calcular el $p$-valor como la suma de probabilidades $p$ de todas las tablas iguales o más extremas de lo observado. En \textsf{R}, este $p$ -valor se calcula como la suma de probabilidades de tablas con probabilidad menor o igual a la de la tabla observada, y podemos concluir que las dos variables son dependientes si el $p$-valor es pequeño comparado con el nivel de significación. El comando en \textsf{R} para este procedimiento es \verb"fisher.test", cuyo uso se ilustró en el Ejemplo 4.5.5.
+
+Otra herramienta estadística para estudiar la independencia entre dos variables cualitativas es la prueba de Ji-cuadrado\index{Prueba!de Ji-cuadrado de independencia} de Pearson. A diferencia de la prueba exacta de Fisher que solo se aplica para variables cualitativas con dos categorías, la prueba de Ji-cuadrado de Pearson puede ser utilizada cuando las variables tienen más de dos categorías. Si las dos variables tienen $r$ y $s$ categorías, entonces la estadística de prueba está definida por
+\begin{equation*}
+X^2=\sum_{i=1}^r\sum_{j=1}^s\dfrac{(O_{ij}-E_{ij})^2}{E_{ij}}
+\end{equation*}
+
+donde $O_{ij}$ denota el número de observaciones dentro de la fila $i$ y la columna $j$; mientras que $E_{ij}$ denota el número esperado de observaciones en la misma celda suponiendo que las variables cualitativas son independientes.
+Cuando la hipótesis nula no se tiene, se espera que las frecuencias $O_{ij}$ sean muy distintas a las de $E_{ij}$ induciendo un valor grande en la estadística $X^2$. Esta estadística tiene una distribución nula asintótica de $\chi^2_{(i-1)(j-1)}$, por consiguiente se rechaza la hipótesis de independencia entre las variables si $X^2>\chi^2_{1-\alpha}$. El comando en \textsf{R} para este procedimiento es \verb"chisq.test", cuyo uso también se ilustró en el Ejemplo 4.5.5.
+
+Dada que la distribución de la estadística $X^2$ es asintótica, se espera que para muestras pequeñas, el desempeño de esta prueba sea inferior al de la prueba exacta de Fisher. Simulamos tablas de contingencia donde las filas y las columnas son dependientes, es decir, las probabilidades marginales $p_1$ y $p_2$ son diferentes, y en cada tabla aplicamos las dos pruebas para mirar si se rechaza o no la hipótesis nula de independencia entre filas y columnas. Los resultados se muestran en la Tabla E.3, donde $n$ denota los totales marginales por filas. Podemos ver que excepto el caso donde las probabilidades marginales son muy similares, es decir, cuando $p_1-p_2=0.2$, la potencia de la prueba exacta de Fisher es siempre mayor que la prueba Ji-cuadrado, para $n=5$ ó $n=10$; mientras que para muestras más grandes, la potencia de estas dos pruebas es muy similar.
+
+En el Ejemplo 6.1.4, se analizaron los datos acerca de la costumbre del consumo de espaguetis en estratos altos, medios y bajos, utilizando el siguiente comando en \textsf{R},
+\begin{verbatim}
+> x<-matrix(c(95,120,35,6,53,97,45,13,33,79,19,3),4,3)
+> chisq.test(x)
+
+        Pearson's Chi-squared test
+
+data:  x
+X-squared = 20.7815, df = 6, p-value = 0.002008
+\end{verbatim}
+
+Podemos ver que al igual que la prueba de razón de verosimilitud, se llega a la conclusión de dependencia entre las filas y las columnas, es decir, la costumbre de consumo de espaguetis no es lo mismo en los diferentes estratos socioeconómicos.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|ccccc|}\hline
+&$n=5$&$n=15$&$n=30$&$n=50$&$n=100$\\\hline
+&\multicolumn{5}{|c|}{Prueba exacta de Fisher}   \\\hline
+ $p_1-p_2=0.2$  & 0.0177  & 0.1570 & 0.3668& 0.6402    &  0.9372   \\
+ $p_1-p_2=0.4$  & 0.1215  & 0.5360 & 0.9075& 0.9934    &  1.0000   \\
+ $p_1-p_2=0.6$  & 0.3743  & 0.8961 & 0.9988& 1.0000    &  1.0000   \\
+ $p_1-p_2=0.8$  & 0.7345  & 0.9988 & 1.0000& 1.0000    &  1.0000   \\\hline
+ &\multicolumn{5}{|c|}{Prueba Ji-cuadrado}   \\\hline
+ $p_1-p_2=0.2$  & 0.0924    & 0.1122 & 0.3668 &  0.6402   & 0.935  \\
+ $p_1-p_2=0.4$  & 0.0367    & 0.5153 & 0.9075 &  0.9934   & 1.000  \\
+ $p_1-p_2=0.6$  & 0.1044    & 0.8952 & 0.9988 &  1.0000   & 1.000  \\
+ $p_1-p_2=0.8$  & 0.3470    & 0.9988 & 1.0000 &  1.0000   & 1.000  \\ \hline
+\end{tabular}\caption[\textsl{Potencia de pruebas en tablas de contingencia}]{\textsl{Comparación de potencia para la prueba exacta de Fisher y la prueba de $\chi^2$ en una tabla de contingencia $2\times2$}}
+\end{table}
+
+\clearpage
+\newpage
+\phantom{xxx}
+\thispagestyle{empty}
+
+\chapter{Tablas de percentiles de distribuciones}
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|cc|cc|}\hline
+$p$&$z_p$&$p$&$z_p$\\
+\hline
+0.005&-2.58&0.995&2.58\\
+0.01&-2.32&0.99&2.32\\
+0.025&-1.96&0.975&1.96\\
+0.05&-1.64&0.95&1.64\\
+0.1&-1.28&0.9&1.28\\
+\hline
+\end{tabular}
+\caption{\textsl{Algunos percentiles de la distribución normal estándar.}}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$p$}\\
+gl&0.005&0.01&0.025&0.05&0.1&0.9&0.95&0.975&0.99&0.995\\  \hline
+1&-63.66&-31.82&-12.71&-6.31&-3.08&3.08&6.31&12.71&31.82&63.66\\
+   2&-9.92&-6.96&-4.30&-2.92&-1.88&1.88&2.92& 4.30&6.96&9.92\\
+   3&-5.84&-4.54&-3.18&-2.35&-1.64&1.64&2.35& 3.18&4.54&5.84\\
+   4&-4.60&-3.75&-2.78&-2.13&-1.53&1.53&2.13& 2.78&3.75&4.60\\
+   5&-4.03&-3.36&-2.57&-2.01&-1.47&1.47&2.01& 2.57&3.36&4.03\\
+   6&-3.71&-3.14&-2.45&-1.94&-1.44&1.44&1.94& 2.45&3.14&3.71\\
+   7&-3.50&-3.00&-2.36&-1.89&-1.41&1.41&1.89& 2.36&3.00&3.50\\
+   8&-3.36&-2.90&-2.31&-1.86&-1.40&1.40&1.86& 2.31&2.90&3.36\\
+   9&-3.25&-2.82&-2.26&-1.83&-1.38&1.38&1.83& 2.26&2.82&3.25\\
+  10&-3.17&-2.76&-2.23&-1.81&-1.37&1.37&1.81& 2.23&2.76&3.17\\
+  11&-3.11&-2.72&-2.20&-1.80&-1.36&1.36&1.80&2.20&2.72&3.11\\
+  12&-3.05&-2.68&-2.18&-1.78&-1.36&1.36&1.78&2.18&2.68&3.05\\
+  13&-3.01&-2.65&-2.16&-1.77&-1.35&1.35&1.77&2.16&2.65&3.01\\
+  14&-2.98&-2.62&-2.14&-1.76&-1.35&1.35&1.76&2.14&2.62&2.98\\
+  15&-2.95&-2.60&-2.13&-1.75&-1.34&1.34&1.75&2.13&2.60&2.95\\
+  16&-2.92&-2.58&-2.12&-1.75&-1.34&1.34&1.75&2.12&2.58&2.92\\
+  17&-2.90&-2.57&-2.11&-1.74&-1.33&1.33&1.74&2.11&2.57&2.90\\
+  18&-2.88&-2.55&-2.10&-1.73&-1.33&1.33&1.73&2.10&2.55&2.88\\
+  19&-2.86&-2.54&-2.09&-1.73&-1.33&1.33&1.73&2.09&2.54&2.86\\
+  20&-2.84&-2.53&-2.09&-1.72&-1.33&1.33&1.72&2.09&2.53&2.84\\
+  21&-2.83&-2.52&-2.08&-1.72&-1.32&1.32&1.72&2.08&2.52&2.83\\
+  22&-2.82&-2.51&-2.07&-1.72&-1.32&1.32&1.72&2.07&2.51&2.82\\
+  23&-2.81&-2.50&-2.07&-1.71&-1.32&1.32&1.71&2.07&2.50&2.81\\
+  24&-2.80&-2.49&-2.06&-1.71&-1.32&1.32&1.71&2.06&2.49&2.80\\
+  25&-2.79&-2.49&-2.06&-1.71&-1.32&1.32&1.71&2.06&2.49&2.79\\
+  26&-2.78&-2.48&-2.06&-1.71&-1.31&1.31&1.71&2.06&2.48&2.78\\
+  27&-2.77&-2.47&-2.05&-1.70&-1.31&1.31&1.70&2.05&2.47&2.77\\
+  28&-2.76&-2.47&-2.05&-1.70&-1.31&1.31&1.70&2.05&2.47&2.76\\
+  29&-2.76&-2.46&-2.05&-1.70&-1.31&1.31&1.70&2.05&2.46&2.76\\
+  30&-2.75&-2.46&-2.04&-1.70&-1.31&1.31&1.70&2.04&2.46&2.75\\
+  40&-2.70&-2.42&-2.02&-1.68&-1.30&1.30&1.68&2.02&2.42&2.70\\
+  50&-2.68&-2.40&-2.01&-1.68&-1.30&1.30&1.68&2.01&2.40&2.68\\
+  60&-2.66&-2.39&-2.00&-1.67&-1.30&1.30&1.67&2.00&2.39&2.66\\
+  70&-2.65&-2.38&-1.99&-1.67&-1.29&1.29&1.67&1.99&2.38&2.65\\
+  80&-2.64&-2.37&-1.99&-1.66&-1.29&1.29&1.66&1.99&2.37&2.64\\
+  90&-2.63&-2.37&-1.99&-1.66&-1.29&1.29&1.66&1.99&2.37&2.63\\
+\hline
+\end{tabular}
+\caption{\textsl{Algunos percentiles de la distribución $t$ student.}}
+\end{table}
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$p$}\\
+gl&0.005&0.01&0.025&0.05&0.1&0.9&0.95&0.975&0.99&0.995\\  \hline
+   1&0.00& 0.00&0.00& 0.00& 0.02& 2.71& 3.84& 5.02& 6.63& 7.88\\
+   2&0.01& 0.02&0.05& 0.10& 0.21& 4.61& 5.99& 7.38& 9.21&10.60\\
+   3&0.07& 0.11&0.22& 0.35& 0.58& 6.25& 7.81& 9.35&11.34&12.84\\
+   4&0.21& 0.30&0.48& 0.71& 1.06& 7.78& 9.49&11.14&13.28&14.86\\
+   5&0.41& 0.55&0.83& 1.15& 1.61& 9.24&11.07&12.83&15.09&16.75\\
+   6&0.68& 0.87&1.24& 1.64& 2.20&10.64&12.59&14.45&16.81&18.55\\
+   7&0.99& 1.24&1.69& 2.17& 2.83&12.02&14.07&16.01&18.48&20.28\\
+   8&1.34& 1.65&2.18& 2.73& 3.49&13.36&15.51&17.53&20.09&21.95\\
+   9&1.73& 2.09&2.70& 3.33& 4.17&14.68&16.92&19.02&21.67&23.59\\
+  10&2.16& 2.56&3.25& 3.94& 4.87&15.99&18.31&20.48&23.21&25.19\\
+  11&2.60& 3.05&3.82& 4.57& 5.58&17.28&19.68&21.92&24.72&26.76\\
+  12&3.07& 3.57&4.40& 5.23& 6.30&18.55&21.03&23.34&26.22&28.30\\
+  13&3.57& 4.11&5.01& 5.89& 7.04&19.81&22.36&24.74&27.69&29.82\\
+  14&4.07& 4.66&5.63& 6.57& 7.79&21.06&23.68&26.12&29.14&31.32\\
+  15&4.60& 5.23&6.26& 7.26& 8.55&22.31&25.00&27.49&30.58&32.80\\
+  16&5.14& 5.81&6.91& 7.96& 9.31&23.54&26.30&28.85&32.00&34.27\\
+  17&5.70& 6.41&7.56& 8.67&10.09&24.77&27.59&30.19&33.41&35.72\\
+   18&6.26&7.01&8.23& 9.39&10.86&25.99&28.87&31.53&34.81&37.16\\
+   19&6.84&7.63&8.91&10.12&11.65&27.20&30.14&32.85&36.19&38.58\\
+   20&7.43&8.26&9.59&10.85&12.44&28.41&31.41&34.17&37.57&40.00\\
+ 21&8.03& 8.90&10.28&11.59&13.24&29.62&32.67&35.48&38.93&41.40\\
+ 22&8.64& 9.54&10.98&12.34&14.04&30.81&33.92&36.78&40.29&42.80\\
+ 23&9.26&10.20&11.69&13.09&14.85&32.01&35.17&38.08&41.64&44.18\\
+ 24&9.89&10.86&12.40&13.85&15.66&33.20&36.42&39.36&42.98&45.56\\
+25&10.52&11.52&13.12&14.61&16.47&34.38&37.65&40.65&44.31&46.93\\
+26&11.16&12.20&13.84&15.38&17.29&35.56&38.89&41.92&45.64&48.29\\
+27&11.81&12.88&14.57&16.15&18.11&36.74&40.11&43.19&46.96&49.64\\
+28&12.46&13.56&15.31&16.93&18.94&37.92&41.34&44.46&48.28&50.99\\
+29&13.12&14.26&16.05&17.71&19.77&39.09&42.56&45.72&49.59&52.34\\
+30&13.79&14.95&16.79&18.49&20.60&40.26&43.77&46.98&50.89&53.67\\
+  40&20.71&22.16&24.43&26.51&29.05& 51.81& 55.76& 59.34& 63.69& 66.77\\
+  50&27.99&29.71&32.36&34.76&37.69& 63.17& 67.50& 71.42& 76.15& 79.49\\
+  60&35.53&37.48&40.48&43.19&46.46& 74.40& 79.08& 83.30& 88.38& 91.95\\
+  70&43.28&45.44&48.76&51.74&55.33& 85.53& 90.53& 95.02&100.43&104.21\\
+  80&51.17&53.54&57.15&60.39&64.28& 96.58&101.88&106.63&112.33&116.32\\
+  90&59.20&61.75&65.65&69.13&73.29&107.57&113.15&118.14&124.12&128.30\\
+\hline
+\end{tabular}}
+\caption{\textsl{Algunos percentiles de la distribución $\chi^2$.}}
+\end{table}
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$m$}\\
+$n$&1&2&3&4&5&6&7&8&9&10\\  \hline
+   1&39.86&49.50&53.59&55.83&57.24&58.20&58.91&59.44&59.86&60.19\\
+   2& 8.53& 9.00& 9.16& 9.24& 9.29& 9.33& 9.35& 9.37& 9.38& 9.39\\
+   3& 5.54& 5.46& 5.39& 5.34& 5.31& 5.28& 5.27& 5.25& 5.24& 5.23\\
+   4& 4.54& 4.32& 4.19& 4.11& 4.05& 4.01& 3.98& 3.95& 3.94& 3.92\\
+   5& 4.06& 3.78& 3.62& 3.52& 3.45& 3.40& 3.37& 3.34& 3.32& 3.30\\
+   6& 3.78& 3.46& 3.29& 3.18& 3.11& 3.05& 3.01& 2.98& 2.96& 2.94\\
+   7& 3.59& 3.26& 3.07& 2.96& 2.88& 2.83& 2.78& 2.75& 2.72& 2.70\\
+   8& 3.46& 3.11& 2.92& 2.81& 2.73& 2.67& 2.62& 2.59& 2.56& 2.54\\
+   9& 3.36& 3.01& 2.81& 2.69& 2.61& 2.55& 2.51& 2.47& 2.44& 2.42\\
+  10& 3.29& 2.92& 2.73& 2.61& 2.52& 2.46& 2.41& 2.38& 2.35& 2.32\\
+  11& 3.23& 2.86& 2.66& 2.54& 2.45& 2.39& 2.34& 2.30& 2.27& 2.25\\
+  12& 3.18& 2.81& 2.61& 2.48& 2.39& 2.33& 2.28& 2.24& 2.21& 2.19\\
+  13& 3.14& 2.76& 2.56& 2.43& 2.35& 2.28& 2.23& 2.20& 2.16& 2.14\\
+  14& 3.10& 2.73& 2.52& 2.39& 2.31& 2.24& 2.19& 2.15& 2.12& 2.10\\
+  15& 3.07& 2.70& 2.49& 2.36& 2.27& 2.21& 2.16& 2.12& 2.09& 2.06\\
+  16& 3.05& 2.67& 2.46& 2.33& 2.24& 2.18& 2.13& 2.09& 2.06& 2.03\\
+  17& 3.03& 2.64& 2.44& 2.31& 2.22& 2.15& 2.10& 2.06& 2.03& 2.00\\
+  18& 3.01& 2.62& 2.42& 2.29& 2.20& 2.13& 2.08& 2.04& 2.00& 1.98\\
+  19& 2.99& 2.61& 2.40& 2.27& 2.18& 2.11& 2.06& 2.02& 1.98& 1.96\\
+  20& 2.97& 2.59& 2.38& 2.25& 2.16& 2.09& 2.04& 2.00& 1.96& 1.94\\
+  21& 2.96& 2.57& 2.36& 2.23& 2.14& 2.08& 2.02& 1.98& 1.95& 1.92\\
+  22& 2.95& 2.56& 2.35& 2.22& 2.13& 2.06& 2.01& 1.97& 1.93& 1.90\\
+  23& 2.94& 2.55& 2.34& 2.21& 2.11& 2.05& 1.99& 1.95& 1.92& 1.89\\
+  24& 2.93& 2.54& 2.33& 2.19& 2.10& 2.04& 1.98& 1.94& 1.91& 1.88\\
+  25& 2.92& 2.53& 2.32& 2.18& 2.09& 2.02& 1.97& 1.93& 1.89& 1.87\\
+  26& 2.91& 2.52& 2.31& 2.17& 2.08& 2.01& 1.96& 1.92& 1.88& 1.86\\
+  27& 2.90& 2.51& 2.30& 2.17& 2.07& 2.00& 1.95& 1.91& 1.87& 1.85\\
+  28& 2.89& 2.50& 2.29& 2.16& 2.06& 2.00& 1.94& 1.90& 1.87& 1.84\\
+  29& 2.89& 2.50& 2.28& 2.15& 2.06& 1.99& 1.93& 1.89& 1.86& 1.83\\
+  30& 2.88& 2.49& 2.28& 2.14& 2.05& 1.98& 1.93& 1.88& 1.85& 1.82\\
+  40& 2.84&2.44&2.23&2.09&2.00&1.93&1.87&1.83&1.79&1.76\\
+  50& 2.81&2.41&2.20&2.06&1.97&1.90&1.84&1.80&1.76&1.73\\
+  60& 2.79&2.39&2.18&2.04&1.95&1.87&1.82&1.77&1.74&1.71\\
+  70& 2.78&2.38&2.16&2.03&1.93&1.86&1.80&1.76&1.72&1.69\\
+  80& 2.77&2.37&2.15&2.02&1.92&1.85&1.79&1.75&1.71&1.68\\
+  90& 2.76&2.36&2.15&2.01&1.91&1.84&1.78&1.74&1.70&1.67\\
+\hline
+\end{tabular}}
+\caption{\textsl{Algunos percentiles 0.9 de la distribución $F^m_n$.}}
+\end{table}
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$m$}\\
+$n$&12&14&16&18&20&24&30&40&60&100\\  \hline
+   1&60.71&61.07&61.35&61.57&61.74&62.00&62.26&62.53&62.79&63.01\\
+   2& 9.41& 9.42& 9.43& 9.44& 9.44& 9.45& 9.46& 9.47& 9.47& 9.48\\
+   3& 5.22& 5.20& 5.20& 5.19& 5.18& 5.18& 5.17& 5.16& 5.15& 5.14\\
+   4& 3.90& 3.88& 3.86& 3.85& 3.84& 3.83& 3.82& 3.80& 3.79& 3.78\\
+   5& 3.27& 3.25& 3.23& 3.22& 3.21& 3.19& 3.17& 3.16& 3.14& 3.13\\
+   6& 2.90& 2.88& 2.86& 2.85& 2.84& 2.82& 2.80& 2.78& 2.76& 2.75\\
+   7& 2.67& 2.64& 2.62& 2.61& 2.59& 2.58& 2.56& 2.54& 2.51& 2.50\\
+   8& 2.50& 2.48& 2.45& 2.44& 2.42& 2.40& 2.38& 2.36& 2.34& 2.32\\
+   9& 2.38& 2.35& 2.33& 2.31& 2.30& 2.28& 2.25& 2.23& 2.21& 2.19\\
+  10& 2.28& 2.26& 2.23& 2.22& 2.20& 2.18& 2.16& 2.13& 2.11& 2.09\\
+  11& 2.21& 2.18& 2.16& 2.14& 2.12& 2.10& 2.08& 2.05& 2.03& 2.01\\
+  12& 2.15& 2.12& 2.09& 2.08& 2.06& 2.04& 2.01& 1.99& 1.96& 1.94\\
+  13& 2.10& 2.07& 2.04& 2.02& 2.01& 1.98& 1.96& 1.93& 1.90& 1.88\\
+  14& 2.05& 2.02& 2.00& 1.98& 1.96& 1.94& 1.91& 1.89& 1.86& 1.83\\
+  15& 2.02& 1.99& 1.96& 1.94& 1.92& 1.90& 1.87& 1.85& 1.82& 1.79\\
+  16& 1.99& 1.95& 1.93& 1.91& 1.89& 1.87& 1.84& 1.81& 1.78& 1.76\\
+  17& 1.96& 1.93& 1.90& 1.88& 1.86& 1.84& 1.81& 1.78& 1.75& 1.73\\
+  18& 1.93& 1.90& 1.87& 1.85& 1.84& 1.81& 1.78& 1.75& 1.72& 1.70\\
+  19& 1.91& 1.88& 1.85& 1.83& 1.81& 1.79& 1.76& 1.73& 1.70& 1.67\\
+  20& 1.89& 1.86& 1.83& 1.81& 1.79& 1.77& 1.74& 1.71& 1.68& 1.65\\
+  21& 1.87& 1.84& 1.81& 1.79& 1.78& 1.75& 1.72& 1.69& 1.66& 1.63\\
+  22& 1.86& 1.83& 1.80& 1.78& 1.76& 1.73& 1.70& 1.67& 1.64& 1.61\\
+  23& 1.84& 1.81& 1.78& 1.76& 1.74& 1.72& 1.69& 1.66& 1.62& 1.59\\
+  24& 1.83& 1.80& 1.77& 1.75& 1.73& 1.70& 1.67& 1.64& 1.61& 1.58\\
+  25& 1.82& 1.79& 1.76& 1.74& 1.72& 1.69& 1.66& 1.63& 1.59& 1.56\\
+  26& 1.81& 1.77& 1.75& 1.72& 1.71& 1.68& 1.65& 1.61& 1.58& 1.55\\
+  27& 1.80& 1.76& 1.74& 1.71& 1.70& 1.67& 1.64& 1.60& 1.57& 1.54\\
+  28& 1.79& 1.75& 1.73& 1.70& 1.69& 1.66& 1.63& 1.59& 1.56& 1.53\\
+  29& 1.78& 1.75& 1.72& 1.69& 1.68& 1.65& 1.62& 1.58& 1.55& 1.52\\
+  30& 1.77& 1.74& 1.71& 1.69& 1.67& 1.64& 1.61& 1.57& 1.54& 1.51\\
+  40& 1.71& 1.68& 1.65& 1.62& 1.61& 1.57& 1.54& 1.51& 1.47& 1.43\\
+  50& 1.68& 1.64& 1.61& 1.59& 1.57& 1.54& 1.50& 1.46& 1.42& 1.39\\
+  60& 1.66& 1.62& 1.59& 1.56& 1.54& 1.51& 1.48& 1.44& 1.40& 1.36\\
+  70& 1.64& 1.60& 1.57& 1.55& 1.53& 1.49& 1.46& 1.42& 1.37& 1.34\\
+  80& 1.63& 1.59& 1.56& 1.53& 1.51& 1.48& 1.44& 1.40& 1.36& 1.32\\
+  90& 1.62& 1.58& 1.55& 1.52& 1.50& 1.47& 1.43& 1.39& 1.35& 1.30\\
+\hline
+\end{tabular}}
+\caption{\textsl{Algunos percentiles 0.9 de la distribución $F^m_n$.}}
+\end{table}
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$m$}\\
+$n$&1&2&3&4&5&6&7&8&9&10\\  \hline
+   1& 161.5& 199.5& 215.7& 224.6& 230.2& 234.0& 236.8& 238.9& 240.5& 241.9\\
+   2& 18.51& 19.00& 19.16& 19.25& 19.30& 19.33& 19.35& 19.37& 19.38& 19.40\\
+   3& 10.13&  9.55&  9.28&  9.12&  9.01&  8.94&  8.89&  8.85&  8.81&  8.79\\
+   4&  7.71&  6.94&  6.59&  6.39&  6.26&  6.16&  6.09&  6.04&  6.00&  5.96\\
+   5&  6.61&  5.79&  5.41&  5.19&  5.05&  4.95&  4.88&  4.82&  4.77&  4.74\\
+   6&  5.99&  5.14&  4.76&  4.53&  4.39&  4.28&  4.21&  4.15&  4.10&  4.06\\
+   7&  5.59&  4.74&  4.35&  4.12&  3.97&  3.87&  3.79&  3.73&  3.68&  3.64\\
+   8&  5.32&  4.46&  4.07&  3.84&  3.69&  3.58&  3.50&  3.44&  3.39&  3.35\\
+   9&  5.12&  4.26&  3.86&  3.63&  3.48&  3.37&  3.29&  3.23&  3.18&  3.14\\
+  10&  4.96&  4.10&  3.71&  3.48&  3.33&  3.22&  3.14&  3.07&  3.02&  2.98\\
+  11&  4.84&  3.98&  3.59&  3.36&  3.20&  3.09&  3.01&  2.95&  2.90&  2.85\\
+  12&  4.75&  3.89&  3.49&  3.26&  3.11&  3.00&  2.91&  2.85&  2.80&  2.75\\
+  13&  4.67&  3.81&  3.41&  3.18&  3.03&  2.92&  2.83&  2.77&  2.71&  2.67\\
+  14&  4.60&  3.74&  3.34&  3.11&  2.96&  2.85&  2.76&  2.70&  2.65&  2.60\\
+  15&  4.54&  3.68&  3.29&  3.06&  2.90&  2.79&  2.71&  2.64&  2.59&  2.54\\
+  16&  4.49&  3.63&  3.24&  3.01&  2.85&  2.74&  2.66&  2.59&  2.54&  2.49\\
+  17&  4.45&  3.59&  3.20&  2.96&  2.81&  2.70&  2.61&  2.55&  2.49&  2.45\\
+  18&  4.41&  3.55&  3.16&  2.93&  2.77&  2.66&  2.58&  2.51&  2.46&  2.41\\
+  19&  4.38&  3.52&  3.13&  2.90&  2.74&  2.63&  2.54&  2.48&  2.42&  2.38\\
+  20&  4.35&  3.49&  3.10&  2.87&  2.71&  2.60&  2.51&  2.45&  2.39&  2.35\\
+  21&  4.32&  3.47&  3.07&  2.84&  2.68&  2.57&  2.49&  2.42&  2.37&  2.32\\
+  22&  4.30&  3.44&  3.05&  2.82&  2.66&  2.55&  2.46&  2.40&  2.34&  2.30\\
+  23&  4.28&  3.42&  3.03&  2.80&  2.64&  2.53&  2.44&  2.37&  2.32&  2.27\\
+  24&  4.26&  3.40&  3.01&  2.78&  2.62&  2.51&  2.42&  2.36&  2.30&  2.25\\
+  25&  4.24&  3.39&  2.99&  2.76&  2.60&  2.49&  2.40&  2.34&  2.28&  2.24\\
+  26&  4.23&  3.37&  2.98&  2.74&  2.59&  2.47&  2.39&  2.32&  2.27&  2.22\\
+  27&  4.21&  3.35&  2.96&  2.73&  2.57&  2.46&  2.37&  2.31&  2.25&  2.20\\
+  28&  4.20&  3.34&  2.95&  2.71&  2.56&  2.45&  2.36&  2.29&  2.24&  2.19\\
+  29&  4.18&  3.33&  2.93&  2.70&  2.55&  2.43&  2.35&  2.28&  2.22&  2.18\\
+  30&  4.17&  3.32&  2.92&  2.69&  2.53&  2.42&  2.33&  2.27&  2.21&  2.16\\
+  40&  4.08&  3.23&  2.84&  2.61&  2.45&  2.34&  2.25&  2.18&  2.12&  2.08\\
+  50&  4.03&  3.18&  2.79&  2.56&  2.40&  2.29&  2.20&  2.13&  2.07&  2.03\\
+  60&  4.00&  3.15&  2.76&  2.53&  2.37&  2.25&  2.17&  2.10&  2.04&  1.99\\
+  70&  3.98&  3.13&  2.74&  2.50&  2.35&  2.23&  2.14&  2.07&  2.02&  1.97\\
+  80&  3.96&  3.11&  2.72&  2.49&  2.33&  2.21&  2.13&  2.06&  2.00&  1.95\\
+  90&  3.95&  3.10&  2.71&  2.47&  2.32&  2.20&  2.11&  2.04&  1.99&  1.94\\
+\hline
+\end{tabular}}
+\caption{\textsl{Algunos percentiles 0.95 de la distribución $F^m_n$.}}
+\end{table}
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$m$}\\
+$n$&12&14&16&18&20&24&30&40&60&100\\  \hline
+   1&243.91&245.36&246.46&247.32&248.01&249.05&250.10&251.14&252.20&253.04\\
+   2& 19.41& 19.42& 19.43& 19.44& 19.45& 19.45& 19.46& 19.47& 19.48& 19.49\\
+   3&  8.74&  8.71&  8.69&  8.67&  8.66&  8.64&  8.62&  8.59&  8.57&  8.55\\
+   4&  5.91&  5.87&  5.84&  5.82&  5.80&  5.77&  5.75&  5.72&  5.69&  5.66\\
+   5&  4.68&  4.64&  4.60&  4.58&  4.56&  4.53&  4.50&  4.46&  4.43&  4.41\\
+   6&  4.00&  3.96&  3.92&  3.90&  3.87&  3.84&  3.81&  3.77&  3.74&  3.71\\
+   7&  3.57&  3.53&  3.49&  3.47&  3.44&  3.41&  3.38&  3.34&  3.30&  3.27\\
+   8&  3.28&  3.24&  3.20&  3.17&  3.15&  3.12&  3.08&  3.04&  3.01&  2.97\\
+   9&  3.07&  3.03&  2.99&  2.96&  2.94&  2.90&  2.86&  2.83&  2.79&  2.76\\
+  10&  2.91&  2.86&  2.83&  2.80&  2.77&  2.74&  2.70&  2.66&  2.62&  2.59\\
+  11&  2.79&  2.74&  2.70&  2.67&  2.65&  2.61&  2.57&  2.53&  2.49&  2.46\\
+  12&  2.69&  2.64&  2.60&  2.57&  2.54&  2.51&  2.47&  2.43&  2.38&  2.35\\
+  13&  2.60&  2.55&  2.51&  2.48&  2.46&  2.42&  2.38&  2.34&  2.30&  2.26\\
+  14&  2.53&  2.48&  2.44&  2.41&  2.39&  2.35&  2.31&  2.27&  2.22&  2.19\\
+  15&  2.48&  2.42&  2.38&  2.35&  2.33&  2.29&  2.25&  2.20&  2.16&  2.12\\
+  16&  2.42&  2.37&  2.33&  2.30&  2.28&  2.24&  2.19&  2.15&  2.11&  2.07\\
+  17&  2.38&  2.33&  2.29&  2.26&  2.23&  2.19&  2.15&  2.10&  2.06&  2.02\\
+  18&  2.34&  2.29&  2.25&  2.22&  2.19&  2.15&  2.11&  2.06&  2.02&  1.98\\
+  19&  2.31&  2.26&  2.21&  2.18&  2.16&  2.11&  2.07&  2.03&  1.98&  1.94\\
+  20&  2.28&  2.22&  2.18&  2.15&  2.12&  2.08&  2.04&  1.99&  1.95&  1.91\\
+  21&  2.25&  2.20&  2.16&  2.12&  2.10&  2.05&  2.01&  1.96&  1.92&  1.88\\
+  22&  2.23&  2.17&  2.13&  2.10&  2.07&  2.03&  1.98&  1.94&  1.89&  1.85\\
+  23&  2.20&  2.15&  2.11&  2.08&  2.05&  2.01&  1.96&  1.91&  1.86&  1.82\\
+  24&  2.18&  2.13&  2.09&  2.05&  2.03&  1.98&  1.94&  1.89&  1.84&  1.80\\
+  25&  2.16&  2.11&  2.07&  2.04&  2.01&  1.96&  1.92&  1.87&  1.82&  1.78\\
+  26&  2.15&  2.09&  2.05&  2.02&  1.99&  1.95&  1.90&  1.85&  1.80&  1.76\\
+  27&  2.13&  2.08&  2.04&  2.00&  1.97&  1.93&  1.88&  1.84&  1.79&  1.74\\
+  28&  2.12&  2.06&  2.02&  1.99&  1.96&  1.91&  1.87&  1.82&  1.77&  1.73\\
+  29&  2.10&  2.05&  2.01&  1.97&  1.94&  1.90&  1.85&  1.81&  1.75&  1.71\\
+  30&  2.09&  2.04&  1.99&  1.96&  1.93&  1.89&  1.84&  1.79&  1.74&  1.70\\
+  40& 2.00& 1.95& 1.90& 1.87& 1.84& 1.79& 1.74& 1.69& 1.64& 1.59\\
+  50& 1.95& 1.89& 1.85& 1.81& 1.78& 1.74& 1.69& 1.63& 1.58& 1.52\\
+  60& 1.92& 1.86& 1.82& 1.78& 1.75& 1.70& 1.65& 1.59& 1.53& 1.48\\
+  70& 1.89& 1.84& 1.79& 1.75& 1.72& 1.67& 1.62& 1.57& 1.50& 1.45\\
+  80& 1.88& 1.82& 1.77& 1.73& 1.70& 1.65& 1.60& 1.54& 1.48& 1.43\\
+  90& 1.86& 1.80& 1.76& 1.72& 1.69& 1.64& 1.59& 1.53& 1.46& 1.41\\
+\hline
+\end{tabular}}
+\caption{\textsl{Algunos percentiles 0.95 de la distribución $F^m_n$.}}
+\end{table}
+
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$m$}\\
+$n$&1&2&3&4&5&6&7&8&9&10\\  \hline
+   1&647.79&799.50&864.16&899.58&921.85&937.11&948.22&956.66&963.28&968.63\\
+   2& 38.51& 39.00& 39.17& 39.25& 39.30& 39.33& 39.36& 39.37& 39.39& 39.40\\
+   3& 17.44& 16.04& 15.44& 15.10& 14.88& 14.73& 14.62& 14.54& 14.47& 14.42\\
+   4& 12.22& 10.65&  9.98&  9.60&  9.36&  9.20&  9.07&  8.98&  8.90&  8.84\\
+   5& 10.01&  8.43&  7.76&  7.39&  7.15&  6.98&  6.85&  6.76&  6.68&  6.62\\
+   6&  8.81&  7.26&  6.60&  6.23&  5.99&  5.82&  5.70&  5.60&  5.52&  5.46\\
+   7&  8.07&  6.54&  5.89&  5.52&  5.29&  5.12&  4.99&  4.90&  4.82&  4.76\\
+   8&  7.57&  6.06&  5.42&  5.05&  4.82&  4.65&  4.53&  4.43&  4.36&  4.30\\
+   9&  7.21&  5.71&  5.08&  4.72&  4.48&  4.32&  4.20&  4.10&  4.03&  3.96\\
+  10&  6.94&  5.46&  4.83&  4.47&  4.24&  4.07&  3.95&  3.85&  3.78&  3.72\\
+  11&  6.72&  5.26&  4.63&  4.28&  4.04&  3.88&  3.76&  3.66&  3.59&  3.53\\
+  12&  6.55&  5.10&  4.47&  4.12&  3.89&  3.73&  3.61&  3.51&  3.44&  3.37\\
+  13&  6.41&  4.97&  4.35&  4.00&  3.77&  3.60&  3.48&  3.39&  3.31&  3.25\\
+  14&  6.30&  4.86&  4.24&  3.89&  3.66&  3.50&  3.38&  3.29&  3.21&  3.15\\
+  15&  6.20&  4.77&  4.15&  3.80&  3.58&  3.41&  3.29&  3.20&  3.12&  3.06\\
+  16&  6.12&  4.69&  4.08&  3.73&  3.50&  3.34&  3.22&  3.12&  3.05&  2.99\\
+  17&  6.04&  4.62&  4.01&  3.66&  3.44&  3.28&  3.16&  3.06&  2.98&  2.92\\
+  18&  5.98&  4.56&  3.95&  3.61&  3.38&  3.22&  3.10&  3.01&  2.93&  2.87\\
+  19&  5.92&  4.51&  3.90&  3.56&  3.33&  3.17&  3.05&  2.96&  2.88&  2.82\\
+  20&  5.87&  4.46&  3.86&  3.51&  3.29&  3.13&  3.01&  2.91&  2.84&  2.77\\
+  21&  5.83&  4.42&  3.82&  3.48&  3.25&  3.09&  2.97&  2.87&  2.80&  2.73\\
+  22&  5.79&  4.38&  3.78&  3.44&  3.22&  3.05&  2.93&  2.84&  2.76&  2.70\\
+  23&  5.75&  4.35&  3.75&  3.41&  3.18&  3.02&  2.90&  2.81&  2.73&  2.67\\
+  24&  5.72&  4.32&  3.72&  3.38&  3.15&  2.99&  2.87&  2.78&  2.70&  2.64\\
+  25&  5.69&  4.29&  3.69&  3.35&  3.13&  2.97&  2.85&  2.75&  2.68&  2.61\\
+  26&  5.66&  4.27&  3.67&  3.33&  3.10&  2.94&  2.82&  2.73&  2.65&  2.59\\
+  27&  5.63&  4.24&  3.65&  3.31&  3.08&  2.92&  2.80&  2.71&  2.63&  2.57\\
+  28&  5.61&  4.22&  3.63&  3.29&  3.06&  2.90&  2.78&  2.69&  2.61&  2.55\\
+  29&  5.59&  4.20&  3.61&  3.27&  3.04&  2.88&  2.76&  2.67&  2.59&  2.53\\
+  30&  5.57&  4.18&  3.59&  3.25&  3.03&  2.87&  2.75&  2.65&  2.57&  2.51\\
+  40& 5.42& 4.05& 3.46& 3.13& 2.90& 2.74& 2.62& 2.53& 2.45& 2.39\\
+  50& 5.34& 3.97& 3.39& 3.05& 2.83& 2.67& 2.55& 2.46& 2.38& 2.32\\
+  60& 5.29& 3.93& 3.34& 3.01& 2.79& 2.63& 2.51& 2.41& 2.33& 2.27\\
+  70& 5.25& 3.89& 3.31& 2.97& 2.75& 2.59& 2.47& 2.38& 2.30& 2.24\\
+  80& 5.22& 3.86& 3.28& 2.95& 2.73& 2.57& 2.45& 2.35& 2.28& 2.21\\
+  90& 5.20& 3.84& 3.26& 2.93& 2.71& 2.55& 2.43& 2.34& 2.26& 2.19\\
+\hline
+\end{tabular}}
+\caption{\textsl{Algunos percentiles 0.975 de la distribución $F^m_n$.}}
+\end{table}
+
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$m$}\\
+$n$&12&14&16&18&20&24&30&40&60&100\\  \hline
+   1&976.71&982.53&986.92&990.35&993.10&997.25&1001.41&1005.60&1009.80&1013.17\\
+   2& 39.41& 39.43& 39.44& 39.44& 39.45& 39.46&  39.46&  39.47&  39.48&  39.49\\
+   3& 14.34& 14.28& 14.23& 14.20& 14.17& 14.12&  14.08&  14.04&  13.99&  13.96\\
+   4&  8.75&  8.68&  8.63&  8.59&  8.56&  8.51&   8.46&   8.41&   8.36&   8.32\\
+   5&  6.52&  6.46&  6.40&  6.36&  6.33&  6.28&   6.23&   6.18&   6.12&   6.08\\
+   6&  5.37&  5.30&  5.24&  5.20&  5.17&  5.12&   5.07&   5.01&   4.96&   4.92\\
+   7&  4.67&  4.60&  4.54&  4.50&  4.47&  4.41&   4.36&   4.31&   4.25&   4.21\\
+   8&  4.20&  4.13&  4.08&  4.03&  4.00&  3.95&   3.89&   3.84&   3.78&   3.74\\
+   9&  3.87&  3.80&  3.74&  3.70&  3.67&  3.61&   3.56&   3.51&   3.45&   3.40\\
+  10&  3.62&  3.55&  3.50&  3.45&  3.42&  3.37&   3.31&   3.26&   3.20&   3.15\\
+  11&  3.43&  3.36&  3.30&  3.26&  3.23&  3.17&   3.12&   3.06&   3.00&   2.96\\
+  12&  3.28&  3.21&  3.15&  3.11&  3.07&  3.02&   2.96&   2.91&   2.85&   2.80\\
+  13&  3.15&  3.08&  3.03&  2.98&  2.95&  2.89&   2.84&   2.78&   2.72&   2.67\\
+  14&  3.05&  2.98&  2.92&  2.88&  2.84&  2.79&   2.73&   2.67&   2.61&   2.56\\
+  15&  2.96&  2.89&  2.84&  2.79&  2.76&  2.70&   2.64&   2.59&   2.52&   2.47\\
+  16&  2.89&  2.82&  2.76&  2.72&  2.68&  2.63&   2.57&   2.51&   2.45&   2.40\\
+  17&  2.82&  2.75&  2.70&  2.65&  2.62&  2.56&   2.50&   2.44&   2.38&   2.33\\
+  18&  2.77&  2.70&  2.64&  2.60&  2.56&  2.50&   2.44&   2.38&   2.32&   2.27\\
+  19&  2.72&  2.65&  2.59&  2.55&  2.51&  2.45&   2.39&   2.33&   2.27&   2.22\\
+  20&  2.68&  2.60&  2.55&  2.50&  2.46&  2.41&   2.35&   2.29&   2.22&   2.17\\
+  21&  2.64&  2.56&  2.51&  2.46&  2.42&  2.37&   2.31&   2.25&   2.18&   2.13\\
+  22&  2.60&  2.53&  2.47&  2.43&  2.39&  2.33&   2.27&   2.21&   2.14&   2.09\\
+  23&  2.57&  2.50&  2.44&  2.39&  2.36&  2.30&   2.24&   2.18&   2.11&   2.06\\
+  24&  2.54&  2.47&  2.41&  2.36&  2.33&  2.27&   2.21&   2.15&   2.08&   2.02\\
+  25&  2.51&  2.44&  2.38&  2.34&  2.30&  2.24&   2.18&   2.12&   2.05&   2.00\\
+  26&  2.49&  2.42&  2.36&  2.31&  2.28&  2.22&   2.16&   2.09&   2.03&   1.97\\
+  27&  2.47&  2.39&  2.34&  2.29&  2.25&  2.19&   2.13&   2.07&   2.00&   1.94\\
+  28&  2.45&  2.37&  2.32&  2.27&  2.23&  2.17&   2.11&   2.05&   1.98&   1.92\\
+  29&  2.43&  2.36&  2.30&  2.25&  2.21&  2.15&   2.09&   2.03&   1.96&   1.90\\
+  30&  2.41&  2.34&  2.28&  2.23&  2.20&  2.14&   2.07&   2.01&   1.94&   1.88\\
+  40& 2.29&2.21& 2.15& 2.11& 2.07& 2.01& 1.94& 1.88& 1.80& 1.74\\
+  50& 2.22&2.14& 2.08& 2.03& 1.99& 1.93& 1.87& 1.80& 1.72& 1.66\\
+  60& 2.17&2.09& 2.03& 1.98& 1.94& 1.88& 1.82& 1.74& 1.67& 1.60\\
+  70& 2.14&2.06& 2.00& 1.95& 1.91& 1.85& 1.78& 1.71& 1.63& 1.56\\
+  80& 2.11&2.03& 1.97& 1.92& 1.88& 1.82& 1.75& 1.68& 1.60& 1.53\\
+  90& 2.09&2.02& 1.95& 1.91& 1.86& 1.80& 1.73& 1.66& 1.58& 1.50\\
+\hline
+\end{tabular} }
+\caption{\textsl{Algunos percentiles 0.975 de la distribución $F^m_n$.}}
+\end{table}
+
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$m$}\\
+$n$&1&2&3&4&5&6&7&8&9&10\\  \hline
+   1& 4052.18& 4999.50&5403.35& 5624.58&5763.65&5858.99&5928.36&5981.07&6022.47&6055.85\\
+   2&   98.50&   99.00&  99.17&   99.25&  99.30&  99.33&  99.36&  99.37&  99.39&  99.40\\
+   3&   34.12&   30.82&  29.46&   28.71&  28.24&  27.91&  27.67&  27.49&  27.35&  27.23\\
+   4&   21.20&   18.00&  16.69&   15.98&  15.52&  15.21&  14.98&  14.80&  14.66&  14.55\\
+   5&   16.26&   13.27&  12.06&   11.39&  10.97&  10.67&  10.46&  10.29&  10.16&  10.05\\
+   6&   13.75&   10.92&   9.78&    9.15&   8.75&   8.47&   8.26&   8.10&   7.98&   7.87\\
+   7&   12.25&    9.55&   8.45&    7.85&   7.46&   7.19&   6.99&   6.84&   6.72&   6.62\\
+   8&   11.26&    8.65&   7.59&    7.01&   6.63&   6.37&   6.18&   6.03&   5.91&   5.81\\
+   9&   10.56&    8.02&   6.99&    6.42&   6.06&   5.80&   5.61&   5.47&   5.35&   5.26\\
+  10&   10.04&    7.56&   6.55&    5.99&   5.64&   5.39&   5.20&   5.06&   4.94&   4.85\\
+  11&    9.65&    7.21&   6.22&    5.67&   5.32&   5.07&   4.89&   4.74&   4.63&   4.54\\
+  12&    9.33&    6.93&   5.95&    5.41&   5.06&   4.82&   4.64&   4.50&   4.39&   4.30\\
+  13&    9.07&    6.70&   5.74&    5.21&   4.86&   4.62&   4.44&   4.30&   4.19&   4.10\\
+  14&    8.86&    6.51&   5.56&    5.04&   4.69&   4.46&   4.28&   4.14&   4.03&   3.94\\
+  15&    8.68&    6.36&   5.42&    4.89&   4.56&   4.32&   4.14&   4.00&   3.89&   3.80\\
+  16&    8.53&    6.23&   5.29&    4.77&   4.44&   4.20&   4.03&   3.89&   3.78&   3.69\\
+  17&    8.40&    6.11&   5.18&    4.67&   4.34&   4.10&   3.93&   3.79&   3.68&   3.59\\
+  18&    8.29&    6.01&   5.09&    4.58&   4.25&   4.01&   3.84&   3.71&   3.60&   3.51\\
+  19&    8.18&    5.93&   5.01&    4.50&   4.17&   3.94&   3.77&   3.63&   3.52&   3.43\\
+  20&    8.10&    5.85&   4.94&    4.43&   4.10&   3.87&   3.70&   3.56&   3.46&   3.37\\
+  21&    8.02&    5.78&   4.87&    4.37&   4.04&   3.81&   3.64&   3.51&   3.40&   3.31\\
+  22&    7.95&    5.72&   4.82&    4.31&   3.99&   3.76&   3.59&   3.45&   3.35&   3.26\\
+  23&    7.88&    5.66&   4.76&    4.26&   3.94&   3.71&   3.54&   3.41&   3.30&   3.21\\
+  24&    7.82&    5.61&   4.72&    4.22&   3.90&   3.67&   3.50&   3.36&   3.26&   3.17\\
+  25&    7.77&    5.57&   4.68&    4.18&   3.85&   3.63&   3.46&   3.32&   3.22&   3.13\\
+  26&    7.72&    5.53&   4.64&    4.14&   3.82&   3.59&   3.42&   3.29&   3.18&   3.09\\
+  27&    7.68&    5.49&   4.60&    4.11&   3.78&   3.56&   3.39&   3.26&   3.15&   3.06\\
+  28&    7.64&    5.45&   4.57&    4.07&   3.75&   3.53&   3.36&   3.23&   3.12&   3.03\\
+  29&    7.60&    5.42&   4.54&    4.04&   3.73&   3.50&   3.33&   3.20&   3.09&   3.00\\
+  30&    7.56&    5.39&   4.51&    4.02&   3.70&   3.47&   3.30&   3.17&   3.07&   2.98\\
+  40& 7.31 &  5.18 &  4.31& 3.83 &  3.51&  3.29& 3.12&   2.99&  2.89& 2.80\\
+  50& 7.17 &  5.06 &  4.20& 3.72 &  3.41&  3.19& 3.02&   2.89&  2.78& 2.70\\
+  60& 7.08 &  4.98 &  4.13& 3.65 &  3.34&  3.12& 2.95&   2.82&  2.72& 2.63\\
+  70& 7.01 &  4.92 &  4.07& 3.60 &  3.29&  3.07& 2.91&   2.78&  2.67& 2.59\\
+  80& 6.96 &  4.88 &  4.04& 3.56 &  3.26&  3.04& 2.87&   2.74&  2.64& 2.55\\
+  90& 6.93 &  4.85 &  4.01& 3.53 &  3.23&  3.01& 2.84&   2.72&  2.61& 2.52\\
+\hline
+\end{tabular}}
+\caption{\textsl{Algunos percentiles 0.99 de la distribución $F^m_n$.}}
+\end{table}
+
+
+
+\begin{table}[htb]
+\centering
+{\small
+\begin{tabular}{|c|cccccccccc|}\hline
+&\multicolumn{10}{c|}{$m$}\\
+$n$&12&14&16&18&20&24&30&40&60&100\\  \hline
+   1&6106.32&6142.67&6170.10&6191.53&6208.73&6234.63&  6260.65&6286.78&6313.03&6334.11\\
+   2&  99.42&  99.43&  99.44&  99.44&  99.45&  99.46&    99.47&  99.47&  99.48&  99.49\\
+   3&  27.05&  26.92&  26.83&  26.75&  26.69&  26.60&    26.50&  26.41&  26.32&  26.24\\
+   4&  14.37&  14.25&  14.15&  14.08&  14.02&  13.93&    13.84&  13.75&  13.65&  13.58\\
+   5&   9.89&   9.77&   9.68&   9.61&   9.55&   9.47&     9.38&   9.29&   9.20&   9.13\\
+   6&   7.72&   7.60&   7.52&   7.45&   7.40&   7.31&     7.23&   7.14&   7.06&   6.99\\
+   7&   6.47&   6.36&   6.28&   6.21&   6.16&   6.07&     5.99&   5.91&   5.82&   5.75\\
+   8&   5.67&   5.56&   5.48&   5.41&   5.36&   5.28&     5.20&   5.12&   5.03&   4.96\\
+   9&   5.11&   5.01&   4.92&   4.86&   4.81&   4.73&     4.65&   4.57&   4.48&   4.41\\
+  10&   4.71&   4.60&   4.52&   4.46&   4.41&   4.33&     4.25&   4.17&   4.08&   4.01\\
+  11&   4.40&   4.29&   4.21&   4.15&   4.10&   4.02&     3.94&   3.86&   3.78&   3.71\\
+  12&   4.16&   4.05&   3.97&   3.91&   3.86&   3.78&     3.70&   3.62&   3.54&   3.47\\
+  13&   3.96&   3.86&   3.78&   3.72&   3.66&   3.59&     3.51&   3.43&   3.34&   3.27\\
+  14&   3.80&   3.70&   3.62&   3.56&   3.51&   3.43&     3.35&   3.27&   3.18&   3.11\\
+  15&   3.67&   3.56&   3.49&   3.42&   3.37&   3.29&     3.21&   3.13&   3.05&   2.98\\
+  16&   3.55&   3.45&   3.37&   3.31&   3.26&   3.18&     3.10&   3.02&   2.93&   2.86\\
+  17&   3.46&   3.35&   3.27&   3.21&   3.16&   3.08&     3.00&   2.92&   2.83&   2.76\\
+  18&   3.37&   3.27&   3.19&   3.13&   3.08&   3.00&     2.92&   2.84&   2.75&   2.68\\
+  19&   3.30&   3.19&   3.12&   3.05&   3.00&   2.92&     2.84&   2.76&   2.67&   2.60\\
+  20&   3.23&   3.13&   3.05&   2.99&   2.94&   2.86&     2.78&   2.69&   2.61&   2.54\\
+  21&   3.17&   3.07&   2.99&   2.93&   2.88&   2.80&     2.72&   2.64&   2.55&   2.48\\
+  22&   3.12&   3.02&   2.94&   2.88&   2.83&   2.75&     2.67&   2.58&   2.50&   2.42\\
+  23&   3.07&   2.97&   2.89&   2.83&   2.78&   2.70&     2.62&   2.54&   2.45&   2.37\\
+  24&   3.03&   2.93&   2.85&   2.79&   2.74&   2.66&     2.58&   2.49&   2.40&   2.33\\
+  25&   2.99&   2.89&   2.81&   2.75&   2.70&   2.62&     2.54&   2.45&   2.36&   2.29\\
+  26&   2.96&   2.86&   2.78&   2.72&   2.66&   2.58&     2.50&   2.42&   2.33&   2.25\\
+  27&   2.93&   2.82&   2.75&   2.68&   2.63&   2.55&     2.47&   2.38&   2.29&   2.22\\
+  28&   2.90&   2.79&   2.72&   2.65&   2.60&   2.52&     2.44&   2.35&   2.26&   2.19\\
+  29&   2.87&   2.77&   2.69&   2.63&   2.57&   2.49&     2.41&   2.33&   2.23&   2.16\\
+  30&   2.84&   2.74&   2.66&   2.60&   2.55&   2.47&     2.39&   2.30&   2.21&   2.13\\
+  40& 2.66& 2.56& 2.48 & 2.42& 2.37 & 2.29& 2.20 & 2.11& 2.02 &  1.94\\
+  50& 2.56& 2.46& 2.38 & 2.32& 2.27 & 2.18& 2.10 & 2.01& 1.91 &  1.82\\
+  60& 2.50& 2.39& 2.31 & 2.25& 2.20 & 2.12& 2.03 & 1.94& 1.84 &  1.75\\
+  70& 2.45& 2.35& 2.27 & 2.20& 2.15 & 2.07& 1.98 & 1.89& 1.78 &  1.70\\
+  80& 2.42& 2.31& 2.23 & 2.17& 2.12 & 2.03& 1.94 & 1.85& 1.75 &  1.65\\
+  90& 2.39& 2.29& 2.21 & 2.14& 2.09 & 2.00& 1.92 & 1.82& 1.72 &  1.62\\
+\hline
+\end{tabular} }
+\caption{\textsl{Algunos percentiles 0.99 de la distribución $F^m_n$.}}
+\end{table}
+
+\clearpage
+\newpage
+\phantom{xxx}
+\thispagestyle{empty} 

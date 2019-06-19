@@ -1,0 +1,92 @@
+\BOOKMARK [0][-]{chapter*.1}{Pr\363logo}{}% 1
+\BOOKMARK [0][-]{chapter*.2}{Prefacio}{}% 2
+\BOOKMARK [-1][-]{part.1}{I Inferencia estad\355stica univariada}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Conceptos preliminares}{part.1}% 4
+\BOOKMARK [1][-]{section.1.1}{Variables aleatorias y distribuciones de probabilidad}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.1}{Distribuciones discretas}{section.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.1.2}{Distribuciones continuas}{section.1.1}% 7
+\BOOKMARK [2][-]{subsection.1.1.3}{Percentiles}{section.1.1}% 8
+\BOOKMARK [1][-]{section.1.2}{Familia exponencial}{chapter.1}% 9
+\BOOKMARK [2][-]{subsection.1.2.1}{Familia exponencial uniparam\351trica}{section.1.2}% 10
+\BOOKMARK [2][-]{subsection.1.2.2}{Familia exponencial multi-param\351trica}{section.1.2}% 11
+\BOOKMARK [1][-]{section.1.3}{Ejercicios}{chapter.1}% 12
+\BOOKMARK [0][-]{chapter.2}{Estimaci\363n puntual}{part.1}% 13
+\BOOKMARK [1][-]{section.2.1}{Introducci\363n}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.2}{Conceptos b\341sicos}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.3}{Estimaciones puntuales}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.3.1}{M\351todo de m\341xima verosimilitud}{section.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.3.2}{M\351todo de los momentos}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.3}{M\351todo de m\355nimos cuadrados}{section.2.3}% 19
+\BOOKMARK [1][-]{section.2.4}{Propiedades de estimadores puntuales}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.4.1}{Error cuadr\341tico medio}{section.2.4}% 21
+\BOOKMARK [2][-]{subsection.2.4.2}{Suficiencia}{section.2.4}% 22
+\BOOKMARK [2][-]{subsection.2.4.3}{Estimadores UMVUE}{section.2.4}% 23
+\BOOKMARK [2][-]{subsection.2.4.4}{Completez}{section.2.4}% 24
+\BOOKMARK [2][-]{subsection.2.4.5}{Consistencia}{section.2.4}% 25
+\BOOKMARK [1][-]{section.2.5}{Comparaci\363n emp\355rica de algunas propiedades}{chapter.2}% 26
+\BOOKMARK [1][-]{section.2.6}{Ejercicios}{chapter.2}% 27
+\BOOKMARK [0][-]{chapter.3}{Estimaci\363n por intervalo de confianza}{part.1}% 28
+\BOOKMARK [1][-]{section.3.1}{Introducci\363n}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.2}{Bajo normalidad}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.2.1}{Problemas de una muestra}{section.3.2}% 31
+\BOOKMARK [2][-]{subsection.3.2.2}{Problemas de dos muestras}{section.3.2}% 32
+\BOOKMARK [1][-]{section.3.3}{Bajo distribuciones diferentes a la normal}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.3.1}{Intervalos de confianza con distribuci\363n exponencial}{section.3.3}% 34
+\BOOKMARK [2][-]{subsection.3.3.2}{Intervalos de confianza con distribuci\363n Bernoulli}{section.3.3}% 35
+\BOOKMARK [2][-]{subsection.3.3.3}{Intervalos de confianza con distribuci\363n Poisson}{section.3.3}% 36
+\BOOKMARK [1][-]{section.3.4}{Ejercicios}{chapter.3}% 37
+\BOOKMARK [0][-]{chapter.4}{Pruebas de hip\363tesis}{part.1}% 38
+\BOOKMARK [1][-]{section.4.1}{Conceptos preliminares}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.2}{Una muestra bajo normalidad}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.2.1}{Pruebas de hip\363tesis para la media te\363rica}{section.4.2}% 41
+\BOOKMARK [2][-]{subsection.4.2.2}{Pruebas de hip\363tesis acerca de la varianza te\363rica}{section.4.2}% 42
+\BOOKMARK [1][-]{section.4.3}{Dos muestras}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.3.1}{Comparaci\363n entre dos medias}{section.4.3}% 44
+\BOOKMARK [2][-]{subsection.4.3.2}{Comparaci\363n entre dos varianzas}{section.4.3}% 45
+\BOOKMARK [1][-]{section.4.4}{k muestras}{chapter.4}% 46
+\BOOKMARK [2][-]{subsection.4.4.1}{Igualdad de k medias}{section.4.4}% 47
+\BOOKMARK [2][-]{subsection.4.4.2}{Igualdad de varianzas}{section.4.4}% 48
+\BOOKMARK [1][-]{section.4.5}{Muestras provenientes de la distribuci\363n Bernoulli y binomial}{chapter.4}% 49
+\BOOKMARK [2][-]{subsection.4.5.1}{Una muestra}{section.4.5}% 50
+\BOOKMARK [2][-]{subsection.4.5.2}{Dos muestras}{section.4.5}% 51
+\BOOKMARK [1][-]{section.4.6}{Muestras provenientes de una distribuci\363n Poisson}{chapter.4}% 52
+\BOOKMARK [2][-]{subsection.4.6.1}{Una muestra}{section.4.6}% 53
+\BOOKMARK [2][-]{subsection.4.6.2}{Dos muestras}{section.4.6}% 54
+\BOOKMARK [1][-]{section.4.7}{Muestras provenientes de la distribuci\363n exponencial}{chapter.4}% 55
+\BOOKMARK [2][-]{subsection.4.7.1}{Una muestra}{section.4.7}% 56
+\BOOKMARK [2][-]{subsection.4.7.2}{Dos muestras}{section.4.7}% 57
+\BOOKMARK [1][-]{section.4.8}{Acerca del p-valor}{chapter.4}% 58
+\BOOKMARK [2][-]{subsection.4.8.1}{Diversos puntos de vistas acerca del p-valor}{section.4.8}% 59
+\BOOKMARK [2][-]{subsection.4.8.2}{p valores aleatorios}{section.4.8}% 60
+\BOOKMARK [2][-]{subsection.4.8.3}{El p valor no es una medida de soporte}{section.4.8}% 61
+\BOOKMARK [2][-]{subsection.4.8.4}{Acerca de la igualdad en la hip\363tesis nula}{section.4.8}% 62
+\BOOKMARK [1][-]{section.4.9}{Ejercicios}{chapter.4}% 63
+\BOOKMARK [-1][-]{part.2}{II Inferencia estad\355stica multivariante}{}% 64
+\BOOKMARK [0][-]{chapter.5}{Distribuciones multivariantes}{part.2}% 65
+\BOOKMARK [1][-]{section.5.1}{Vectores aleatorios}{chapter.5}% 66
+\BOOKMARK [1][-]{section.5.2}{Algunas distribuciones multivariantes}{chapter.5}% 67
+\BOOKMARK [2][-]{subsection.5.2.1}{Distribuci\363n multinomial}{section.5.2}% 68
+\BOOKMARK [2][-]{subsection.5.2.2}{Distribuci\363n normal multivariante}{section.5.2}% 69
+\BOOKMARK [2][-]{subsection.5.2.3}{Distribuci\363n Wishart}{section.5.2}% 70
+\BOOKMARK [2][-]{subsection.5.2.4}{Distribuci\363n T2 de Hotelling}{section.5.2}% 71
+\BOOKMARK [1][-]{section.5.3}{Ejercicios}{chapter.5}% 72
+\BOOKMARK [0][-]{chapter.6}{Inferencia multivariante}{part.2}% 73
+\BOOKMARK [1][-]{section.6.1}{Inferencia en la distribuci\363n multinomial}{chapter.6}% 74
+\BOOKMARK [2][-]{subsection.6.1.1}{Una muestra}{section.6.1}% 75
+\BOOKMARK [2][-]{subsection.6.1.2}{Dos muestras}{section.6.1}% 76
+\BOOKMARK [2][-]{subsection.6.1.3}{k muestras}{section.6.1}% 77
+\BOOKMARK [1][-]{section.6.2}{Inferencia en la distribuci\363n normal multivariante}{chapter.6}% 78
+\BOOKMARK [2][-]{subsection.6.2.1}{Estimador de m\341xima verosimilitud}{section.6.2}% 79
+\BOOKMARK [2][-]{subsection.6.2.2}{Propiedades de los estimadores de m\341xima verosimilitud}{section.6.2}% 80
+\BOOKMARK [1][-]{section.6.3}{Regi\363n de confianza y pruebas de hip\363tesis para el vector de medias}{chapter.6}% 81
+\BOOKMARK [2][-]{subsection.6.3.1}{ conocida}{section.6.3}% 82
+\BOOKMARK [2][-]{subsection.6.3.2}{ desconocida}{section.6.3}% 83
+\BOOKMARK [1][-]{section.6.4}{Inferencia para una combinaci\363n lineal de medias}{chapter.6}% 84
+\BOOKMARK [1][-]{section.6.5}{Prueba de hip\363tesis para la matriz de varianzas y covarianzas}{chapter.6}% 85
+\BOOKMARK [1][-]{section.6.6}{Ejercicios}{chapter.6}% 86
+\BOOKMARK [0][-]{appendix.A}{Breve historia del desarrollo estad\355stico}{part.2}% 87
+\BOOKMARK [0][-]{appendix.B}{Herramientas de bondad de ajuste}{part.2}% 88
+\BOOKMARK [0][-]{appendix.C}{Transformaci\363n de Box-Cox}{part.2}% 89
+\BOOKMARK [0][-]{appendix.D}{Repaso matricial}{part.2}% 90
+\BOOKMARK [0][-]{appendix.E}{Inferencia en tablas de contingencia}{part.2}% 91
+\BOOKMARK [0][-]{appendix.F}{Tablas de percentiles de distribuciones}{part.2}% 92
