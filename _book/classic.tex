@@ -86,14 +86,14 @@
 
 %------------------------------------------------
  
-\PassOptionsToPackage{latin9}{inputenc} % latin9 (ISO-8859-9) = latin1+"Euro sign"
+\PassOptionsToPackage{utf8}{inputenc} % latin9 (ISO-8859-9) = latin1+"Euro sign"
 \usepackage{inputenc}
  
  %------------------------------------------------
 
 %\PassOptionsToPackage{ngerman,american}{babel}  % Change this to your language(s)
 % Spanish languages need extra options in order to work with this template
-%\PassOptionsToPackage{spanish,es-lcroman}{babel}
+\PassOptionsToPackage{spanish,es-lcroman}{babel}
 \usepackage{babel}
 
 %------------------------------------------------			
@@ -243,13 +243,13 @@ pdfproducer={LaTeX with hyperref and classicthesis}
 \@ifpackageloaded{babel}
 {
 \addto\extrasamerican{
-\renewcommand*{\figureautorefname}{Figure}
-\renewcommand*{\tableautorefname}{Table}
-\renewcommand*{\partautorefname}{Part}
-\renewcommand*{\chapterautorefname}{Chapter}
-\renewcommand*{\sectionautorefname}{Section}
-\renewcommand*{\subsectionautorefname}{Section}
-\renewcommand*{\subsubsectionautorefname}{Section}
+\renewcommand*{\figureautorefname}{Figura}
+\renewcommand*{\tableautorefname}{Tabla}
+\renewcommand*{\partautorefname}{Parte}
+\renewcommand*{\chapterautorefname}{Capítulo}
+\renewcommand*{\sectionautorefname}{Sección}
+\renewcommand*{\subsectionautorefname}{Sección}
+\renewcommand*{\subsubsectionautorefname}{Sección}
 }
 \addto\extrasngerman{
 \renewcommand*{\paragraphautorefname}{Absatz}
@@ -371,11 +371,11 @@ pdfproducer={LaTeX with hyperref and classicthesis}
 \vfill
 
 \begingroup
-\color{Maroon}\spacedallcaps{title} \\ \bigskip % Thesis title
+\color{Maroon}\spacedallcaps{Inferencia Estadística: Aplicaciones y Métodos} \\ \bigskip % Thesis title
 
 \endgroup
 
-\spacedlowsmallcaps{author} % Your name
+\spacedlowsmallcaps{Hanwen Zhang \& Andrés Gutiérrez} % Your name
 
 \vfill
 
@@ -507,8 +507,8 @@ pdfproducer={LaTeX with hyperref and classicthesis}
 % \ctparttext{You can put some informational part preamble text here. Illo principalmente su nos. Non message \emph{occidental} angloromanic da. Debitas effortio simplificate sia se, auxiliar summarios da que, se avantiate publicationes via. Pan in terra summarios, capital interlingua se que. Al via multo esser specimen, campo responder que da. Le usate medical addresses pro, europa origine sanctificate nos se.} % Text on the Part 1 page describing  the content in Part 1
 
 
-\hypertarget{introduction}{%
-\chapter{Introduction}\label{introduction}}
+\hypertarget{introduccion}{%
+\chapter{Introducción}\label{introduccion}}
 
 The R package \texttt{bookdownplus} \citep{R-bookdownplus} is an extension of \texttt{bookdown} \citep{R-bookdown}. It is a collection of
 multiple templates on the basis of LaTeX, which are tailored so that I can work happily under the umbrella of \texttt{bookdown}. \texttt{bookdownplus} helps you write academic journal articles, guitar books, chemical equations, mails, calendars, and diaries.

@@ -1,6 +1,6 @@
 --- 
-title: "title"
-author: "author"
+title: "Inferencia Estadística: Aplicaciones y Métodos"
+author: "Hanwen Zhang & Andrés Gutiérrez"
 date: ""
 output:
   bookdown::pdf_book:
